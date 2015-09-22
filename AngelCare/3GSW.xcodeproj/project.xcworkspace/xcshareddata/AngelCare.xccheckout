@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F60FD692-AF1A-485C-A192-EF9DF7B021D5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AngelCare</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C4BD7203-1B49-4DB7-B627-62DE44E07D8A</key>
+		<string>http://210.242.50.125:7777/svn/mcareHealthAppIOS/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AngelCare/AngelCare.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C4BD7203-1B49-4DB7-B627-62DE44E07D8A</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>C4BD7203-1B49-4DB7-B627-62DE44E07D8A</key>
+		<string>http://210.242.50.125:7777/svn/mcareHealthAppIOS</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://210.242.50.125:7777/svn/mcareHealthAppIOS/trunk/AngelCare/AngelCare.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C4BD7203-1B49-4DB7-B627-62DE44E07D8A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C4BD7203-1B49-4DB7-B627-62DE44E07D8A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mcareHealthAppIOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

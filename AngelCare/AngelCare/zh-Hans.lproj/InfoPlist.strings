@@ -1,0 +1,688 @@
+/* Localized versions of Info.plist keys */
+
+"CFBundleDisplayName"  = "健康云手表";
+"LANGUAGE" = "2";
+"Setting_Version" = "Version";
+"NONET" = "网路连线异常，请稍候再尝试";
+
+/**********Login***************/
+"StartUse" = "Start";
+"StartSkip" = "SKIP";
+
+"Login_ACC" = "请输入帐号";
+"Login_PWD" = "请输入密码";
+
+"Login_WhereToBuy" = "何处购买";
+"Login_UserAcc" = "使用帐号登入";
+"Login_LoginBtn" = "登入";
+"Login_ForgetBtn" = "忘记密码";
+"Login_NewAccBtn" = "申请帐号";
+"Login_QRCodeLoginBtn" = "使用 QRCode登入";
+"Login_AuthResend" = "验证信已送出请至Email啓动帐号";
+"Login_EMPTY" = "请输入帐号密码";
+"Login_QRCodeAlert" = "请输入设备密码，预设密码为000000，登入后请儘速更换您的密码。";
+/**************************/
+
+/************忘记密码***************/
+
+"ForgetPassword" = "忘记密码";
+"InsertAcc" = "请输入帐号";
+"InsertEmail" = "或输入E-mail";
+"Email" = "E-mail";
+"isSentEmail" = "密码已寄至您的信箱。请至信箱收取密码";
+
+/**********注册*************/
+"NewAcc" = "申请帐号";
+"CheckName" = "请输入姓名";
+"Login_PWD2" = "请再次输入密码";
+"CheckButton" = "检查帐号";
+"CheckAccount1" = "帐号长度需6~12字元";
+"CheckAccount2" = "帐号格式错误，请使用英文及数字";
+"CheckAccount3" = "此帐号已被注册";
+"CheckAccountOK" = "该帐号可以使用";
+
+"SendCheck0" = "提醒您，帐户未完成启动，请至您登录的邮件信箱进行「启动确认」。";
+"SendCheck1" = "请先验证帐号是否可用";
+"SendCheck2" = "请输入姓名";
+"SendCheck3" = "密码长度需为8~12字元";
+"SendCheck4" = "密码栏位不相符";
+"SendCheck5" = "手机号码须为数字";
+"SendCheck6" = "E-mail格式有误";
+"SendCheck7" = "请同意会员条款与隐私条款";
+"SendCheck8" = "E-mail重複";
+
+"PhoneNumber" = "手机号码";
+"Email" = "Email";
+"MemberList" = "会员条款";
+"PrivacyList" = "隐私权条款";
+"Send" = "送出";
+"Create_Send" = "送出";
+"AgreeLabel" = "我已详阅并同意会员条款与隐私条款";
+/**************************/
+
+/************首页九宫格***************/
+
+"Bu1_Str" = "配带者资料";
+"Bu2_Str" = "设备状态";
+"Bu3_Str" = "健康管理";
+
+"Bu3_01_Str" = "血压记录";
+"Bu3_02_Str" = "血糖记录";
+"Bu3_03_Str" = "血氧记录";
+"Bu3_04_Str" = "体重记录";
+"Bu3_05_Str" = "计步器";
+
+"Bu4_Str" = "定位救援";
+"SMS_SEND" = "即时定位启动";
+"Bu5_Str" = "活动区域";
+"Bu6_Str" = "服务记录";
+"Bu7_Str" = "通话速拨";
+"Bu8_Str" = "事件提醒";
+"Bu9_Str" = "贴心设定";
+"Bu10_Str" = "电子围栏";
+
+/***************************/
+
+/*******佩戴者资讯*************/
+
+"UserDate_Name" = "姓名";
+"UserDate_Phone" = "内置卡号";
+"UserDate_Address" = "住址";
+"UserDate_Sex" = "性别";
+"UserDate_Imei" = "IMEI";
+"UserDate_Camera" = "相机";
+"UserDate_Photo" = "相簿";
+"UserDate_Select" = "请选择来源";
+"UserDate_NOSET" = "尚未设定";
+
+"UserDate_PersonInfo" = "个人资讯";
+
+"UserDate_SexBoy" = "男";
+"UserDate_SexGirl" = "女";
+
+"UserDate_SoSInfo" = "紧急电话";
+"UserDate_FamilyInfo" = "亲情电话";
+
+/*************************/
+
+/********设备资讯***********/
+"Device_Time_on" = "待机时间";
+"Device_Time_off" = "关机";
+"Device_OffType" = "关机原因";
+"Device_Time_sync" = "同步时间";
+"Device_Electricity" = "电量";
+"Device_Psr_temp" = "体表温度";
+"Device_Location" = "基地台位置";
+"Device_FW" = "手表版本";
+
+"Device_Data1" = "手动关机";
+"Device_Data2" = "低电压关机";
+"Device_Data3" = "定时关机";
+"Device_Data4" = "其他";
+
+/***********************/
+
+/*********量测资讯***********/
+
+"isList" = "列表";
+"isChart" = "图表";
+"SelectRange" = "请选择范围";
+"SelectRange\n" = "请选择时间\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+"StartTime" = "开始时间";
+"EndTime" = "结束时间";
+"DayBtn" = "日";
+"WeekBtn" = "週";
+"MonthBtn" = "月";
+"IntervalBtn" = "週期";
+"ForHealth" = "为了您的健康，请注意饮食及放鬆心情";
+/*************************/
+
+/* 小孩通话限制 */
+
+"C_SelectRange" = "请选择时间\n\n\n\n\n\n\n\n\n\n\n";
+"C_ALERTCHANGE" = "模式已修改";
+"C_OPEN" = "开啓";
+"C_CLOSE" = "关闭";
+
+"C_Status" = "目前状态";
+"C_StartTime" = "开始时间";
+"C_EndTime" = "结束时间";
+"C_Frequency" = "循环週期";
+"C_SendAndSave" = "发送简讯储存";
+/**************/
+
+/*********定位救援***************/
+
+"NOPHONENUMBER" = "配戴者未设定电话号码，无法以SMS简讯传送GPS启动码！";
+
+/*********活动区域***************/
+
+"Act_Map" = "地图";
+"Act_ST" = "卫星";
+
+/*******************************/
+
+/**********历史纪录***************/
+
+"His_Map" = "地图";
+"His_ST" = "卫星";
+"His_SOS" = "求救";
+"His_Falldown" = "跌倒";
+"His_Leave" = "离家";
+"His_Call" = "通话";
+
+"His_SOSTitle" = "        %@              %@";
+"His_FalldownTitle" = "        %@              %@";
+"His_LeaveTitle" = "        %@              %@";
+"His_CallTitle" = "    %@          %@          %@";
+
+"His_TIME" = "时间";
+"His_ADDR" = "约略地址";
+"His_STARTTIME" = "开始时间";
+"His_ENDTIME" = "结束时间";
+"His_TELLENGTH" = "长度";
+
+/****************************/
+
+/***********事件提醒***************/
+"EventRemind" = "事件提醒";
+"DateRemind" = "回诊提醒";
+"EatRemind" = "吃药提醒";
+
+"ImportantRemind" = "重要事项";
+"ImportantRemindStr" = "提醒您【%@】有重要事项";
+
+"OnSchoolRemind" = "上学接送";
+
+"OnSchoolRemindStr" = "提醒您【%@】要记得接送小孩上下学";
+
+"Mon" = "一";
+"Tue" = "二";
+"Wed" = "三";
+"The" = "四";
+"Fri" = "五";
+"Sat" = "六";
+"Sun" = "日";
+
+"Mon3" = "一";
+"Tue3" = "二";
+"Wed3" = "三";
+"Thu3" = "四";
+"Fri3" = "五";
+"Sat3" = "六";
+"Sun3" = "日";
+
+/**************************/
+
+
+/*************贴心设定***************/
+"HS_SAVE" = "储存";
+"HS_TITLE" = "贴心设定";
+
+"HS_Measure" = "量测提醒";
+"HS_CALL" = "通话限制";
+"HS_Setting" = "硬体设定";
+"HS_Setting_SMS" = "短信读取";
+"HS_Setting_BROTHER" = "防打扰";
+"HS_Setting_LongFamily" = "亲情键长按";
+"HS_Setting_SOSSMS" = "SOS简讯";
+"HS_Setting_SOSKEYLONGPUSH" = "SOS键长按";
+"HS_Setting_TimeZone" = "时区";
+"HS_Setting_Language" = "语言";
+"HS_Call_Sync_0" = "取消定时回报";
+"HS_Call_Sync_1" = "每小时一次";
+"HS_Call_Sync_2" = "每2小时一次";
+"HS_Call_Sync_3" = "每3小时一次";
+"HS_Call_Sync_4" = "每4小时一次";
+"HS_Call_Sync_5" = "每6小时一次";
+"HS_Call_Sync_6" = "每12小时一次";
+"HS_Call_Sync_7" = "每半小时一次";
+"HS_Call_Sync_8" = "每20分钟一次";
+"HS_Call_Sync_9" = "每15分钟一次";
+"HS_Call_Sync_10" = "每12分钟一次";
+"HS_Call_Sync_11" = "每10分钟一次";
+"HS_Call_Sync_12" = "每6分钟一次";
+
+
+"HS_Fall" = "跌倒设定";
+"HS_Fall_Enable" = "跌倒开关";
+//"HS_Fall_Sence" = "敏感度";
+"HS_Fall_Sence" = "跌倒设定";
+"HS_Fall_Remind" = "跌倒通知";
+"HS_Fall_SelecSence" = "选择敏感度";
+"HS_Fall_Cancel" = "取消";
+"HS_Fall_level0" = "关闭";
+"HS_Fall_level1" = "低敏感度";
+"HS_Fall_level2" = "中敏感度";
+"HS_Fall_level3" = "高敏感度";
+"HS_Fall_level4" = "其他";
+
+"HS_Fall_Phone1" = "电话1";
+"HS_Fall_Phone2" = "电话2";
+"HS_Fall_Phone3" = "电话3";
+
+"HS_Leave" = "离家设定";
+"HS_LeaveActRange" = "范围";
+"HS_Timeinterval" = "时间范围";
+"HS_Repetitionperiod" = "週期";
+"HS_Homeaddress" = "住家地址";
+"HS_MapEditor" = "地图";
+"HS_Range" = "范围";
+"HS_Check" = "查看";
+
+"HS_ChangeMode" = "模式切换";
+"HS_Mode1" = "银髮";
+"HS_Mode2" = "学童";
+
+"HS_BPRemind" = "血压提醒";
+"HS_BPRange" = "血压范围";
+
+
+"HS_BSRemind" = "血糖提醒";
+"HS_BSRange" = "血糖范围";
+"HS_BS_BEFOREMEAL" = "饭前";
+"HS_BS_AFTEREMEAL" = "饭后";
+"HS_BS_BEFORSLEEP" = "睡前";
+"HS_BS_MEALTIME" = "用餐时间";
+"HS_BS_BREAKFAST" = "早餐时间";
+"HS_BS_LUNCH" = "午餐时间";
+"HS_BS_DINNER" = "晚餐时间";
+"HS_BS_1" = "mg/dl";
+"HS_W1" = "ㄧ";
+"HS_W2" = "二";
+"HS_W3" = "三";
+"HS_W4" = "四";
+"HS_W5" = "五";
+"HS_W6" = "六";
+"HS_W7" = "日";
+
+
+"HS_BORemind" = "血氧提醒";
+"HS_BORange" = "血氧范围";
+"HS_BORemindTxt" = "低氧 SpO2 < 90%\r\n正常 SpO2 > 95%";
+"HS_BOCon" = "血氧浓度";
+
+"HS_Weight" = "体重资讯";
+"HS_W_SEX" = "性别";
+"HS_W_BOY" = "男";
+"HS_W_GIRL" = "女";
+"HS_W_YEAR" = "年龄";
+"HS_W_OLD" = "岁";
+"HS_W_TALL" = "身高";
+"HS_W_CM" = "cm";
+"HS_W_BODY" = "体脂肪";
+"HS_W_WEIGHT" = "体重";
+"HS_W_KG" = "kg";
+"HS_W_IDWEIGHT" = "目标体重";
+"HS_W_IDBODY" = "目标体脂";
+"HS_W_PERSENT" = "%";
+"HS_BS_SELECTTIME" = "选择时间\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r";
+
+"HS_Sport" = "计步器";
+"HS_S_STEPLENGTH" = "步长";
+"HS_S_IDDISTANCE" = "目标距离";
+"HS_S_IDSTEP" = "目标步数";
+
+
+"HS_Call_EachMin" = "每%@分钟";
+"HS_Call_Sync" = "同步时间";
+
+"HS_Call_WatchSync" = "手錶向后台同步时间间格";
+"HS_Call_GPS" = "GPS频率";
+"HS_Call_WatchGpsSync" = "手錶向后台回报GPS定位时间间格";
+"HS_CallLimit" = "通话限时";
+"HS_Call_SMS" = "手錶若每月超过此通话时数将发送简讯提醒";
+"HS_Call_phoneLimit" = "拨出限时";
+"HS_Call_MonthLimit" = "手錶每月累积拨出限时";
+"HS_Call_Minutes" = "分钟";
+
+"HS_SAVE_OK" = "储存成功";
+
+"HS_BP1" = "mmHg";
+"HS_BP2" = "mmHg";
+
+
+"HS_ShowImage" = "展示照片";
+"HS_ShowImage_upload" = "上传照片";
+
+"HS_Tracking" = "特殊追踪设定";
+"HS_GeoFence" = "电子围篱";
+"HS_Position" = "自建定位";
+/*******************************/
+
+
+
+
+"NEWS" = "最新消息";
+
+
+
+
+
+//个人
+"Header_Personal" = "个人";
+//安全
+"Header_Safe" = "安全";
+//系统
+"Header_System" = "系统";
+
+//设定
+"Header_Setting" = "系统设定";
+
+//天
+"Header_Days" = "天前";
+"Header_Day" = "天前";
+//小时
+"Header_Hours" = "小时前";
+"Header_Hour" = "小时前";
+//分
+"Header_Mins" = "分钟前";
+"Header_Min" = "分钟前";
+
+//系统设定-个人资料
+"Setting_Personal" = "个人资料";
+//个人资料-我的帐号
+"Personal_MyAccount" = "我的帐号";
+//个人资料-我的帐号-错误
+"Personal_MyAccount_Error1" = "资料输入不完整";
+"Personal_MyAccount_Error2" = "Email格式错误";
+"Personal_MyAccount_Error3" = "电话格式错误";
+"Personal_MyAccount_Sucess" = "帐号资讯修改成功";
+
+//个人资料-我的帐号-姓名
+"Personal_MyAccount_Name" = "姓名";
+//个人资料-我的帐号-Email
+"Personal_MyAccount_Email" = "Email";
+//个人资料-我的帐号-电话
+"Personal_MyAccount_Phone" = "电话";
+
+//个人资料-密码修改
+"Personal_PWChange" = "密码修改";
+
+"Personal_ChangeInfo" = "修改帐号资讯";
+
+//个人资料-密码修改-错误
+"Personal_PWChange_Error1" = "请输入原始密码";
+"Personal_PWChange_Error2" = "密码长度需为8~12字元";
+"Personal_PWChange_Error3" = "新密码栏位不相符";
+"Personal_PWChange_Sucess" = "密码修改成功";
+
+//个人资料-我的钱包
+"Personal_Wallet" = "我的钱包";
+//个人资料-配戴者管理
+"Personal_WatcherManager" = "配戴者管理";
+"Personal_WatcherManager_Add" = "新增";
+"Personal_WatcherManager_Alarm1" = "是否要删除使用者";
+
+
+//系统设定-设定
+"Setting_Setting" = "设定";
+//设定-讯息提醒
+"Setting_MsgAlert" = "讯息提醒";
+//设定-地图设定
+"Setting_MapSet" = "地图设定";
+//地图设定-内建
+"MapSet_Default" = "内建";
+//地图设定-百度
+"MapSet_Baidu" = "百度";
+//推播通知
+"Setting_Notification" = "推播通知";
+//SOS SMS Alert
+"Setting_SOSSMS" = "简讯通知SOS";
+
+//设定-快速拨号
+"Setting_Call" = "快速拨号";
+//设定-蓝牙配对
+"Setting_BT" = "蓝牙配对";
+//设定-常见问题
+"Setting_Question" = "常见问题";
+//设定-关于我们
+"Setting_AboutUS" = "关于我们";
+//设定-登出
+"Setting_Logout" = "登出";
+
+/**************************/
+//量测纪录
+
+//收缩压
+"DIASTOLIC" = "收缩压";
+//心跳
+"HEARTBEAT" = "心跳";
+//舒张压
+"SYSTOLIC" = "舒张压";
+
+//步数
+"STEP" = "步数";
+//距离
+"DISTANCE" = "距离";
+//卡路里
+"CAL" = "卡路里";
+
+"NODATA" = "没有资料";
+
+//血糖
+"BLOODGLUCOSE" = "血糖";
+
+//血氧
+"OXYGEN" = "血氧";
+
+//体重
+"WEIGHT" = "体重";
+"BODY_FAT" = "体脂肪";
+
+/*************************/
+
+/*************个人讯息*********/
+
+"Person_Send" = "发送给";
+
+
+
+
+
+
+/*************系统事件*********/
+
+"System_Event0" = "紧急联络人资料";
+"System_Event1" = "事件提醒";
+"System_Event2" = "贴心资料-血压";
+"System_Event3" = "贴心资料-血糖";
+"System_Event4" = "贴心资料-血氧";
+"System_Event5" = "贴心资料-体重";
+"System_Event6" = "贴心设定-运动";
+"System_Event7" = "配戴者";
+"System_Event8" = "配戴者";
+"System_Event9" = "贴心设定-通话限制";
+"System_Event10" = "贴心设定-硬体设定";
+"System_Event11" = "贴心设定-跌倒设定";
+"System_Event12" = "贴心设定-离家提醒";
+"System_Event13" = "贴心设定-展示照片";
+
+"System_Act0" = "移除";
+"System_Act1" = "更新";
+"System_Act2" = "新增";
+
+"System_Msg0" = "了";
+"System_Msg1" = "的";
+/*************************/
+
+/**********Error Code***************/
+"ALERT_MESSAGE_TITLE" = "提醒";
+"ALERT_MESSAGE_OK" = "确定";
+
+"SelectNumber" = "选择拨号";
+"SelectNumberCancel" = "取消";
+
+"ALERT_MESSAGE_CANCEL" = "取消";
+"ALERT_MESSAGE_Back" = "取消";
+"ALERT_MESSAGE_TITLE_INPUT" = "配戴者设定";
+"ALERT_MESSAGE_INPUT" = "请进入设定页新增配戴者";
+"ALERT_MESSAGE_CLOSE" = "关闭";
+"ALERT_MESSAGE_PICK" = "晚上10点至早上6点为睡眠时间 , 请问您确定要设定吗?";
+"ALERT_MESSAGE_DELUSER" = "你确定要移除此配戴者吗?";
+"ALERT_MESSAGE_ERRORSET" = "不能设定过期的时间";
+"ALERT_MESSAGE_RESEND" = "重寄验证信";
+"ALERT_MESSAGE_REMINDNULL" = "资料填写不完全";
+
+"ALERT_BPREMIND_Error1" = "收缩压上下限设定错误";
+"ALERT_BPREMIND_Error2" = "舒张压上下限设定错误";
+
+"ALERT_BSREMIND_Error1" = "饭前血糖上下限设定错误";
+"ALERT_BSREMIND_Error2" = "饭后血糖上下限设定错误";
+"ALERT_BSREMIND_Error3" = "睡前血糖上下限设定错误";
+
+"ALERT_BOREMIND_Error1" = "血氧上下限设定错误";
+
+"ALERT_ACT_Error1" = "无相关活动区域资料";
+"ALERT_MAP_Error1" = "目前无相关定位救援资料";
+
+"ErrorCode_00" = "成功";
+"ErrorCode_01" = "帐户不存在";
+"ErrorCode_02" = "密码错误";
+"ErrorCode_03" = "帐户未开启";
+"ErrorCode_04" = "E-Mail不存在";
+"ErrorCode_05" = "帐户已开启";
+"ErrorCode_06" = "已被配戴者加入黑名单不允许新增";
+"ErrorCode_07" = "被新增配戴者帐号不存在";
+"ErrorCode_08" = "被新增配戴者密码错误";
+"ErrorCode_09" = "配戴者已被新增";
+"ErrorCode_10" = "配戴者相关资讯不存在";
+"ErrorCode_11" = "会员不存在";
+"ErrorCode_12" = "参数格式错误";
+
+"ErrorCode_90" = "资料存取异常";
+"ErrorCode_99" = "程式处理异常";
+"ErrorCode_999" = "Error Has Occurred";
+
+/***********************************/
+
+/************SOSMap**********/
+
+"SOS_MAPTITLE" = "求救纪录";
+
+
+
+/************************/
+
+
+/*系统参数多语系设定*/
+"SystemLanguage" = "itemNameCn";
+
+
+"ChangePw" = "修改密码";
+"ChagneAccInfo" = "修改帐号资讯";
+"OriginalPW" = "原始密码";
+"NewPw" = "新密码";
+"AgainPw" = "再次输入";
+//
+"HigherThan" = "高于";
+"SendAlarm" = "发出警示";
+//
+"ExceedWillSendAlarm" = "高于                            将发出警示";
+"BelowWillSendAlarm" = "低于           %将会发出警示";
+//
+//
+"lblRemind1Title" = "世界卫生组织高血压判断标准";
+"lblRemind1Content" = "1999年世界卫生组织(WHO)/国际高血压协会(ISH)《高血压防治指南》及中国卫生部/中国高血压联盟《1999 中国高血压防治指南》规定：";
+"lblRemind2Title" = "高血压的分级标准";
+"lblRemind3Title" = "国民健康局";
+"lblRemind3Sup" = "以上引用来源：国民健康局";
+//
+"Remind" = "提醒";
+"IsTestAcc" = "此帐号为体验帐号，请申请新帐号将可使用此功能。";
+//
+"StepLengthUnit" = "公分";
+"DistanceUnit" = "公尺";
+"StepCountUnit" = "步";
+//未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译
+"MsgSendAlertInfo" = "本功能以简讯通知安全天使设备启动相关功能，简讯费用为使用者付费，使用上请注意。";
+"DontShowAgain" = "下次不再显示";
+"OK" = "确认";
+"SetDevicePhoneNumber" = "请设定电话号码！\n无设备电话将无法正常启动定位功能";
+//
+"TestAccount" = "体验帐号";
+//
+"WebAccSup" = "Ex：3521510xxxxxxxx(设备IMEI码)";
+"WebPwdSup" = "预设：000000(登入后请主动变更密码)";
+//
+"ErrorTimeOut" = "网路连线异常，请稍后再试。";
+//
+"AutoLogin" = "自动登入";
+"RememberMe"= "记住身份";
+//20140324
+"Delete" = "删除";
+//
+"pOPwd" = "输入您目前的密码";
+"pNPwd" = "输入新的密码";
+"pAPwd" = "再次输入新的密码";
+
+//
+"NewGeoFence" = "建立电子围篱";
+"GeoFenceName" = "名称";
+"Reset" = "重置";
+//
+//
+"NeedGeoFenceName" = "请输入电子围篱的名称";
+"Need3GeoFencePoints" = "产生电子围篱最少需要3个点";
+//
+//geo info
+"GeoInfo1" = "电子围篱功能可以在佩戴者（带表者）离开预先定义的范围时向照顾者发出警告。您可以通过点击不同的区域创建连接点。";
+"GeoInfo2" = "创建范围后，你可以随时对围篱进行修改：";
+"GeoInfo3" = "点击创建新的连接点，最少需要建立3个连接点。";
+"GeoInfo4" = "当您想删除连接点时，可以点击连接点并按“X”按钮进行删除。";
+"GeoInfo5" = "您可以通过拖动围栏的各个角来自由调整围篱范围。";
+//
+"ReLogin" = "您已有五天没关心设备动态，APP已强制登出，请重新登入。";
+//
+"MsgSendAlertInfoSync" = "立即同步(本功能以简讯通知 安全天使 设备启动相关功能，简讯费用为使用者付费，以上请注意。";
+//cell 多语系
+"SP*" = "收缩压*";
+"DP*" = "舒张压*";
+//
+"BG*" = "血糖*";
+//
+"BO*" = "血氧*";
+//
+//
+"BF%" = "体脂肪%";
+"BMI" = "BMI";
+"BW*" = "体重*";
+//
+"DIS*" = "距离*";
+//
+"NoPhoneCantCall" = "配戴者未设定电话号码！";
+//简讯定位
+"SMSLocating"="简讯定位";
+//
+"Pulse" = "心跳";
+//Health Advice
+"SYSTOLIC_1_T" = "健康等级：高血压 严重超标";
+"SYSTOLIC_2_T" = "健康等级：高血压 异常上升";
+"SYSTOLIC_3_T" = "健康等级：高血压 改善良好";
+"SYSTOLIC_4_T" = "健康等级：高血压 逐渐平稳";
+"SYSTOLIC_A_T" = "健康等级：高血压 异常上升";
+"SYSTOLIC_B_T" = "健康等级：血压正常";
+"SYSTOLIC_1_SUBT" = "您的血压有长期超目标异常，请立即向医疗单位咨询改善。";
+"SYSTOLIC_2_SUBT" = "您的血压有异常升高的趋势，请注意饮食，保持运动，少油、少盐。";
+"SYSTOLIC_3_SUBT" = "您的血压有立即改善的下降趋势，若您有不适，请记得联络医疗单位。";
+"SYSTOLIC_4_SUBT" = "您的血压有逐渐平稳的下降趋势，请注意饮食，保持运动，少油、少盐。";
+"SYSTOLIC_A_SUBT" = "您的血压有异常升高的趋势，请注意饮食，保持运动，少油、少盐。";
+"SYSTOLIC_B_SUBT" = "保持心情放松，持续运动。";
+"BLOODSUGAR_1_T" = "健康等级：高血糖 严重超标";
+"BLOODSUGAR_2_T" = "健康等级：高血糖 异常上升";
+"BLOODSUGAR_3_T" = "健康等级：高血糖 改善良好";
+"BLOODSUGAR_4_T" = "健康等级：高血糖 逐渐平稳";
+"BLOODSUGAR_A_T" = "健康等级：高血糖 逐渐平稳";
+"BLOODSUGAR_B_T" = "健康等级：血糖正常";
+"BLOODSUGAR_1_SUBT" = "您的血糖有长期超目标异常，请立即向医疗单位咨询改善。";
+"BLOODSUGAR_2_SUBT" = "您的血糖有异常升高的趋势，请注意饮食糖量，并保持心情愉快。";
+"BLOODSUGAR_3_SUBT" = "您的血糖有立即改善的下降趋势，若您有不适，请记得联络医疗单位。";
+"BLOODSUGAR_4_SUBT" = "您的血糖有逐渐平稳的下降趋势，请注意饮食，勿过量摄取糖份。";
+"BLOODSUGAR_A_SUBT" = "您的血糖有异常升高的趋势，请注意饮食糖量，并保持心情愉快。";
+"BLOODSUGAR_B_SUBT" = "保持心情放松，持续运动。";
+
+//
+"HS_Tracking" = "特殊追踪设定";
+"HS_GeoFence" = "电子围篱";
+"Login_QRCodeLoginBtnReturn" = "回前一頁";
+"GeoFence" = "电子围篱";

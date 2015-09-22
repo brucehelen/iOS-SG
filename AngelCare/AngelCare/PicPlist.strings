@@ -1,0 +1,14 @@
+/* 
+  PicPlist.strings
+  AngelCare
+
+  Created by macmini on 13/6/19.
+
+*/
+
+//向上紅色箭號
+"Icon_redUp" = "icon_increase.png";
+//向下綠色箭號
+"Icon_greenDown" = "icon_decrease.png";
+//黃色等號
+"Icon_yellowE" = "icon_normal.png";

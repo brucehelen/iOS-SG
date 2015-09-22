@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>button1</key>
+	<string>new_01.png</string>
+	<key>button2</key>
+	<string>new_02.png</string>
+	<key>button3</key>
+	<string>new_03.png</string>
+	<key>button4</key>
+	<string>new_04.png</string>
+	<key>button5</key>
+	<string>new_05.png</string>
+	<key>button6</key>
+	<string>new_06.png</string>
+	<key>button7</key>
+	<string>new_07.png</string>
+	<key>button8</key>
+	<string>new_08.png</string>
+	<key>button9</key>
+	<string>new_09.png</string>
+	<key>button10</key>
+	<string>返回 </string>
+	<key>button11</key>
+	<string>設定 </string>
+	<key>title0</key>
+	<string>首頁</string>
+	<key>title1</key>
+	<string>配帶者資料</string>
+	<key>title2</key>
+	<string>配帶者狀態</string>
+	<key>title3</key>
+	<string>量測記錄查詢</string>
+	<key>title3-1</key>
+	<string>血壓量測</string>
+	<key>title3-2</key>
+	<string>血糖量測</string>
+	<key>title3-3</key>
+	<string>血氧量測</string>
+	<key>title3-4</key>
+	<string>體重量測</string>
+	<key>title3-5</key>
+	<string>計步器量測</string>
+	<key>show_image1</key>
+	<string>new_show_1.png</string>
+	<key>show_image2</key>
+	<string>new_show_2.png</string>
+	<key>show_image3</key>
+	<string>new_show_4.png</string>
+	<key>show_image4</key>
+	<string>new_show_3.png</string>
+	<key>show_image5</key>
+	<string>new_show_5.png</string>
+	<key>show_image6</key>
+	<string>new_show_6.png</string>
+	<key>title4</key>
+	<string>定位救援</string>
+	<key>title5</key>
+	<string>活動區域</string>
+	<key>title6</key>
+	<string>歷史記錄</string>
+	<key>title7</key>
+	<string>通話速撥</string>
+	<key>title8</key>
+	<string>貼心設定</string>
+	<key>title9</key>
+	<string>回診提醒</string>
+	<key>UserSet-L1</key>
+	<string>開機</string>
+	<key>UserSet-L2</key>
+	<string>關機</string>
+	<key>UserSet-L3</key>
+	<string>關機原因</string>
+	<key>UserSet-L4</key>
+	<string>同步時間</string>
+	<key>UserSet-L5</key>
+	<string>電量</string>
+	<key>UserSet-L6</key>
+	<string>體表溫度</string>
+	<key>UserSet-L7</key>
+	<string>基地台位置</string>
+	<key>UserSet-L8</key>
+	<string>手錶版本</string>
+	<key>UserSet-L9</key>
+	<string></string>
+	<key>UserDate_Name</key>
+	<string>姓名</string>
+	<key>UserDate_Phone</key>
+	<string>手機號碼</string>
+	<key>UserDate_Peace</key>
+	<string>住址</string>
+	<key>UserDate_Sex</key>
+	<string>性別</string>
+	<key>UserDate_Imei</key>
+	<string>IMEI</string>
+	<key>UserDate_Title1</key>
+	<string>吃藥提醒</string>
+	<key>UserDate_Title2</key>
+	<string>醫院回診</string>
+	<key>His_Title_2_1</key>
+	<string>時 間</string>
+	<key>His_Title_2_2</key>
+	<string>地 點</string>
+	<key>His_Title_3_1</key>
+	<string>開 始</string>
+	<key>His_Title_3_2</key>
+	<string>結 束</string>
+	<key>His_Title_3_3</key>
+	<string>長 度</string>
+	<key>Show_Title_1_1</key>
+	<string>時間</string>
+	<key>Show_Title_1_2</key>
+	<string>收縮壓</string>
+	<key>Show_Title_1_3</key>
+	<string>舒張壓</string>
+	<key>Show_Title_1_4</key>
+	<string>心跳</string>
+	<key>Show_Title_2_1</key>
+	<string>時間</string>
+	<key>Show_Title_2_2</key>
+	<string>血糖</string>
+	<key>Show_Title_2_3</key>
+	<string>舒張壓</string>
+	<key>Show_Title_2_4</key>
+	<string>心跳</string>
+	<key>Show_Title_3_1</key>
+	<string>時間</string>
+	<key>Show_Title_3_2</key>
+	<string>體重</string>
+	<key>Show_Title_3_3</key>
+	<string>BMI</string>
+	<key>Show_Title_3_4</key>
+	<string>體脂率</string>
+	<key>Show_Title_4_1</key>
+	<string>時間</string>
+	<key>Show_Title_4_2</key>
+	<string>血氧</string>
+	<key>Show_Title_4_3</key>
+	<string>心跳(分鐘)</string>
+	<key>Show_Title_4_4</key>
+	<string>BMI</string>
+	<key>Show_Title_5_1</key>
+	<string>日期</string>
+	<key>Show_Title_5_2</key>
+	<string>步數</string>
+	<key>Show_Title_5_3</key>
+	<string>距離</string>
+	<key>Show_Title_5_4</key>
+	<string>卡路里</string>
+	<key>Login_Bu_Title</key>
+	<string>進入系統</string>
+	<key>Alert_Message_1</key>
+	<string>晚上10點至早上6點為睡眠時間 , 請問您確定要設定嗎?</string>
+	<key>Alert_Message_2</key>
+	<string>提醒</string>
+	<key>Alert_Message_3</key>
+	<string>確定</string>
+	<key>Alert_Message_4</key>
+	<string>取消</string>
+	<key>Alert_Message_5</key>
+	<string>配戴者設定</string>
+	<key>Alert_Message_6</key>
+	<string>請進入設定頁新增配戴者</string>
+	<key>Alert_Message_7</key>
+	<string>關閉</string>
+	<key>Alert_Message_8</key>
+	<string>你確定要移除此配戴者嗎?</string>
+	<key>Alert_Message_9</key>
+	<string>不能設定過期的時間</string>
+	<key>Eat_Message_1</key>
+	<string>您正在修改的是 吃藥提醒，第01組資料</string>
+	<key>Eat_Message_2</key>
+	<string>您正在修改的是 吃藥提醒，第02組資料</string>
+	<key>Eat_Message_3</key>
+	<string>您正在修改的是 吃藥提醒，第03組資料</string>
+	<key>Eat_Message_4</key>
+	<string>您正在修改的是 吃藥提醒，第04組資料</string>
+	<key>Eat_Message_5</key>
+	<string>您正在修改的是 吃藥提醒，第05組資料</string>
+	<key>Data_Message_1</key>
+	<string>您正在修改的是 醫院回診，第01組資料</string>
+	<key>Data_Message_2</key>
+	<string>您正在修改的是 醫院回診，第02組資料</string>
+	<key>ErrorCode_00</key>
+	<string>成功</string>
+	<key>ErrorCode_90</key>
+	<string>資料存取異常</string>
+	<key>ErrorCode_99</key>
+	<string>程式處理異常</string>
+	<key>ErrorCode_01</key>
+	<string>帳號密碼錯誤(01)</string>
+	<key>ErrorCode_02</key>
+	<string>帳號密碼錯誤(02)</string>
+	<key>ErrorCode_03</key>
+	<string>帳號密碼錯誤(03)</string>
+	<key>ErrorCode_999</key>
+	<string>Error Has Occurred</string>
+	<key>Map_Bu_1</key>
+	<string>地圖</string>
+	<key>Map_Bu_2</key>
+	<string>列表</string>
+	<key>Map_Bu_3</key>
+	<string>地圖</string>
+	<key>Map_Bu_4</key>
+	<string>衛星</string>
+	<key>Map_Bu_5</key>
+	<string>確認</string>
+	<key>Map_Bu_6</key>
+	<string>取消</string>
+	<key>SMS_Privacy_title</key>
+	<string>隱私權聲明</string>
+	<key>SMS_Privacy_content</key>
+	<string>為了確認您的權限，及保障配戴者之個人隱私，請您輸入於設定於手錶中之驗證碼。</string>
+	<key>SMS_Privacy_code</key>
+	<string>請輸入驗證碼：</string>
+	<key>Act_Str_1</key>
+	<string>電量</string>
+	<key>Act_Str_2</key>
+	<string>位置</string>
+	<key>Map_Str_1</key>
+	<string>在</string>
+	<key>Map_Str_2</key>
+	<string>手錶</string>
+	<key>Map_Str_3</key>
+	<string>伺服器</string>
+	<key>His_Str_1</key>
+	<string>  緊急求救</string>
+	<key>His_Str_2</key>
+	<string>  跌倒事件</string>
+	<key>His_Str_3</key>
+	<string>  通話記錄</string>
+	<key>Data_Str_1</key>
+	<string>手動關機</string>
+	<key>Data_Str_2</key>
+	<string>低電壓關機</string>
+	<key>Data_Str_3</key>
+	<string>定時關機</string>
+	<key>Data_Str_4</key>
+	<string>其他</string>
+	<key>No_Net</key>
+	<string>網路連線異常，請稍候再嘗試</string>
+	<key>Set_Str_1</key>
+	<string>版本檢查</string>
+	<key>Set_Str_2</key>
+	<string>隱私權政策</string>
+	<key>Set_Str_3</key>
+	<string>服務條款</string>
+	<key>Set_Str_4</key>
+	<string>版本 1.1.4</string>
+	<key>Set_Str_5</key>
+	<string>增加</string>
+	<key>Set_Str_6</key>
+	<string>配帶者設定</string>
+	<key>Set_Str_7</key>
+	<string>軟體資訊</string>
+	<key>Set_Str_8</key>
+	<string>地圖</string>
+	<key>Set_Str_9</key>
+	<string>內建</string>
+	<key>Set_Str_10</key>
+	<string>百度</string>
+	<key>Show_Str_1</key>
+	<string>數值</string>
+	<key>Show_Str_2</key>
+	<string>時間</string>
+	<key>SMS_AlertMessage_1</key>
+	<string>即時定位啟動簡訊已送出, 若定位成功, 將於3-5分鐘後於地圖上以紫色氣球標示。</string>
+	<key>SMS_AlertMessage_2</key>
+	<string>驗證碼格式為4至8個數字。</string>
+	<key>SMS_AlertMessage_3</key>
+	<string>您的設備不支援簡訊發送功能，無法發送SMS簡訊。</string>
+</dict>
+</plist>

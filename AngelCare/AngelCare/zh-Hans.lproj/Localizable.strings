@@ -1,0 +1,26 @@
+/*
+ Localizable.strings
+ Project_OldAngel
+ 
+ Created by Lion User on 12/11/19.
+ Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+ */
+
+//cn
+
+"TITLE" =  "%@ and %@ in CN";
+
+"TURNOFF_BY_SELF" =  "%@：自行关闭手表电源";
+"TURNOFF_BY_LOW_BATTERY" =  "%@：电量过低已关机，请立即充电!";
+"EMERGENCY_SOS" =  "%@：紧急求救，请立即关心及处理!";
+"EMERGENCY_GPS_SUCCESS" =  "%@：收到紧急求救资料!!";
+"FALLDOWN_ACTIVATE" =  "%@：可能跌倒发生!!请立即关心!!";
+"FALLDOWN_GPS_SUCCESS" =  "%@：收到可能跌倒资料!!";
+"VITAL_HIGH_BP" =  "%@：量测者血压过高，请注意!!";
+"SMS_GPS_SUCCESS" = "%@：收到即时定位资料!!";
+"SYSTEM_MESSAGE" = "%@：收到系統設定更改通知!";
+"DEVICE_LOWPOWER" = "%@：电量过低，请立即充电!";
+"NONMOVENT" = "[%@]：警告 - 配戴者已经有一段时间没有活动！";
+"GEOFENCE_OUT" = "[%@]：警告 - 配戴者已经离开指定区域！";
+"EXPIRED_TOKEN" = "您已有五天没关心设备动态，APP已强制登出，请重新登入。";
+"loading" ="加载中...";

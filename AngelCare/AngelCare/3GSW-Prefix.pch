@@ -1,0 +1,20 @@
+//
+// Prefix header for all source files of the 'Project_OldAngel' target in the 'Project_OldAngel' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <AddressBookUI/AddressBookUI.h>
+#endif
+
+#import "HttpHelper.h"
+#import "define.h"
+
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]

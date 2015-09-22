@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Project_OldAngel
+
+  Created by Lion User on 12/11/19.
+  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+*/
+
+"TITLE" =  "%@ and %@ in C";

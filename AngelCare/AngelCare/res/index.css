@@ -1,0 +1,21 @@
+body {
+    padding: 50px;
+    margin: 50px;
+
+    background:rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-size: 55px;
+    color: #ff903e;
+}
+
+p {
+    font-size: 50px;
+    color: #fff;
+}
+
+ul {
+    font-size: 45px;
+    color: #4e9fda;
+}

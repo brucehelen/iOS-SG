@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Project_OldAngel
+
+  Created by Lion User on 12/11/19.
+  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+*/
+
+"TITLE" =  "%@ and %@ in EN";
+
+"TURNOFF_BY_SELF" =  "[%@]：Turned off manually.";
+"TURNOFF_BY_LOW_BATTERY" =  "[%@]：Low battery shutdown, please recharge.";
+"EMERGENCY_SOS" =  "[%@]：SOS alert triggered";
+"EMERGENCY_GPS_SUCCESS" =  "[%@]：GPS position acquired";
+"FALLDOWN_ACTIVATE" =  "[%@]：Possible fall detected, please help!";
+"FALLDOWN_GPS_SUCCESS" =  "[%@]：Fall detection message received.";
+"VITAL_HIGH_BP" =  "[%@]：Blood pressure too high !";
+"SMS_GPS_SUCCESS" = "[%@]：Location acquired.";
+"SYSTEM_MESSAGE" = "[%@]：Settings have been modified.";
+"DEVICE_LOWPOWER" = "[%@]：low power, recharge please";
+"NONMOVENT" = "[%@]：Alert - wearer has no movement detected for specific time period";
+"GEOFENCE_OUT" = "[%@]：Alert - Geo-fence triggered, wearer has moved outside safe area";
+"EXPIRED_TOKEN" = "It’s been 5 days you haven’t logged in, you have been disconnected. Please login again";
+"AMBER_ALARM" = "[%@]：Timer alert activated";
+"loading" ="Loading...";

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>button1</key>
+	<string>new_01_en.png</string>
+	<key>button2</key>
+	<string>new_02_en.png</string>
+	<key>button3</key>
+	<string>new_03_en.png</string>
+	<key>button4</key>
+	<string>new_04_en.png</string>
+	<key>button5</key>
+	<string>new_05_en.png</string>
+	<key>button6</key>
+	<string>new_06_en.png</string>
+	<key>button7</key>
+	<string>new_07_en.png</string>
+	<key>button8</key>
+	<string>new_08_en.png</string>
+	<key>button9</key>
+	<string>new_09_en.png</string>
+	<key>button10</key>
+	<string>Back </string>
+	<key>button11</key>
+	<string>Setting</string>
+	<key>title0</key>
+	<string>Home</string>
+	<key>title1</key>
+	<string>User Info</string>
+	<key>title2</key>
+	<string>User Status</string>
+	<key>title3</key>
+	<string>Measurement</string>
+	<key>title3-1</key>
+	<string>Blood Pressure</string>
+	<key>title3-2</key>
+	<string>Blood Glucose</string>
+	<key>title3-3</key>
+	<string>Blood Oximeter</string>
+	<key>title3-4</key>
+	<string>Body Weight</string>
+	<key>title3-5</key>
+	<string>Activity</string>
+	<key>show_image1</key>
+	<string>new_show_1_en.png</string>
+	<key>show_image2</key>
+	<string>new_show_2_en.png</string>
+	<key>show_image3</key>
+	<string>new_show_4_en.png</string>
+	<key>show_image4</key>
+	<string>new_show_3_en.png</string>
+	<key>show_image5</key>
+	<string>new_show_5_en.png</string>
+	<key>show_image6</key>
+	<string>new_show_6_en.png</string>
+	<key>title4</key>
+	<string>Alert Locator</string>
+	<key>title5</key>
+	<string>GPS Tracker</string>
+	<key>title6</key>
+	<string>Event History</string>
+	<key>title7</key>
+	<string>Direct Call</string>
+	<key>title8</key>
+	<string>貼心設定</string>
+	<key>title9</key>
+	<string>Hospital Remind</string>
+	<key>UserSet-L1</key>
+	<string>Last boot</string>
+	<key>UserSet-L2</key>
+	<string>Last shutdown</string>
+	<key>UserSet-L3</key>
+	<string>Shutdown cause</string>
+	<key>UserSet-L4</key>
+	<string>Upload</string>
+	<key>UserSet-L5</key>
+	<string>Battery level</string>
+	<key>UserSet-L6</key>
+	<string>Temperature</string>
+	<key>UserSet-L7</key>
+	<string>GSM Location</string>
+	<key>UserSet-L8</key>
+	<string>Firmware version</string>
+	<key>UserSet-L9</key>
+	<string></string>
+	<key>UserDate_Name</key>
+	<string>Name</string>
+	<key>UserDate_Phone</key>
+	<string>Phone Number</string>
+	<key>UserDate_Peace</key>
+	<string>Address</string>
+	<key>UserDate_Sex</key>
+	<string>Sex</string>
+	<key>UserDate_Imei</key>
+	<string>IMEI</string>
+	<key>UserDate_Title1</key>
+	<string>Medicines Remind</string>
+	<key>UserDate_Title2</key>
+	<string>Hospital Remind</string>
+	<key>His_Title_2_1</key>
+	<string>Time</string>
+	<key>His_Title_2_2</key>
+	<string>Location</string>
+	<key>His_Title_3_1</key>
+	<string>Start</string>
+	<key>His_Title_3_2</key>
+	<string>Ending</string>
+	<key>His_Title_3_3</key>
+	<string>Lasting</string>
+	<key>Show_Title_1_1</key>
+	<string>Time</string>
+	<key>Show_Title_1_2</key>
+	<string>SVP</string>
+	<key>Show_Title_1_3</key>
+	<string>DVP</string>
+	<key>Show_Title_1_4</key>
+	<string>Pulse</string>
+	<key>Show_Title_2_1</key>
+	<string>Time</string>
+	<key>Show_Title_2_2</key>
+	<string>Glucose</string>
+	<key>Show_Title_2_3</key>
+	<string>Diastolic pressure</string>
+	<key>Show_Title_2_4</key>
+	<string>Pulse</string>
+	<key>Show_Title_3_1</key>
+	<string>Time</string>
+	<key>Show_Title_3_2</key>
+	<string>WT</string>
+	<key>Show_Title_3_3</key>
+	<string>BMI</string>
+	<key>Show_Title_3_4</key>
+	<string>Fat</string>
+	<key>Show_Title_4_1</key>
+	<string>Time</string>
+	<key>Show_Title_4_2</key>
+	<string>Blood Oximeter</string>
+	<key>Show_Title_4_3</key>
+	<string>Glucose(Min)</string>
+	<key>Show_Title_4_4</key>
+	<string>BMI</string>
+	<key>Show_Title_5_1</key>
+	<string>Date</string>
+	<key>Show_Title_5_2</key>
+	<string>Steps</string>
+	<key>Show_Title_5_3</key>
+	<string>Dist</string>
+	<key>Show_Title_5_4</key>
+	<string>Calories</string>
+	<key>Login_Bu_Title</key>
+	<string>Enter</string>
+	<key>Alert_Message_1</key>
+	<string>From 22:00 to 6:00 in the morning is sleep time, are you sure？</string>
+	<key>Alert_Message_2</key>
+	<string>Reminder</string>
+	<key>Alert_Message_3</key>
+	<string>Ok</string>
+	<key>Alert_Message_4</key>
+	<string>No</string>
+	<key>Alert_Message_5</key>
+	<string>User setting</string>
+	<key>Alert_Message_6</key>
+	<string>Please enter the setup page and create new user</string>
+	<key>Alert_Message_7</key>
+	<string>Ok</string>
+	<key>Alert_Message_8</key>
+	<string>Are you sure to remove this user？</string>
+	<key>Alert_Message_9</key>
+	<string>Cannot set past</string>
+	<key>Eat_Message_1</key>
+	<string>You are editing  Medicines Remind，Nunber01 Setting</string>
+	<key>Eat_Message_2</key>
+	<string>You are editing  Medicines Remind，Nunber02 Setting</string>
+	<key>Eat_Message_3</key>
+	<string>You are editing  Medicines Remind，Nunber03 Setting</string>
+	<key>Eat_Message_4</key>
+	<string>You are editing  Medicines Remind，Nunber04 Setting</string>
+	<key>Eat_Message_5</key>
+	<string>You are editing  Medicines Remind，Nunber05 Setting</string>
+	<key>Data_Message_1</key>
+	<string>You are editing  Hospital Remind，Nunber01 Setting</string>
+	<key>Data_Message_2</key>
+	<string>You are editing  Hospital Remind，Nunber02 Setting</string>
+	<key>ErrorCode_00</key>
+	<string>Success</string>
+	<key>ErrorCode_90</key>
+	<string>API DB Access Error</string>
+	<key>ErrorCode_99</key>
+	<string>API Request Error</string>
+	<key>ErrorCode_01</key>
+	<string>Account Password Error(01)</string>
+	<key>ErrorCode_02</key>
+	<string>Account Password Error(02)</string>
+	<key>ErrorCode_03</key>
+	<string>Account Password Error(03)</string>
+	<key>ErrorCode_999</key>
+	<string>Error Has Occurred</string>
+	<key>Map_Bu_1</key>
+	<string>MAP</string>
+	<key>Map_Bu_2</key>
+	<string>LIST</string>
+	<key>Map_Bu_3</key>
+	<string>MAP</string>
+	<key>Map_Bu_4</key>
+	<string>ST</string>
+	<key>Map_Bu_5</key>
+	<string>Confirm</string>
+	<key>Map_Bu_6</key>
+	<string>Cancel</string>
+	<key>SMS_Privacy_title</key>
+	<string>Privacy policy :</string>
+	<key>SMS_Privacy_content</key>
+	<string>In order to make sure of your competence, and protect user private information, please enter the Authentication Code in the settings first.</string>
+	<key>SMS_Privacy_code</key>
+	<string>Please enter your Authentication code : </string>
+	<key>Act_Str_1</key>
+	<string>Battery</string>
+	<key>Act_Str_2</key>
+	<string>Location</string>
+	<key>Map_Str_1</key>
+	<string>near</string>
+	<key>Map_Str_2</key>
+	<string>Time of alert</string>
+	<key>Map_Str_3</key>
+	<string>Reported on platform</string>
+	<key>His_Str_1</key>
+	<string>SOS alerts</string>
+	<key>His_Str_2</key>
+	<string>Fall events</string>
+	<key>His_Str_3</key>
+	<string>Calls</string>
+	<key>Data_Str_1</key>
+	<string>User Operate</string>
+	<key>Data_Str_2</key>
+	<string>Low Battery</string>
+	<key>Data_Str_3</key>
+	<string>Timer Setting</string>
+	<key>Data_Str_4</key>
+	<string>Other</string>
+	<key>No_Net</key>
+	<string>No internet service</string>
+	<key>Set_Str_1</key>
+	<string>Version Check</string>
+	<key>Set_Str_2</key>
+	<string>Privacy policy</string>
+	<key>Set_Str_3</key>
+	<string>Terms of service</string>
+	<key>Set_Str_4</key>
+	<string>Version 1.1.4</string>
+	<key>Set_Str_5</key>
+	<string>Add</string>
+	<key>Set_Str_6</key>
+	<string>User setting</string>
+	<key>Set_Str_7</key>
+	<string>Version</string>
+	<key>Set_Str_8</key>
+	<string>Maps</string>
+	<key>Set_Str_9</key>
+	<string>Default</string>
+	<key>Set_Str_10</key>
+	<string>Baidu</string>
+	<key>Show_Str_1</key>
+	<string>Value</string>
+	<key>Show_Str_2</key>
+	<string>Time</string>
+	<key>SMS_AlertMessage_1</key>
+	<string>On demand-tracking SMS has been sent to the wearer. Please wait for the push notification for location update</string>
+	<key>SMS_AlertMessage_2</key>
+	<string>Authentication code has to be between  4 ~ 8 numbers.</string>
+	<key>SMS_AlertMessage_3</key>
+	<string>Your device needs to support SMS in order to fully take advantage of this function (devices supporting wifi only will not be working)</string>
+</dict>
+</plist>
