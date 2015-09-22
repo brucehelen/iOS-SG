@@ -3401,7 +3401,7 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bruce.zhu-zhu";
+				PRODUCT_BUNDLE_IDENTIFIER = com.missionhealth.watchcloud1;
 				PRODUCT_NAME = 3GSW;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -3551,7 +3551,7 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bruce.zhu-zhu";
+				PRODUCT_BUNDLE_IDENTIFIER = com.missionhealth.watchcloud1;
 				PRODUCT_NAME = 3GSW;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -3595,7 +3595,7 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bruce.zhu-zhu";
+				PRODUCT_BUNDLE_IDENTIFIER = com.missionhealth.watchcloud1;
 				PRODUCT_NAME = 3GSW;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
