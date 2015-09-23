@@ -57,16 +57,15 @@
                 [listTable reloadData];
             }else
             {
-                tempImg = [UIImage imageNamed:@"mhicon"];
+                tempImg = [UIImage imageNamed:@"head_pic"];
             }
-            
         }];
         
         
 //        tempImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgurl]]];
     }else
     {
-        tempImg = [UIImage imageNamed:@"mhicon"];
+        tempImg = [UIImage imageNamed:@"head_pic"];
     }
     
                                                                     
@@ -107,7 +106,7 @@
     nowEdit = 0;
     personDic = [[NSDictionary alloc] init];
     phoneDic = [[NSDictionary alloc] init];
-    tempImg = [UIImage imageNamed:@"mhicon"];
+    tempImg = [UIImage imageNamed:@"head_pic"];
     sosName1 = @"";
     sosName2 = @"";
     sosName3 = @"";
@@ -667,29 +666,23 @@
             {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"Format2Cell" owner:self options:nil] objectAtIndex:0];
             }
-            
-             
+
             NSLog(@"familyIconList %@",[[phoneDic objectForKey:@"familyIconList"] objectAtIndex:indexPath.row]);
-                
-                
+
+            cell.imgFamily.image = [UIImage imageNamed:@"head_pic"];
+
             [self downloadImageWithURL:[NSURL URLWithString:[[phoneDic objectForKey:@"familyIconList"] objectAtIndex:indexPath.row]] completionBlock:^(BOOL succeeded, UIImage *image) {
                 
                         if (succeeded) {
                             cell.imgFamily.image = image;
-                        }else
-                        {
-                            cell.imgFamily.image = [UIImage imageNamed:@"icon_people"];
                         }
-                        
                     }];
                 
                 [cell.Btn_family setTag:indexPath.row+1];
                 [cell.Btn_family addTarget:self action:@selector(familyPhoto:) forControlEvents:UIControlEventTouchUpInside];
 
-                
             cell.noLbl.text = [NSString stringWithFormat:@"%i.",indexPath.row+1];
-            
-            
+
             if (![phoneDic objectForKey:[NSString stringWithFormat:@"familyName%i",indexPath.row+1]]) {
                 cell.titleLbl.text = [NSString stringWithFormat:@"%@",UserDate_NOSET];
                 cell.subtitleLbl.text = @"";

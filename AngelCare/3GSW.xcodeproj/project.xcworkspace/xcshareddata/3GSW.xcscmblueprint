@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "237AEEED89079BD9DBCE062D12F0F93CCE137BE5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "237AEEED89079BD9DBCE062D12F0F93CCE137BE5" : 0,
+    "430b898c-9fb4-bd4a-a4ee-4b79d468b600++505" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F26D0279-766B-452A-8CCF-0B7E2D61E16D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "237AEEED89079BD9DBCE062D12F0F93CCE137BE5" : "iOS-SG\/",
+    "430b898c-9fb4-bd4a-a4ee-4b79d468b600++505" : "SG_SafetyWatchAppIOS"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "3GSW",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AngelCare\/3GSW.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:brucehelen\/iOS-SG.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "237AEEED89079BD9DBCE062D12F0F93CCE137BE5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/210.242.50.125:7777\/svn\/SafetyWatchAppIOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "430b898c-9fb4-bd4a-a4ee-4b79d468b600++505"
+    }
+  ]
+}

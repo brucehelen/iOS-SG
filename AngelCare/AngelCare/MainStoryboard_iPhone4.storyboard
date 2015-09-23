@@ -1802,7 +1802,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="myicon72.png" id="70t-Lk-ew2">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="head_pic.png" id="70t-Lk-ew2">
                                     <rect key="frame" x="8" y="7" width="36" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -4045,7 +4045,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myicon.png" id="qCB-MC-Tbz">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_pic.png" id="qCB-MC-Tbz">
                             <rect key="frame" x="2" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -6877,6 +6877,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="geoinfo2.png" width="238" height="238"/>
         <image name="geoinfo3.png" width="238" height="238"/>
         <image name="geoinfo4.png" width="238" height="238"/>
+        <image name="head_pic.png" width="92" height="94"/>
         <image name="header1.png" width="24" height="29"/>
         <image name="header2.png" width="29" height="29"/>
         <image name="header3.png" width="30" height="30"/>
@@ -6929,8 +6930,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="mhlogo.png" width="445" height="220"/>
         <image name="my_bu_1.png" width="31" height="31"/>
         <image name="my_bu_2.png" width="31" height="31"/>
-        <image name="myicon.png" width="57" height="57"/>
-        <image name="myicon72.png" width="72" height="72"/>
         <image name="new_icon.png" width="49" height="19"/>
         <image name="newsbg.png" width="43" height="61"/>
         <image name="nttBg4.png" width="480" height="800"/>

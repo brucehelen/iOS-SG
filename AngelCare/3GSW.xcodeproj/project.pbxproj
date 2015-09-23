@@ -326,6 +326,7 @@
 		7A656C7E1BABAEEB006F2577 /* 登录按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7D1BABAEEB006F2577 /* 登录按钮.png */; settings = {ASSET_TAGS = (); }; };
 		7A7F6DDD1B82D497004ECA87 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47484374184D86AD001351AF /* libz.dylib */; };
 		7A7F6DDF1B82D4A4004ECA87 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */; };
+		7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5131BB14DCE00DA84E6 /* head_pic.png */; settings = {ASSET_TAGS = (); }; };
 		7AFDCB211B9009B60013DAA5 /* icon_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDCB201B9009B60013DAA5 /* icon_a.png */; };
 		7AFDCB231B9018940013DAA5 /* libbaidumap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDCB221B9018940013DAA5 /* libbaidumap.a */; };
 		CE22B44E161ADB170053E104 /* login_bu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE22B44D161ADB170053E104 /* login_bu_1.png */; };
@@ -1016,6 +1017,7 @@
 		7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7A85A68C1B26F26C000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		7A85A68E1B26F2A7000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = "AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/Release-iphonesimulator/libbaidumapapi.a"; sourceTree = "<group>"; };
+		7AB4E5131BB14DCE00DA84E6 /* head_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_pic.png; sourceTree = "<group>"; };
 		7AFDCB201B9009B60013DAA5 /* icon_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_a.png; sourceTree = "<group>"; };
 		7AFDCB221B9018940013DAA5 /* libbaidumap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumap.a; path = AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/libbaidumap.a; sourceTree = "<group>"; };
 		CE22B44D161ADB170053E104 /* login_bu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bu_1.png; sourceTree = "<group>"; };
@@ -1707,6 +1709,7 @@
 			children = (
 				7A4A428B1B26C40C00277B10 /* Images.xcassets */,
 				182A82251AEA636D0032B613 /* Default-568h@2x.png */,
+				7AB4E5131BB14DCE00DA84E6 /* head_pic.png */,
 				7A656C7D1BABAEEB006F2577 /* 登录按钮.png */,
 				1895C92C1AF3655900CD93D9 /* cnicon.png */,
 				1895C9441AF74F1C00CD93D9 /* mhicon.png */,
@@ -2940,6 +2943,7 @@
 				DBE7827A1A08C17900D6EB15 /* icon_week_d.png in Resources */,
 				470994F317BB756700AD4783 /* main_03.png in Resources */,
 				470994F417BB756700AD4783 /* main_04.png in Resources */,
+				7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */,
 				470994F517BB756700AD4783 /* main_05.png in Resources */,
 				DBD523311934912D00874266 /* b20.png in Resources */,
 				470994F617BB756700AD4783 /* main_06.png in Resources */,

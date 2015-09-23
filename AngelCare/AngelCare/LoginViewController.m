@@ -400,22 +400,20 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     [autoLogin writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     [rememberMe writeToFile:filePath2 atomically:YES encoding:NSUTF8StringEncoding error:nil];
     //20140321update
-    
-    if( [status isEqualToString:str1]  )
+
+    if ([status isEqualToString:str1])
     {
 //        UIViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"navi"];
 //        [self presentModalViewController:ViewController animated:YES];
         [self loadUserDic:[usersOne objectForKey:@"list"]];
-        
-    }else
+    }
+    else
     {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [CheckErrorCode Check_Error:str1 WithSender:self];
         NSLog(@"error happen");
         [HUD hide:YES];
     }
-    
-    
 }
 
 //儲存所有佩戴者帳號
