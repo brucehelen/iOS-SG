@@ -60,12 +60,12 @@ BMKMapManager *_mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[self loadReveal];
+    [self loadReveal];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     _mapManager = [[BMKMapManager alloc] init];
-    BOOL ret = [_mapManager start:@"10zn8viwqp5FfVhiXScIFPWz"
+    BOOL ret = [_mapManager start:@"BwwKfS68uEdbAUvB8ClfwR8H"
                   generalDelegate:nil];
     if (!ret) {
         NSLog(@"*** Baidu manager start failed!");

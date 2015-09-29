@@ -19,17 +19,28 @@
     IBOutlet UIButton *dontBotherBtn;
     IBOutlet UIButton *sosSMSBtn;
     IBOutlet UIButton *btnVoiceMail;
-    
-    
-    
+
     IBOutlet UIButton *timeareaBtn;
     IBOutlet UIButton *languageBtn;
-    
+
     IBOutlet UILabel *smsReadLbl;
+
+    // SOS键长按
     IBOutlet UILabel *sosLongLbl;
+    __weak IBOutlet UILabel *sosLongPressTipLabel;
+
+    // 亲情键长按
     IBOutlet UILabel *familyLbl;
+    __weak IBOutlet UILabel *familyTipLabel;
+
+    // 防打扰
     IBOutlet UILabel *dontBotherLbl;
+    __weak IBOutlet UILabel *dontBotherTipLabel;
+
     IBOutlet UILabel *sosSMSLbl;
+    // SOS短信提示信息
+    __weak IBOutlet UILabel *SosSMSTip;
+
     IBOutlet UILabel *timeareaLbl;
     IBOutlet UILabel *languageLbl;
     

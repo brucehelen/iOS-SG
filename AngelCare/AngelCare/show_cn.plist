@@ -215,15 +215,15 @@
 	<key>SMS_Privacy_code</key>
 	<string>请输入验证码：</string>
 	<key>Act_Str_1</key>
-	<string>電量</string>
+	<string>电量</string>
 	<key>Act_Str_2</key>
 	<string>位置</string>
 	<key>Map_Str_1</key>
 	<string>在</string>
 	<key>Map_Str_2</key>
-	<string>手錶</string>
+	<string>手表</string>
 	<key>Map_Str_3</key>
-	<string>伺服器</string>
+	<string>服务器</string>
 	<key>His_Str_1</key>
 	<string> 紧急求救</string>
 	<key>His_Str_2</key>

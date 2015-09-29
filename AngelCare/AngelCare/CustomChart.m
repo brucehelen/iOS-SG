@@ -16,6 +16,8 @@
 #import "SportCell.h"
 #import "define.h"
 #import "MainClass.h"
+
+
 #define bp 0
 #define BPCellHeight 130
 #define BGCellHeight 95
@@ -32,8 +34,7 @@
 #define diastolicYellow 100
 #define diastolicGreen 90
 
-@interface CustomChart ()
-<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface CustomChart () <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSInteger numberOfPage;
     NSMutableArray *pileOfData;
@@ -87,16 +88,10 @@
 
 @implementation CustomChart
 @synthesize isChart;
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
-- (void)setUnitDef{
+
+- (void)setUnitDef
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents directory
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"unit.txt"];
@@ -113,8 +108,7 @@
 }
 
 
-//  設定此Ｖiew
--(void)Set_Init:(NSArray *)arr withType:(int)tmpType;
+- (void)Set_Init:(NSArray *)arr withType:(int)tmpType
 {
     //
     [self setUnitDef];
@@ -142,22 +136,17 @@
 //        [IntervalBtn setTitle:@"週期" forState:UIControlStateNormal];
     }
     dataArr = [NSArray new];
-    
 
     [dayBtn setTitle:@"day" forState:UIControlStateNormal];
     [weekBtn setTitle:@"week" forState:UIControlStateNormal];
     [monthBtn setTitle:@"month" forState:UIControlStateNormal];
     [IntervalBtn setTitle:@"Interval" forState:UIControlStateNormal];
 
-//    [changeViewBtn setTitle:@"AAA" forState:UIControlStateNormal];
-    
     if (arr.count != 0) {
         NSMutableArray *m_tmp = [NSMutableArray new];
         NSMutableArray *mm_tmp = [NSMutableArray new];
-        //    dataArr = arr;
         if (arr.count >= 7) {
             for (int i = (int)arr.count; i > (arr.count -7) ; i--) {
-                //        NSLog(@"%d",i);
                 [m_tmp addObject:[arr objectAtIndex:i-1]];
             }
             for (int i = 6; i >= 0; i--) {
@@ -167,7 +156,6 @@
         }
         else{
             for (int i = (int)arr.count; i > 0 ; i--) {
-                //        NSLog(@"%d",i);
                 [m_tmp addObject:[arr objectAtIndex:i-1]];
             }
             for (int i = (int)arr.count; i > 0; i--) {
@@ -175,22 +163,14 @@
             }
             dataArr = [[NSArray alloc]initWithArray:mm_tmp];
         }
-        
-        
+
         if (tmpType == 2) {
             [self handleUnit:dataArr];
         }
     }
-    
-    //血糖要 / 10 
-    
-    
-    NSLog(@"data arr = %@",dataArr);
-//    [self reloadData];
-//    [self set_RemindTxt];
-    
-    
-    
+
+    //血糖要 / 10
+    NSLog(@"data arr = %@", dataArr);
 }
 
 - (void) handleUnit:(NSArray *)datas{
@@ -266,8 +246,8 @@
     }
     limitBG = num;
 }
-//重新讀取資料
--(void)reloadData
+// 重新讀取資料
+- (void)reloadData
 {
     NSLog(@"reloadData");
     NSLog(@"isChart %i",isChart);
@@ -284,7 +264,7 @@
 
             [self handleDataWithArray:dataArr];
             break;
-            
+
         case 2://血糖
             NSLog(@"BS ReloadData");
             //                [self BSReloadData];
@@ -343,21 +323,21 @@
     }
     return result;
 }
-- (void)doInit{
+
+- (void)doInit
+{
     [dayBtn setHidden:YES];
     [weekBtn setHidden:YES];
     [monthBtn setHidden:YES];
     [IntervalBtn setHidden:YES];
     [btnChartOrList setHidden:YES];
-    //init data
+
     pileOfData = [NSMutableArray new];
     dataArr = [NSArray new];
-    //get data
-//    [self getData];
-    
-    
 }
-- (void)drawChart{
+
+- (void)drawChart
+{
     //remove older view
     for (id obj in self.subviews) {
         NSLog(@"%@",[obj class]);
@@ -434,27 +414,17 @@
     else{
         [self drawCauseHaveData];
     }
-    
 
     [self drawTable];
-//    if (!table) {
-//            }
-    
-//    if (isChart) {
-//        [btnChartOrList setTitle:@"Chart" forState:UIControlStateNormal];
-//    }
-//    else{
-//        [btnChartOrList setTitle:@"List" forState:UIControlStateNormal];
-//    }
-    
 }
--(void) setlblUnit:(SHLineGraphView*)_view{
+
+- (void)setlblUnit:(SHLineGraphView*)_view
+{
     NSLog(@"setlblUnit");
-    // add unit
-//    [lblUnit removeFromSuperview];
+
     lblUnit = [[UILabel alloc]initWithFrame:CGRectMake(5, -5, 200, 30)];
     [lblUnit setFont:[UIFont systemFontOfSize:12]];
-    //    lblUnit.text = @"mmHg";
+
     switch (type) {
         case 1://血壓
             lblUnit.text = @"mmHg";
@@ -476,32 +446,31 @@
             break;
             
         case 3://血氧
-            
             lblUnit.text = @"%";
             break;
             
         case 4://體重
-            
             lblUnit.text = @"Kg";
             break;
             
         case 5://計步器
-            //            strUrl = @"http://210.242.50.122:9000/mcarewatch/BloodPressure.html";
             lblUnit.text = @"m";
             break;
-            
+
         default:
-            
             break;
     }
+
     lblUnit.textColor = [UIColor blackColor];
-//    lblUnit.textAlignment = NSTextAlignmentCenter;
+
     [_view addSubview:lblUnit];
 }
--(void)InfoMethod:(id)sender{
+
+- (void)InfoMethod:(id)sender
+{
     NSLog(@"InfoMethod...");
     NSString* strUrl = @"";
-    
+
     //change ip
     NSArray *pathList;
     NSString *path;
@@ -515,15 +484,13 @@
     if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         //讀取檔案
         apiURL= [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    }
-    else{
+    } else {
         apiURL = INK_Url_1;
     }
-    
+
     switch (type) {
         case 1://血壓
             strUrl = @"/BloodPressure.html";
-            
             break;
             
         case 2://血糖
@@ -532,15 +499,13 @@
             
         case 3://血氧
             strUrl = @"/BloodOxygen.html";
-
             break;
-            
+
         case 4://體重
             strUrl = @"/BMI.html";
             break;
             
         case 5://計步器
-//            strUrl = @"http://210.242.50.122:9000/mcarewatch/BloodPressure.html";
             break;
             
         default:
@@ -606,7 +571,8 @@
     }
     infoLbl = [[UILabel alloc]initWithFrame:CGRectMake(50, 130+table.frame.size.height+2, 80, 25)];
     [infoLbl setBackgroundColor:[UIColor grayColor]];
-    [infoLbl setTextColor:[UIColor whiteColor]];
+    // Bruce@20150928
+    [infoLbl setTextColor:[UIColor greenColor]];
     [infoLbl setTextAlignment:NSTextAlignmentCenter];
     NSLog(@"infoLbl %@",infoLbl);
     [self addSubview:infoLbl];
@@ -725,6 +691,7 @@
 //畫出XY軸以及資料
 - (void)drawCauseHaveData
 {
+    SHLineGraphView *_lineGraph;
     //畫兩個圖
     for (int i = 0; i < 2; i++)
     for (NSInteger idx = 0; idx < 1; idx++) {
@@ -735,13 +702,12 @@
         double gY = [self return_gY];
         UILabel *lblBg;
         //310
-        SHLineGraphView *_lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(5, 0 + 10, 310, gY)];
-        
+        _lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(5, 0 + 10, 310, gY)];
         // add lbl
         [self setY_VandStep:_lineGraph];
         _lineGraph.limitDict = _limitDict;
         _lineGraph.limitLineDict = _limitLineDict;
-        _lineGraph.currentPage = i ;
+        _lineGraph.currentPage = i;
         switch (type) {
             case 1:
                 first = [[UILabel alloc]initWithFrame:CGRectMake(5, _lineGraph.frame.size.height + 15, 190, [self return_12h])];
@@ -785,31 +751,30 @@
         first.numberOfLines = 0;
         second.numberOfLines = 0;
         third.numberOfLines = 0;
-        
+
         if (i != 1) {
-            
             [viewG addSubview:first];
             [viewG addSubview:second];
             [viewG addSubview:third];
         }
-        
-        //        NSInteger idx = 1;
+
         _lineGraph.graphType = type;
         _lineGraph.first = first;
         _lineGraph.second = second;
         _lineGraph.third = third;
+        four.backgroundColor = [UIColor greenColor];
         _lineGraph.four = four;
         _lineGraph.datas = pileOfData[idx];
+
         [self addLineGraph:_lineGraph andPageNumber:idx];
-        
+
         [self setlblUnit:_lineGraph];
         
         [viewG addSubview:_lineGraph];
 
         [_scrollview addSubview:viewG];
-        
     }
-    
+
     //加上 改善建議
     int wY = 0;
     if (self.frame.size.height == 480) {
@@ -818,22 +783,29 @@
     else{
         wY = 65;
     }
+    
+    NSString *overXType = [_lineGraph overXType];
+    NSLog(@"type = %@", overXType);
 
     UIWebView *viewG = [[UIWebView alloc]initWithFrame:CGRectMake(320*2, 2, 320, 375 + wY)];
-//    UIView *viewG = [[UIView alloc]initWithFrame:CGRectMake(320*2, 2, 320, 375 + 65)];
     viewG.scalesPageToFit = YES;
-    //設定網址
     NSString *urlString = @"";
     NSString *urlLocalString = nil;
-    switch (type ) {
-        case 1:
-//            urlString = @"http://210.242.50.125:7000/angelcare/hypertension.html";
-            urlString = [NSString stringWithFormat:@"%@/hypertension.html",@"http://china.guidercare.com:8080/angelcare"];
+    switch (type) {
+        case 1:     // 血压
+            if (overXType.length == 0 || [overXType isEqualToString:@"B"]) {
+                urlString = @"http://210.242.50.125:7000/angelcare/hypotension.html";
+            } else {
+                urlString = @"http://210.242.50.125:7000/angelcare/hypertension.html";
+            }
             urlLocalString = @"hypertension";
             break;
-        case 2:
-//            urlString = @"http://210.242.50.125:7000/angelcare/highbloodsugar.html";
-            urlString = [NSString stringWithFormat:@"%@/highbloodsugar.html",@"http://china.guidercare.com:8080/angelcare"];
+        case 2:     // 血糖
+            if (overXType.length == 0 || [overXType isEqualToString:@"B"]) {
+                urlString = @"http://210.242.50.125:7000/angelcare/hypoglycemia.html";
+            } else {
+                urlString = @"http://210.242.50.125:7000/angelcare/highbloodsugar.html";
+            }
             urlLocalString = @"highbloodsugar";
             break;
         default:
@@ -1035,6 +1007,7 @@
     [first setBackgroundColor:[UIColor orangeColor]];
     [second setBackgroundColor:[UIColor blackColor]];
     [first setTextColor:[UIColor blackColor]];
+    // bruce
     [second setTextColor:[UIColor whiteColor]];
     [third setTextColor:[UIColor grayColor]];
     [first setTextAlignment:NSTextAlignmentCenter];
@@ -1098,14 +1071,25 @@
     NSLog(@"%@",[viewG subviews]);
 }
 
-- (void) addLineGraph:(SHLineGraphView*)_lineGraph andPageNumber:(NSInteger)dataIdx{
+- (void)addLineGraph:(SHLineGraphView*)_lineGraph andPageNumber:(NSInteger)dataIdx
+{
     _lineGraph.tag = dataIdx;
     //SHLineGraphView set background
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = _lineGraph.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0 green:238.0/255.0 blue:190.0/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:238.0/255.0 green:197.0/255.0 blue:157.0/255.0 alpha:1] CGColor], nil]; // 由上到下的漸層顏色
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:255.0/255.0
+                                                                     green:238.0/255.0
+                                                                      blue:190.0/255.0
+                                                                     alpha:1] CGColor],
+                       (id)[[UIColor colorWithRed:238.0/255.0
+                                            green:197.0/255.0
+                                             blue:157.0/255.0
+                                            alpha:1]
+                            CGColor],
+                       nil]; // 由上到下的漸層顏色
+
     [_lineGraph.layer insertSublayer:gradient atIndex:0];
-    
+
     //set the main graph area theme attributes
     /**
      *  theme attributes dictionary. you can specify graph theme releated attributes in this dictionary. if this property is
@@ -1120,6 +1104,7 @@
                                        kPlotBackgroundLineColorKye : [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0]
                                        };
     _lineGraph.themeAttributes = _themeAttributes;
+
     //set the line graph attributes
     /**
      *  the maximum y-value possible in the graph. make sure that the y-value is not in the plotting points is not greater
@@ -1132,23 +1117,24 @@
      *  y-axis, but if you want to put any suffix to the calculated y-values, you can mention it here (e.g. K, M, Kg ...)
      */
     _lineGraph.yAxisSuffix = @"";
+
     NSArray *keys;
     switch (type) {
         case 1://血壓
             keys = @[@"systolic",@"diastolic"];
             break;
-            
+
         case 2://血糖
             keys = @[@"bloodglucose"];
             [self handleUnitBG];
             _lineGraph.limitBG = limitBG;
             break;
-            
+
         case 3://血氧
             keys = @[@"oxygen"];
             //                [self BOReloadData];
             break;
-            
+
         case 4://體重
             //                [self WeightReload];
             keys = @[@"weight"];
@@ -1166,9 +1152,9 @@
         default:
             break;
     }
+
     _lineGraph.keys = keys;
 
-    
     if (pileOfData.count != 0) {//有資料就畫圖
         NSMutableArray *plots = [NSMutableArray new];
         //
@@ -1183,18 +1169,16 @@
     else{
         [_lineGraph drawXYAxis:nil];
     }
-    
-    //    [self.view addSubview:_lineGraph];
-    
 }
+
 #pragma mark - handle plot
-- (void) setXLabelToGraph:(SHLineGraphView*)graph andData:(NSMutableArray*)data{
-    NSMutableArray *tmpData  = [NSMutableArray new];
-    //    NSLog(@"one of data %@",[[data objectAtIndex:0] objectForKey:@"time"]);
-    
+- (void) setXLabelToGraph:(SHLineGraphView*)graph andData:(NSMutableArray*)data
+{
+    NSMutableArray *tmpData = [NSMutableArray new];
+
     //抓出時間來設定x坐標
     for (int i = 1; i < [data count]+1; i++) {
-        NSString *time;// = [[data objectAtIndex:i-1]objectForKey:@"time"];
+        NSString *time;
         if (type != 5) {
              time = [[data objectAtIndex:i-1]objectForKey:@"time"];
         }
@@ -1205,11 +1189,12 @@
         NSDictionary *tmpDict = @{@(i): time};
         [tmpData addObject:tmpDict];
     }
+
     graph.xAxisValues = [NSArray arrayWithArray:tmpData];
 }
 
-
-- (SHPlot*)AddPlot:(NSMutableArray*)data andKey:(NSString*)key andGraph:(SHLineGraphView*)graph{
+- (SHPlot*)AddPlot:(NSMutableArray*)data andKey:(NSString*)key andGraph:(SHLineGraphView*)graph
+{
     SHPlot *plot = [[SHPlot alloc] init];
     /**
      *  Array of dictionaries, where the key is the same as the one which you specified in the `xAxisValues` in `SHLineGraphView`,
@@ -1396,48 +1381,19 @@
         [lblUnit setHidden:YES];//20140703 fix bug Roger
     }
 }
+
 #pragma mark - make a tableview
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"dataArr %d",dataArr.count);
-//    BOOL result = YES;
-//    switch (type) {
-//        case 1://血壓
-//            result = [self chkArrayHaveData:dataArr withKey:@"dist"];
-//            break;
-//        case 2://血糖
-//            result = [self chkArrayHaveData:dataArr withKey:@"dist"];
-//            break;
-//        case 3://血氧
-//            result = [self chkArrayHaveData:dataArr withKey:@"dist"];
-//            break;
-//        case 4://體重
-//            result = [self chkArrayHaveData:dataArr withKey:@"dist"];
-//            break;
-//        case 5://計步器
-//            result = [self chkArrayHaveData:dataArr withKey:@"dist"];
-//            break;
-//        default:
-//            break;
-//    }
-//    if (result) {
-//        return dataArr.count;
-//    }
-//    else{
-//        return 0;
-//    }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"dataArr %d", (int)dataArr.count);
+
     return dataArr.count;
-//    return 20;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSString * identifier = @"cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//    if ( !cell) {//無任何cell可以reuse
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//    }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSDictionary *dict = [dataArr objectAtIndex:indexPath.row];
-//    cell.textLabel.text = [dict objectForKey:@"time"];
-//    [cell setBackgroundColor:[UIColor clearColor]];
-    
+
     id cell;
     switch (type) {
         case 1://血壓
@@ -1447,11 +1403,10 @@
             [[(BPCell*)cell lblSPTitle]setText: NSLocalizedStringFromTable(@"SP*", INFOPLIST, nil)];
             [self setCellLbl:[(BPCell*)cell lblDia] andKey:@"diastolic" andDict:dict];
             [self setCellLbl:[(BPCell*)cell lblSys] andKey:@"systolic" andDict:dict];
-//            [[(BPCell*)cell lblTime] setText:[dict objectForKey:@"time"]];
             [self setLblTimeFormatter:[(BPCell*)cell lblTime] andDict:dict];
             [[(BPCell*)cell lblPul] setText:[NSString stringWithFormat:@"%@",[dict objectForKey:@"heartbeat"]]];
             break;
-            
+
         case 2://血糖
             NSLog(@"BS ReloadData");
             cell = [[[NSBundle mainBundle] loadNibNamed:@"BGCell" owner:self options:nil] objectAtIndex:0];
@@ -1554,7 +1509,6 @@
     if ([key isEqualToString:@"bloodglucose"]) {
         NSLog(@"%@",remindDic);
         [self handleUnitBG];
-//        limitBG = [[remindDic objectForKey:@"beforeMealUp"]floatValue];
     }
     if ([key isEqualToString:@"step"]) {
         NSLog(@"%@",remindDic);
@@ -1562,7 +1516,9 @@
         goalDis = [[remindDic objectForKey:@"Distance"]intValue];
     }
 }
-- (void)setCellLbl:(UILabel*)lbl andKey:(NSString*)key andDict:(NSDictionary*) dict{
+
+- (void)setCellLbl:(UILabel*)lbl andKey:(NSString*)key andDict:(NSDictionary*) dict
+{
     UIColor *color=nil;
     [self initRange:key];
     double tmp = [[dict objectForKey:key] doubleValue];
@@ -1667,8 +1623,7 @@
         default:
             break;
     }
-    
-    
+
     lbl.text =[NSString stringWithFormat:@"%@",[dict objectForKey:key]];
     if ([key isEqualToString:@"weight"] || [key isEqualToString:@"body_fat"]) {
         lbl.text =[NSString stringWithFormat:@"%.1f",tmp/10.0];
@@ -1680,6 +1635,7 @@
     
     [lbl setBackgroundColor:color];
 }
+
 - (void)setLblTimeFormatter:(UILabel*)lbl andDict:(NSDictionary*)dict{
     NSString *strTime;// = [dict objectForKey:@"time"];
     if (type != 5) {
@@ -1688,22 +1644,11 @@
     else{
         strTime = [dict objectForKey:@"start"];
     }
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-//    [dateFormat setDateFormat:@"HH:mm dd-MM-yyyy"];
-//    NSDate *date = [dateFormat dateFromString:strTime];
-//    [dateFormat setDateFormat:@"dd-MM HH:mm EEE"];
-//    NSString *newTime = [dateFormat stringFromDate:date];
+
     NSLog(@"strTime = %@",strTime);
     lbl.text = strTime;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 //設定小提醒
 -(void)Set_RemindInit:(NSDictionary *)dic withType:(int) m_type
 {

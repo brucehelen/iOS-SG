@@ -21,7 +21,7 @@
 }
 
 //血糖資訊
--(void)Set_Init:(NSDictionary *)dic
+- (void)Set_Init:(NSDictionary *)dic
 {
     NSLog(@"dic = %@",dic);
     

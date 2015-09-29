@@ -26,7 +26,7 @@
     BMKMapView *baiduMapView;
     IBOutlet MKMapView *googleMapView;
     
-     IBOutlet  UITextView   *ShowText;   
+    IBOutlet  UITextView   *ShowText;   
     
     int     tarNum;
     
@@ -67,9 +67,7 @@
     
 }
 
-
 @property (nonatomic,strong) NSDictionary *listDic;
-
 
 //RouteList
 @property (strong) SwipeBar *swipeBar;
@@ -132,6 +130,9 @@
 
 //設定離家範圍顯示圈
 -(void)Set_LeaveCircle:(NSString *)longitude :(NSString *)latitude :(NSString *)radius;
-//
+
+// 重新加载侧滑数据
+- (void)reloadRouteListView;
+@property (nonatomic, assign) BOOL stop;
 
 @end

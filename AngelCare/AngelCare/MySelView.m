@@ -15,40 +15,7 @@
 //量測按鈕MouseDown觸發
 - (IBAction)Main_MouseDown:(id)sender
 {
-    
     [(MainClass *)MainObj Other_MouseDown:[(UIView*)sender tag]];
-    
-    /*
-    if(sender == Bu1)
-    {
-       NSLog(@"sender = 1");
-       [(MainClass *) MainObj Other_MouseDown:1];
-        
-    }
-    else if(sender == Bu2)
-   {
-        NSLog(@"sender = 2");
-        [(MainClass *) MainObj Other_MouseDown:2];
-        
-    }
-    else if(sender == Bu3)
-    {
-        [(MainClass *) MainObj Other_MouseDown:3];
-        NSLog(@"sender = 3");
-        
-    }
-    else if(sender == Bu4)
-    {
-       NSLog(@"sender = 4");
-        [(MainClass *) MainObj Other_MouseDown:4];
-        
-    }else if(sender == Bu5)
-    {
-         NSLog(@"sender = 5");
-        [(MainClass *) MainObj Other_MouseDown:5];
-        
-    }
-     */
 }
 
 

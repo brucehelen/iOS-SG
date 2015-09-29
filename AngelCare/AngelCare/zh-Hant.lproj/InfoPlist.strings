@@ -226,9 +226,9 @@
 "HS_Setting" = "Watch Setup";
 "HS_Setting_SMS" = "短信读取";
 "HS_Setting_BROTHER" = "Anti—disturb";
-"HS_Setting_LongFamily" = "Press the affection key for a long time";
+"HS_Setting_LongFamily" = "长按情亲键";
 "HS_Setting_SOSSMS" = "SOS message";
-"HS_Setting_SOSKEYLONGPUSH" = "Press the SOS key for a long time";
+"HS_Setting_SOSKEYLONGPUSH" = "长按SOS键";
 "HS_Setting_TimeZone" = "时区";
 "HS_Setting_Language" = "语言";
 "HS_Call_Sync_0" = "取消定时回报";

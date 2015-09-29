@@ -19,6 +19,8 @@
 #import "MyEatShowView.h"
 #import "MyEatPickView.h"
 #import "MyActView.h"
+#import "MyActSearchView.h"     // 活动区域搜索View
+
 #import "CheckNetwork.h"
 #import "MyHisView.h"
 #import "MyHisMapView.h"
@@ -121,6 +123,10 @@
     IBOutlet UIButton *Bu_MapSet;
 
     IBOutlet UIButton *Bu_Save;
+    
+    // 活动区域搜索按钮
+    __weak IBOutlet UIButton *Bu_search;
+    
 
     IBOutlet MyEatShowView  *MyEatShowView;
     IBOutlet MyEatPickView  *MyEatPickView;
@@ -133,6 +139,7 @@
     IBOutlet MyMapView   *MyMapView;
     
     IBOutlet MyActView   *MyActView;
+    IBOutlet MyActSearchView *myActSearchView;
     
     IBOutlet MySelView   *MySelView;
     IBOutlet MyHisView   *MyHisView;
@@ -270,6 +277,8 @@
 @property (strong, nonatomic) MLTableAlert *alert;
 @property (strong) NSObject<MainClassDelegate> *delegate;
 
+
+- (void)searchResultButtonDidClicked:(int)index date:(NSDate *)date;
 
 - (void)Send_UpdateUserName;
 - (void)Send_NewUserDate:(NSString *)Acc2 :(NSString *)Hash2;
@@ -534,5 +543,7 @@
 - (void)setLocatingEditIndex:(NSString*)m_index;
 
 - (void)getWiFi;
+
+- (void)displayTimerStop;
 
 @end

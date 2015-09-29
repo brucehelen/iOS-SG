@@ -224,10 +224,23 @@
 "HS_CALL" = "通话限制";
 "HS_Setting" = "Watch Setup";
 "HS_Setting_SMS" = "短信读取";
-"HS_Setting_BROTHER" = "Anti—disturb";
+
+// SOS
+"HS_Setting_SOSKEYLONGPUSH" = "SOS键长按";
+"HS_Setting_SOSKEYLONGPUSH_TIP" = "Press the SOS key for a long time to send SOS distress message";
+
+// 亲情键长按
 "HS_Setting_LongFamily" = "Press the affection key for a long time";
+"HS_Setting_LongFamily_TIP" = "Press the affection key for a long time to make a phone call";
+
+// 防打扰
+"HS_Setting_BROTHER" = "Anti—disturb";
+"HS_Setting_BROTHER_TIP" = "Only your family phone number can call you";
+
+// SOS短信
 "HS_Setting_SOSSMS" = "SOS message";
-"HS_Setting_SOSKEYLONGPUSH" = "Press the SOS key for a long time";
+"HS_Setting_SOSSMS_TIP" = "按下手表的求救按钮, 亲情号码将会接收到求救短信";
+
 "HS_Setting_TimeZone" = "时区";
 "HS_Setting_Language" = "语言";
 "HS_Call_Sync_0" = "取消定时回报";

@@ -1475,6 +1475,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button hidden="YES" opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zz3-zW-jtW" userLabel="Bu search">
+                                <rect key="frame" x="216" y="54" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" backgroundImage="search_1.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchButtonDidClicked:" destination="3" eventType="touchUpInside" id="JoZ-1r-DOz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
@@ -1509,6 +1525,7 @@
                             <outlet property="Bu_News" destination="cVl-Uf-Zg1" id="Zt8-pB-AJm"/>
                             <outlet property="Bu_Right" destination="tdb-1j-aqh" id="VMT-ul-Pg6"/>
                             <outlet property="Bu_Save" destination="aDe-FG-E6I" id="w3p-gt-a0b"/>
+                            <outlet property="Bu_search" destination="Zz3-zW-jtW" id="sPW-g5-btZ"/>
                             <outlet property="CallLimit" destination="5Ud-bt-zQV" id="lRa-w9-a1T"/>
                             <outlet property="DeviceSet" destination="m2a-Jo-2Mo" id="7uO-45-E2c"/>
                             <outlet property="GroupMemberView" destination="OG0-wp-f3f" id="Ihg-Wm-1o5"/>
@@ -1559,6 +1576,7 @@
                             <outlet property="chartCustom" destination="7PB-sQ-WJ9" id="Jjb-xs-NET"/>
                             <outlet property="geoFS" destination="70r-rg-0QT" id="YWg-rj-SSx"/>
                             <outlet property="healthStepsView" destination="GQA-Yn-Ls7" id="pma-ic-mX6"/>
+                            <outlet property="myActSearchView" destination="hHi-9Q-kXA" id="F4T-dc-9mf"/>
                             <outlet property="tWI" destination="WA5-RO-Czg" id="vx3-ZM-LT8"/>
                         </connections>
                     </view>
@@ -1736,6 +1754,10 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_new.png" id="70t-Lk-ew2">
+                                    <rect key="frame" x="8" y="7" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <view contentMode="scaleToFill" id="fxz-NX-rGA">
                                     <rect key="frame" x="20" y="39" width="260" height="210"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1802,10 +1824,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="head_pic.png" id="70t-Lk-ew2">
-                                    <rect key="frame" x="8" y="7" width="36" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.8901960784313725" green="0.84313725490196079" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -1922,6 +1940,18 @@
                                     <rect key="frame" x="10" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pTF-MG-77J" userLabel="1-DevSet">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                    <state key="normal">
+                                        <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="funcionBtn:" destination="jWk-y6-JeZ" eventType="touchUpInside" id="TqX-CW-6iq"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -2081,18 +2111,6 @@
                                 <action selector="funcionBtn:" destination="jWk-y6-JeZ" eventType="touchUpInside" id="24S-v7-8OU"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pTF-MG-77J" userLabel="1-DevSet">
-                            <rect key="frame" x="10" y="130" width="100" height="120"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                            <state key="normal">
-                                <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="funcionBtn:" destination="jWk-y6-JeZ" eventType="touchUpInside" id="TqX-CW-6iq"/>
-                            </connections>
-                        </button>
                         <button hidden="YES" opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fYz-BG-N8Q" userLabel="4-FallDown">
                             <rect key="frame" x="10" y="-261" width="100" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2211,6 +2229,7 @@
                             <rect key="frame" x="0.0" y="90" width="320" height="438"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <prototypes>
                                 <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="Xuf-qQ-1bT" customClass="AutoLocatingCell">
                                     <rect key="frame" x="0.0" y="22" width="320" height="80"/>
@@ -2711,7 +2730,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SOS键长按" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vWh-Vp-mOe">
-                                    <rect key="frame" x="71" y="8" width="236" height="21"/>
+                                    <rect key="frame" x="71" y="0.0" width="236" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2733,14 +2752,14 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="亲情键长按" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cJ3-Se-NF4">
-                                    <rect key="frame" x="71" y="82" width="236" height="42"/>
+                                    <rect key="frame" x="71" y="75" width="236" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9rK-8s-O6J">
-                                    <rect key="frame" x="27" y="170" width="36" height="37"/>
+                                    <rect key="frame" x="27" y="150" width="36" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" image="btn_check_off.png">
@@ -2755,14 +2774,21 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="防打擾" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H33-AP-EUO">
-                                    <rect key="frame" x="71" y="180" width="236" height="21"/>
+                                    <rect key="frame" x="71" y="150" width="236" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾选后,只有预先填写的联络人(紧急电话,亲情电话)才能够拨打电话到你的手表" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CdC-t8-NRJ">
+                                    <rect key="frame" x="71" y="180" width="240" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kn9-hn-akj">
-                                    <rect key="frame" x="27" y="210" width="36" height="37"/>
+                                    <rect key="frame" x="27" y="212" width="36" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" image="btn_check_off.png">
@@ -2777,35 +2803,28 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SOS简讯" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="luy-Ta-9YQ">
-                                    <rect key="frame" x="71" y="220" width="236" height="21"/>
+                                    <rect key="frame" x="71" y="212" width="236" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the SOS Key for a long time to send SOS distress message." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hSU-jR-b6L">
-                                    <rect key="frame" x="71" y="30" width="240" height="50"/>
+                                    <rect key="frame" x="71" y="32" width="240" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the affection key for a long time to make a phone call." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGg-Ke-yuW">
-                                    <rect key="frame" x="71" y="125" width="240" height="50"/>
+                                    <rect key="frame" x="71" y="110" width="240" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾选后,只有预先填写的联络人(紧急电话,亲情电话)才能够拨打电话到你的手表" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CdC-t8-NRJ">
-                                    <rect key="frame" x="71" y="180" width="236" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾选后,按下手表的求救按钮、亲友的行动电话将会接收到求救短信" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oXc-iE-NPk">
-                                    <rect key="frame" x="71" y="255" width="236" height="35"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾选后,按下手表的求救按钮、亲友的行动电话将会接收到求救短信" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oXc-iE-NPk">
+                                    <rect key="frame" x="71" y="245" width="240" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2867,7 +2886,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Synchronize Now">
+                                    <state key="normal" title="立即同步">
                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -2926,12 +2945,15 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
+                        <outlet property="SosSMSTip" destination="oXc-iE-NPk" id="gcX-hv-yBm"/>
                         <outlet property="btnRS" destination="f1O-PE-RpT" id="U4H-pp-dmA"/>
                         <outlet property="btnVoiceMail" destination="3Ud-Qr-c29" id="QH1-5j-jYZ"/>
                         <outlet property="dontBotherBtn" destination="9rK-8s-O6J" id="Ch1-vh-J9V"/>
                         <outlet property="dontBotherLbl" destination="H33-AP-EUO" id="ufR-Pk-e6b"/>
+                        <outlet property="dontBotherTipLabel" destination="CdC-t8-NRJ" id="Weg-Qt-5Wv"/>
                         <outlet property="familyBtn" destination="04e-gz-avA" id="s85-WE-Hue"/>
                         <outlet property="familyLbl" destination="cJ3-Se-NF4" id="LJn-S3-93f"/>
+                        <outlet property="familyTipLabel" destination="mGg-Ke-yuW" id="hDH-qw-G1M"/>
                         <outlet property="languageBtn" destination="Q0m-fG-gqg" id="034-Tk-dNU"/>
                         <outlet property="languageLbl" destination="LS8-Mw-FkZ" id="DfY-lN-VsO"/>
                         <outlet property="lblSync" destination="Aby-Dc-mym" id="i8h-YW-9ht"/>
@@ -2940,6 +2962,7 @@
                         <outlet property="smsReadLbl" destination="Ogp-49-YOO" id="W9K-j6-42y"/>
                         <outlet property="sosLongBtn" destination="vzK-oT-tef" id="H5q-lH-rKl"/>
                         <outlet property="sosLongLbl" destination="vWh-Vp-mOe" id="ugf-HT-ysC"/>
+                        <outlet property="sosLongPressTipLabel" destination="hSU-jR-b6L" id="PJ3-gs-9Dq"/>
                         <outlet property="sosSMSBtn" destination="kn9-hn-akj" id="Ipx-vN-fM7"/>
                         <outlet property="sosSMSLbl" destination="luy-Ta-9YQ" id="uJv-F9-2fo"/>
                         <outlet property="syncBtn" destination="Uf2-Ng-MaH" id="p9R-71-6qj"/>
@@ -3254,13 +3277,6 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高於                        將發出警示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W4F-Su-hUg">
-                                    <rect key="frame" x="37" y="71" width="277" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高於                        將發出警示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wlY-Om-Zb4">
                                     <rect key="frame" x="37" y="137" width="277" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3295,10 +3311,9 @@
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mmol/L" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BUc-u5-MhO" userLabel="lbl - 飯前上限單位">
-                                    <rect key="frame" x="78" y="84" width="65" height="21"/>
+                                    <rect key="frame" x="133" y="62" width="65" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="飯前" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="auH-s0-3D8">
@@ -3320,11 +3335,10 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mg/dl" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Dn-aI-V3I" userLabel="lbl - 飯後上限單位">
-                                    <rect key="frame" x="78" y="155" width="65" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mmol/L" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Dn-aI-V3I" userLabel="lbl - 飯後上限單位">
+                                    <rect key="frame" x="134" y="154" width="65" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Before bedtime" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p4G-a7-Pke">
@@ -3463,7 +3477,7 @@
                                     <rect key="frame" x="9" y="380" width="304" height="170"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="糖尿病的血糖臨界值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="agc-NS-TrY">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="糖尿病的血糖临界值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="agc-NS-TrY">
                                             <rect key="frame" x="12" y="6" width="272" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3473,7 +3487,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fiv-Ng-21h">
                                             <rect key="frame" x="12" y="28" width="280" height="142"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <string key="text">目前世界衛生組織訂定的健康及診斷糖尿病的血糖臨界值，分別為110及126mg/
+                                            <string key="text">目前世界卫生组织制定的健康及诊断糖尿病的血糖临界值，分別为110及126mg/
 dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人應該在110mg/dL以下。如果超過126mg/dL，就是診斷為糖尿病的條件之一。
 以上引用來源：世界衛生組織
 </string>
@@ -3484,6 +3498,13 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高於                        將發出警示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W4F-Su-hUg">
+                                    <rect key="frame" x="37" y="73" width="277" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                         </scrollView>
                     </subviews>
@@ -3510,6 +3531,8 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="lblCh2" destination="wlY-Om-Zb4" id="fKw-uy-S86"/>
                         <outlet property="lblEn1" destination="EfK-x2-N2x" id="IG1-xo-V1I"/>
                         <outlet property="lblEn2" destination="lJv-lq-R5m" id="MZ9-UA-htr"/>
+                        <outlet property="lblUnit1" destination="BUc-u5-MhO" id="9aq-Qm-zZr"/>
+                        <outlet property="lblUnit2" destination="8Dn-aI-V3I" id="EQw-9W-4Tm"/>
                         <outlet property="lunchEndBtn" destination="k6l-KC-Rop" id="Lp5-6z-WyZ"/>
                         <outlet property="lunchStartBtn" destination="H3X-cW-IEO" id="Fh0-Z0-eiO"/>
                         <outlet property="lutime" destination="V4k-sg-kss" id="Vok-up-mTp"/>
@@ -3758,19 +3781,19 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="o86-XT-BeC">
-                            <rect key="frame" x="0.0" y="92" width="320" height="315"/>
+                            <rect key="frame" x="0.0" y="92" width="320" height="333"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </mapView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="DL0-hG-aOv">
-                            <rect key="frame" x="0.0" y="417" width="320" height="99"/>
+                            <rect key="frame" x="0.0" y="424" width="320" height="95"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wi-Fi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b6c-6p-ub6">
-                            <rect key="frame" x="163" y="377" width="41" height="21"/>
+                            <rect key="frame" x="175" y="395" width="41" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.41960784309999999" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3778,7 +3801,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GSM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sCD-2z-8s9">
-                            <rect key="frame" x="260" y="377" width="40" height="20"/>
+                            <rect key="frame" x="272" y="395" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.9450981021" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3786,7 +3809,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vwj-et-FPz">
-                            <rect key="frame" x="212" y="377" width="40" height="20"/>
+                            <rect key="frame" x="224" y="395" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.55686277149999996" green="0.76862752440000004" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3882,7 +3905,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <rect key="frame" x="0.0" y="458" width="86" height="53"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sms1.png" id="hIL-9u-WT9">
@@ -4041,11 +4063,11 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="C7A-gN-aqN">
                             <rect key="frame" x="0.0" y="382" width="320" height="138"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_pic.png" id="qCB-MC-Tbz">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_new.png" id="qCB-MC-Tbz">
                             <rect key="frame" x="2" y="2" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -4063,6 +4085,39 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="titleLbl" destination="3KA-G0-pOK" id="klq-dm-Vfd"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" id="hHi-9Q-kXA" userLabel="Act Search View - 活动区域搜索" customClass="MyActSearchView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="Gsc-Db-Xwy">
+                            <rect key="frame" x="8" y="92" width="304" height="321"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <date key="date" timeIntervalSinceReferenceDate="465187811.70777202">
+                                <!--2015-09-29 02:50:11 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oDv-ix-N49" userLabel="确定">
+                            <rect key="frame" x="212" y="421" width="72" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="btnDidClicked:" destination="hHi-9Q-kXA" eventType="touchUpInside" id="K6u-ka-ZKt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1e4-2d-rjF" userLabel="取消">
+                            <rect key="frame" x="36" y="421" width="76" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="取消"/>
+                            <connections>
+                                <action selector="btnDidClicked:" destination="hHi-9Q-kXA" eventType="touchUpInside" id="itF-7c-DHx"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="datePicker" destination="Gsc-Db-Xwy" id="JRa-XI-9iJ"/>
+                    </connections>
+                </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" id="4kq-Hr-Ymo" userLabel="My Act View" customClass="MyActView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -4072,11 +4127,11 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="ecK-dL-lEq" userLabel="MapView">
-                            <rect key="frame" x="0.0" y="90" width="320" height="391"/>
+                            <rect key="frame" x="0.0" y="90" width="320" height="353"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </mapView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Lc-T2-y6r">
-                            <rect key="frame" x="212" y="443" width="40" height="20"/>
+                            <rect key="frame" x="224" y="416" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.55686277149999996" green="0.76862752440000004" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4084,7 +4139,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wi-Fi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1j8-gl-Mzz">
-                            <rect key="frame" x="163" y="443" width="41" height="21"/>
+                            <rect key="frame" x="175" y="416" width="41" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.41960784309999999" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4092,7 +4147,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GSM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hp8-kc-2FN">
-                            <rect key="frame" x="260" y="443" width="40" height="20"/>
+                            <rect key="frame" x="272" y="416" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.9450981021" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4100,7 +4155,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="L8s-X3-A9b" userLabel="note">
-                            <rect key="frame" x="10" y="483" width="300" height="40"/>
+                            <rect key="frame" x="8" y="444" width="304" height="79"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4681,56 +4736,48 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <rect key="frame" x="15" y="57" width="100" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="舒張壓" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nP1-VI-cip">
                                     <rect key="frame" x="15" y="151" width="100" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mmHg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FoB-Eq-hev">
-                                    <rect key="frame" x="101" y="93" width="57" height="21"/>
+                                    <rect key="frame" x="127" y="93" width="57" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mmHg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gac-KT-vw1">
-                                    <rect key="frame" x="101" y="182" width="58" height="21"/>
+                                    <rect key="frame" x="127" y="182" width="58" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高於" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NQS-43-Wb4">
                                     <rect key="frame" x="31" y="93" width="40" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高於" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y1O-uH-v6L">
                                     <rect key="frame" x="31" y="182" width="40" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="發出警示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pms-oQ-UQf">
-                                    <rect key="frame" x="177" y="93" width="86" height="21"/>
+                                    <rect key="frame" x="186" y="93" width="86" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="發出警示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9a5-8Q-CZ5">
-                                    <rect key="frame" x="177" y="182" width="122" height="21"/>
+                                    <rect key="frame" x="186" y="182" width="122" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="hYI-aE-39q">
@@ -4740,7 +4787,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="umJ-h9-aOw">
-                                    <rect key="frame" x="53" y="89" width="45" height="30"/>
+                                    <rect key="frame" x="74" y="89" width="45" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -4751,24 +4798,16 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="1lv-62-W3k">
-                                    <rect key="frame" x="53" y="178" width="45" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                </textField>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世界衛生組織高血壓判斷標準" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HTc-Wd-D3Q">
                                     <rect key="frame" x="54" y="227" width="225" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1999年世界衛生組織(WHO)/國際高血壓協會(ISH)《高血壓防治指南》及中國衛生部/中國高血壓聯盟《1999 中國高血壓防治指南》規定：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CrZ-ow-XfI">
                                     <rect key="frame" x="15" y="251" width="291" height="73"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bpremind1.png" id="IgF-jo-bkz">
@@ -4818,6 +4857,12 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="1lv-62-W3k">
+                                    <rect key="frame" x="74" y="178" width="45" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                </textField>
                             </subviews>
                         </scrollView>
                     </subviews>
@@ -4986,7 +5031,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <rect key="frame" x="26" y="83" width="258" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="血氧範圍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7ZM-I2-yR4">
@@ -5019,7 +5063,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <rect key="frame" x="26" y="50" width="280" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t1V-VY-Yoi">
@@ -5089,17 +5132,10 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mhicon.png" id="gNp-cE-e7h">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="icon_new.png" id="gNp-cE-e7h">
                                     <rect key="frame" x="8" y="7" width="36" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Add Device" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qxr-hf-M6A">
-                                    <rect key="frame" x="52" y="7" width="228" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tGC-XQ-EVA">
                                     <rect key="frame" x="37" y="67" width="88" height="88"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5135,6 +5171,13 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                         <action selector="closeBtnClick:" destination="OG0-wp-f3f" eventType="touchUpInside" id="AxK-0w-Yud"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Add Device" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qxr-hf-M6A">
+                                    <rect key="frame" x="52" y="7" width="228" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="0.89019607840000003" green="0.84313725490000002" blue="0.70196078429999997" alpha="1" colorSpace="deviceRGB"/>
                         </view>
@@ -6877,7 +6920,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="geoinfo2.png" width="238" height="238"/>
         <image name="geoinfo3.png" width="238" height="238"/>
         <image name="geoinfo4.png" width="238" height="238"/>
-        <image name="head_pic.png" width="92" height="94"/>
         <image name="header1.png" width="24" height="29"/>
         <image name="header2.png" width="29" height="29"/>
         <image name="header3.png" width="30" height="30"/>
@@ -6905,6 +6947,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="icon_btn_save_w.png" width="80" height="80"/>
         <image name="icon_header_bar.png" width="1036" height="94"/>
         <image name="icon_map.png" width="80" height="80"/>
+        <image name="icon_new.png" width="120" height="120"/>
         <image name="icon_record_up_day.png" width="120" height="81"/>
         <image name="icon_record_up_interval.png" width="119" height="81"/>
         <image name="icon_record_up_list.png" width="119" height="81"/>
@@ -6926,7 +6969,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="login_700_02.png" width="511" height="501"/>
         <image name="login_bu_1.png" width="640" height="83"/>
         <image name="logo.png" width="248" height="39"/>
-        <image name="mhicon.png" width="120" height="120"/>
         <image name="mhlogo.png" width="445" height="220"/>
         <image name="my_bu_1.png" width="31" height="31"/>
         <image name="my_bu_2.png" width="31" height="31"/>
@@ -6936,6 +6978,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="nttBg5.png" width="480" height="800"/>
         <image name="nttBg7.png" width="480" height="800"/>
         <image name="nttLogin.png" width="640" height="1138"/>
+        <image name="search_1.png" width="94" height="92"/>
         <image name="set_del_1.png" width="42" height="45"/>
         <image name="showmask3.png" width="640" height="960"/>
         <image name="sms1.png" width="72" height="72"/>

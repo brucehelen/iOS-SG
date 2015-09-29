@@ -1710,8 +1710,6 @@ long long SystemLog_expectedLength;        //檔案大小
 }
 
 
-
-
 //最新消息解析
 -(void)NewsMessage
 {

@@ -15,6 +15,13 @@
 
 #import "ViewController.h"
 
+@interface DeviceSet()
+
+
+
+@end
+
+
 @implementation DeviceSet
 {
     NSString *syncStr;
@@ -257,28 +264,27 @@
 }
 
 
-
-
-
-
-
-
--(void)Do_Init:(id)sender
+- (void)Do_Init:(id)sender
 {
     MainObj = sender;
     smsReadLbl.text = NSLocalizedStringFromTable(@"HS_Setting_SMS", INFOPLIST, nil);
-    
+
     sosLongLbl.text = NSLocalizedStringFromTable(@"HS_Setting_SOSKEYLONGPUSH", INFOPLIST, nil);
-    
+    sosLongPressTipLabel.text = NSLocalizedStringFromTable(@"HS_Setting_SOSKEYLONGPUSH_TIP", INFOPLIST, nil);
+
     familyLbl.text = NSLocalizedStringFromTable(@"HS_Setting_LongFamily", INFOPLIST, nil);
-    
+    familyTipLabel.text = NSLocalizedStringFromTable(@"HS_Setting_LongFamily_TIP", INFOPLIST, nil);
+
     dontBotherLbl.text = NSLocalizedStringFromTable(@"HS_Setting_BROTHER", INFOPLIST, nil);
+    dontBotherTipLabel.text = NSLocalizedStringFromTable(@"HS_Setting_BROTHER_TIP", INFOPLIST, nil);
+
     sosSMSLbl.text = NSLocalizedStringFromTable(@"HS_Setting_SOSSMS", INFOPLIST, nil);
-    
+    SosSMSTip.text = NSLocalizedStringFromTable(@"HS_Setting_SOSSMS_TIP", INFOPLIST, nil);
+
     timeareaLbl.text = NSLocalizedStringFromTable(@"HS_Setting_TimeZone", INFOPLIST, nil);
-    
+
     languageLbl.text = NSLocalizedStringFromTable(@"HS_Setting_Language", INFOPLIST, nil);
-    
+
     [smsReadLbl setTextColor:[UIColor blackColor]];
     [sosLongLbl setTextColor:[UIColor blackColor]];
     [familyLbl setTextColor:[UIColor blackColor]];
@@ -288,17 +294,16 @@
     [languageLbl setTextColor:[UIColor blackColor]];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    
-    [scrView setContentSize:CGSizeMake(320,700)];
-    
+    CGFloat screenHeight = screenRect.size.height + 120;
+
+    [scrView setContentSize:CGSizeMake(320, screenHeight)];
+
     [syncLbl setText:HS_Call_Sync];
-    
+
     [syncBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 
--(void)SaveDevSet
+- (void)SaveDevSet
 {
     NSString *vSwitch = @"";
     if ([switch6 isEqualToString:@"on"]) {

@@ -670,8 +670,12 @@
             NSLog(@"familyIconList %@",[[phoneDic objectForKey:@"familyIconList"] objectAtIndex:indexPath.row]);
 
             cell.imgFamily.image = [UIImage imageNamed:@"head_pic"];
+            
+            NSString *urlString = [[phoneDic objectForKey:@"familyIconList"] objectAtIndex:indexPath.row];
+            
+            NSLog(@"******* urlString = %@", urlString);
 
-            [self downloadImageWithURL:[NSURL URLWithString:[[phoneDic objectForKey:@"familyIconList"] objectAtIndex:indexPath.row]] completionBlock:^(BOOL succeeded, UIImage *image) {
+            [self downloadImageWithURL:[NSURL URLWithString:urlString] completionBlock:^(BOOL succeeded, UIImage *image) {
                 
                         if (succeeded) {
                             cell.imgFamily.image = image;

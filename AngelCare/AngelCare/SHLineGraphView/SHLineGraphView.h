@@ -140,4 +140,7 @@ UIKIT_EXTERN NSString *const kPlotBackgroundLineColorKye;
 @property (nonatomic) NSInteger currentPage;
 
 - (void)calFunction:(NSArray*)m_x;
+
+- (NSString *)overXType;
+
 @end

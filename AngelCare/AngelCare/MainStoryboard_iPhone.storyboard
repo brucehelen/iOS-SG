@@ -924,6 +924,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nht-8y-agz">
+                                <rect key="frame" x="221" y="54" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="search_1.png"/>
+                                <connections>
+                                    <action selector="searchButtonDidClicked:" destination="3" eventType="touchUpInside" id="RV8-MO-HSR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
@@ -958,6 +966,7 @@
                             <outlet property="Bu_News" destination="cVl-Uf-Zg1" id="Zt8-pB-AJm"/>
                             <outlet property="Bu_Right" destination="tdb-1j-aqh" id="VMT-ul-Pg6"/>
                             <outlet property="Bu_Save" destination="aDe-FG-E6I" id="w3p-gt-a0b"/>
+                            <outlet property="Bu_search" destination="nht-8y-agz" id="ZQJ-Ch-0KJ"/>
                             <outlet property="CallLimit" destination="5Ud-bt-zQV" id="lRa-w9-a1T"/>
                             <outlet property="DeviceSet" destination="5cd-CJ-uNw" id="dYe-9f-4IY"/>
                             <outlet property="GroupMemberView" destination="OG0-wp-f3f" id="Ihg-Wm-1o5"/>
@@ -1004,6 +1013,7 @@
                             <outlet property="chartCustom" destination="2mx-3N-zDh" id="eYX-pm-fh9"/>
                             <outlet property="geoFS" destination="USW-k9-qeu" id="yN7-cU-qou"/>
                             <outlet property="healthStepsView" destination="7r7-dq-WY0" id="ko0-c0-mJO"/>
+                            <outlet property="myActSearchView" destination="7B4-gB-jcI" id="jEP-Fn-boq"/>
                             <outlet property="tWI" destination="8Fb-ty-tIi" id="w8u-CA-Fii"/>
                         </connections>
                     </view>
@@ -2686,13 +2696,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <rect key="frame" x="0.0" y="90" width="320" height="259"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </mapView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="DL0-hG-aOv">
-                            <rect key="frame" x="0.0" y="348" width="320" height="91"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jOs-rn-7u0">
                             <rect key="frame" x="212" y="312" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2717,6 +2720,13 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="DL0-hG-aOv">
+                            <rect key="frame" x="0.0" y="348" width="320" height="91"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
@@ -3104,6 +3114,39 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="switchGPS" destination="nMj-xN-ge5" id="b1N-2R-3jJ"/>
                         <outlet property="switchWifi" destination="M91-73-gAS" id="C7d-F9-x6m"/>
                         <outlet property="wifiView" destination="5FZ-0b-N5x" id="LEA-P4-3wG"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" id="7B4-gB-jcI" userLabel="My Act Search View - 活动区域搜索" customClass="MyActSearchView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="iwA-ME-JZ8">
+                            <rect key="frame" x="8" y="93" width="304" height="267"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <date key="date" timeIntervalSinceReferenceDate="465188302.13408798">
+                                <!--2015-09-29 02:58:22 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jeo-cD-bqG">
+                            <rect key="frame" x="42" y="375" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="取消"/>
+                            <connections>
+                                <action selector="btnDidClicked:" destination="7B4-gB-jcI" eventType="touchUpInside" id="xoZ-Rc-hFs"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qyc-K2-Qao">
+                            <rect key="frame" x="232" y="375" width="47" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="btnDidClicked:" destination="7B4-gB-jcI" eventType="touchUpInside" id="UVf-R1-go9"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="datePicker" destination="iwA-ME-JZ8" id="9o4-a0-sAX"/>
                     </connections>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" id="4kq-Hr-Ymo" userLabel="My Act View" customClass="MyActView">
@@ -3759,12 +3802,15 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
+                        <outlet property="SosSMSTip" destination="uoR-A2-h9h" id="suq-0n-hC6"/>
                         <outlet property="btnRS" destination="7og-V6-ftS" id="2mT-Eb-GKa"/>
                         <outlet property="btnVoiceMail" destination="Rbp-uN-5lY" id="MKe-aS-eE3"/>
                         <outlet property="dontBotherBtn" destination="Z0F-BQ-VNT" id="e3u-fL-DjM"/>
                         <outlet property="dontBotherLbl" destination="IpL-bj-2xt" id="kgQ-qx-tqc"/>
+                        <outlet property="dontBotherTipLabel" destination="xhC-wY-4gH" id="PMK-Eg-uAC"/>
                         <outlet property="familyBtn" destination="EhS-gZ-FmN" id="wph-3n-XFA"/>
                         <outlet property="familyLbl" destination="1Ju-ze-5uG" id="7It-Je-zzZ"/>
+                        <outlet property="familyTipLabel" destination="U18-9i-cor" id="89R-XA-bPF"/>
                         <outlet property="languageBtn" destination="nhE-5F-d4c" id="T5g-wX-bMd"/>
                         <outlet property="languageLbl" destination="2OW-ro-zeY" id="lNg-cb-ErP"/>
                         <outlet property="lblSync" destination="Ucg-xd-vg1" id="uPr-fc-EZo"/>
@@ -3773,6 +3819,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="smsReadLbl" destination="TOJ-Q3-vJg" id="xeI-Zb-KQp"/>
                         <outlet property="sosLongBtn" destination="cxd-M0-jtY" id="ZFW-0v-NwW"/>
                         <outlet property="sosLongLbl" destination="elH-mc-poF" id="fN0-Vz-y93"/>
+                        <outlet property="sosLongPressTipLabel" destination="XHm-eT-1OB" id="jPl-0V-dYB"/>
                         <outlet property="sosSMSBtn" destination="ncV-ra-ejg" id="sB4-WI-Oha"/>
                         <outlet property="sosSMSLbl" destination="phC-ec-VvI" id="ZFe-cD-sl3"/>
                         <outlet property="syncBtn" destination="Iuw-sL-B8L" id="jf7-23-Afm"/>
@@ -6853,6 +6900,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="nttBg5.png" width="480" height="800"/>
         <image name="nttBg7.png" width="480" height="800"/>
         <image name="nttLogin.png" width="640" height="1138"/>
+        <image name="search_1.png" width="94" height="92"/>
         <image name="set_del_1.png" width="42" height="45"/>
         <image name="showmask3.png" width="640" height="960"/>
         <image name="smlogo.png" width="176" height="363"/>

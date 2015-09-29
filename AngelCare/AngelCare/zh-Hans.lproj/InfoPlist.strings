@@ -176,8 +176,8 @@
 "His_LeaveTitle" = "        %@              %@";
 "His_CallTitle" = "    %@          %@          %@";
 
-"His_TIME" = "时间";
-"His_ADDR" = "约略地址";
+"His_TIME" = "上传时间";
+"His_ADDR" = "大约地址";
 "His_STARTTIME" = "开始时间";
 "His_ENDTIME" = "结束时间";
 "His_TELLENGTH" = "长度";
@@ -223,10 +223,23 @@
 "HS_CALL" = "通话限制";
 "HS_Setting" = "硬体设定";
 "HS_Setting_SMS" = "短信读取";
-"HS_Setting_BROTHER" = "防打扰";
-"HS_Setting_LongFamily" = "亲情键长按";
-"HS_Setting_SOSSMS" = "SOS简讯";
+
+// SOS
 "HS_Setting_SOSKEYLONGPUSH" = "SOS键长按";
+"HS_Setting_SOSKEYLONGPUSH_TIP" = "长按SOS键发送求救电话";
+
+// 亲情键长按
+"HS_Setting_LongFamily" = "亲情键长按";
+"HS_Setting_LongFamily_TIP" = "长按打电话给亲情号码";
+
+// 防打扰
+"HS_Setting_BROTHER" = "防打扰";
+"HS_Setting_BROTHER_TIP" = "预先填写的联络人(紧急电话,亲情电话)才能够拨打电话到你的手表";
+
+// SOS短信
+"HS_Setting_SOSSMS" = "SOS短信";
+"HS_Setting_SOSSMS_TIP" = "按下手表的求救按钮, 亲情号码将会接收到求救短信";
+
 "HS_Setting_TimeZone" = "时区";
 "HS_Setting_Language" = "语言";
 "HS_Call_Sync_0" = "取消定时回报";

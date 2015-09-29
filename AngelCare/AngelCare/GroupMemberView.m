@@ -126,14 +126,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *CellIdentifier = @"GroupMemberCell";
     GroupMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[GroupMemberCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] ;
     }
-    
+
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GroupMemberCell_iPad" owner:self options:nil] objectAtIndex:0];
@@ -141,7 +140,7 @@
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GroupMemberCell" owner:self options:nil] objectAtIndex:0];
     }
-    
+
     [cell.deleteBtn setTitle:@"Delete" forState:UIControlStateNormal];
     [cell.deleteBtn setTag:indexPath.row];
     [cell.deleteBtn addTarget:self action:@selector(deleteMember:) forControlEvents:UIControlEventTouchUpInside];
@@ -153,7 +152,7 @@
     {
         cell.isUserImg.image = [UIImage imageNamed:@""];
     }
-    
+
     switch ([[[memberArray objectAtIndex:indexPath.row] objectForKey:@"type"] integerValue]) {
 //        case 0:
 //            cell.typeImg.image = [UIImage imageNamed:@"type00.png"];
@@ -175,14 +174,12 @@
 //            cell.typeImg.image = [UIImage imageNamed:@"type04.png"];
 //            break;
         default:
-            cell.typeImg.image = [UIImage imageNamed:@"icon"];
+            cell.typeImg.image = [UIImage imageNamed:@"icon_new"];
             break;
 
     }
-    
+
     return cell;
-    
-    
 }
 
 

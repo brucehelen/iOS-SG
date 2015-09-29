@@ -95,15 +95,14 @@
         circleView.strokeColor = [UIColor colorWithRed:107/255.0 green:142/255.0 blue:255/255.0 alpha:1];
         circleView.fillColor = [UIColor colorWithRed:107/255.0 green:142/255.0 blue:255/255.0 alpha:0.2];
     }
-    else if(isGPS_GSM_WIFI == 2 || isGPS_GSM_WIFI == 3){
+    else if(isGPS_GSM_WIFI == 2 || isGPS_GSM_WIFI == 3) {
         circleView.strokeColor = [UIColor redColor];
         circleView.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
     }
     else{
         
     }
-    
-    
+
     circleView.lineWidth = 2;
     return circleView;
 }
@@ -114,68 +113,44 @@
     MKAnnotationView *pin = (MKAnnotationView *) [map_view dequeueReusableAnnotationViewWithIdentifier: @"VoteSpotPin"];
     if (pin == nil)
     {
-        
         pin = [[MKAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"mapred"] ;
     }
     else
     {
         pin.annotation = annotation;
     }
-    
-    
-    if([annotation isKindOfClass:[MyAnnotation class]] )
-    {
-        UIImage *tmpimage ;
-        
-        if( isGPS_GSM_WIFI == 0)
+
+    if ([annotation isKindOfClass:[MyAnnotation class]]) {
+        UIImage *tmpimage;
+
+        if( isGPS_GSM_WIFI == 0)        // GPS
         {
-//            if (GpsLocation) {
-//                tmpimage = [UIImage imageNamed:@"mappurple"];
-//            }
-//            else
-//            {
-                tmpimage = [UIImage imageNamed:@"mappurple"];
-//            }
+            tmpimage = [UIImage imageNamed:@"mapgreen"];
         }
-        else if( isGPS_GSM_WIFI == 1)
+        else if( isGPS_GSM_WIFI == 1)   // WiFi
         {
-//                tmpimage = [UIImage imageNamed:@"mapred"];
-            tmpimage = [UIImage imageNamed:@"mappurple"];
+            tmpimage = [UIImage imageNamed:@"mapblue"];
         }
-        else if( isGPS_GSM_WIFI == 2 || isGPS_GSM_WIFI == 3)
+        else if( isGPS_GSM_WIFI == 2 || isGPS_GSM_WIFI == 3)    // GSM
         {
-            tmpimage = [UIImage imageNamed:@"mappurple"];
+            tmpimage = [UIImage imageNamed:@"mapp0"];
         }
-        else{
-            
-        }
-            
-        
-        
-        
+
         //圖形大小調整
-        
         CGImageRef imgRef = tmpimage.CGImage;
         CGFloat width = CGImageGetWidth(imgRef);
         CGFloat height = CGImageGetHeight(imgRef);
-        
-        
-        
-        CGSize bounds = CGSizeMake(width/2, height/2);    
-        
+        CGSize bounds = CGSizeMake(width/2, height/2);
+
         UIImage *tmpimage2 = [self reSizeImage:tmpimage toSize:bounds] ;   
-        
-        
+
         [pin setImage:tmpimage2];
         
         pin.canShowCallout = NO;
-        
-        
-        
+
         pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        
-        
     }
+
     return pin;
 }
 
@@ -392,24 +367,17 @@
 }
 
 ///  初始化Ｖiew 上的設定
--(void)Do_Init:(id)sender
+- (void)Do_Init:(id)sender
 {
     MainObj = sender;
-    
+
     smsSendLbl.text = NSLocalizedStringFromTable(@"SMS_SEND", INFOPLIST, nil);
 
-
-    
-    NSLog(@"MainObj = %@",MainObj);
-    
-    
     [map_view removeFromSuperview];
-    
-    
-    
-    if(MainObj!= nil)
+
+    if (MainObj != nil)
     {
-        if ( [(MainClass *) MainObj CheckGoogle] == false)
+        if ([(MainClass *) MainObj CheckGoogle] == false)
         {
             baiduMapView = [[BMKMapView alloc] initWithFrame:map_view.frame];
 //            map.delegate = (id<BMKMapViewDelegate>)self;
@@ -426,10 +394,8 @@
             [self insertSubview:googleMapView atIndex:2];
             
             map_view = googleMapView;
-            
-            
+
             NSLog(@"googleMap:%@XX",map_view);
-            
         }
     }
     else
@@ -439,8 +405,7 @@
         [self insertSubview:googleMapView atIndex:2];
         
         map_view = googleMapView;
-        
-        
+
         NSLog(@"googleMap:%@XX",map_view);
     }
 
@@ -453,8 +418,7 @@
     if (mapType == 1) {
         map_view.mapType = BMKMapTypeStandard;
     }
-    
-    
+
     [Bu_Right setEnabled:true];
     [Bu_Left setEnabled:false];
     
@@ -860,9 +824,11 @@ BOOL keyboarshow;
 }
 
 
-- (void)setGPS_GSM_WIFI:(int)_GPS_GSM_WIFI{
+- (void)setGPS_GSM_WIFI:(int)_GPS_GSM_WIFI
+{
     isGPS_GSM_WIFI = _GPS_GSM_WIFI;
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -887,36 +853,27 @@ BOOL keyboarshow;
     lat = [[[NSString alloc] initWithData:[Base64 decode:[result objectForKey:@"y"]] encoding:NSUTF8StringEncoding] doubleValue];
     return CLLocationCoordinate2DMake(lat, lng);
 }
+
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
-    
-    NSLog(@"%@,findAddressUseLat ",self);
     BMKGeoCodeSearch *_searcher =[[BMKGeoCodeSearch alloc]init];
     _searcher.delegate = self;
+
     //发起反向地理编码检索
     CLLocationCoordinate2D pt = (CLLocationCoordinate2D){lat, lon};
-    
+
     pt = [self convertCoordinateToBaiDuWithLongitude:pt.longitude latitude:pt.latitude];
-    
-    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[
-                                                            BMKReverseGeoCodeOption alloc]init];
+
+    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[BMKReverseGeoCodeOption alloc] init];
     reverseGeoCodeSearchOption.reverseGeoPoint = pt;
     BOOL flag = [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
-    //    [reverseGeoCodeSearchOption release];
-    if(flag)
-    {
-        NSLog(@"反geo检索发送成功");
-    }
-    else
-    {
-        NSLog(@"反geo检索发送失败");
-    }
-    
+
+    if (flag == NO) NSLog(@"反geo检索发送失败");
 }
 
 //接收反向地理编码结果
--(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:
-(BMKReverseGeoCodeResult *)result
+- (void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher
+                            result: (BMKReverseGeoCodeResult *)result
                         errorCode:(BMKSearchErrorCode)error{
     if (error == BMK_SEARCH_NO_ERROR) {
         //在此处理正常结果

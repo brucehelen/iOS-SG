@@ -27,9 +27,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        myActSearchView.mainClass = self;
     }
-    
+
     return self;
 }
 
@@ -175,6 +175,9 @@
     else if(connection == Act_Connect)
     {
         [Act_tempData appendData:incomingData];
+    }
+    else if (connection == Search_Connect) {
+        [Search_tempData appendData:incomingData];
     }
     else if(connection == His_Connect)
     {
@@ -472,6 +475,9 @@
     {
         [self Http_Process_GetLocAct];
     }
+    else if (connection == Search_Connect) {
+        [self httpProcessLocationActSearch];
+    }
     else if( connection == His_Connect )
     {
         
@@ -746,6 +752,10 @@
     {
         [Act_tempData setLength:0];
         Act_expectedLength = [aResponse expectedContentLength]; //儲存檔案長度
+    }
+    else if (connection == Search_Connect) {
+        Search_tempData.length = 0;
+        Search_expectedLength = [aResponse expectedContentLength];
     }
     else if(connection == His_Connect)
     {
@@ -1401,7 +1411,7 @@ NSTimer *MyTimer = nil;
 - (IBAction)Main_MouseDown:(id)sender
 {
     NSLog(@"tmp token5 = %@", tmpSaveToken);
-    
+
     if( sender == Bu1 )
     {
         [self Send_UserDate:userAccount andHash:userHash];
@@ -1410,14 +1420,13 @@ NSTimer *MyTimer = nil;
     {
         [self Send_UserSet:userAccount AndHash:userHash];
     }
-    else if (sender == Bu3)
+    else if (sender == Bu3)     // 健康管理
     {
         [self Change_State:IF_SHOWLSEL];
     }
-    else if (sender == Bu4)
+    else if (sender == Bu4)     // 定位救援
     {
-        if([checkNetwork check] == false)
-        {
+        if([checkNetwork check] == false) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
                                   [self Get_DefineString:ALERT_MESSAGE_TITLE]
                                                             message:
@@ -1434,9 +1443,9 @@ NSTimer *MyTimer = nil;
             [self Send_LocMap:userAccount andHash:userHash];
         }
     }
-    else if (sender == Bu5)
+    else if (sender == Bu5)     // 活动区域
     {
-        if([checkNetwork check] == false)
+        if ([checkNetwork check] == false)
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
                                   [self Get_DefineString:ALERT_MESSAGE_TITLE]
@@ -1454,7 +1463,7 @@ NSTimer *MyTimer = nil;
             [self Send_ActionLoc:userAccount andHash:userHash];
         }
     }
-    else if (sender == Bu6)
+    else if (sender == Bu6)     // 服务记录
     {
         //歷史紀錄
         [self Set_NewGetNum:1];
@@ -1463,12 +1472,11 @@ NSTimer *MyTimer = nil;
     {
         NSUserDefaults *defaults;
         defaults = [NSUserDefaults standardUserDefaults];
-        
+
         if ([[defaults objectForKey:@"quickCall"] integerValue] == 1) {
             NSString *phoneNumber = [@"tel://" stringByAppendingString:[PhoneData objectAtIndex:NowUserNum]];
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-            
         }
         else
         {
@@ -1664,6 +1672,10 @@ long long Sms_expectedLength;        //檔案大小
 NSURLConnection *Act_Connect;
 NSMutableData *Act_tempData;    //下載時暫存用的記憶體
 long long Act_expectedLength;        //檔案大小
+
+NSURLConnection *Search_Connect;
+NSMutableData *Search_tempData;    //下載時暫存用的記憶體
+long long Search_expectedLength;        //檔案大小
 
 NSString  *SaveAcc;
 NSString  *SaveHash;
@@ -2113,7 +2125,7 @@ BOOL    Is_Get1_Sw = false;
 }
 
 
-//時間控制函式
+#pragma mark - 活动区域展示定时器
 - (void)procTime:(NSTimer*)timer
 {
     switch (IF_State)
@@ -2123,7 +2135,6 @@ BOOL    Is_Get1_Sw = false;
             if ( TickCount > 9)
             {
                 TickCount = 0;
-
                 [(MyActView *)MyActView TimeProc];
             }
             break;
@@ -2135,17 +2146,15 @@ BOOL    Is_Get1_Sw = false;
 // main  時間計數器控制
 - (void)Ctl_MyTimer:(BOOL)Enable_Sw
 {
-	if (Enable_Sw)
-	{
-		if (MyTimer == nil)
-		{
-			MyTimer=[NSTimer scheduledTimerWithTimeInterval:0.1f
-													 target:self
-                                                   selector:@selector(procTime:)
-												   userInfo:nil
-                                                    repeats:YES];
-		}
-	}
+    if (Enable_Sw == NO) return;
+
+    if (MyTimer == nil) {
+        MyTimer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+                                                   target:self
+                                                 selector:@selector(procTime:)
+                                                 userInfo:nil
+                                                  repeats:YES];
+    }
 }
 
 #pragma mark - 其他view按钮点击事件
@@ -3211,115 +3220,106 @@ BOOL    Is_Get1_Sw = false;
 
 
 #pragma mark - 移除state
--(void) Remove_State:(int)NewState
+- (void) Remove_State:(int)NewState
 {
-    
     switch (NewState)
     {
         case IF_HealthSteps:
-            [ (UIView *)healthStepsView removeFromSuperview];
+            [(UIView *)healthStepsView removeFromSuperview];
             break;
+
         case IF_USERDATE:
             [ (UIView *)UserDateView removeFromSuperview];
             break;
-            
-            
+
         case IF_HIS:
             [(UIView *)MyHisView removeFromSuperview];
-            
             break;
-            
-        case IF_ACT:
-            
+
+        case IF_ACT:            // 活动区域
             [(UIView *)MyActView removeFromSuperview];
-            
             break;
-            
+
+        case IF_ACT_SEARCH:     // 活动区域搜索
+            [myActSearchView removeFromSuperview];
+            break;
+
         case IF_EATSEL:
             [(UIView *)MyEatPickView removeFromSuperview];
             break;
-            
+
         case IF_EATSHOW:
             [(UIView *)MyEatShowView removeFromSuperview];
-            
             break;
-            
+
         case IF_DATESHOW:
             [(UIView *)MyDateShowView removeFromSuperview];
             break;
-            
+
         case IF_DATESEL:
             [(UIView *)MyDatePickerView removeFromSuperview];
-            
-            
             break;
-            
+
         case IF_SHOWLSEL:
-            
             [(UIView *)MySelView removeFromSuperview];
             break;
             
         case IF_USERSET:
             [(UIView *)UserSetView removeFromSuperview];
             break;
-            
-            
+
         case IF_SETTING:
             [(UIView *)MySetView removeFromSuperview];
             break;
             
         case IF_MAP:
-        
-            //要停止Timer
-//            [(MyMapView*)MyMapView stopTimer];
             [(UIView *)MyMapView removeFromSuperview];
-            
             break;
-            
+
         case IF_SHOWLIST:
             [(UIView *)ListView removeFromSuperview];
             break;
-            
+
         case IF_MEASURERE:
             [(UIView *)MeasureRemind removeFromSuperview];
             break;
-        
+
         case IF_BPREMIND:
             [(UIView *)BPRemindView removeFromSuperview];
             break;
-        
+
         case IF_BOREMIND:
             [(UIView *)BORemindView removeFromSuperview];
             break;
-            
+
         case IF_BSREMIND:
             [(UIView *)BSRemindView removeFromSuperview];
             break;
-        
+
         case IF_SPORTREMIND:
             [(UIView *)SportRemindView removeFromSuperview];
             break;
-            
+
         case IF_WEIGHTREMIND:
             [(UIView *)WeightRemindView removeFromSuperview];
             break;
-         
+
         case IF_CALL:
             [(UIView *)CallLimit removeFromSuperview];
             break;
-        
+
         case IF_DEVSET:
             [(UIView *)DeviceSet removeFromSuperview];
             break;
-        
+
         case IF_FALLSET:
             [(UIView *)FallSet removeFromSuperview];
             break;
-            
+
         case IF_HISMAP:
             [(UIView *)MyHisMapView removeFromSuperview];
             break;
-        
+
         case IF_GROUPMEMBER:
             [(UIView *)GroupMemberView removeFromSuperview];
             break;
@@ -3327,19 +3327,19 @@ BOOL    Is_Get1_Sw = false;
         case IF_MYACCOUNT:
             [(UIView *)MyAccountView removeFromSuperview];
             break;
-            
+
         case IF_LEAVEREMIND:
             [(UIView *)LeaveRemind removeFromSuperview];
             break;
-        
+
         case IF_LEAVEMAP:
             [(UIView *)LeaveMap removeFromSuperview];
             break;
-        
+
         case IF_NEWSINFO:
             [(UIView *)NewsView removeFromSuperview];
             break;
-        
+
         case IF_NEWSCONTENT:
             [(UIView *)NewsContentView removeFromSuperview];
             break;
@@ -3368,10 +3368,6 @@ BOOL    Is_Get1_Sw = false;
         default:
             break;
     }
-//    [Bu_Index setHidden:YES];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        Bu_Index.hidden = YES; //works
-//    });
 }
 
 #pragma mark -
@@ -3423,8 +3419,7 @@ BOOL    Is_Get1_Sw = false;
      
 }
 
-
-#pragma mark - 變更目前流程
+#pragma mark - 变更状态
 
 - (void)Change_State:(int)NewState
 {
@@ -3446,8 +3441,10 @@ BOOL    Is_Get1_Sw = false;
 
         if (NewState == 1) {
             Bu_Index.hidden = YES; //works
+            Bu_search.hidden = YES;
         } else {
             Bu_Index.hidden = NO; //works
+            
         }
 
         // 确定当前view插入的位置
@@ -3490,36 +3487,36 @@ BOOL    Is_Get1_Sw = false;
                 //[self insertSubview:UserSetView atIndex:23];
                 break;
                 
-            case IF_HIS://歷史記錄
-//                [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"View_Record" forKey:kGAIScreenName] build]];
+            case IF_HIS:            //歷史記錄
                 TitleName.text = NSLocalizedStringFromTable(@"Bu6_Str", INFOPLIST, nil);
-                //[self insertSubview:MyHisView atIndex:23];
-                [self insertSubview:MyHisView belowSubview:insertView];
+                [self insertSubview:MyHisView
+                       belowSubview:insertView];
                 break;
 
-            case IF_AutoLocating://歷史記錄
+            case IF_AutoLocating:   //歷史記錄
                 TitleName.text = NSLocalizedStringFromTable(@"HS_Position", INFOPLIST, nil);
                 [LocatingEditView stopTimer];
                 [self insertSubview:AutoLocatingView
                        belowSubview:insertView];
                 break;
-            case IF_ACT://活動區域
-                //start timer
+            case IF_ACT:            // 活动区域
+                Bu_search.hidden = NO;
                 [self Ctl_MyTimer:true];
-//                [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"View_Move_Area" forKey:kGAIScreenName] build]];
                 [Bu_MapSet setHidden:NO];
-                
-//                [Bu_MapSet setTitle:NSLocalizedStringFromTable(@"Act_Map", INFOPLIST, nil) forState:UIControlStateNormal];
-                
-                [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"] forState:UIControlStateNormal];
-                
+                [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"]
+                                     forState:UIControlStateNormal];
+
                 TitleName.text = NSLocalizedStringFromTable(@"Bu5_Str", INFOPLIST, nil);
-                //[self insertSubview:MyActView atIndex:23];
                 [self insertSubview:MyActView
                        belowSubview:insertView];
+
                 break;
-                
-                
+
+            case IF_ACT_SEARCH:     // 活动区域搜索
+                [self insertSubview:myActSearchView
+                       belowSubview:insertView];
+                break;
+
             case IF_EATSEL://事件提醒
 //                [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"" forKey:kGAIScreenName] build]];
                 [Bu_Save setHidden:NO];
@@ -3592,28 +3589,24 @@ BOOL    Is_Get1_Sw = false;
             case IF_INDEX:
                 Is_UserGet_Sw = false;
                 [TitleName setText:[Array_show objectForKey:TITLE_INDEX]];
-
                 if ([self CheckTotal] == true) {
                     [self Show_GoToSet];
                 }
                 break;
 
             case IF_SETTING:
-                
-                
-                [TitleName setText: [  Array_show objectForKey : INDEX_BU_SET  ] ];
-                
-                [(MySetView *)MySetView  Set_Go:NowUserNum];
+                [TitleName setText: [Array_show objectForKey:INDEX_BU_SET]];
+                [(MySetView *)MySetView Set_Go:NowUserNum];
                 [self Set_SetView];
-                
+
                 [self insertSubview:MySetView belowSubview:insertView];
                 //[self insertSubview:MySetView atIndex:23];
                 break;
-                
+
             case IF_MAP:
                 //start timer
-                
-//                //顯示地圖/衛星 切換Btn顯示
+ 
+//                //顯示地圖/衛星 切  換Btn顯示
 //                [Bu_MapSet setHidden:NO];
 ////                [Bu_MapSet setTitle:NSLocalizedStringFromTable(@"Act_Map", INFOPLIST, nil) forState:UIControlStateNormal];
 //                [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"] forState:UIControlStateNormal];
@@ -4512,52 +4505,35 @@ BOOL    Is_Get1_Sw = false;
 */
 
 //活動區域(傳輸)
--(void) Send_ActionLoc:(NSString *)acc andHash:(NSString *)hash
+- (void) Send_ActionLoc:(NSString *)acc andHash:(NSString *)hash
 {
-    NSLog(@"log = account = %@",AccData);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    NSLog(@"dataIn: %@", dataIn);
     
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
-    NSLog(@"Hash : %@", hash);
-    
-    //    NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
-    
+
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetActiveRegion.html",INK_Url_1];
-    
-    NSLog(@"活動區域Api ＝ %@?%@",getUserApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
@@ -4568,16 +4544,12 @@ BOOL    Is_Get1_Sw = false;
     [self addloadingView];
 }
 
-
-
-//定位救援(傳輸)
--(void) Send_LocMap:(NSString *)acc andHash:(NSString *)hash
+// 定位救援(傳輸)
+- (void)Send_LocMap:(NSString *)acc andHash:(NSString *)hash
 {
-    NSLog(@"log = account = %@",AccData);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
@@ -4586,17 +4558,10 @@ BOOL    Is_Get1_Sw = false;
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
     
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    NSLog(@"dataIn: %@", dataIn);
     
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
@@ -4604,19 +4569,13 @@ BOOL    Is_Get1_Sw = false;
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
     
-    NSLog(@"Hash : %@", hash);
-    
-//    NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
-    
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@&language=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString,NSLocalizedStringFromTable(@"LANGUAGE", INFOPLIST, nil)];
     
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetSOSLocation.html",INK_Url_1];
-    
-    NSLog(@"定位救援Api ＝ %@?%@",getUserApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
@@ -4626,181 +4585,6 @@ BOOL    Is_Get1_Sw = false;
     
     [self addloadingView];
 }
-
-
-
-
-
-
-/*
-//定位救援(傳輸)
-- (void)Send_LocMap:(NSString *)Acc2 :(NSString *)Hash2
-{
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-    NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
-    NSString *tmpstr;
-    tmpstr =[NSString stringWithFormat:@"%@%@%@", Acc2, Hash2,dateString];
-    
-    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
-    NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
-    uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
- //   NSLog(@"dataIn: %@", dataIn);
-    
-    NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
-    NSString *hash=[out2 description];
-    hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
- //   NSLog(@"Hash : %@", hash);
-    
-    
-    
-    NSString *tmpstr2;
-    
-    tmpstr2=[NSString stringWithFormat:@"%@/OSGiRMS/applocation.do?account=%@&data=%@&timeStamp=%@%%20%@&UUID=%@",InkUrl,Acc2,hash,[arr objectAtIndex:0],[arr objectAtIndex:1],MyUUID];
-    
-    NSLog(@"定位救援 %@",tmpstr2);
-    
-    [request setURL:[NSURL URLWithString:tmpstr2]];
-    
-    [request setHTTPMethod:@"GET"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
-    Loc_tempData = [NSMutableData alloc];
-    Loc_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
-    [self addloadingView];
-//    [self Ctl_LoadingView:true];
-}
-
-
-//簡訊定位(傳輸)
-- (void)Send_LocSMSMap:(NSString *)Acc3 :(NSString *)Hash3
-{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-    NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
-    NSString *tmpstr;
-    tmpstr =[NSString stringWithFormat:@"%@%@%@", Acc3, Hash3,dateString];
-    
-    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
-    NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
-    uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    //   NSLog(@"dataIn: %@", dataIn);
-    
-    NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
-    NSString *hash=[out2 description];
-    hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
-    //   NSLog(@"Hash : %@", hash);
-    
-    
-    
-    NSString *tmpstr2;
-    
-    tmpstr2=[NSString stringWithFormat:@"%@/OSGiRMS/applocator.do?account=%@&data=%@&timeStamp=%@%%20%@&UUID=%@",InkUrl,Acc3,hash,[arr objectAtIndex:0],[arr objectAtIndex:1],MyUUID];
-    
-    NSLog(@"linkurl = %@",tmpstr2);
-    
-    [request setURL:[NSURL URLWithString:tmpstr2]];
-    
-    [request setHTTPMethod:@"GET"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
-    Sms_tempData = [NSMutableData alloc];
-    Sms_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-}
-*/
-/*
-//取得吃藥提醒設定資料(傳輸)
--(void) Send_Get2: (NSString *)Acc2 :(NSString *)Hash2
-{
-    
-    Is_Get1_Sw = false;
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-    NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
-    NSString *tmpstr;
-    tmpstr =[NSString stringWithFormat:@"%@%@%@", Acc2, Hash2,dateString];
-    
-    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
-    NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
-    uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
- //   NSLog(@"dataIn: %@", dataIn);
-    
-    NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
-    NSString *hash=[out2 description];
-    hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
- ///   NSLog(@"Hash : %@", hash);
-    
-    
-    NSString *tmpstr2;
-    
-    tmpstr2=[NSString stringWithFormat:@"%@/OSGiRMS/appmedicine.do?account=%@&data=%@&timeStamp=%@%%20%@&UUID=%@",InkUrl,Acc2,hash,[arr objectAtIndex:0],[arr objectAtIndex:1],MyUUID];
-    
-    [request setURL:[NSURL URLWithString:tmpstr2]];
-    
-    [request setHTTPMethod:@"GET"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
-    Get_tempData = [NSMutableData alloc];
-    Get_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
-    
-    [self Ctl_LoadingView:true];
-    
-    
-}
-*/
-
-
 
 //刪除佩帶者傳輸
 -(void)Clear_User
@@ -10836,7 +10620,9 @@ BOOL    Is_Get1_Sw = false;
     }
 }
 
-- (NSArray *)searchData:(NSString *)startStr AndEnd:(NSString *)endStr withArray:(NSArray *)arr
+- (NSArray *)searchData:(NSString *)startStr
+                 AndEnd:(NSString *)endStr
+              withArray:(NSArray *)arr
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -10911,98 +10697,106 @@ BOOL    Is_Get1_Sw = false;
     return arr;
 }
 
-//量測紀錄-血氧量測(回傳解析)
--(void)Http_Process_GetData3
+#pragma mark - 血氧记录
+- (void)Http_Process_GetData3
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Get_tempData];
     [inStream open];
-    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
+    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream
+                                                         options:NSJSONReadingAllowFragments
+                                                           error:&error];
     [inStream close];
-    
-    
-    NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
+    NSDictionary *usersOne = [jsonArr objectAtIndex:0];
+
+    NSLog(@"Http_Process_GetData3[血氧记录] = %@", usersOne);
+
     NSString *status = [usersOne objectForKey:@"status"];
-    NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-    if( [status isEqualToString:str1]  )
-    {
+
+    if ([status isEqualToString:@"0"]) {
         NSArray *datearr = [[NSArray alloc] init];
-        
         NSMutableArray *newdateArr = [[NSMutableArray alloc] init];
-        
+
         NSString *dateStr;
         float oxy;
         float heartbeat;
         NSMutableArray *listArr = [[NSMutableArray alloc] init];
+
+        NSArray *data = [usersOne objectForKey:@"Data"];
+
+        NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDate *tempDate;
         
-        
-        for (int i =0; i< [[usersOne objectForKey:@"Data"] count]; i++)
-        {
-            if (i ==0)
-            {
-                
-                dateStr = [[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"time"];
-                oxy = [[[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"oxygen"] floatValue];
-                heartbeat = [[[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"heartbeat"] floatValue];
-                
-                [listArr addObject:[[usersOne objectForKey:@"Data"] objectAtIndex:i]];
-                
-            }else
-            {
-                
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                
-                NSDate *firstDate = [dateFormatter dateFromString:dateStr];
-                
-                NSDate *secondDate = [dateFormatter dateFromString:[[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"time"]];
+        BOOL recordFlag = NO;
 
-                if ([secondDate timeIntervalSince1970] - [firstDate timeIntervalSince1970] <= 60) {
-                    oxy = (oxy + [[[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"oxygen"] floatValue])/2;
-                    heartbeat = (heartbeat + [[[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"heartbeat"] floatValue])/2;
-                    [listArr addObject:[[usersOne objectForKey:@"Data"] objectAtIndex:i]];
-                    
-                    if (i == [[usersOne objectForKey:@"Data"] count]-1) {
-                        NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%i",(int)(oxy + 0.5f)],@"oxygen",[NSString stringWithFormat:@"%i",(int)(heartbeat + 0.5f)],@"heartbeat",[dateStr substringWithRange:NSMakeRange(0, 16)],@"time",listArr,@"list", nil];
-                        [newdateArr addObject:dic];
-                        listArr = [[NSMutableArray alloc] init];
-                    }
-                    
-                    dateStr = [[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"time"];
-                }
-                else
-                {
-                    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%i",(int)(oxy + 0.5f)],@"oxygen",[NSString stringWithFormat:@"%i",(int)(heartbeat + 0.5f)],@"heartbeat",[dateStr substringWithRange:NSMakeRange(0, 16)],@"time",listArr,@"list", nil];
+        for (int i = 0; i < data.count; i++) {
 
-                    [newdateArr addObject:dic];
-
-                    dateStr = [[[usersOne objectForKey:@"Data"] objectAtIndex:i] objectForKey:@"time"];
-                    listArr = [[NSMutableArray alloc] init];
-                    [listArr addObject:[[usersOne objectForKey:@"Data"] objectAtIndex:i]];
-                }
+            dateStr = [data[i] objectForKey:@"time"];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            
+            NSDate *date = [dateFormatter dateFromString:dateStr];
+            if (i == 0) {
+                tempDate = [date copy];
             }
+            unsigned unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+            NSDateComponents *comps = [cal components:unitFlags fromDate:date];
+            NSDateComponents *tempComps = [cal components:unitFlags fromDate:tempDate];
+
+            if (comps.minute == tempComps.minute) {
+                if (recordFlag == NO) {
+                    recordFlag = YES;
+
+                    // save the first one
+                    oxy = [[data[i] objectForKey:@"oxygen"] floatValue];
+                    heartbeat = [[data[i] objectForKey:@"heartbeat"] floatValue];
+                    
+                    [listArr addObject:data[i]];
+                    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         [NSString stringWithFormat:@"%i",(int)(oxy + 0.5f)], @"oxygen",
+                                         [NSString stringWithFormat:@"%i",(int)(heartbeat + 0.5f)], @"heartbeat",
+                                         [dateStr substringWithRange:NSMakeRange(0, 16)], @"time",
+                                         listArr, @"list",
+                                         nil];
+                    listArr = [[NSMutableArray alloc] init];
+                    
+                    [newdateArr addObject:dic];
+                }
+            } else {
+                //recordFlag = NO;
+                
+                oxy = [[data[i] objectForKey:@"oxygen"] floatValue];
+                heartbeat = [[data[i] objectForKey:@"heartbeat"] floatValue];
+                
+                [listArr addObject:data[i]];
+                NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     [NSString stringWithFormat:@"%i",(int)(oxy + 0.5f)], @"oxygen",
+                                     [NSString stringWithFormat:@"%i",(int)(heartbeat + 0.5f)], @"heartbeat",
+                                     [dateStr substringWithRange:NSMakeRange(0, 16)], @"time",
+                                     listArr, @"list",
+                                     nil];
+                listArr = [[NSMutableArray alloc] init];
+                
+                [newdateArr addObject:dic];
+            }
+
+            tempDate = [date copy];
         }
 
         //血氧修改start
-        NSLog(@"newdateArr =%@",newdateArr);
-        
+        NSLog(@"newdateArr = %@", newdateArr);
+
         if (isMainBtn) {
-            NSLog(@"is Main YES");
-        }else
-        {
-            NSLog(@"is Main NO");
-        }
-        
-        
-        if (isMainBtn) {
+            NSLog(@"isMainBtn = YES");
             datearr = newdateArr;
-        }else
-        {
-            datearr = [self searchData:searchStart AndEnd:searchEnd withArray:newdateArr];
+        } else {
+            NSLog(@"isMainBtn = NO");
+            datearr = [self searchData:searchStart
+                                AndEnd:searchEnd
+                             withArray:newdateArr];
         }
-        
+
         isMainBtn = NO;
         //for CustomChart
         [(CustomChart *)chartCustom doInit];
@@ -11018,7 +10812,7 @@ BOOL    Is_Get1_Sw = false;
     {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [self Check_Error:str1];
-        
+
         [HUD hide:YES];
     }
 }
@@ -11093,10 +10887,9 @@ BOOL    Is_Get1_Sw = false;
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
     [inStream close];
-    
-    
-    NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
+    NSDictionary *usersOne = [jsonArr objectAtIndex:0];
+
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
     
@@ -11153,7 +10946,7 @@ BOOL    Is_Get1_Sw = false;
                     [newdateArr addObject:[[usersOne objectForKey:@"Data"] objectAtIndex:i]];
                 }
             }
-            
+
             if (isMainBtn) {
                 datearr = newdateArr;
             }else
@@ -11161,7 +10954,7 @@ BOOL    Is_Get1_Sw = false;
                 datearr = [self searchData:searchStart AndEnd:searchEnd withArray:newdateArr];
 
             }
-            
+
             isMainBtn = NO;
 
             //for CustomChart
@@ -11174,9 +10967,8 @@ BOOL    Is_Get1_Sw = false;
             [(CustomChart*)chartCustom setLimitDict:@{@"up": [usersOne objectForKey:@"Systolic_Up"],@"down":[usersOne objectForKey:@"Diastolic_Up"]}];
             [(CustomChart*)chartCustom reloadData];
             [(CustomChart*)chartCustom drawChart];
-            
+
             [HUD hide:YES];
-            
         }
         else
         {
@@ -11216,28 +11008,31 @@ BOOL    Is_Get1_Sw = false;
     return [NSArray arrayWithArray:newArray];
 }
 
-//活動區域(回傳解析)
--(void) Http_Process_GetLocAct
+#pragma mark - 活动区域
+- (void)Http_Process_GetLocAct
 {
-    NSLog(@"get ActLoc");
-
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Act_tempData];
     [inStream open];
-    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
-    NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
+    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream
+                                                         options:NSJSONReadingAllowFragments
+                                                           error:&error];
+
+    NSDictionary *usersOne = [jsonArr objectAtIndex:0];
 
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
 
-    NSLog(@"user one = %@",usersOne);
-    
+    NSLog(@">>> Http_Process_GetLocAct = %@", usersOne);
+
     [(MyActView *)MyActView setListDic:usersOne];
-    
-    if( [status isEqualToString:str1]  )
-    {
+
+    if ([status isEqualToString:str1]) {
         [HUD hide:YES];
+
+        // 在活动区域的界面显示搜索图标
+        Bu_search.hidden = NO;
+        Bu_search.enabled = [(MyActView *)MyActView stop];
 
         id station = [usersOne objectForKey:@"time"];
         id station2 = [usersOne objectForKey:@"location"];
@@ -11246,9 +11041,8 @@ BOOL    Is_Get1_Sw = false;
         id station5 = [usersOne objectForKey:@"electricity"];
         id station6 = [usersOne objectForKey:@"radius"];
         id station7 = [usersOne objectForKey:@"type"];
-        
-        if ([station isKindOfClass:[NSArray class]])
-        {
+
+        if ([station isKindOfClass:[NSArray class]]) {
             NSArray *tmpb1 = station;
             NSArray *tmpb2 = station2;
             NSArray *tmpb3 = station3;
@@ -11259,7 +11053,7 @@ BOOL    Is_Get1_Sw = false;
             //#######
             [(MyActView *)MyActView Set_Init:self];
             
-            for(int j =0;j< tmpb1.count;j++ )
+            for(int j = 0; j< tmpb1.count; j++ )
             {
                 id buf1 = [tmpb1 objectAtIndex:j];
                 id buf2 = [tmpb2 objectAtIndex:j];
@@ -11282,8 +11076,7 @@ BOOL    Is_Get1_Sw = false;
                     tmpValue4 = @"";
                 }
 
-                NSLog( @"data %d is 時間%@ ,位置%@ 經度%@,緯度%@,電量%@,範圍%@,type%@  ",j+1,tmpValue1,tmpValue2,tmpValue3,tmpValue4,tmpValue5,tmpValue6,tmpValue7 );
-                NSLog(@"tmpValue length %d",(int)tmpValue1.length);
+                NSLog( @"data %d is 時間%@ ,位置%@ 經度%@,緯度%@,電量%@,範圍%@,type%@  ",j+1,tmpValue1,tmpValue2,tmpValue3,tmpValue4,tmpValue5,tmpValue6,tmpValue7);
 
                 [(MyActView *)MyActView Insert_Data:tmpValue1:tmpValue2:tmpValue3:tmpValue5:tmpValue6:tmpValue4:tmpValue7];
             }
@@ -11292,16 +11085,13 @@ BOOL    Is_Get1_Sw = false;
                 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"ALERT_ACT_Error1", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
                 [alertView show];
-            }else
+            }
+            else
             {
-                
-                [(MyActView *)MyActView Do_Init: [UserData objectAtIndex:NowUserNum] ];
-                //目前沒有離家設定功能 暫時移除
-//                [self Send_ActLeaveSet:userAccount andHash:userHash];
+                [(MyActView *)MyActView Do_Init:[UserData objectAtIndex:NowUserNum]];
                 [self Change_State:IF_ACT];
             }
         }
-        
     }else
     {
         NSString *str1 =[usersOne objectForKey:@"msg"];
@@ -11310,8 +11100,177 @@ BOOL    Is_Get1_Sw = false;
     }
 }
 
-//定位救援(回傳解析)
--(void) Http_Process_GetLocMap
+#pragma mark - 活动区域历史记录搜索网络请求API
+- (void)Send_ActionSearch:(NSString *)acc andHash:(NSString *)hash searchDate:(NSString *)searchDate
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
+    request.timeoutInterval = TimeOutLimit;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:DEFAULTDATE];
+    NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
+    
+    NSString *tmpstr;
+    tmpstr = [NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
+    
+    NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
+    
+    uint8_t digest[CC_SHA256_DIGEST_LENGTH] = {0};
+    CC_SHA256(dataIn.bytes, (unsigned int)dataIn.length,  digest);
+
+    NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
+    hash=[out2 description];
+    hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
+    hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
+    
+    // searchDate=2015-09-28
+    NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@&searchDate=%@",
+                                acc,
+                                [AccData objectAtIndex:NowUserNum],
+                                hash,
+                                dateString,
+                                searchDate];
+    
+    NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetSearchActiveRegionByDate.html", INK_Url_1];
+    
+    [request setURL:[NSURL URLWithString:getUserApi]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
+    [request setHTTPBody:httpBody];
+    
+    Search_tempData = [[NSMutableData alloc] init];
+    Search_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    [self addloadingView];
+}
+
+#pragma mark 活动区域搜索网络请求成功
+- (void)httpProcessLocationActSearch
+{
+    NSError *error;
+    NSInputStream *inStream = [[NSInputStream alloc] initWithData:Search_tempData];
+    [inStream open];
+    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream
+                                                         options:NSJSONReadingAllowFragments
+                                                           error:&error];
+
+    NSDictionary *usersOne = [jsonArr objectAtIndex:0];
+
+    NSLog(@">>> httpProcessLocationActSearch = %@", usersOne);
+
+    NSString *status = [usersOne objectForKey:@"status"];
+    if ([status isEqualToString:@"0"]) {
+        [(MyActView *)MyActView setListDic:usersOne];
+        [(MyActView *)MyActView Set_Init:self];
+        [(MyActView *)MyActView reloadRouteListView];
+        
+        id station = [usersOne objectForKey:@"time"];
+        id station2 = [usersOne objectForKey:@"location"];
+        id station3 = [usersOne objectForKey:@"longitude"];
+        id station4 = [usersOne objectForKey:@"latitude"];
+        id station5 = [usersOne objectForKey:@"electricity"];
+        id station6 = [usersOne objectForKey:@"radius"];
+        id station7 = [usersOne objectForKey:@"type"];
+        
+        if ([station isKindOfClass:[NSArray class]]) {
+            NSArray *tmpb1 = station;
+            NSArray *tmpb2 = station2;
+            NSArray *tmpb3 = station3;
+            NSArray *tmpb4 = station4;
+            NSArray *tmpb5 = station5;
+            NSArray *tmpb6 = station6;
+            NSArray *tmpb7 = station7;
+            
+            for(int j = 0; j< tmpb1.count; j++ ) {
+                id buf1 = [tmpb1 objectAtIndex:j];
+                id buf2 = [tmpb2 objectAtIndex:j];
+                id buf3 = [tmpb3 objectAtIndex:j];
+                id buf4 = [tmpb4 objectAtIndex:j];
+                id buf5 = [tmpb5 objectAtIndex:j];
+                id buf6 = [tmpb6 objectAtIndex:j];
+                id buf7 = [tmpb7 objectAtIndex:j];
+                
+                NSString * tmpValue1 =[buf1 objectForKey:@"time"];
+                NSString * tmpValue2 =[buf2 objectForKey:@"location"];
+                NSString * tmpValue3 =[buf3 objectForKey:@"longitude"];
+                NSString * tmpValue4 =[buf4 objectForKey:@"latitude"];
+                NSString * tmpValue5 =[buf5 objectForKey:@"electricity"];
+                NSString * tmpValue6 =[buf6 objectForKey:@"radius"];
+                NSString * tmpValue7 =[buf7 objectForKey:@"location_type"];
+                
+                if (([tmpValue3 doubleValue] >180 )|| ([tmpValue3 doubleValue] < -180) || ([tmpValue4 doubleValue] >90) || ([tmpValue4 doubleValue] < -90)) {
+                    tmpValue3 = @"";
+                    tmpValue4 = @"";
+                }
+
+                [(MyActView *)MyActView Insert_Data:tmpValue1:tmpValue2:tmpValue3:tmpValue5:tmpValue6:tmpValue4:tmpValue7];
+            }
+        }
+
+        [myActSearchView removeFromSuperview];
+        Bu_search.hidden = NO;
+        Bu_Index.hidden = NO;
+        Bu_MapSet.hidden = NO;
+    }
+
+    [HUD hide:YES];
+}
+
+#pragma mark 搜索按钮点击事件
+- (IBAction)searchButtonDidClicked:(UIButton *)sender
+{
+    myActSearchView.mainClass = self;
+
+    UIView *insertView = [self viewWithTag:12345];
+    if (insertView == nil) {
+        NSLog(@"*** Please check view with tag = 12345");
+        return;
+    }
+
+    [self insertSubview:myActSearchView
+           belowSubview:insertView];
+
+    Bu_MapSet.hidden = YES;
+    Bu_search.hidden = YES;
+    Bu_Index.hidden = YES;
+}
+
+#pragma mark 搜索页面取消确定按钮
+- (void)searchResultButtonDidClicked:(int)index date:(NSDate *)date
+{
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd"];
+
+    switch (index) {
+        case 0:
+            [myActSearchView removeFromSuperview];
+            Bu_search.hidden = NO;
+            Bu_Index.hidden = NO;
+            Bu_MapSet.hidden = NO;
+            break;
+        case 1:
+        {
+            NSString *dateString = [formater stringFromDate:date];
+            [self Send_ActionSearch:userAccount
+                            andHash:userHash
+                         searchDate:dateString];
+        } break;
+        default:
+            break;
+    }
+}
+
+#pragma mark 展示定时器停止, 搜索按钮可用
+- (void)displayTimerStop
+{
+    Bu_search.enabled = YES;
+}
+
+#pragma mark - 定位救援
+- (void) Http_Process_GetLocMap
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Loc_tempData];
@@ -11327,14 +11286,20 @@ BOOL    Is_Get1_Sw = false;
 
     sosMap = usersOne;
 
-    if( [status isEqualToString:str1]  )
+    if( [status isEqualToString:str1])
     {
         NSLog(@"userone = %@",usersOne);
         
-        if ([[usersOne objectForKey:@"data"] count]>0) {
-            [(MyMapView *)MyMapView Do_Init:self];
+        if ([[usersOne objectForKey:@"data"] count] > 0) {
+            
             id idTmp = [usersOne objectForKey:@"data"];
             NSDictionary *dicTmp = [idTmp objectAtIndex:0];
+
+            int isGPSGSMWIFI = [[dicTmp objectForKey:@"location_type"] intValue];
+            [(MyMapView *)MyMapView setGPS_GSM_WIFI:isGPSGSMWIFI];
+
+            [(MyMapView *)MyMapView Do_Init:self];
+
             NSString *strTmp = [NSString stringWithFormat:@"%@",[dicTmp objectForKey:@"type"]];
             if ([strTmp isEqualToString:@"28"]) {//type = 28 簡訊定位
                 [(MyMapView *)MyMapView setGpsLocation:YES];
@@ -11342,15 +11307,11 @@ BOOL    Is_Get1_Sw = false;
             else{
                 [(MyMapView *)MyMapView setGpsLocation:NO];
             }
-            
-            int isGPSGSMWIFI = [[dicTmp objectForKey:@"location_type"]intValue];
-            NSLog(@"isGPSGSMWIFI %d",isGPSGSMWIFI);
-            [(MyMapView *)MyMapView setGPS_GSM_WIFI:isGPSGSMWIFI];
 
             [self Change_State:IF_MAP ];
 
             id station = [usersOne objectForKey:@"station"];
-            
+
             NSString *longitude;
             NSString *latitude;
             NSString *radius;
@@ -14111,8 +14072,6 @@ BOOL    Is_Get1_Sw = false;
                       //                      cell.textLabel.text = [NSString stringWithFormat:@"Section %d Row %d", indexPath.section, indexPath.row];
                       
                       cell.textLabel.text = [levelArr objectAtIndex:indexPath.row];
-                      
-                      
                       return cell;
                   }];
     

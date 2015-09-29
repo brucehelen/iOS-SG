@@ -8,19 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol RouteListDelegate
+@protocol RouteListDelegate <NSObject>
 
 @required
 
 - (void)mainButtonWasPressed:(id)sender;
 - (void)didselectCellNum:(int)number;
+
 @end
 
 @interface RouteList : UIView
 
-@property (nonatomic,strong) NSArray *routeListArr;
-@property (nonatomic,strong) IBOutlet UITableView *routeTable;
-@property (strong) NSObject <RouteListDelegate> *delegate;
+@property (nonatomic, strong) NSArray *routeListArr;
+@property (nonatomic, strong) IBOutlet UITableView *routeTable;
+@property (nonatomic, weak) id <RouteListDelegate> delegate;
 
 - (IBAction)onMainButton:(id)sender;
+
 @end

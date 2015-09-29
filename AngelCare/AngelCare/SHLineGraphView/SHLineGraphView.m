@@ -97,7 +97,8 @@
     return self;
 }
 
-- (void)loadDefaultTheme {
+- (void)loadDefaultTheme
+{
     overX = 0;
     _themeAttributes = @{
                          kXAxisLabelColorKey : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0],
@@ -134,14 +135,14 @@
             [m_arrays addObject:[_limitLineDict objectForKey:@"bpdUplimit"]];
             bpdUplimit = [[_limitLineDict objectForKey:@"bpdUplimit"] intValue];
             bpsUplimit = [[_limitLineDict objectForKey:@"bpsUplimit"] intValue];
-            
         }
+
         if (idxForPlot == 0) {
             [self drawPlotWithPlotFirst:plot];
         }
-        
+
         //Set limit value
-        
+
         //draw the up down limit
         if (self.currentPage == 0) {
             if (_graphType == 1) {
@@ -151,48 +152,36 @@
                 [self drawLimitLinesWithValue:_limitBG];
             }
             else if (_graphType == 5){
-//                [self drawLimitLines];
+
             }
         }
         else{
             
         }
-        
-        
+
         [self initRange:_keys[idxForPlot]];
         [self drawPlotWithPlot:plot];
         [tmpPlots addObject:plot];
         idxForPlot++;
     }
+
     for(SHPlot *plot in _plots) {
         [tmpPlots addObject:plot];
     }
-    //draw vertical lines
-//    [self drawVerticalLineWithPlot1:tmpPlots[0] andPlot2:tmpPlots[1]];
-    
-    
 }
 
 #pragma mark - Actual Plot Drawing Methods
 
-- (void)drawPlotWithPlot:(SHPlot *)plot {
+#pragma mark 设置健康等级Label
+- (void)drawPlotWithPlot:(SHPlot *)plot
+{
     //draw y-axis labels. this has to be done first, so that we can determine the left margin to leave according to the
     //y-axis lables.
     [self drawYLabels:plot];
-    
-    
+
     //draw x-labels
     [self drawXLabels:plot];
-    
-    
-    
-    //draw the grey lines
-//    [self drawLines:plot];
-    
-    
-    /*
-     actual plot drawing
-     */
+
     if (self.currentPage == 0) {
         [self drawPlot:plot];
     }
@@ -217,9 +206,7 @@
             title = [[UILabel alloc]initWithFrame:CGRectMake(5, self.frame.size.height + 2, self.frame.size.width, 20)];
             subtitle = [[UILabel alloc]initWithFrame:CGRectMake(5, self.frame.size.height + 2 + 20, self.frame.size.width, 50)];
         }
-        
-        
-        
+
         title.text = @"";
         subtitle.text = @"";
         NSArray *m_array = [[NSArray alloc]initWithArray:[self returnAdvice]];
@@ -236,18 +223,42 @@
             [self addSubview:subtitle];
         }
         
-        [title setTextColor:[UIColor whiteColor]];
-        [subtitle setTextColor:[UIColor whiteColor]];
+        [title setTextColor:[UIColor blackColor]];
+        [subtitle setTextColor:[UIColor blackColor]];
     }
-    
-    
-    
-    
-    //
-//    [self drawVerticalLine:plot];
 }
 
-- (NSArray*)returnAdvice{
+- (NSString *)overXType
+{
+    NSString *m_warningType;
+
+    if ((overX > 3) && (beta > 0)) {
+        m_warningType = @"1";
+    }
+    else if ((overX > 0) && (overX <= 3) && (beta > 0)) {
+        m_warningType = @"2";
+    }
+    else if ((overX > 3) && (beta < 0)) {
+        m_warningType = @"3";
+    }
+    else if ((overX > 0) && (overX <= 3) && (beta < 0)) {
+        m_warningType = @"4";
+    }
+    else if ((overX == 0) && (beta > 0)) {
+        m_warningType = @"A";
+    }
+    else if ((overX == 0) && (beta <= 0)) {
+        m_warningType = @"B";
+    }
+    else {
+        m_warningType = @"";
+    }
+
+    return m_warningType;
+}
+
+- (NSArray*)returnAdvice
+{
     NSArray *m_array = [[NSArray alloc]init];
     NSString *m_title = @"";
     NSString *m_subTitle = @"";
@@ -313,7 +324,9 @@
     //
     //    [self drawVerticalLine:plot];
 }
-- (int)getIndexForValue:(NSNumber *)value forPlot:(SHPlot *)plot {
+
+- (int)getIndexForValue:(NSNumber *)value forPlot:(SHPlot *)plot
+{
     for(int i=0; i< _xAxisValues.count; i++) {
         NSDictionary *d = [_xAxisValues objectAtIndex:i];
         __block BOOL foundValue = NO;
@@ -330,7 +343,9 @@
     }
     return -1;
 }
-- (CAShapeLayer*)setLayerWithColor:(UIColor*)color andTheme:(NSDictionary*)theme{
+
+- (CAShapeLayer*)setLayerWithColor:(UIColor*)color andTheme:(NSDictionary*)theme
+{
     CAShapeLayer *circleLayer = [CAShapeLayer layer];
     circleLayer.frame = self.bounds;
     circleLayer.fillColor = color.CGColor;//更改填滿的顏色
@@ -342,19 +357,14 @@
     return circleLayer;
 }
 
-- (void)drawWhitePlot:(SHPlot *)plot{
+- (void)drawWhitePlot:(SHPlot *)plot
+{
     NSDictionary *theme = plot.plotThemeAttributes;
-    
-    
-    
-    
-    
     double yIntervalValue = _initStep; //確定間距
     if (_graphType == 4) {
         yIntervalValue = _initStepF; //確定間距
     }
-    
-    
+
     NSMutableArray *mX_arrays = [NSMutableArray new];
     NSMutableArray *mY_arrays = [NSMutableArray new];
     
@@ -403,21 +413,16 @@
     [backgroundLayer setStrokeColor:[UIColor clearColor].CGColor];
     [backgroundLayer setLineWidth:((NSNumber *)theme[kPlotStrokeWidthKey]).intValue];
     CGMutablePathRef backgroundPath = CGPathCreateMutable();
-    
-    //1 white
-//    CAShapeLayer *circleLayer = [self setLayerWithColor:[UIColor whiteColor] andTheme:theme];
-//    CGMutablePathRef circlePath = CGPathCreateMutable();
-    
+
     //graphPath
     CAShapeLayer *graphLayer = [CAShapeLayer layer];
     graphLayer.frame = self.bounds;
     graphLayer.fillColor = [UIColor clearColor].CGColor;
     graphLayer.backgroundColor = [UIColor clearColor].CGColor;
 
-    
     [graphLayer setLineWidth:4.0];
     CGMutablePathRef graphPath = CGPathCreateMutable();
-    
+
     //1 green
     CAShapeLayer *circleLayer = [self setLayerWithColor:[UIColor colorWithRed:0/255.0 green:191/255.0 blue:202/255.0 alpha:1.0] andTheme:theme];
     CGMutablePathRef circlePath = CGPathCreateMutable();
@@ -436,15 +441,11 @@
     //whiete
     CAShapeLayer *circleLayerW = [self setLayerWithColor:[UIColor whiteColor] andTheme:theme];
     CGMutablePathRef circlePathW = CGPathCreateMutable();
-    //
-
 
     NSInteger count = _xAxisValues.count;
     double tmpS = 0.0;
-    for(int i=0; i< count; i++){
+    for(int i = 0; i < count; i++){
         CGPoint point = plot.xPoints[i];
-//        CGPathAddLineToPoint(graphPath, NULL, point.x, point.y);
-//        CGPathAddLineToPoint(backgroundPath, NULL, point.x, point.y);
         double tmp = [[plot.plottingValues[i] objectForKey:@(i+1)] doubleValue];
         NSDictionary *dict = _datas[i];
         switch (_graphType) {
@@ -542,21 +543,10 @@
                 break;
         }
     }
-//    NSInteger count = _xAxisValues.count;
-//    
-//    for(int i=0; i< count; i++){
-//        CGPoint point = plot.xPoints[i];
-//        CGPathAddEllipseInRect(circlePath, NULL, CGRectMake(point.x - 5, point.y - 5, 10, 10));
-//    }
-    
-    
+
     //cal regression
     [self calFunctionWithX:mX_arrays andY:mY_arrays];
-    
-   
-    
-    
-    //
+
     NSArray *regressionY = [[NSArray alloc]initWithArray:[self returnRegression:mX_arrays]];
     NSMutableArray *rY = [NSMutableArray new];
     for (int i = 0; i < regressionY.count; i++) {
@@ -570,8 +560,7 @@
         if (_graphType == 4) {
             tmpy = ([[regressionY objectAtIndex:i ] doubleValue] - _initYF)/yIntervalValue * intervalInPx;
         }
-        
-        //線之間的間距 => intervalInPx
+
         double y = height - tmpy;
         [rY addObject:@(y)];
     }
@@ -630,13 +619,12 @@
     [self.layer addSublayer:circleLayer4];
     [self.layer addSublayer:circleLayer5];
     [self.layer addSublayer:circleLayerW];
-
 }
-- (void)drawPlot:(SHPlot *)plot {
-    
+
+- (void)drawPlot:(SHPlot *)plot
+{
     NSDictionary *theme = plot.plotThemeAttributes;
-    
-    //
+
     CAShapeLayer *backgroundLayer = [CAShapeLayer layer];
     backgroundLayer.frame = self.bounds;
     backgroundLayer.fillColor = ((UIColor *)theme[kPlotFillColorKey]).CGColor;
@@ -663,17 +651,14 @@
     //whiete
     CAShapeLayer *circleLayerW = [self setLayerWithColor:[UIColor whiteColor] andTheme:theme];
     CGMutablePathRef circlePathW = CGPathCreateMutable();
-    //
 
     CAShapeLayer *graphLayer = [CAShapeLayer layer];
     graphLayer.frame = self.bounds;
     graphLayer.fillColor = [UIColor clearColor].CGColor;
     graphLayer.backgroundColor = [UIColor clearColor].CGColor;
-//    [graphLayer setStrokeColor:((UIColor *)theme[kPlotStrokeColorKey]).CGColor];
     [graphLayer setStrokeColor:[UIColor colorWithRed:0/255.0 green:191/255.0 blue:202/255.0 alpha:1.0].CGColor];
     [graphLayer setLineWidth:((NSNumber *)theme[kPlotStrokeWidthKey]).intValue];
     CGMutablePathRef graphPath = CGPathCreateMutable();
-    
 
     double yIntervalValue = _initStep; //確定間距
     if (_graphType == 4) {

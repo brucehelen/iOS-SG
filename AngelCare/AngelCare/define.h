@@ -7,7 +7,8 @@
 #define IF_DATESHOW     7
 #define IF_EATSHOW      8
 #define IF_EATSEL       9
-#define IF_ACT          10
+#define IF_ACT          10      // 活动区域
+#define IF_ACT_SEARCH   1001    // 活动区域搜索
 #define IF_HIS          11
 #define IF_USERSET      12
 #define IF_USERDATE     13
@@ -306,7 +307,10 @@
 //IP位置
 //mh http://www.missionhealthtec.com:8080/angelcare
 //cn http://china.guidercare.com:8080/angelcare
-#define INK_Url_1 @"http://www.missionhealthtec.com:8080/angelcare"
+//#define INK_Url_1 @"http://www.missionhealthtec.com:8080/angelcare"
+// 阿里云
+#define INK_Url_1 @"http://watch.medquotient.com:8080/angelcare"
+
 //#define INK_Url_1 @"http://safetywatch.cloudapp.net:8252/safetywatch"
 
 //#define INK_Url_1 @"http://192.168.1.19:8000/safetywatch"

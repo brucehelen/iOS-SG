@@ -19,6 +19,7 @@
 {
     MainObj = sender;
 
+    self.locatingTableView.backgroundColor = [UIColor whiteColor];
     [self.locatingTableView reloadData];
 }
 
