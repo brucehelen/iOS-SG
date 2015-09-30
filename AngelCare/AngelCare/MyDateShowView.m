@@ -35,40 +35,40 @@
     NSLog(@"funcionBtn sender tag = %d", (int)sender.tag);
 
     switch (sender.tag) {
-        case 101://量測提醒
+        case 101:   // 量測提醒
             [(MainClass *)MainObj Other_MouseDown:91];
             break;
-        case 102://通話限制
+        case 102:   // 通話限制
             [(MainClass *)MainObj Other_MouseDown:92];
             break;
-        case 103://硬體設定
+        case 103:   // 硬體設定
             [(MainClass *)MainObj Other_MouseDown:93];
             break;
-        case 104://跌倒設定
+        case 104:   // 跌倒設定
             [(MainClass *)MainObj Other_MouseDown:94];
             NSLog(@"Fall");
             break;
-        case 105://離家警示設定
+        case 105:   // 離家警示設定
             [(MainClass *)MainObj Other_MouseDown:95];
             NSLog(@"LeaveRemind");
             break;
-        case 106://取得展示照片
+        case 106:   // 取得展示照片
             [(MainClass *)MainObj Other_MouseDown:96];
             NSLog(@"取得展示照片");
             break;
-        case 107://活動量提醒 無動作
+        case 107:   // 活動量提醒 無動作
             [(MainClass *)MainObj Other_MouseDown:97];
             NSLog(@"活動量提醒");
             break;
-        case 108://同步時段
+        case 108:   // 同步時段
             [(MainClass *)MainObj Other_MouseDown:98];
             NSLog(@"同步時段");
             break;
-        case 109://電子圍籬
+        case 109:   // 電子圍籬
             [(MainClass *)MainObj Other_MouseDown:99];
             NSLog(@"電子圍籬");
             break;
-        case 110://Missing
+        case 110:   // 自建定位
             //[(MainClass *)MainObj Other_MouseDown:100];
             //NSLog(@"Missing program");
             [(MainClass *)MainObj Other_MouseDown:99];

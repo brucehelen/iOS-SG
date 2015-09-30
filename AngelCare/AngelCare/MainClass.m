@@ -1527,9 +1527,12 @@ NSTimer *MyTimer = nil;
         [(MyDateShowView *)MyDateShowView Do_Init:self];
         [self Change_State:IF_DATESHOW];
     }
-    else if (sender == Bu10) {
-        [geoFS do_initWithSender:self];
-        [self Get_GEO_Setting:userAccount andHash:userHash];
+    else if (sender == Bu10) {      // 电子围栏
+        // bruce@20150930 - 国内版本暂时改成自建定位
+        [self Get_WiFiList:userAccount andHash:userHash];
+
+        //[geoFS do_initWithSender:self];
+        //[self Get_GEO_Setting:userAccount andHash:userHash];
     }
     else if (sender == Bu_Index)    // 退格按钮
     {
@@ -1555,8 +1558,9 @@ NSTimer *MyTimer = nil;
                 [self Change_State:IF_INDEX];
                 [self Change_State:IF_EATSHOW];
                 
-            }else if (IF_State == IF_MEASURERE || IF_State == IF_CALL || IF_State == IF_DEVSET || IF_State == IF_FALLSET || IF_State == IF_LEAVEREMIND || IF_State == IF_SHOWIMAGE || IF_State == IF_TWI || IF_State == IF_ACTALERT || IF_State == IF_AutoLocating)
+            }else if (IF_State == IF_MEASURERE || IF_State == IF_CALL || IF_State == IF_DEVSET || IF_State == IF_FALLSET || IF_State == IF_LEAVEREMIND || IF_State == IF_SHOWIMAGE || IF_State == IF_TWI || IF_State == IF_ACTALERT )
             {
+                // || IF_State == IF_AutoLocating
                 [self Change_State:IF_DATESHOW];
                 
             }else if (IF_State == IF_BPREMIND || IF_State == IF_BOREMIND || IF_State == IF_BSREMIND || IF_State == IF_SPORTREMIND || IF_State == IF_WEIGHTREMIND )
@@ -3444,7 +3448,6 @@ BOOL    Is_Get1_Sw = false;
             Bu_search.hidden = YES;
         } else {
             Bu_Index.hidden = NO; //works
-            
         }
 
         // 确定当前view插入的位置
@@ -7108,7 +7111,7 @@ BOOL    Is_Get1_Sw = false;
 
     NSLog(@"Hash : %@", hash);
 
-//http://210.242.50.122:9000/mcarewatch/API/
+// http://210.242.50.122:9000/mcarewatch/API/
 //    AppGetMemberWifi.html?
 //    userAccount=testforen&
 //    account=352151022022078&
@@ -10244,6 +10247,7 @@ BOOL    Is_Get1_Sw = false;
         [(AutoLocating*)AutoLocatingView setData:m_data];
         [(AutoLocating*)AutoLocatingView Do_init:self];
         [HUD hide:YES];
+        // bruce@20150930 - 修改国内电子围栏首页显示项
         [self Change_State:IF_AutoLocating];
     }
     else

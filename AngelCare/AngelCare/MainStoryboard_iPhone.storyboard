@@ -2098,7 +2098,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" id="gwf-Lz-kwd" userLabel="bgview10">
+                        <view hidden="YES" contentMode="scaleToFill" id="gwf-Lz-kwd" userLabel="bgview10">
                             <rect key="frame" x="10" y="261" width="100" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

@@ -1,6 +1,6 @@
 /* Localized versions of Info.plist keys */
 
-"CFBundleDisplayName"  = "健康云手表";
+"CFBundleDisplayName"  = "康美健康云";
 "LANGUAGE" = "2";
 "Setting_Version" = "Version";
 "NONET" = "网路连线异常，请稍候再尝试";
@@ -79,7 +79,10 @@
 "Bu7_Str" = "通话速拨";
 "Bu8_Str" = "事件提醒";
 "Bu9_Str" = "贴心设定";
-"Bu10_Str" = "电子围栏";
+
+// bruce@20150930国内版本修改首页按钮文字
+//"Bu10_Str" = "电子围栏";
+"Bu10_Str" = "自建定位";
 
 /***************************/
 

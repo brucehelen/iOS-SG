@@ -324,7 +324,6 @@
 		7A4A428C1B26C40C00277B10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4A428B1B26C40C00277B10 /* Images.xcassets */; };
 		7A656C7C1BABAA2B006F2577 /* login_700_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7B1BABAA2B006F2577 /* login_700_02.png */; settings = {ASSET_TAGS = (); }; };
 		7A656C7E1BABAEEB006F2577 /* 登录按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7D1BABAEEB006F2577 /* 登录按钮.png */; settings = {ASSET_TAGS = (); }; };
-		7A72D7091BB8F377001A8777 /* libReveal.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 7A72D7071BB8F32E001A8777 /* libReveal.dylib */; };
 		7A72D70D1BBA3491001A8777 /* MyActSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A72D70C1BBA3490001A8777 /* MyActSearchView.m */; settings = {ASSET_TAGS = (); }; };
 		7A72D70F1BBA86D9001A8777 /* search_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A72D70E1BBA86D9001A8777 /* search_1.png */; settings = {ASSET_TAGS = (); }; };
 		7A7F6DDD1B82D497004ECA87 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47484374184D86AD001351AF /* libz.dylib */; };
@@ -1018,7 +1017,6 @@
 		7A4A428B1B26C40C00277B10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 3GSW/Images.xcassets; sourceTree = "<group>"; };
 		7A656C7B1BABAA2B006F2577 /* login_700_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_700_02.png; sourceTree = "<group>"; };
 		7A656C7D1BABAEEB006F2577 /* 登录按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录按钮.png"; sourceTree = "<group>"; };
-		7A72D7071BB8F32E001A8777 /* libReveal.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libReveal.dylib; sourceTree = "<group>"; };
 		7A72D70B1BBA3490001A8777 /* MyActSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActSearchView.h; sourceTree = "<group>"; };
 		7A72D70C1BBA3490001A8777 /* MyActSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActSearchView.m; sourceTree = "<group>"; };
 		7A72D70E1BBA86D9001A8777 /* search_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_1.png; sourceTree = "<group>"; };
@@ -1717,7 +1715,6 @@
 			isa = PBXGroup;
 			children = (
 				7A4A428B1B26C40C00277B10 /* Images.xcassets */,
-				7A72D7071BB8F32E001A8777 /* libReveal.dylib */,
 				182A82251AEA636D0032B613 /* Default-568h@2x.png */,
 				7AB4E5131BB14DCE00DA84E6 /* head_pic.png */,
 				7A656C7D1BABAEEB006F2577 /* 登录按钮.png */,
@@ -2616,7 +2613,6 @@
 				CEF698C616003D8900874E59 /* Sources */,
 				CEF698C716003D8900874E59 /* Frameworks */,
 				CEF698C816003D8900874E59 /* Resources */,
-				7A7F6DE01B82D566004ECA87 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2634,11 +2630,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				TargetAttributes = {
-					CEF698C916003D8900874E59 = {
-						DevelopmentTeam = ZV2299XXGK;
-					};
-				};
 			};
 			buildConfigurationList = CEF698C416003D8900874E59 /* Build configuration list for PBXProject "3GSW" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2667,7 +2658,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A72D7091BB8F377001A8777 /* libReveal.dylib in Resources */,
 				DB3C95F81AB974DE00F82534 /* mapapi.bundle in Resources */,
 				47A9010C1770155B0069B9AA /* UserSetCell.xib in Resources */,
 				DB77C68218AE1224003B9AFB /* FallSetting.png in Resources */,
@@ -3116,22 +3106,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		7A7F6DE01B82D566004ECA87 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nif [ -n \"${CODE_SIGN_IDENTITY}\" ]; then\ncodesign -fs \"${CODE_SIGN_IDENTITY}\" \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}/libReveal.dylib\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CEF698C616003D8900874E59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -3359,8 +3333,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3381,7 +3355,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3398,8 +3372,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3426,9 +3400,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.missionhealth.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3456,8 +3430,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3485,7 +3459,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3512,8 +3486,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3534,7 +3508,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3551,8 +3525,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3579,9 +3553,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.missionhealth.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3598,8 +3572,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3626,9 +3600,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.missionhealth.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

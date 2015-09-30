@@ -53,7 +53,7 @@ BMKMapManager *_mapManager;
         if (error != nil)
         {
             NSString *message = [NSString stringWithFormat:@"%@.%@ failed to load with error: %@", revealLibName, revealLibExtension, error];
-            [[[UIAlertView alloc] initWithTitle:@"Reveal library could not be loaded" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            NSLog(@"message = %@", message);
         }
     }
 }

@@ -783,7 +783,7 @@
     else{
         wY = 65;
     }
-    
+
     NSString *overXType = [_lineGraph overXType];
     NSLog(@"type = %@", overXType);
 
