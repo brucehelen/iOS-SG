@@ -64,33 +64,16 @@
     NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
     
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if([currentLanguage isEqualToString:check1]  )
-    {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_tw" ofType:@"plist"];
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_cn" ofType:@"plist"];
         Array_show = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-        NowMode = 3;
+        NowMode = 2;
+    } else {        // en
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_en" ofType:@"plist"];
+        Array_show = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+        NowMode = 1;
     }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_cn" ofType:@"plist"];
-            Array_show = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-            
-            NowMode=2;
-        }
-        else
-        {
-            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_en" ofType:@"plist"];
-            Array_show =   [  [  NSMutableDictionary  alloc  ]  initWithContentsOfFile : plistPath] ;
-            
-            NowMode = 1;
-        }
-    }
-    
+
     NSLog(@"tmpsave Token = %@", tmpSaveToken);
     tmpSaveToken = [NSString stringWithFormat:@"s"];
     ShowNum = 0;
@@ -460,8 +443,6 @@
                 [self Http_Process_GetData5];
                 break;
         }
-        
-        
     }
     else if(connection == Loc_Connect)
     {
@@ -1368,55 +1349,32 @@ NSTimer *MyTimer = nil;
     
 }
 
-
-
-
 //無使用者時導入設定頁的alert提示
--(void)Show_GoToSet
+- (void)Show_GoToSet
 {
-    NSLog(@"tokensss = %@",tmpSaveToken);
-    
-    int SzlenX = [UserData count];
-    
-    NSLog(@"user data = %i",SzlenX);
-    
-    if( SzlenX == 0)
-    {
-        NSLog(@"clear");
-//        [self Clear_User];
-    }
-    
     GoToSetting_Sw = true;
-    
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
-                          [self Get_DefineString:ALERT_MESSAGE_TITLE]
-                                                    message:
-                          [self Get_DefineString:ALERT_MESSAGE_INPUT]
-                          delegate
-                                                           : self cancelButtonTitle:
-                          [self Get_DefineString:ALERT_MESSAGE_OK]
-                                          otherButtonTitles: nil];
-    
-    
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[self Get_DefineString:ALERT_MESSAGE_TITLE]
+                                                    message:[self Get_DefineString:ALERT_MESSAGE_INPUT]
+                                                   delegate:self
+                                          cancelButtonTitle:[self Get_DefineString:ALERT_MESSAGE_OK]
+                                          otherButtonTitles:nil];
+
     alert.delegate = self;
-    
-    
-    
+
     [alert show];
-    
 }
 
 #pragma mark - 首页按钮点击事件
 - (IBAction)Main_MouseDown:(id)sender
 {
-    NSLog(@"tmp token5 = %@", tmpSaveToken);
+    NSLog(@"--- Main_MouseDown = %@", sender);
 
     if( sender == Bu1 )
     {
         [self Send_UserDate:userAccount andHash:userHash];
     }
-    else if (sender == Bu2)
+    else if (sender == Bu2)     // 设备状态
     {
         [self Send_UserSet:userAccount AndHash:userHash];
     }
@@ -1468,7 +1426,7 @@ NSTimer *MyTimer = nil;
         //歷史紀錄
         [self Set_NewGetNum:1];
     }
-    else if (sender == Bu7)
+    else if (sender == Bu7)     // 打电话
     {
         NSUserDefaults *defaults;
         defaults = [NSUserDefaults standardUserDefaults];
@@ -1529,10 +1487,14 @@ NSTimer *MyTimer = nil;
     }
     else if (sender == Bu10) {      // 电子围栏
         // bruce@20150930 - 国内版本暂时改成自建定位
-        [self Get_WiFiList:userAccount andHash:userHash];
+        //[self Get_WiFiList:userAccount andHash:userHash];
 
-        //[geoFS do_initWithSender:self];
-        //[self Get_GEO_Setting:userAccount andHash:userHash];
+#ifdef PROGRAM_VER_ML
+        [geoFS do_initWithSender:self];
+        [self Get_GEO_Setting:userAccount andHash:userHash];
+#else
+        [self Get_WiFiList:userAccount andHash:userHash];
+#endif
     }
     else if (sender == Bu_Index)    // 退格按钮
     {
@@ -1558,11 +1520,13 @@ NSTimer *MyTimer = nil;
                 [self Change_State:IF_INDEX];
                 [self Change_State:IF_EATSHOW];
                 
-            }else if (IF_State == IF_MEASURERE || IF_State == IF_CALL || IF_State == IF_DEVSET || IF_State == IF_FALLSET || IF_State == IF_LEAVEREMIND || IF_State == IF_SHOWIMAGE || IF_State == IF_TWI || IF_State == IF_ACTALERT )
+            }else if (IF_State == IF_MEASURERE || IF_State == IF_CALL || IF_State == IF_DEVSET || IF_State == IF_FALLSET || IF_State == IF_LEAVEREMIND || IF_State == IF_SHOWIMAGE || IF_State == IF_TWI || IF_State == IF_ACTALERT
+#ifdef PROGRAM_VER_ML
+                      || IF_State == IF_AutoLocating
+#endif
+                      )
             {
-                // || IF_State == IF_AutoLocating
                 [self Change_State:IF_DATESHOW];
-                
             }else if (IF_State == IF_BPREMIND || IF_State == IF_BOREMIND || IF_State == IF_BSREMIND || IF_State == IF_SPORTREMIND || IF_State == IF_WEIGHTREMIND )
             {
                 [self Change_State:IF_MEASURERE];
@@ -1584,6 +1548,9 @@ NSTimer *MyTimer = nil;
             else if(IF_State == IF_LocatingEdit)
             {
                 [self Get_WiFiList:userAccount andHash:userHash];
+            }
+            else if (IF_State == IF_FREQ_QUESTION_DETAIL) {
+                [self Change_State:IF_FREQ_QUESTION];
             }
             else
             {
@@ -1619,7 +1586,6 @@ NSTimer *MyTimer = nil;
                 NowUserNum--;
                 [ShowName setText:[UserData objectAtIndex:NowUserNum]];
                 [self Check_Http];
-                
             }
             [self Check_Down_Bu];
         }
@@ -2004,8 +1970,8 @@ NSMutableData *Get_tempData;    //下載時暫存用的記憶體
 long long Get_expectedLength;        //檔案大小
 BOOL    Is_Get1_Sw = false;
 
-//設定目前 歷史紀錄為哪一種形態 1.緊急求救  2.跌倒  3.離家紀錄 4.通話
--(void)Set_NewGetNum:(int)SetNum
+#pragma mark - 历史记录
+- (void)Set_NewGetNum:(int)SetNum
 {
     GetNum = SetNum;
     [(MyHisView *)MyHisView setNowSelect:GetNum];
@@ -2251,8 +2217,11 @@ BOOL    Is_Get1_Sw = false;
             break;
 
         case 93://硬體設定
-            [Bu_Save addTarget:self action:@selector(saveDevSet:) forControlEvents:UIControlEventTouchUpInside];
-            [Bu_Save setBackgroundImage:[UIImage imageNamed:@"icon_btn_save_w.png"] forState:UIControlStateNormal];
+            [Bu_Save addTarget:self
+                        action:@selector(saveDevSet:)
+              forControlEvents:UIControlEventTouchUpInside];
+            [Bu_Save setBackgroundImage:[UIImage imageNamed:@"icon_btn_save_w.png"]
+                               forState:UIControlStateNormal];
             nextState = 93;
             [self Send_LangInfo:userAccount andHash:userHash];
             break;
@@ -2398,31 +2367,37 @@ BOOL    Is_Get1_Sw = false;
             [self Change_State:IF_DATESHOW];
             break;
 
-        case 1001://我的帳號
+        case 1001:      //我的帳號
             [self Send_MyUserAccount:userAccount andHash:userHash];
-//            [self Change_State:IF_MYACCOUNT];
             break;
-            
-            
-        case 1004://佩戴者管理
+
+        case 1004:      //佩戴者管理
             [Bu_Save setHidden:NO];
             [Bu_Save addTarget:self action:@selector(addNewMember:) forControlEvents:UIControlEventTouchUpInside];
             [Bu_Save setBackgroundImage:[UIImage imageNamed:@"icon_add.png"] forState:UIControlStateNormal];
-            
-            
-//            [Bu_Save setTitle:NSLocalizedStringFromTable(@"Personal_WatcherManager_Add", INFOPLIST, nil) forState:UIControlStateNormal];
             [(GroupMemberView *)GroupMemberView Do_Init:self];
             [(GroupMemberView *)GroupMemberView Set_Init:NowUserNum];
             [self Change_State:IF_GROUPMEMBER];
             break;
 
-        case 1005://最新消息內容
+        case 1005:      //最新消息內容
             [self Change_State:IF_NEWSCONTENT];
             break;
-
+        case 1100:      // 常见问题
+            [freqQuestionView do_init:self];
+            [self Change_State:IF_FREQ_QUESTION];
+            break;
         default:
             break;
     }
+}
+
+#pragma mark - 问题详情
+- (void)pushFreqQuestionDetailViewWithQuestion:(NSString *)question
+                                       Answers:(NSString *)answers
+{
+    [freqQuestionDetailView do_init:self];
+    [self Change_State:IF_FREQ_QUESTION_DETAIL];
 }
 
 //新增使用者
@@ -2453,7 +2428,7 @@ BOOL    Is_Get1_Sw = false;
     [Bu_Save removeTarget:self action:@selector(saveHosRemind:) forControlEvents:UIControlEventTouchUpInside];
     [Bu_Save addTarget:self action:@selector(saveMedRemind:) forControlEvents:UIControlEventTouchUpInside];
     [Bu_Save setBackgroundImage:[UIImage imageNamed:@"icon_btn_save_w.png"] forState:UIControlStateNormal];
-//    (MyEatPickView *)MyEatPickView;
+
     [(MyEatPickView *)MyEatPickView Do_Init:self andType:1];
     [(MyEatPickView *)MyEatPickView SetMed_initWithDic:dic];
     [self Change_State:IF_EATSEL];
@@ -2746,71 +2721,39 @@ BOOL    Is_Get1_Sw = false;
 }
 
 //判斷目前語系
--(void)Check_Mode
+- (void)Check_Mode
 {
     if( NowMode < 1)
     {
         return;
     }
-    
+
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
-    
-    
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if( [currentLanguage isEqualToString:check1]  )
-    {
 
-        
-        if( NowMode!=3)
-        {
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        if( NowMode != 2) {
             if(Array_show.count > 0)
             {
                 [Array_show removeAllObjects];
             }
             
-            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_tw" ofType: @"plist"];
-            Array_show =   [  [  NSMutableDictionary  alloc  ]  initWithContentsOfFile : plistPath] ;
+            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_cn" ofType:@"plist"];
+            Array_show =   [[NSMutableDictionary  alloc] initWithContentsOfFile:plistPath];
             
-            NowMode  = 3;
+            NowMode  = 2;
         }
-        
-        
-    }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-            if( NowMode!=2)
-            {
-                if(Array_show.count > 0)
-                {
-                    [Array_show removeAllObjects];
-                }
-                
-                NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_cn" ofType:@"plist"];
-                Array_show =   [  [  NSMutableDictionary  alloc  ]  initWithContentsOfFile : plistPath] ;
-                
-                NowMode  = 2;
+    } else {        // en
+        if (NowMode != 1) {
+            if(Array_show.count > 0) {
+                [Array_show removeAllObjects];
             }
-        }
-        else
-        {
-            if (NowMode != 1)
-            {
-                if(Array_show.count > 0)
-                {
-                    [Array_show removeAllObjects];
-                }
 
-                NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_en" ofType:@"plist"];
-                Array_show =   [  [  NSMutableDictionary  alloc  ]  initWithContentsOfFile : plistPath] ;
-                
-                NowMode  = 1;
-            }
+            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"show_en" ofType:@"plist"];
+            Array_show =   [[NSMutableDictionary  alloc] initWithContentsOfFile:plistPath];
+
+            NowMode = 1;
         }
     }
 }
@@ -2876,7 +2819,7 @@ BOOL    Is_Get1_Sw = false;
 
 
 //設定每個icon的背景顏色
--(void)SetBgView:(UIView *)bgView AndColor:(UIColor *)changeColor
+- (void)SetBgView:(UIView *)bgView AndColor:(UIColor *)changeColor
 {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = bgView.bounds;
@@ -2884,7 +2827,7 @@ BOOL    Is_Get1_Sw = false;
     [bgView.layer insertSublayer:gradient atIndex:0];
     bgView.layer.cornerRadius = 8.0f;
     bgView.layer.masksToBounds = YES;
-    
+
 //    暫時先移除  因為會造成畫面停頓的問題
 //    bgView.layer.shadowColor = [[UIColor whiteColor] CGColor];
 //    bgView.layer.shadowOffset = CGSizeMake(3.0f, 3.0f); // [水平偏移, 垂直偏移]
@@ -2892,10 +2835,8 @@ BOOL    Is_Get1_Sw = false;
 //    bgView.layer.shadowRadius = 10.0f; // 陰影發散的程度
 }
 
-
-
-//重新讀取佩戴者資料與下方切換使用者同步更新
--(void)ReloadUserData
+// 重新讀取佩戴者資料與下方切換使用者同步更新
+- (void)ReloadUserData
 {
     [self getUserAndUpdateAcc:userAccount andPwd:userHash andToken:tmpSaveToken];
 }
@@ -3226,6 +3167,7 @@ BOOL    Is_Get1_Sw = false;
 #pragma mark - 移除state
 - (void) Remove_State:(int)NewState
 {
+    NSLog(@"Remove_State -> %d", NewState);
     switch (NewState)
     {
         case IF_HealthSteps:
@@ -3369,6 +3311,12 @@ BOOL    Is_Get1_Sw = false;
         case IF_LocatingEdit:
             [(UIView*)LocatingEditView removeFromSuperview];
             break;
+        case IF_FREQ_QUESTION:
+            [freqQuestionView removeFromSuperview];
+            break;
+        case IF_FREQ_QUESTION_DETAIL:
+            [freqQuestionDetailView removeFromSuperview];
+            break;
         default:
             break;
     }
@@ -3376,34 +3324,25 @@ BOOL    Is_Get1_Sw = false;
 
 #pragma mark -
 
-//判斷是否有佩帶者資料
--(BOOL)CheckTotal
+// 判斷是否有佩帶者資料
+- (BOOL)CheckTotal
 {
-    if([UserData count] <1)
+    if ([UserData count] <1)
     {
         return  true;
     }
-    
-    
-    
+
     return false;
 }
 
-
-
 //取得plist設定字串
--(NSString *)Get_DefineString:(NSString *)SetStr
+- (NSString *)Get_DefineString:(NSString *)SetStr
 {
-    
     NSLog(@"%@",[  Array_show objectForKey : SetStr  ]);
     return [  Array_show objectForKey : SetStr  ];
-    
-    
-    
+
     return @"";
 }
-
-
 
 //變更設定頁佩帶者顯示
 -(void)Set_SetView
@@ -3427,7 +3366,7 @@ BOOL    Is_Get1_Sw = false;
 
 - (void)Change_State:(int)NewState
 {
-    NSLog(@"NewState = %i, now = %i", NewState, IF_State);
+    NSLog(@"Change_State: [%d -> %d]", IF_State, NewState);
 
     if (IF_State != NewState)
     {
@@ -3466,9 +3405,6 @@ BOOL    Is_Get1_Sw = false;
                 [(HealthSteps *)healthStepsView Do_init:NowUserNum];
                 break;
             case IF_USERDATE://配戴者資訊
-                // Sending the same screen view hit using [GAIDictionaryBuilder createAppView]
-//                [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"View_Care_Info" forKey:kGAIScreenName] build]];
-                
                 TitleName.text = NSLocalizedStringFromTable(@"Bu1_Str", INFOPLIST, nil);
 
                 [self insertSubview:UserDateView belowSubview:insertView];
@@ -3484,19 +3420,17 @@ BOOL    Is_Get1_Sw = false;
                 break;
 
             case IF_USERSET://設備狀態
-//                [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"View_Device_State" forKey:kGAIScreenName] build]];
                 TitleName.text = NSLocalizedStringFromTable(@"Bu2_Str", INFOPLIST, nil);
                 [self insertSubview:UserSetView belowSubview:insertView];
-                //[self insertSubview:UserSetView atIndex:23];
                 break;
                 
-            case IF_HIS:            //歷史記錄
+            case IF_HIS:            // 歷史記錄
                 TitleName.text = NSLocalizedStringFromTable(@"Bu6_Str", INFOPLIST, nil);
                 [self insertSubview:MyHisView
                        belowSubview:insertView];
                 break;
 
-            case IF_AutoLocating:   //歷史記錄
+            case IF_AutoLocating:   // 歷史記錄
                 TitleName.text = NSLocalizedStringFromTable(@"HS_Position", INFOPLIST, nil);
                 [LocatingEditView stopTimer];
                 [self insertSubview:AutoLocatingView
@@ -3512,7 +3446,6 @@ BOOL    Is_Get1_Sw = false;
                 TitleName.text = NSLocalizedStringFromTable(@"Bu5_Str", INFOPLIST, nil);
                 [self insertSubview:MyActView
                        belowSubview:insertView];
-
                 break;
 
             case IF_ACT_SEARCH:     // 活动区域搜索
@@ -3520,34 +3453,24 @@ BOOL    Is_Get1_Sw = false;
                        belowSubview:insertView];
                 break;
 
-            case IF_EATSEL://事件提醒
-//                [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"" forKey:kGAIScreenName] build]];
+            case IF_EATSEL:         // 事件提醒
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:MyEatPickView atIndex:23];
                 [self insertSubview:MyEatPickView
                        belowSubview:insertView];
                 break;
                 
             case IF_EATSHOW:
-//                [Bu_Save setHidden:YES];
                 [TitleName setText:NSLocalizedStringFromTable(@"Bu8_Str", INFOPLIST, nil)];
-//                [TitleName setText: [  Array_show objectForKey : TITLE_EATSEL  ] ];
-                //[self insertSubview:MyEatShowView atIndex:23];
                 [self insertSubview:MyEatShowView
                        belowSubview:insertView];
                 break;
                 
             case IF_DATESHOW:
-//                [Bu_Save setHidden:YES];
-                
                 [TitleName setText:NSLocalizedStringFromTable(@"Bu9_Str", INFOPLIST, nil)];
-                //[self insertSubview:MyDateShowView atIndex:23];
                 [self insertSubview:MyDateShowView belowSubview:insertView];
                 break;
 
             case IF_DATESEL:
-                //      [(MySelView *) MyDatePickerView Do_Init:self];
-                //[self insertSubview:MyDatePickerView atIndex:23];
                 [self insertSubview:MyDatePickerView
                        belowSubview:insertView];
                 break;
@@ -3555,7 +3478,6 @@ BOOL    Is_Get1_Sw = false;
             case IF_SHOWLSEL:
                 [TitleName setText:NSLocalizedStringFromTable(@"Bu3_Str", INFOPLIST, nil)];
                 [(MySelView *)MySelView Do_Init:self];
-                //[self insertSubview:MySelView atIndex:23];
                 [self insertSubview:MySelView belowSubview:insertView];
                 break;
 
@@ -3584,7 +3506,6 @@ BOOL    Is_Get1_Sw = false;
                 }
 
                 NSLog(@"list view = %i", ShowNum);
-                //[self insertSubview:ListView atIndex:23];
                 [self insertSubview:ListView
                        belowSubview:insertView];
                 break;
@@ -3603,47 +3524,27 @@ BOOL    Is_Get1_Sw = false;
                 [self Set_SetView];
 
                 [self insertSubview:MySetView belowSubview:insertView];
-                //[self insertSubview:MySetView atIndex:23];
                 break;
 
             case IF_MAP:
-                //start timer
- 
-//                //顯示地圖/衛星 切  換Btn顯示
-//                [Bu_MapSet setHidden:NO];
-////                [Bu_MapSet setTitle:NSLocalizedStringFromTable(@"Act_Map", INFOPLIST, nil) forState:UIControlStateNormal];
-//                [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"] forState:UIControlStateNormal];
-//                [TitleName setText: [  Array_show objectForKey : TITLE_MAP  ] ];
-//                
-//                [(MyMapView *)MyMapView Do_Init:self];
-////                [self Send_LocMap:userAccount andHash:userHash];
-////                [self GcareGetSOSTrackingWithAcc:userAccount];
-//                [self insertSubview:MyMapView atIndex:23];
                 //顯示地圖/衛星 切換Btn顯示
                 [Bu_MapSet setHidden:NO];
-                //                [Bu_MapSet setTitle:NSLocalizedStringFromTable(@"Act_Map", INFOPLIST, nil) forState:UIControlStateNormal];
                 [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"] forState:UIControlStateNormal];
                 [TitleName setText: [  Array_show objectForKey : TITLE_MAP  ] ];
-
-                //[self insertSubview:MyMapView atIndex:23];
                 [self insertSubview:MyMapView belowSubview:insertView];
                 break;
-                
+
             case IF_MEASURERE://量測提醒
-//                [TitleName setText: [  Array_show objectForKey : TITLE_MAP  ] ];
-//                [Bu_Save setHidden:YES];
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Measure", INFOPLIST, nil)];
                 [(MeasureRemind *)MeasureRemind Do_Init:self];
-                //[self insertSubview:MeasureRemind atIndex:23];
                 [self insertSubview:MeasureRemind
                        belowSubview:insertView];
                 break;
-            
+
             case IF_BPREMIND://血壓提醒
                 NSLog(@"Change to BPRemind");
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_BPRemind", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:BPRemindView atIndex:23];
                 [self insertSubview:BPRemindView
                        belowSubview:insertView];
                 break;
@@ -3652,92 +3553,80 @@ BOOL    Is_Get1_Sw = false;
                 NSLog(@"Change to BORemind");
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_BORemind", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:BORemindView atIndex:23];
                 [self insertSubview:BORemindView
                        belowSubview:insertView];
                 break;
-             
+
             case IF_BSREMIND://血糖提醒
                 NSLog(@"Change to BSRemind");
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_BSRemind", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:BSRemindView atIndex:23];
                 [self insertSubview:BSRemindView
                        belowSubview:insertView];
                 break;
-                
+
             case IF_SPORTREMIND://運動資訊
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Sport", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:SportRemindView atIndex:23];
                 [self insertSubview:SportRemindView belowSubview:insertView];
                 break;
-                
+
             case IF_WEIGHTREMIND://體重資訊
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Weight", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:WeightRemindView atIndex:23];
                 [self insertSubview:WeightRemindView belowSubview:insertView];
                 break;
-            
+
             case IF_CALL:   //通話限制
                 [Bu_Save setHidden:NO];
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_CALL", INFOPLIST, nil)];
-                //[self insertSubview:CallLimit atIndex:23];
                 [self insertSubview:CallLimit belowSubview:insertView];
                 break;
-            
+
             case IF_DEVSET://硬體設定
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Setting", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:DeviceSet atIndex:23];
                 [self insertSubview:DeviceSet belowSubview:insertView];
                 break;
-            
+
             case IF_FALLSET://跌倒設定
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Fall", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:FallSet atIndex:23];
                 [self insertSubview:FallSet belowSubview:insertView];
                 break;
+
             case IF_ACTALERT://無動作
                 [TitleName setText:@"Activity alert"];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:ActAlert atIndex:23];
                 [self insertSubview:ActAlert belowSubview:insertView];
                 break;
+
             case IF_GeoFS://無動作
                 [Bu_MapSet setHidden:NO];
-                //                [Bu_MapSet setTitle:NSLocalizedStringFromTable(@"Act_Map", INFOPLIST, nil) forState:UIControlStateNormal];
                 [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"] forState:UIControlStateNormal];
                 [TitleName setText:NSLocalizedStringFromTable(@"GeoFence", INFOPLIST, nil)];
                 [Bu_Save setHidden:YES];
-                //[self insertSubview:geoFS atIndex:23];
                 [self insertSubview:geoFS belowSubview:insertView];
                 break;
+
             case IF_SHOWIMAGE://跌倒設定
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_ShowImage", INFOPLIST, nil)];
-                //[self insertSubview:ShowImageView atIndex:23];
                 [self insertSubview:ShowImageView belowSubview:insertView];
                 break;
-                
-                
+
             case IF_HISMAP://歷史紀錄 地圖
                 [Bu_MapSet setHidden:NO];
-                //[self insertSubview:MyHisMapView atIndex:23];
                 [self insertSubview:MyHisMapView belowSubview:insertView];
                 break;
-                
+
             case IF_GROUPMEMBER:
                 [TitleName setText:NSLocalizedStringFromTable(@"Personal_WatcherManager", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
-                //[self insertSubview:GroupMemberView atIndex:23];
                 [self insertSubview:GroupMemberView belowSubview:insertView];
                 break;
-            
+
             case IF_MYACCOUNT://我的帳號
                 [TitleName setText:NSLocalizedStringFromTable(@"Personal_MyAccount", INFOPLIST, nil)];
-                //[self insertSubview:MyAccountView atIndex:23];
                 [self insertSubview:MyAccountView belowSubview:insertView];
                 break;
                 
@@ -3747,71 +3636,85 @@ BOOL    Is_Get1_Sw = false;
                 //[self insertSubview:LeaveRemind atIndex:23];
                 [self insertSubview:LeaveRemind belowSubview:insertView];
                 break;
-            
+
             case IF_LEAVEMAP:
                 [Bu_Save setHidden:NO];
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Leave", INFOPLIST, nil)];
                 //[self insertSubview:LeaveMap atIndex:23];
                 [self insertSubview:LeaveMap belowSubview:insertView];
                 break;
-                
+
             case IF_NEWSINFO:
                 [TitleName setText:NSLocalizedStringFromTable(@"NEWS", INFOPLIST, nil)];
                 //[self insertSubview:NewsView atIndex:23];
                 [self insertSubview:NewsView belowSubview:insertView];
                 break;
-            
+
             case IF_NEWSCONTENT:
                 [TitleName setText:NSLocalizedStringFromTable(@"NEWS", INFOPLIST, nil)];
                 //[self insertSubview:NewsContentView atIndex:23];
                 [self insertSubview:NewsContentView belowSubview:insertView];
                 break;
             case IF_CUSTOMCHART:
-//                [TitleName setText:NSLocalizedStringFromTable(@"NEWS", INFOPLIST, nil)];
                 switch (ShowNum)
-            {
-                case 1:
-                    [TitleName setText: [  Array_show objectForKey : TITLE_SHOW1  ] ];
-                    break;
-                    
-                case 2:
-                    [TitleName setText: [  Array_show objectForKey : TITLE_SHOW2  ] ];
-                    break;
-                    
-                case 3:
-                    [TitleName setText: [  Array_show objectForKey : TITLE_SHOW3  ]];
-                    break;
-                    
-                case 4:
-                    [TitleName setText: [  Array_show objectForKey : TITLE_SHOW4  ]];
-                    break;
-                    
-                case 5:
-                    [TitleName setText: [  Array_show objectForKey : TITLE_SHOW5  ]];
-                    break;
-            }
-                NSLog(@"list view = %i",ShowNum);
-//                [self insertSubview:ListView atIndex:23];
-                //[self insertSubview:chartCustom atIndex:23];
+                {
+                    case 1:
+                        [TitleName setText:[Array_show objectForKey:TITLE_SHOW1]];
+                        break;
+
+                    case 2:
+                        [TitleName setText:[Array_show objectForKey:TITLE_SHOW2]];
+                        break;
+
+                    case 3:
+                        [TitleName setText:[Array_show objectForKey:TITLE_SHOW3]];
+                        break;
+
+                    case 4:
+                        [TitleName setText:[Array_show objectForKey:TITLE_SHOW4]];
+                        break;
+
+                    case 5:
+                        [TitleName setText: [  Array_show objectForKey : TITLE_SHOW5  ]];
+                        break;
+                }
+
                 [self insertSubview:chartCustom belowSubview:insertView];
                 break;
+
             case IF_TWI:
                 TitleName.text = NSLocalizedStringFromTable(@"HS_Tracking", INFOPLIST, nil);
                 [Bu_Save setHidden:NO];
-                //[self insertSubview: tWI atIndex:23];
                 [self insertSubview:tWI belowSubview:insertView];
                 break;
+
             case IF_LocatingEdit:
-                TitleName.text = NSLocalizedStringFromTable(@"create", INFOPLIST, nil);
+                TitleName.text = NSLocalizedStringFromTable(@"Auto_location_create",
+                                                            INFOPLIST,
+                                                            nil);
                 [Bu_Save setHidden:YES];
                 NSLog(@"IF_LocatingEdit %@",self.autoLocatingName);
                 LocatingEditView.nameString = self.autoLocatingName;
                 [LocatingEditView Do_init:self];
                 LocatingEditView.g_no = locatingEditIndex;
-                //[self insertSubview: LocatingEditView atIndex:23];
-                [self insertSubview:LocatingEditView belowSubview:insertView];
+                [self insertSubview:LocatingEditView
+                       belowSubview:insertView];
+                break;
+
+            case IF_FREQ_QUESTION:
+                NSLog(@"IF_FREQ_QUESTION");
+                TitleName.text = NSLocalizedStringFromTable(@"FreqQuestionTitle", INFOPLIST, nil);
+                Bu_Save.hidden = YES;
+                [self insertSubview:freqQuestionView belowSubview:insertView];
+                break;
+            case IF_FREQ_QUESTION_DETAIL:
+                NSLog(@"IF_FREQ_QUESTION_DETAIL");
+                TitleName.text = NSLocalizedStringFromTable(@"FreqQuestionDetailTitle", INFOPLIST, nil);
+                Bu_Save.hidden = YES;
+                [self insertSubview:freqQuestionDetailView belowSubview:insertView];
                 break;
             default:
+                NSLog(@"*** Change_State NewState unhandle: %d", NewState);
                 break;
         }
 
@@ -3821,13 +3724,11 @@ BOOL    Is_Get1_Sw = false;
 
 #pragma mark -
 
-// 與Server http傳輸區
-
 // 歷史記錄-跌倒紀錄(傳輸)
 - (void)Send_SOS2Acc:(NSString *)acc andHash:(NSString *)hash
 {
     NSLog(@"log = account = %@", AccData);
-    
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.timeoutInterval = TimeOutLimit;
 
@@ -4533,6 +4434,8 @@ BOOL    Is_Get1_Sw = false;
 
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     
+    NSLog(@"httpBodyString = %@", httpBodyString);
+    
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetActiveRegion.html",INK_Url_1];
 
@@ -4547,7 +4450,7 @@ BOOL    Is_Get1_Sw = false;
     [self addloadingView];
 }
 
-// 定位救援(傳輸)
+#pragma mark - 定位救援网络请求
 - (void)Send_LocMap:(NSString *)acc andHash:(NSString *)hash
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
@@ -4590,11 +4493,11 @@ BOOL    Is_Get1_Sw = false;
 }
 
 //刪除佩帶者傳輸
--(void)Clear_User
+- (void)Clear_User
 {
     NSLog(@"send clear");
     
-    int Value1 =0;
+    int Value1 = 0;
     NSUserDefaults* defaults;
     defaults = [NSUserDefaults standardUserDefaults];
     Value1 = [defaults integerForKey:@"HaveSendClear"];
@@ -6938,85 +6841,64 @@ BOOL    Is_Get1_Sw = false;
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetSettingWeight.html",INK_Url_1];
-    
+
     NSLog(@"httpbody = %@",httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     MW_tempData = [NSMutableData alloc];
     MW_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
+
     [self addloadingView];
-    
-    
 }
 
-
-
 //取得同步時間選項
--(void) Send_GetSync:(NSString *)acc andHash: (NSString *)hash
+- (void) Send_GetSync:(NSString *)acc andHash: (NSString *)hash
 {
-    NSLog(@"log = account = %@",AccData);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
     
     NSLog(@"dataIn: %@", dataIn);
-    
+
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
+
     NSLog(@"Hash : %@", hash);
-    
-    //    AppGetSupportLanguage.html?userAccount=andywang&account=test&data=7ee2ac770561c311e666b49953a71eaa42264161dce51f51dc8ab33741a86adc&timeStamp=2013/08/01%2013:52:34
-    
+
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@&type=sys&name=returnTime",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetSysParameter.html",INK_Url_1];
-    
+
     NSLog(@"同步時間 = %@?%@",getUserApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     Sync_tempData = [[NSMutableData alloc] init];
     Sync_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
+
 //    [self addloadingView];
-    
-    
 }
 
 
@@ -7082,7 +6964,8 @@ BOOL    Is_Get1_Sw = false;
 }
 
 //取得WiFI List
--(void) Get_WiFiList:(NSString *)acc andHash: (NSString *)hash
+- (void)Get_WiFiList:(NSString *)acc
+             andHash:(NSString *)hash
 {
     NSLog(@"log = account = %@",AccData);
 
@@ -7136,106 +7019,85 @@ BOOL    Is_Get1_Sw = false;
 }
 
 //取得WiFI List
--(void) Get_WiFi:(NSString *)acc andHash: (NSString *)hash
+- (void)Get_WiFi:(NSString *)acc
+         andHash:(NSString *)hash
 {
-    NSLog(@"log = account = %@",AccData);
-    
+    NSLog(@"*** 取得WiFI List = %@", AccData);
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
     
     NSLog(@"dataIn: %@", dataIn);
-    
+
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
+
     NSLog(@"Hash : %@", hash);
-    
+
     //http://210.242.50.122:9000/mcarewatch/API/
     //    AppGetMemberWifi.html?
     //    userAccount=testforen&
     //    account=352151022022078&
     //    timeStamp=2015/03/31%2017:07:07&
     //    data=D3E15D9234BE2397970E0F3F5EB4E88695F92054D469FD5EE7370559587E541C
-    
+
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetActiveRegionWifiList.html",INK_Url_1];
-    
+
     NSLog(@"get WiFi List = %@?%@",getUserApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     GetWiFi_tempData = [[NSMutableData alloc] init];
     GetWiFi_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
-//    [self addloadingView];
-    
-    
 }
 
-//設定WiFI
--(void) Set_WiFiList:(NSString *)acc andHash: (NSString *)hash andDict:(NSDictionary*)m_dict
+#pragma mark - 获取到手表WiFi地址，开始保存
+- (void) Set_WiFiList:(NSString *)acc
+              andHash:(NSString *)hash
+              andDict:(NSDictionary*)m_dict
 {
-    NSLog(@"log = account = %@",AccData);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    NSLog(@"dataIn: %@", dataIn);
+    CC_SHA256(dataIn.bytes, (CC_LONG)dataIn.length,  digest);
     
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
-    NSLog(@"Hash : %@", hash);
-    
+
     //http://210.242.50.122:9000/mcarewatch/API/
     //    AppGetMemberWifi.html?
     //    userAccount=testforen&
@@ -7247,8 +7109,7 @@ BOOL    Is_Get1_Sw = false;
     //    mac
     //    gps_latlng
     //    address
-    
-    
+
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@&no=%@&name=%@&mac=%@&gps_latlng=%@&address=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString,[m_dict objectForKey:@"no"]
                                 ,[m_dict objectForKey:@"name"]
                                 ,[m_dict objectForKey:@"mac"]
@@ -7257,60 +7118,51 @@ BOOL    Is_Get1_Sw = false;
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppSetMemberWifi.html",INK_Url_1];
     
-    NSLog(@"get WiFi List = %@?%@",getUserApi,httpBodyString);
-    
+    NSLog(@"*** Set_WiFiList = %@?%@",getUserApi,httpBodyString);
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     SetWiFi_tempData = [[NSMutableData alloc] init];
     SetWiFi_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
+
     [self addloadingView];
-    
-    
 }
 
-//取得同步區間選項
--(void) Get_TWI_Setting:(NSString *)acc andHash: (NSString *)hash
+// 取得同步區間選項
+- (void)Get_TWI_Setting:(NSString *)acc
+                andHash:(NSString *)hash
 {
     NSLog(@"log = account = %@",AccData);
-    
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
+
     NSLog(@"dataIn: %@", dataIn);
-    
+
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
+
     NSLog(@"Hash : %@", hash);
-    
+
 //    http://210.242.50.122:9000
 //    /angelcare/API/AppGetSettingAutochange.html?
 //    userAccount=testforen&account=testforen&timeStamp=2014/05/28%2017:56:08&data=D3FDA0226ED3C9620D542DF14C6DC428D4EFBF99618A8B3DDE7C0A04E63208C4&type1=pr&type2=gps
@@ -7318,24 +7170,21 @@ BOOL    Is_Get1_Sw = false;
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@&type1=pr&type2=gps",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetSettingAutochange.html",INK_Url_1];
-    
+
     NSLog(@"get twi 同步時段 = %@?%@",getUserApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     Get_TWI_tempData = [[NSMutableData alloc] init];
     Get_TWI_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
+
     [self addloadingView];
-    
-    
 }
+
 //取得同步時間選項 Save
 -(void) Save_TWI_Setting:(NSString *)acc andHash: (NSString *)hash andDict:(NSDictionary*)dict
 {
@@ -7405,8 +7254,7 @@ BOOL    Is_Get1_Sw = false;
     if (resGW.length >1) {
         resGW = [resGW substringToIndex:resGW.length-1];
     }
-    
-    
+
     resWW = [resWW stringByAppendingString:@"]"];
     resGW = [resGW stringByAppendingString:@"]"];
 
@@ -7430,9 +7278,9 @@ BOOL    Is_Get1_Sw = false;
     [self addloadingView];
 }
 
-
 //取得無動作選項
--(void) Get_AA_Setting:(NSString *)acc andHash: (NSString *)hash
+- (void)Get_AA_Setting:(NSString *)acc
+               andHash:(NSString *)hash
 {
     NSLog(@"log = account = %@",AccData);
     
@@ -8027,9 +7875,11 @@ BOOL    Is_Get1_Sw = false;
     [self Save_GEO_Setting_fromSwitch:userAccount andHash:userHash andDict:dict];
 }
 
--(void)SetWiFiWithDict:(NSDictionary*)dict{
+- (void)SetWiFiWithDict:(NSDictionary*)dict
+{
     [self Set_WiFiList:userAccount andHash:userHash andDict:dict];
 }
+
 //取得通話限制
 -(void) Send_UserCallLimit:(NSString *)acc andHash: (NSString *)hash
 {
@@ -8089,43 +7939,31 @@ BOOL    Is_Get1_Sw = false;
 }
 
 //取得硬體設定－語言設定
--(void) Send_LangInfo:(NSString *)acc andHash: (NSString *)hash
+- (void) Send_LangInfo:(NSString *)acc andHash: (NSString *)hash
 {
-    NSLog(@"log = account = %@",AccData);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    NSLog(@"dataIn: %@", dataIn);
-    
+
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
+
     NSLog(@"Hash : %@", hash);
-    
-    //    AppGetSupportLanguage.html?userAccount=andywang&account=test&data=7ee2ac770561c311e666b49953a71eaa42264161dce51f51dc8ab33741a86adc&timeStamp=2013/08/01%2013:52:34
-    
+
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@&type=sys&name=language",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetSysParameter.html",INK_Url_1];
@@ -8141,11 +7979,7 @@ BOOL    Is_Get1_Sw = false;
     LangInfo_tempData = [[NSMutableData alloc] init];
     LangInfo_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
-    
-    
     [self addloadingView];
-    
-    
 }
 
 
@@ -9653,12 +9487,9 @@ BOOL    Is_Get1_Sw = false;
     
 }
 
-
-
-//解析地圖使用者IMEI
--(void)Http_MapImeiInfo
+// 解析地圖使用者IMEI
+- (void)Http_MapImeiInfo
 {
-    
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:MapImei_tempData];
     [inStream open];
@@ -9670,7 +9501,7 @@ BOOL    Is_Get1_Sw = false;
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
     
-    if( [status isEqualToString:str1]  )
+    if([status isEqualToString:str1])
     {
         [HUD hide:YES];
         if(IF_State == 3){
@@ -9683,359 +9514,46 @@ BOOL    Is_Get1_Sw = false;
             [(DeviceSet *)DeviceSet SetIMEI:[usersOne objectForKey:@"imei"]  AndPhone:[usersOne objectForKey:@"phone"]];
         }
         else if(IF_State == IF_LocatingEdit){
-            [(LocatingEdit *)LocatingEditView SetIMEI:[usersOne objectForKey:@"imei"]  AndPhone:[usersOne objectForKey:@"phone"]];
+            NSLog(@"*** Postion phone number: %@", [usersOne objectForKey:@"phone"]);
+            [(LocatingEdit *)LocatingEditView SetIMEI:[usersOne objectForKey:@"imei"]
+                                             AndPhone:[usersOne objectForKey:@"phone"]];
         }
-        else{
-            
-        }
-        
-    } else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [self Check_Error:str1];
         [HUD hide:YES];
     }
-    
-    
-    
 }
 
-
-
-
-//設備資訊
--(void)Http_Process_Set
+#pragma mark - 设备状态
+- (void)Http_Process_Set
 {
-    
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Set_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
+
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
-    NSLog(@"usersOne = %@",usersOne);
-    
-        NSString *status = [usersOne objectForKey:@"status"];
-        NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-        if( [status isEqualToString:str1]  )
-        {
-            /*
-            NSString *TValue1 = [usersOne objectForKey:@"time_on"];
-            NSString *TValue2 = [usersOne objectForKey:@"time_off"];
-            NSString *TValue3;
-            
-            int int3 = [[usersOne objectForKey:@"off_type"] integerValue];
-            
-            if(int3>0 && int3 <4)
-            {
-                switch (int3)
-                {
-                    case 1:
-                        TValue3 = [self Get_DefineString:MESSAGE_DATA_STR1];
-                        break;
-                        
-                    case 2:
-                        TValue3 = [self Get_DefineString:MESSAGE_DATA_STR2];
-                        break;
-                        
-                    case 3:
-                        TValue3 = [self Get_DefineString:MESSAGE_DATA_STR3];
-                        break;
-                        
-                }
-            }
-            else
-            {
-                TValue3 = [ NSString stringWithFormat:@"%@(%d)",[self Get_DefineString:MESSAGE_DATA_STR4], [TValue3 intValue] ];
-                
-            }
-            
-            
-            NSString *TValue4 = [usersOne objectForKey:@"time_sync"];
-            NSString *TValue5 = [NSString stringWithFormat:@"%.2f V",[[usersOne objectForKey:@"electricity"] floatValue]/1000];
-            ;
-            NSString *TValue6 = [NSString stringWithFormat:@"%@ ℃",[usersOne objectForKey:@"psr_temp"] ];
-            NSString *TValue7 = [usersOne objectForKey:@"location"];
-            NSString *TValue8 = [usersOne objectForKey:@"FW"];
-            
-            NSArray *dataArr = [[NSArray alloc] initWithObjects:TValue1,TValue2,TValue3,TValue4,TValue5,TValue6,TValue7,TValue8, nil];
-            
-            NSLog(@"data = %@",dataArr);
-            */
-            
-            [(UserSetView *)UserSetView Set_Init:self SetDic:usersOne];
-            
-            
-            [self Change_State:IF_USERSET];
-        }
-        else
-        {
-            NSString *str1 =[usersOne objectForKey:@"msg"];
-            [self Check_Error:str1];
-        }
-    
+
+    NSLog(@"设备状态 = %@", usersOne);
+
+    NSString *status = [usersOne objectForKey:@"status"];
+    NSString *str1 = [NSString stringWithFormat:@"%d",0];
+
+    if([status isEqualToString:str1]) {
+        [(UserSetView *)UserSetView Set_Init:self SetDic:usersOne];
+        [self Change_State:IF_USERSET];
+    } else {
+        NSString *str1 =[usersOne objectForKey:@"msg"];
+        [self Check_Error:str1];
+    }
+
     [HUD hide:YES];
 }
 
-/*
--(void)Http_Process_Get2
-{
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSString* json_string = [[NSString alloc] initWithData:Get_tempData encoding:NSUTF8StringEncoding];
-    id jsonObject = [parser objectWithString:json_string error:nil];
-    
-    if ([jsonObject isKindOfClass:[NSDictionary class]])
-    {
-        
-    }
-    // treat as a dictionary, or reassign to a dictionary ivar
-    else if ([jsonObject isKindOfClass:[NSArray class]])
-    {
-        
-        NSDictionary *usersOne = [jsonObject  objectAtIndex:0] ;
-        
-        
-        NSString *status = [usersOne objectForKey:@"status"];
-        NSString *str1 = [NSString stringWithFormat:@"%d",0];
-        
-        
-        if( [status isEqualToString:str1]  )
-        {
-            NSString *Num1 = [usersOne objectForKey:@"num1"];
-            NSString *Num2 = [usersOne objectForKey:@"num2"];
-            NSString *Num3 = [usersOne objectForKey:@"num3"];
-            NSString *Num4 = [usersOne objectForKey:@"num4"];
-            NSString *Num5 = [usersOne objectForKey:@"num5"];
-            
-            
-            
-            
-            
-            NSString *Sw1= [usersOne objectForKey:@"switch1"];
-            NSString *Sw2 = [usersOne objectForKey:@"switch2"];
-            NSString *Sw3 = [usersOne objectForKey:@"switch3"];
-            NSString *Sw4 = [usersOne objectForKey:@"switch4"];
-            NSString *Sw5 = [usersOne objectForKey:@"switch5"];
-            
-            
-            BOOL On1= false;
-            BOOL On2= false;
-            BOOL On3= false;
-            BOOL On4= false;
-            BOOL On5= false;
-            
-            
-            NSString *check = [NSString stringWithFormat:@"on"];
-            
-            if( [Sw1 isEqualToString:check]  )
-            {
-                On1 = true;
-            }
-            
-            if( [Sw2 isEqualToString:check]  )
-            {
-                On2 = true;
-            }
-            
-            if( [Sw3 isEqualToString:check]  )
-            {
-                On3 = true;
-            }
-            
-            if( [Sw4 isEqualToString:check]  )
-            {
-                On4 = true;
-            }
-            
-            if( [Sw5 isEqualToString:check]  )
-            {
-                On5 = true;
-            }
-            
-            if( Is_UserGet_Sw == true)
-            {
-                if(On1)
-                {
-//                    [(UserDateView *) UserDateView Set_Value:21:Num1]; 
-                }
-                else
-                {
-//                    [(UserDateView *) UserDateView Set_Value:21:@" - - : - - "]; 
-                    
-                }
- 
-                if(On2)
-                {
-//                    [(UserDateView *) UserDateView Set_Value:22:Num2];
-                }
-                else
-                {
-//                    [(UserDateView *) UserDateView Set_Value:22:@" ˍˍ : ˍˍ "];
-                    
-                }
-                
-                if(On3)
-                {
-//                  [(UserDateView *) UserDateView Set_Value:23:Num3];  
-                }
-                else
-                {
-//                  [(UserDateView *) UserDateView Set_Value:23:@" ˍˍ : ˍˍ "];  
-                    
-                }
-                
-                if(On4)
-                {
-//                    [(UserDateView *) UserDateView Set_Value:24:Num4];
-                }
-                else
-                {
-                    
-//                    [(UserDateView *) UserDateView Set_Value:24:@" ˍˍ : ˍˍ "];
-                }
-                
-                if(On5)
-                {
-//                   [(UserDateView *) UserDateView Set_Value:25:Num5]; 
-                }
-                else
-                {
-                    
-//                   [(UserDateView *) UserDateView Set_Value:25:@" ˍˍ : ˍˍ "]; 
-                }
-               
-                
-                
-                
-                
-                
-                Is_UserGet_Sw = false;
-            }
-            else
-            {
-//                [(MyEatShowView *)MyEatShowView Set_Value:Num1:Num2:Num3:Num4:Num5:On1:On2:On3:On4:On5];
-                
-                [self Change_State:IF_EATSHOW];
-            }
-            
-            
-            
-            
-        }
-        else
-        {
-            NSString *str1 =[usersOne objectForKey:@"msg"];
-            [self Check_Error:str1];
-        }
-    }
-    [self Ctl_LoadingView:FALSE];
-    
-}
-*/
 
-/*
--(void)Http_Process_Get1
+- (void)Http_Process_Clear
 {
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSString* json_string = [[NSString alloc] initWithData:Get_tempData encoding:NSUTF8StringEncoding];
-    id jsonObject = [parser objectWithString:json_string error:nil];
-    
-    if ([jsonObject isKindOfClass:[NSDictionary class]])
-    {
-        
-    }
-    // treat as a dictionary, or reassign to a dictionary ivar
-    else if ([jsonObject isKindOfClass:[NSArray class]])
-    {
-        
-        NSDictionary *usersOne = [jsonObject  objectAtIndex:0] ;
-        
-        
-        NSString *status = [usersOne objectForKey:@"status"];
-        NSString *str1 = [NSString stringWithFormat:@"%d",0];
-        
-        
-        if( [status isEqualToString:str1]  )
-        {
-            NSString *Num1 = [usersOne objectForKey:@"num1"];
-            NSString *Num2 = [usersOne objectForKey:@"num2"];
-            
-            
-            NSString *Sw1= [usersOne objectForKey:@"switch1"];
-            NSString *Sw2 = [usersOne objectForKey:@"switch2"];
-            
-            
-            BOOL On1= false;
-            BOOL On2= false;
-            
-            
-            NSString *check = [NSString stringWithFormat:@"on"];
-            
-            if( [Sw1 isEqualToString:check]  )
-            {
-                On1 = true;
-            }
-            
-            if( [Sw2 isEqualToString:check]  )
-            {
-                On2 = true;
-            }
-            
-            if( Is_UserGet_Sw == true)
-            {
-                if(On1)
-                {
-//                    [(UserDateView *) UserDateView Set_Value:11:Num1];
-                }
-                else
-                {
-                    
-                    
-//                    [(UserDateView *) UserDateView Set_Value:11:@" ˍˍˍˍ / ˍˍ / ˍˍ ˍˍ : ˍˍ "];
-                }
-                
-                
-                if(On2)
-                {
-//                     [(UserDateView *) UserDateView Set_Value:12:Num2];
-                }
-                else
-                {
-//                    [(UserDateView *) UserDateView Set_Value:12:@" ˍˍˍˍ / ˍˍ / ˍˍ ˍˍ : ˍˍ "]; 
-                }
-
-                
-                [self Send_Get2:[AccData objectAtIndex:NowUserNum]:[HashData objectAtIndex:NowUserNum]];
-            }
-            else
-            {
-                
-                [(MyDateShowView *)MyDateShowView Set_Value:Num1:Num2:On1:On2];
-                [self Change_State:IF_DATESHOW];
-            }
-            
-            
-            
-            
-            
-        }
-        else
-        {
-            NSString *str1 =[usersOne objectForKey:@"msg"];
-            [self Check_Error:str1];
-        }
-    }
-    
-    [self Ctl_LoadingView:FALSE];
-}
-*/
- 
--(void)Http_Process_Clear
-{
-//    int Szlen = [UserData count];
-    
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSString* json_string = [[NSString alloc] initWithData:Clear_tempData encoding:NSUTF8StringEncoding];
     
@@ -10247,7 +9765,6 @@ BOOL    Is_Get1_Sw = false;
         [(AutoLocating*)AutoLocatingView setData:m_data];
         [(AutoLocating*)AutoLocatingView Do_init:self];
         [HUD hide:YES];
-        // bruce@20150930 - 修改国内电子围栏首页显示项
         [self Change_State:IF_AutoLocating];
     }
     else
@@ -10298,29 +9815,27 @@ BOOL    Is_Get1_Sw = false;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:SetWiFi_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
+
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-    if( [status isEqualToString:str1]  )
-    {
-//        [self Change_State:IF_AutoLocating];
+
+    if([status isEqualToString:str1]) {
+        [self Change_State:IF_AutoLocating];
 //        [(AutoLocating*)AutoLocatingView Do_init:self];
 //        [(AutoLocating*)AutoLocatingView setData:m_data];
         [HUD hide:YES];
-    }
-    else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [self Check_Error:str1];
         [HUD hide:YES];
     }
 }
-//歷史記錄-跌倒(回傳解析)
 
--(void) Http_Process_His2
+
+//歷史記錄-跌倒(回傳解析)
+- (void) Http_Process_His2
 {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSString* json_string = [[NSString alloc] initWithData:His_tempData encoding:NSUTF8StringEncoding];
@@ -11290,12 +10805,11 @@ BOOL    Is_Get1_Sw = false;
 
     sosMap = usersOne;
 
-    if( [status isEqualToString:str1])
+    if([status isEqualToString:str1])
     {
         NSLog(@"userone = %@",usersOne);
-        
+
         if ([[usersOne objectForKey:@"data"] count] > 0) {
-            
             id idTmp = [usersOne objectForKey:@"data"];
             NSDictionary *dicTmp = [idTmp objectAtIndex:0];
 
@@ -12078,7 +11592,7 @@ BOOL    Is_Get1_Sw = false;
     }
 }
 
-//解析吃藥提醒
+#pragma mark - 解析吃药提醒
 - (void)Http_MedRemindInfo
 {
     NSError *error;
@@ -12550,33 +12064,28 @@ BOOL    Is_Get1_Sw = false;
 
 
 //取得語言設定
--(void)Http_LangInfo
+- (void)Http_LangInfo
 {
-    
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:LangInfo_tempData];
     [inStream open];
-    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
+    NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream
+                                                         options:NSJSONReadingAllowFragments
+                                                           error:&error];
+
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
     NSLog(@"users one = %@",usersOne);
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-    if( [status isEqualToString:str1]  )
-    {
-//        [HUD hide:YES];
+
+    if([status isEqualToString:str1]) {
         [(DeviceSet *)DeviceSet setLangArr:[usersOne objectForKey:@"SysParameter"]];
         [self Send_TimeZoneInfo:userAccount andHash:userHash];
-    } else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [self Check_Error:str1];
     }
-    
-    
-    
 }
 
 //取得語言設定
@@ -14250,31 +13759,26 @@ BOOL    Is_Get1_Sw = false;
     UpDate_Token_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+#pragma mark - 更新devicetoken
 - (void)Http_UpDate_Token
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:UpDate_Token_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
-    NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
-    NSLog(@"users one = %@",usersOne);
+
+    NSDictionary *usersOne = [jsonArr objectAtIndex:0] ;
+
+    NSLog(@"Http_UpDate_Token = %@",usersOne);
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
+
     NSArray *arr = [usersOne objectForKey:@"list"];
     NSLog(@"arr = %@",arr);
-    
-    
-    
-    if( [status isEqualToString:str1]  )
-    {
+
+    if( [status isEqualToString:str1]  ) {
         NSLog(@"Update token success!");
-        //        [HUD hide:YES];
-        
-    }else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [self Check_Error:str1];
         NSLog(@"error happen");
@@ -14371,11 +13875,14 @@ BOOL    Is_Get1_Sw = false;
     [self addloadingView];
 }
 
-- (int)returnIF_State{
+- (int)returnIF_State
+{
     return IF_State;
 }
 
-- (void)getWiFi{
+- (void)getWiFi
+{
     [self Get_WiFi:userAccount andHash:userHash];
 }
+
 @end

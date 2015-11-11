@@ -29,8 +29,8 @@
 }
 
 
-//功能按鈕
--(IBAction)funcionBtn:(UIButton *)sender
+// 功能按鈕
+- (IBAction)funcionBtn:(UIButton *)sender
 {
     NSLog(@"funcionBtn sender tag = %d", (int)sender.tag);
 
@@ -72,7 +72,7 @@
             //[(MainClass *)MainObj Other_MouseDown:100];
             //NSLog(@"Missing program");
             [(MainClass *)MainObj Other_MouseDown:99];
-            NSLog(@"電子圍籬");
+            //NSLog(@"電子圍籬");
             break;
         default:
             break;

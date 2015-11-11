@@ -18,3 +18,23 @@
 #import "define.h"
 
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+// 如果是马来的版本就用这个定义
+// 还有几个地方需要手动修改
+// 马来："Bu10_Str" = "电子围栏";
+// 国内："Bu10_Str" = "自建定位";
+// APP图标切换
+// Setting中position隐藏，贴心设定
+#define PROGRAM_VER_ML
+
+// 国内版本 @"http://watch.medquotient.com:8080/angelcare"
+// 马来版本 @"http://info.mhealth-management.com:9000/angelcare/"
+// 苏州服务器 @"http://www.missionhealthtec.com:8080/angelcare"
+#ifdef PROGRAM_VER_ML
+    #define INK_Url_1 @"http://info.mhealth-management.com:9000/angelcare/"
+#else
+    #define INK_Url_1 @"http://watch.medquotient.com:8080/angelcare"
+#endif
+
+
+

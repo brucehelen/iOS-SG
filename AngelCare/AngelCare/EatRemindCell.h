@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface EatRemindCell : UITableViewCell
+
 @property (nonatomic,strong) IBOutlet UIButton *clockBtn;
 
 @property (nonatomic,strong) IBOutlet UILabel *timeLbl;
 
 @property (nonatomic,strong) IBOutlet UILabel *weekLbl;
-
 
 @property (strong, nonatomic) IBOutlet UILabel *lbl7;
 @property (strong, nonatomic) IBOutlet UILabel *lbl1;

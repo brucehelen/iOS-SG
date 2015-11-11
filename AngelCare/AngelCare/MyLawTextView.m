@@ -179,18 +179,16 @@
 }
 
 //設定為繁體版本
--(void)Set_Tw
+- (void)Set_Tw
 {
-    
     NSString *deviceType = [UIDevice currentDevice].model;
     
-    if( [deviceType isEqualToString:@"iPhone Simulator"] || [deviceType isEqualToString:@"iPhone"])
+    if ([deviceType isEqualToString:@"iPhone Simulator"] || [deviceType isEqualToString:@"iPhone"])
     {
-        
         int totalHei = 2920;
-        
+
         NMCustomLabel *label1 = [[NMCustomLabel alloc] initWithFrame:CGRectMake(5, 15, myScrollView.frame.size.width-10, totalHei)];
-        
+
         label1.text = @"<span class='bold_style'>銀髮安全使 AngelCare服務條款</span>\n上次修改日期： 2012年10月25日\n<span class='ital_style'>歡迎使用 安全天使 AngelCare！</span>\n感謝您使用我們的產品和服務 (以下<span class='red_style'>共同</span>簡稱「服務」)。「服務」是由 蓋德科技股份有限公司RFID GUIDER TECHNOLOGY CO.,LTD. (地址為10083 台北市信義區忠孝東路五段482號8樓之3) (以下簡稱「AngelCare」) 提供。\n只要您使用「服務」，即表示您同意本條款，故請詳閱本條款內容。\n由於「服務」種類繁多，因此某些「服務」可能會有附加條款或產品規定。附加條款將與相關「服務」一併提供；當您使用該「服務」時，該等附加條款即成為您與我們所訂協議的一部分。\n<span class='ital_style'>使用「服務」</span>\n您必須遵守「服務」中向您提供的所有政策。\n請勿濫用「服務」。舉例來說，您不應干擾「服務」運作，亦不得試圖透過我們所提供的介面和操作說明以外的方法存取「服務」。您僅可於法律 (包括適用的出口及再出口管制法律和法規) 允許範圍內使用「服務」。如果您未遵守我們的條款或政策，或是如果我們正在調查疑似違規行為，我們可能會暫停或終提供「服務」。\n使用「服務」並不會將「服務」或您所存取內容的任何智慧財產權授予您。除非相關內容的擁有者同意或法律允許，否則您一律不得使用「服務」中的內容。本條款並未授權您可使用「服務」中所採用的任何品牌標示或標誌。請勿移除、遮蓋或變造「服務」所顯示或隨附顯示的任何法律聲明。\n「服務」中顯示的部分內容並非 AngelCare 所有，這類內容應由其提供實體承擔全部責任。我們可對內容進行審查，以判斷其是否違法或違反 AngelCare 政策，並可移除或拒絕顯示我們合理確信違反 我們政策或法律的內容。不過，這不表示我們一定會對內容進行審查，因此請勿如此認定。\n有關您對「服務」的使用，我們會向您發送服務公告、行政管理訊息和其他資訊；您可取消接收其中某些通訊內容。\n<span class='ital_style'>您的 AngelCare  帳戶</span>\n您可能需有「AngelCare帳戶」才能使用我們的某些「服務」。透過購買AngelCare產品後，本公司將為您指派「AngelCare  帳戶」。如果您使用的是管理人指派給您的「AngelCare  帳戶」，可能需適用不同條款或附加條款，而且您的管理人可能可以存取或停用您的帳戶。\n如果您發現密碼或帳戶遭人盜用，請按與AngelCare客服中心(02-2728-1051)聯絡。\n<span class='ital_style'>隱私權與著作權保護</span>\nAngelCare  的《隱私權政策》說明當您使用「服務」時，我們如何處理您的個人資料並保護您的隱私權。您使用「服務」，即表示您同意 AngelCare  可依據我們的隱私權政策的規定使用這類資料。\n<span class='ital_style'>您儲存在「服務」中的內容</span>\n部分「服務」可讓您提交內容；您仍保有<span class='red_style'>提交</span>內容的『智慧財產權』。簡而言之，屬於您的依舊是您的。\n當您將內容上傳或以其他方式提交至「服務」，即表示您授予 AngelCare  (及我們的合作夥伴) 全球通用的授權，可使用、代管、儲存、重製、修改、製作衍生作品 (例如健康報告、關心服務或變更您的內容，使其更加配合我們的「服務」)這類內容。您於本項授權授予的權利僅限用於營運、宣傳與改善「服務」，以及開發新的服務。即使您停止使用「服務」，本項授權仍持續具有效力。部分「服務」可讓您存取與移除先前提交至該「服務」的內容。此外，某些「服務」會有條款或設定縮限我們對提交至該類「服務」之內容的使用範圍。請確認您擁有必要權利，可就您提交至「服務」的任何內容授予我們本項授權。\n如要進一步瞭解 AngelCare  使用與儲存內容的方式，請參閱相關「服務」的隱私權政策或附加條款。如果您就「服務」提供意見或建議，我們可使用您的意見或建議，<span class='red_style'>但</span>對您不負任何義務。\n<span class='ital_style'>有關「服務」所含軟體</span>\n如果「服務」需有或內含可下載軟體，該軟體可能會在提供新版或新功能時，在您的裝置上自動更新。部分「服務」可以讓您調整您的自動更新設定。\nAngelCare  授予您全球通用、免權利金、不得轉讓、非專屬的個人使用授權，讓您使用 AngelCare  提供給您的、包含在「服務」中的軟體。本授權僅供您以這些條款允許之方式，使用 AngelCare  提供之「服務」並享用其利益。除非您已<span class='red_style'>事先</span>取得我們的書面許可，否則您不得複製、修改、散佈、銷售或出租「服務」的任何部分或其中包含的軟體，也不得對該軟體進行逆向工程或試圖擷取其原始程式碼。\n<span class='ital_style'>修改與終止「服務」</span>\n我們會持續不斷變更並改進「服務」。我們可能會新增或移除功能或特性，也可能會完全暫停或停止某項「服務」。\n您隨時都可以停止使用「服務」，不過我們並不希望您這麼做。AngelCare  也可能隨時停止向您提供「服務」，或對「服務」附加或設定新的限制。\n我們認為您的資料是屬於您所有，因此有必要維護您對這類資料的存取。當我們中止某項「服務」時，只要合理可行，我們都會給您合理的事先通知，讓您有<span class='red_style'>時間</span>能將資訊自該「服務」匯出。\n<span class='ital_style'>我們的擔保與免責聲明</span>\n我們會以商業上合理的技術與注意程度提供「服務」，希望您盡情使用。但關於「服務」，有些事情我們不予保證。\n除本條款或額外條款中明示規定者外，AngelCare  或其供應商或經銷商均不對「服務」做出任何特定保證。例如，我們不會就「服務」中的內容、「服務」之特定功能及其可靠性、可用性和符合您的需求的能力，做出任何承諾。我們僅以「現狀」提供「服務」。\n部分司法管轄區會規定應提供特定擔保，例如對適銷性、特殊用途適用性及未侵權之默示擔保。凡法律准許時，我們均排除一切擔保責任。\n<span class='ital_style'>對「服務」的責任</span>\n凡法律准許時，AngelCare  與 AngelCare  的供應商和經銷商對所失利益、收入或資料、財務損失或間接、特殊、衍生性、懲戒性或處罰性損害賠償均不負責。\n在法律准許範圍內，AngelCare  與其供應商和經銷商對依本條款所提出任何請求之總責任 (包括對任何默示擔保之責任)，均不超過您就使用「服務」而向 AngelCare  支付的金額 (或者 AngelCare  亦可選擇再向您提供該「服務」)。\n不論在任何情況下，AngelCare  與其供應商和經銷商對無法合理預見之任何損失或損害均不負責。\n<span class='ital_style'>公司行號使用 AngelCare  服務</span>\n如果您是代表某公司使用「服務」，即表示該公司接受本條款。該公司必須就任何因使用「服務」或違反本條款而引起或相關的請求、訴訟或法律行動 (包括承擔所有因請求、損失、損害、訴訟、判決、訴訟費用和律師費用而產生的任何責任或費用)，向 AngelCare  及其關係企業、主管人員、代理人和員工做出補償，並使其不受損害<span class='red_style'>此部分聲請合約需以公司名義簽訂方能代表公司）。</span>\n<span class='ital_style'>有關本條款的說明</span>\n我們可能會修改本條款或適用於某「服務」之任何額外條款，以 (例如)反映法律之變更或「服務」之變動。您應定期查閱本條款內容。這些條款如有修訂，我們會在本網頁發佈通知。我們會在相關「服務」中公布已修訂額外條款的通知。變更不會回溯適用，並將於公布變更起十四天或更長時間後方始生效。不過，針對某項「服務」新功能的變更，或基於法律理由而為之變更，將立即生效。如果您不同意某項「服務」之修訂條款，則請停止使用該「服務」。\n如果本條款與額外條款牴觸時，就該牴觸項目而言，應以額外條款為準。\n本條款規範 AngelCare  與您之間的關係，並不會衍生任何第三人受益權。\n如果您不遵守本條款，而我們並未立即採取行動，這並不表示我們要放棄任何原本即有的權利 (例如未來再採取行動的權利)。\n發生特定條款無法執行的情況時，並會影響任何其他條款。\n因本條款或「服務」所生或與其相關之任何爭議適用中華民國法律。<span class='red_style'>且因</span>本條款或「服務」所生或與其相關之所有主張<span class='red_style'>涉訟時雙方合意</span>由台灣台北地方法院為<span class='red_style'>第一審管轄法院</span>。\n如需 AngelCare  的聯絡資訊，請造訪我們的 連絡網頁。\n";
         
         [label1 setDefaultStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] color:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]]];
@@ -198,23 +196,16 @@
         [label1 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20] color:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]] forKey:@"bold_style"];
         
         [label1 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18] color:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]] forKey:@"ital_style"];
-        
-        
-        
+
         [label1 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] color:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]] forKey:@"red_style"];
-        
+
         label1.kern = 0.0;
         label1.lineHeight = 20;
-        
+
         [myScrollView addSubview:label1];
-        
-        
+
         NSLog(@"hei is %f",label1.frame.size.height);
-        
-        
-        
-        
-        
+
         CGRect  NewRect2;
         NewRect2 = CGRectMake(0, 0, 320, totalHei );
         myScrollView.contentSize  =  NewRect2.size;
@@ -241,65 +232,28 @@
         label1.lineHeight = 30;
         
         [myScrollView addSubview:label1];
-        
-        
+
         NSLog(@"hei is %f",label1.frame.size.height);
-        
-        
-        
-        
-        
+
         CGRect  NewRect2;
         NewRect2 = CGRectMake(0, 0, 768, totalHei );
         myScrollView.contentSize  =  NewRect2.size;        
     }
-  
-    
 }
 
 
--(void)awakeFromNib
+- (void)awakeFromNib
 {
-    
-    
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
     
-    
-    
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if( [currentLanguage isEqualToString:check1]  )
-    {
-        
-         [self Set_Tw];
-    }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-                [self Set_Cn];
-        }
-        else
-        {
-           
-            [self Set_En];
-        }      
-        
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        [self Set_Cn];
+    } else {        // en
+        [self Set_En];
     }
 }
 
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -45,6 +45,11 @@
     IBOutlet UIButton *dinnerStartBtn;
     IBOutlet UIButton *dinnerEndBtn;
     
+    // bruce@20151010
+    __weak IBOutlet UILabel *bgBloodMaxValue;
+    
+    __weak IBOutlet UILabel *bgBloodMaxInfo;
+    
     NSString *bfStartStr;
     NSString *bfEndStr;
     NSString *lunchStartStr;

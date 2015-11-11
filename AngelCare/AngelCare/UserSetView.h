@@ -12,18 +12,14 @@
 @interface UserSetView : UIView
 {
     NSMutableArray *userSetArr;
-    //parent View
-    id  MainObj;
 
+    id  MainObj;
 }
 
 @property (nonatomic,strong) IBOutlet UITableView *userSetTableView;
 
--(void)Do_Init:(id)sender;
+- (void)Do_Init:(id)sender;
 
-//  初始化Ｖiew 上的設定
--(void)Set_Init:(id)sender SetDic:(NSDictionary *)dic;
-
-
+- (void)Set_Init:(id)sender SetDic:(NSDictionary *)dic;
 
 @end

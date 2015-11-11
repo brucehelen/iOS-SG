@@ -11,6 +11,8 @@
 #import "BMapKit.h"
 #import "MainClass.h"
 #import <dlfcn.h>
+#import "KMLocationManager.h"
+#import "KMCommonClass.h"
 
 BMKMapManager *_mapManager;
 
@@ -60,7 +62,10 @@ BMKMapManager *_mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self loadReveal];
+    //[self loadReveal];
+    
+    NSString *wifiName = [KMCommonClass getWifiName];
+    NSLog(@"wifiName = %@, %@", wifiName, [KMCommonClass getWifiMac]);
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
@@ -71,38 +76,25 @@ BMKMapManager *_mapManager;
         NSLog(@"*** Baidu manager start failed!");
     }
 
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         UIStoryboard *iPhoneStoryboard;
         CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
 
         if (iOSDeviceScreenSize.height == 568)      // iphone5, 6, 6p
         {
+            NSLog(@"iphone5...");
             iPhoneStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone4"
                                                          bundle:nil];
-        }
-        else        // iphone4
-        {
-            NSLog(@"isIphone4");
+        } else {
+            NSLog(@"iphone4");
             iPhoneStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
                                                          bundle:nil];
         }
 
-        // 判斷帳號密碼是否已存在  已存在直接進入主畫面
-        if ([defaults objectForKey:@"userAccount"] &&
-            [defaults objectForKey:@"userHash"])
-        {
-            UIViewController *InitialSlidingViewController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"navi"];
-            _viewController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"Index"];
-            self.window.rootViewController = InitialSlidingViewController;
-        }
-        else
-        {
-            UIViewController *loginViewController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"Login"];
-            self.window.rootViewController = loginViewController;
-            if (![defaults objectForKey:@"First"]) {
-                [login firstLogin];
-            }
+        UIViewController *loginViewController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"Login"];
+        self.window.rootViewController = loginViewController;
+        if (![defaults objectForKey:@"First"]) {
+            [login firstLogin];
         }
     }
 
@@ -133,6 +125,13 @@ BMKMapManager *_mapManager;
     NSLog(@"DeviceToken = %@", newString);
 
     m_deviceToken = newString;
+
+    double delayInSeconds = 15.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"---> send DeviceToken[%@] to server", newString);
+        [self updateToken];
+    });
 }
 
 #pragma mark 接收到推送消息
@@ -164,6 +163,8 @@ BMKMapManager *_mapManager;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    NSLog(@"--->applicationDidBecomeActive");
+
     //偏移校準
     if(!_isoGetter)
         _isoGetter = [GetISOCountryCode new];

@@ -10,8 +10,18 @@
 #import "MainClass.h"
 #import "ViewController.h"
 #import "MainClass.h"
+#import "KMLocationManager.h"
+#import "KMCommonClass.h"
+
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define s_time 10
+
+@interface LocatingEdit()
+
+@property (nonatomic, assign) CLLocation *currentLocation;
+
+@end
+
 @implementation LocatingEdit
 {
     NSString *imei;
@@ -24,63 +34,71 @@
     NSString *userHash;
     
     NSString *g_gps_latlng;
-
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-- (void)Do_init:(id)sender{
+- (void)Do_init:(id)sender
+{
     [self.nameTextField setText:self.nameString];
-    
-    
-    
+
+    self.nameTitleLabel.text = NSLocalizedStringFromTable(@"Position_TOP_name", INFOPLIST, nil);
+    self.addressTitleLabel.text = NSLocalizedStringFromTable(@"Position_TOP_address", INFOPLIST, nil);
+
     [self.WIFIMACLabel setTextColor:[UIColor blackColor]];
     [self.WIFITitleLabel setTextColor:[UIColor blackColor]];
-    self.WIFIMACLabel.text = @"取得MAC中...";
-     
+    self.WIFIMACLabel.text = NSLocalizedStringFromTable(@"Position_Get_Wifi_info", INFOPLIST, nil);
+
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
+
     if(IS_OS_8_OR_LATER) {
-//        //[self.locationManager requestWhenInUseAuthorization];
-//        [self.locationManager requestAlwaysAuthorization];
         [self.locationManager startUpdatingLocation];
     }
     self.map.delegate = self;
     [self.map setShowsUserLocation:YES];
-    [self.map setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    [self.map setUserTrackingMode:MKUserTrackingModeNone animated:YES];
     
     [[self.saveButton layer] setCornerRadius:10]; // THIS IS THE RELEVANT LINE
     [self.saveButton.layer setMasksToBounds:YES]; ///missing in your code
-    [self.saveButton setTitle:@"储存" forState:UIControlStateNormal];
-    
-    [self warningShow];
-    
+    [self.saveButton setTitle:NSLocalizedStringFromTable(@"Position_TOP_save", INFOPLIST, nil)
+                     forState:UIControlStateNormal];
+
+    self.WIFITitleLabel.text = [KMCommonClass getWifiName];
+    NSString *macAddress = [[KMCommonClass getWifiMac] stringByReplacingOccurrencesOfString:@":"
+                                                                                 withString:@""];
+    self.WIFIMACLabel.text = [NSString stringWithFormat:@"WiFi MAC: %@", macAddress];
+    self.WiFiMac = macAddress;
+
+    //[self warningShow];
+
     MainObj = sender;
     [(MainClass *)MainObj Send_MapUserImei];//get phone data
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
     MKCoordinateRegion region = { { 0.0, 0.0 }, { 0.0, 0.0 } };
     region.center.latitude = self.locationManager.location.coordinate.latitude;
     region.center.longitude = self.locationManager.location.coordinate.longitude;
     region.span.latitudeDelta = 0.0187f;
     region.span.longitudeDelta = 0.0137f;
     [self.map setRegion:region animated:YES];
-    
-    CLLocation *location = [locations objectAtIndex:0];
-//    NSLog(@"%f,%f",location.coordinate.latitude,location.coordinate.longitude);
-    [self findAddressUseLat:location.coordinate.latitude andLon:location.coordinate.longitude];
-    g_gps_latlng = [NSString stringWithFormat:@"%f,%f",location.coordinate.latitude,location.coordinate.longitude];
+
+    self.currentLocation = [locations objectAtIndex:0];
+
+    [self findAddressUseLat:self.currentLocation.coordinate.latitude
+                     andLon:self.currentLocation.coordinate.longitude];
+    g_gps_latlng = [NSString stringWithFormat:@"%f,%f",
+                    self.currentLocation.coordinate.latitude,
+                    self.currentLocation.coordinate.longitude];
+
+    // 只需要定位一次即停止
+    [manager stopUpdatingLocation];
 }
 
-//hide keyboard
--(void)touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event {
+- (void)touchesEnded:(NSSet *)touches
+           withEvent:(UIEvent *)event
+{
     NSArray *subviews = [self subviews];
     for (id objects in subviews) {
         if ([objects isKindOfClass:[UITextField class]]) {
@@ -92,7 +110,9 @@
     }
 }
 
-- (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees) lng latitude:(CLLocationDegrees)lat{
+- (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees) lng
+                                                        latitude:(CLLocationDegrees)lat
+{
     NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=%lf&y=%lf", lng, lat]];
     
     NSURLResponse *response;
@@ -109,58 +129,51 @@
     return CLLocationCoordinate2DMake(lat, lng);
 }
 
-- (void)findAddressUseLat:(double)lat andLon:(double)lon{
-    NSLog(@"%@,findAddressUseLat ",self);
-    
-    BMKGeoCodeSearch *_searcher =[[BMKGeoCodeSearch alloc]init];
-    _searcher.delegate = self;
-    //发起反向地理编码检索
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){lat, lon};
-    
-    pt = [self convertCoordinateToBaiDuWithLongitude:pt.longitude latitude:pt.latitude];
-    
-    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[
-                                                            BMKReverseGeoCodeOption alloc]init];
-    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
-    BOOL flag = [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
-    //    [reverseGeoCodeSearchOption release];
-    if(flag)
-    {
-        NSLog(@"反geo检索发送成功");
-    }
-    else
-    {
-        NSLog(@"反geo检索发送失败");
-    }
-    
+- (void)findAddressUseLat:(double)lat andLon:(double)lon
+{
+    __weak LocatingEdit *weakSelf = self;
+
+    KMLocationManager *locationManager = [KMLocationManager locationManager];
+    [locationManager startLocationWithLocation:[[CLLocation alloc] initWithLatitude:lat
+                                                                          longitude:lon]
+                                   resultBlock:^(NSString *address) {
+                                       [weakSelf updateTextFieldWithAddress:address];
+                                   }];
 }
+
+- (void)updateTextFieldWithAddress:(NSString *)address
+{
+    self.AddressTextField.text = address;
+}
+
 //接收反向地理编码结果
--(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:
-(BMKReverseGeoCodeResult *)result
-                        errorCode:(BMKSearchErrorCode)error{
+-(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher
+                           result:(BMKReverseGeoCodeResult *)result
+                        errorCode:(BMKSearchErrorCode)error
+{
     if (error == BMK_SEARCH_NO_ERROR) {
         //在此处理正常结果
         NSLog(@"正常结果 = %@",result.address);
         self.AddressTextField.text = result.address;
         [self.locationManager stopUpdatingLocation];
-//        [currentAnn setTitle:result.address];
-    }
-    else {
+    } else {
         NSLog(@"抱歉，未找到结果");
-        NSString *noRes = @"抱歉，未找到结果，请稍候重试";
-//        [currentAnn setTitle:noRes];
-        
     }
 }
 
-
-- (IBAction)ibaSave:(id)sender {
+#pragma mark - 保存WiFi地址
+- (IBAction)ibaSave:(id)sender
+{
     if (self.WiFiMac.length == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"尚未取得的Wi-Fi mac，请稍等......" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Position_TIP_title", INFOPLIST, nil)
+                                                        message:NSLocalizedStringFromTable(@"Position_Get_WiFi_result", INFOPLIST, nil)
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Position_TIP_CANCEL", INFOPLIST, nil)
+                                              otherButtonTitles: nil];
         [alert show];
         return;
     }
-    
+
     NSMutableDictionary *m_dict = [[NSMutableDictionary alloc]init];
     [m_dict setObject:self.g_no forKey:@"no"];
     [m_dict setObject:self.nameTextField.text forKey:@"name"];
@@ -170,33 +183,41 @@
     [(MainClass*)MainObj SetWiFiWithDict:m_dict];
 }
 
-- (void)warningShow{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"需要发送简讯，以取得手表最后Wi-Fi资讯，此部分会有额外费用产生。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+- (void)warningShow
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Position_TIP_title", INFOPLIST, nil)
+                                                    message:NSLocalizedStringFromTable(@"Position_TIP_message", INFOPLIST, nil)
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedStringFromTable(@"Position_TIP_CANCEL", INFOPLIST, nil)
+                                          otherButtonTitles:NSLocalizedStringFromTable(@"Position_TIP_OK", INFOPLIST, nil), nil];
     alert.tag = 1001;
     [alert show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     if (alertView.tag == 1001) {
         //call api
         if (buttonIndex == 1) {
             [self sendMsg];
-        }
-        else{
+        } else {
             [self startCallAPI];
         }
     }
 }
+
 #pragma mark - SMS發送簡訊
-- (void)sendMsg{
+- (void)sendMsg
+{
     //簡訊驗證碼
-    
-    
     if (phone.length == 0)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"NOPHONENUMBER", INFOPLIST, nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil)
+                                                        message:NSLocalizedStringFromTable(@"NOPHONENUMBER", INFOPLIST, nil)
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
         [alert show];
-        
     }
     else
     {
@@ -220,13 +241,12 @@
             vc = (ViewController*)[[self nextResponder] nextResponder];
             NSLog(@"%@",[[self nextResponder] nextResponder]);
             [vc presentViewController:controller animated:YES completion:nil];
-            
-        }else{
+
+        } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:@"您的设备不支援简讯发送功能，无法发送SMS简讯。" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alert show];
         }
     }
-    
 }
 
 //使用者完成操作時所呼叫的內建函式
@@ -262,31 +282,32 @@
     [vc dismissViewControllerAnimated:YES completion:^{
         [self startCallAPI];
     }];
-
-    
-    
-    
 }
 
-- (void)startCallAPI{
+- (void)startCallAPI
+{
     NSLog(@"startCallAPI 10s");
-    myTimer = [NSTimer scheduledTimerWithTimeInterval:s_time target:self selector:@selector(callAPI) userInfo:nil repeats:YES];
+    myTimer = [NSTimer scheduledTimerWithTimeInterval:s_time
+                                               target:self
+                                             selector:@selector(callAPI)
+                                             userInfo:nil
+                                              repeats:YES];
 }
 
-- (void)callAPI{
+- (void)callAPI
+{
     NSLog(@"callAPI");
     [(MainClass*)MainObj  getWiFi];
 }
 
--(void)SetIMEI:(NSString *)getimei AndPhone:(NSString *)_phone
+- (void)SetIMEI:(NSString *)getimei AndPhone:(NSString *)_phone
 {
     imei = getimei;
     phone = _phone;
-    
-    
 }
 
-- (void)stopTimer{
+- (void)stopTimer
+{
     [myTimer invalidate];
     myTimer = nil;
 }

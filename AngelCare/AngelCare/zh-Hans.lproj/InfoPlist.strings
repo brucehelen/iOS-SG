@@ -3,6 +3,7 @@
 "CFBundleDisplayName"  = "康美健康云";
 "LANGUAGE" = "2";
 "Setting_Version" = "Version";
+"Setting_F&Q" = "常见问题";
 "NONET" = "网路连线异常，请稍候再尝试";
 
 /**********Login***************/
@@ -70,7 +71,7 @@
 "Bu3_02_Str" = "血糖记录";
 "Bu3_03_Str" = "血氧记录";
 "Bu3_04_Str" = "体重记录";
-"Bu3_05_Str" = "计步器";
+"Bu3_05_Str" = "运动记录";
 
 "Bu4_Str" = "定位救援";
 "SMS_SEND" = "即时定位启动";
@@ -109,7 +110,7 @@
 /*************************/
 
 /********设备资讯***********/
-"Device_Time_on" = "待机时间";
+"Device_Time_on" = "运作中";
 "Device_Time_off" = "关机";
 "Device_OffType" = "关机原因";
 "Device_Time_sync" = "同步时间";
@@ -590,12 +591,21 @@
 "OriginalPW" = "原始密码";
 "NewPw" = "新密码";
 "AgainPw" = "再次输入";
+
+// 标题
+"BPThresholdTitle" = "血压范围";
+
 //
 "HigherThan" = "高于";
 "SendAlarm" = "发出警示";
 //
 "ExceedWillSendAlarm" = "高于                            将发出警示";
 "BelowWillSendAlarm" = "低于           %将会发出警示";
+
+"bgBloodMaxValue" = "糖尿病的血糖临界值";
+"bgBloodMaxInfo" = "目前世界卫生组织制定的健康及诊断糖尿病的血糖临界值，分別为110及126mg/dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人應該在110mg/dL以下。如果超過126mg/dL，就是診斷為糖尿病的條件之一。\n以上引用來源：世界衛生組織";
+
+
 //
 //
 "lblRemind1Title" = "世界卫生组织高血压判断标准";
@@ -702,3 +712,34 @@
 "HS_GeoFence" = "电子围篱";
 "Login_QRCodeLoginBtnReturn" = "回前一頁";
 "GeoFence" = "电子围篱";
+
+// bruce@20151009 血氧提醒
+"BORember_TIP_INFO" = "低于下面的值将发送一条警告";
+
+// bruce@20151013 创建自建定位的提示信息
+"Position_TIP_title" = "提示";
+"Position_TIP_message" = "需要发送简讯，以取得手表最后Wi-Fi资讯，此部分会有额外费用产生。";
+"Position_TIP_OK" = "确定";
+"Position_TIP_CANCEL" = "取消";
+
+"Position_TOP_name" = "名称:";
+"Position_TOP_address" = "地址:";
+
+"Position_TOP_save" = "保存";
+
+"Position_Get_Wifi_info" = "正在取得手表WiFi...";
+"Position_Get_WiFi_result" = "尚未取得Wi-Fi mac，请稍等...";
+
+// Watch Setup
+"Device_Set_lblSync" = "这个功能可以立即更新设定";
+"Device_Set_btnRS" = "立即同步";
+
+// 自建定位create
+"Auto_location_create" = "创建";
+
+// 常见问题
+"FreqQuestionTitle" = "常见问题";
+"FreqQuestionDetailTitle" = "问题详情";
+
+
+

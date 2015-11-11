@@ -53,46 +53,48 @@
     
     NSString *areaStr;
     NSString *langStr;
-    
-    
+
     id MainObj;
-    
+
     int saveNum;
-    
-    
+
     IBOutlet UIScrollView *scrView;
-    
-    
+
     IBOutlet UILabel *syncLbl;
     IBOutlet UIButton *syncBtn;
 }
+
+@property (strong, nonatomic) IBOutlet UIButton *btnRS;
+@property (strong, nonatomic) IBOutlet UILabel *lblSync;
+
 @property (nonatomic,strong) NSArray *timezoneArr;
 @property (nonatomic,strong) NSArray *langArr;
 @property (strong, nonatomic) MLTableAlert *alert;
-
--(void)Set_Init:(NSDictionary *)dic;
-
--(void)Do_Init:(id)sender;
-
--(void)SaveDevSet;
-
-//設定開啓或關閉
--(IBAction)changeEnable:(id)sender;
-
--(void)ChangeTimeZoneTitle:(NSString *)name SelectNumber:(NSString *)number;
-
--(void)ChangeLanguageTitle:(NSString *)name SelectNumber:(NSString *)number;
-
--(void)sendNext;
-
-
-//
--(IBAction)timeSelect:(id)sender;
--(IBAction)ibaRemoteSynch:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *btnRS;
-@property (strong, nonatomic) IBOutlet UILabel *lblSync;
--(void)SetIMEI:(NSString *)getimei AndPhone:(NSString *)_phone;
 @property (nonatomic,strong) NSArray *synctimearr;
--(void)Set_Init_Call:(NSDictionary *)dic;
--(void)SaveCall;
+
+
+- (void)Set_Init:(NSDictionary *)dic;
+
+- (void)Do_Init:(id)sender;
+
+- (void)SaveDevSet;
+
+- (IBAction)changeEnable:(id)sender;
+
+- (void)ChangeTimeZoneTitle:(NSString *)name SelectNumber:(NSString *)number;
+
+- (void)ChangeLanguageTitle:(NSString *)name SelectNumber:(NSString *)number;
+
+- (void)sendNext;
+
+- (IBAction)timeSelect:(id)sender;
+
+- (IBAction)ibaRemoteSynch:(id)sender;
+
+- (void)SetIMEI:(NSString *)getimei AndPhone:(NSString *)_phone;
+
+- (void)Set_Init_Call:(NSDictionary *)dic;
+
+- (void)SaveCall;
+
 @end

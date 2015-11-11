@@ -66,8 +66,10 @@
         [cell.addressTitleLabel setHidden:YES];
         //show creatLabel
         [cell.createTitleLabel setHidden:NO];
-//        cell.createTitleLabel.text = @"建立定位点";
-        cell.createTitleLabel.text = @"create";
+
+        cell.createTitleLabel.text = NSLocalizedStringFromTable(@"Auto_location_create",
+                                                                INFOPLIST,
+                                                                nil);
         //make raduis of corner
         [[cell.createTitleLabel layer] setCornerRadius:10]; // THIS IS THE RELEVANT LINE
         [cell.createTitleLabel.layer setMasksToBounds:YES]; ///missing in your code

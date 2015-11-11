@@ -9,6 +9,8 @@
 #import "MyActView.h"
 #import "MainClass.h"
 #import "Base64.h"
+#import "KMLocationManager.h"
+
 
 @implementation MyActView
 {
@@ -28,8 +30,6 @@ NSMutableArray  *Array_Type;
 
 int isGPS_GSM_WIFI;
 
-// for scrollview
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if( scrollView.contentOffset.y < 0)
@@ -47,7 +47,7 @@ int isGPS_GSM_WIFI;
     }
 }
 
-// ====   IOS MAP 基本設定
+// ==== IOS MAP 基本設定
 - (CLLocationCoordinate2D) convertCoordinateWithLongitude:(CLLocationDegrees)lng
                                                  latitude:(CLLocationDegrees)lat
 {
@@ -66,17 +66,13 @@ int isGPS_GSM_WIFI;
 
         lng = [[[NSString alloc] initWithData:[Base64 decode:[result objectForKey:@"x"]] encoding:NSUTF8StringEncoding] doubleValue];
         lat = [[[NSString alloc] initWithData:[Base64 decode:[result objectForKey:@"y"]] encoding:NSUTF8StringEncoding] doubleValue];
-    }
-    else{//高德 偏移校準
-        //        isoGetter = [GetISOCountryCode new];
-        //        [isoGetter startSignificantChangeUpdates];
-        //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    } else {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
-        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"ISOCode"]; //Add the file name
+        NSString *documentsPath = [paths objectAtIndex:0];
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"ISOCode"];
         isoCode = [[NSString alloc]initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
         NSLog(@"%@",isoCode);
-        //        NSString *isoCode = [defaults objectForKey:@"ISOCountryCode"];
+
         if ([isoCode isEqualToString:@"CN"]) {//中國
             NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=0&to=2&x=%lf&y=%lf", lng, lat]];
             
@@ -99,7 +95,6 @@ int isGPS_GSM_WIFI;
 
     return CLLocationCoordinate2DMake(lat, lng);
 }
-
 
 // for overlay
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay
@@ -185,27 +180,20 @@ int isGPS_GSM_WIFI;
     return CLLocationCoordinate2DMake(lat, lng);
 }
 
-- (void)findAddressUseLat:(double)lat andLon:(double)lon andAnn:(MyAnnotation*)ann
+- (void)findAddressUseLat:(double)lat
+                   andLon:(double)lon
+                   andAnn:(MyAnnotation*)ann
 {
-    NSLog(@"findAddressUseLat");
-
-    BMKGeoCodeSearch *_searcher =[[BMKGeoCodeSearch alloc]init];
+    BMKGeoCodeSearch *_searcher = [[BMKGeoCodeSearch alloc] init];
     _searcher.delegate = self;
 
-    //发起反向地理编码检索
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){lat, lon};
-
-    pt = [self convertCoordinateToBaiDuWithLongitude:pt.longitude
-                                            latitude:pt.latitude];
-
-    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[
-                                                            BMKReverseGeoCodeOption alloc]init];
-    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
-    BOOL flag = [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
-
-    if (flag) {
-        NSLog(@"*** 反geo检索发送失败 ***");
-    }
+    __weak MyAnnotation *weakAnn = currentAnn;
+    KMLocationManager *manger = [KMLocationManager locationManager];
+    [manger startLocationWithLocation:[[CLLocation alloc] initWithLatitude:lat
+                                                                 longitude:lon]
+                          resultBlock:^(NSString *address) {
+                              weakAnn.title = address;
+                          }];
 
     if (ann) currentAnn = ann;
 }
@@ -219,8 +207,6 @@ int isGPS_GSM_WIFI;
         currentAnn.title = result.address;
     }
 }
-
-//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 //清除大頭針
 - (void)ClearPoint : (id)sender
@@ -289,10 +275,10 @@ int isGPS_GSM_WIFI;
     MyTable.delegate = self;
 }
 
-#pragma mark RouteListDelegate
+#pragma mark - 选择右边弹窗某一项
 - (void)didselectCellNum:(int)number
 {
-    NSLog(@"number = %i", number);
+    NSLog(@"didselectCellNum = %i", number);
     [self.swipeBar toggle];
     isList = NO;
     tarNum = number + 1;
@@ -354,8 +340,6 @@ int isGPS_GSM_WIFI;
                     :(NSString*)Value6
                     :(NSString*)Value7
 {
-
-
     [Array_timeDate addObject:Value1 ];
     [Array_locationDate addObject:Value2 ];
     [Array_longitudeDate addObject:Value3 ];
@@ -578,8 +562,7 @@ int isGPS_GSM_WIFI;
     [Bu_Left setHidden:NO];
 }
 
-//  設定此Ｖiew 
--(void)Set_Init:(id)sender
+- (void)Set_Init:(id)sender
 {
     NSLog(@"list dic = %@",listDic);
      MainObj = sender;
@@ -634,45 +617,33 @@ int isGPS_GSM_WIFI;
     [Bu_Map setBackgroundImage:[UIImage imageNamed:@"Act_Left_1.png"] forState:UIControlStateNormal];
     [Bu_List setEnabled:TRUE];
     [Bu_List setBackgroundImage:[UIImage imageNamed:@"Act_Right_2.png"] forState:UIControlStateNormal];
-    
-    
+
     [Bu_Map setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU1] forState:UIControlStateNormal];
-    
-    
+
     [Bu_List setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU2] forState:UIControlStateNormal];
-    
-    
+
     [Bu_Left setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU3] forState:UIControlStateNormal];
-    
-    
+
     [Bu_Right setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU4] forState:UIControlStateNormal];
-    
-    
+
     [Bu_Map setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU1] forState:UIControlStateDisabled];
-    
-    
+
     [Bu_List setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU2] forState:UIControlStateDisabled];
-    
-    
+
     [Bu_Left setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU3] forState:UIControlStateDisabled];
-    
-    
+
     [Bu_Right setTitle:[(MainClass *) MainObj Get_DefineString:TITLE_MAP_BU4] forState:UIControlStateDisabled];
-    
+
     [Bu_Right setHidden:NO];
     [Bu_Left setHidden:NO];
-    
+
     self.tfEnd.delegate = self;
     self.tfStart.delegate = self;
-    
- 
 }
 
-//- (void)setDatePickToTF{
-//    
-//}
 #pragma mark - text
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:[NSDate date]];
     if (textField == self.tfStart) {
@@ -687,44 +658,26 @@ int isGPS_GSM_WIFI;
     }
 }
 
-- (IBAction)doneEditing:(id)sender {
+- (IBAction)doneEditing:(id)sender
+{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    
+
     if (self.tfStart.editing) {
         UIDatePicker *picker = (UIDatePicker*)self.tfStart.inputView;
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         self.tfStart.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:picker.date]];
         [self.tfStart resignFirstResponder];
     }
-    
-    
+
     if (self.tfEnd.editing) {
         UIDatePicker *picker = (UIDatePicker*)self.tfEnd.inputView;
         dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
         self.tfEnd.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:picker.date]];
         [self.tfEnd resignFirstResponder];
     }
-    
-    //for search
-    if ([self.tfStart.text length] != 0) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *user = [defaults objectForKey:@"userAccount"];
-        NSString *hash = [defaults objectForKey:@"userHash"];
-//        [MainObj Send_Search_ActionLoc:user andHash:hash andStartTime:self.tfStart.text];
-    }
 }
 
-
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
 //設定下方顯示欄位
 - (void)Set_Text:(NSString *)location
@@ -746,17 +699,45 @@ int isGPS_GSM_WIFI;
                    electricity,
                    [(MainClass *) MainObj Get_DefineString:STR_ACT_LOCATION],
                    location];
+        [ShowText setText:AddText];
     } else {
-        AddText = [[NSString alloc] initWithFormat:@"%d)%@\n%@ : %@%%\n",
-                   DataNum,
-                   TimeData,
-                   [(MainClass *) MainObj Get_DefineString:STR_ACT_ELECTRIC],
-                   electricity];
+        __weak MyActView *weakSelf = self;
+
+        NSLog(@"--- Set_Text: [%f, %f]", [latitudeDate doubleValue], [longitudeDate doubleValue]);
+        KMLocationManager *manger = [KMLocationManager locationManager];
+        [manger startLocationWithLocation:[[CLLocation alloc] initWithLatitude:[latitudeDate doubleValue]
+                                                                     longitude:[longitudeDate doubleValue]]
+                              resultBlock:^(NSString *address) {
+                                  [weakSelf updateShowTextContentWithAddress:address
+                                                                     dataNum:DataNum
+                                                                    TimeData:TimeData
+                                                                 electricity:electricity];
+                              }];
+
     }
 
-    [ShowText setText:AddText];
     [ShowText setFont:[UIFont systemFontOfSize:16]];
     [ShowText setTextColor:[UIColor blackColor]];
+}
+
+- (void)updateShowTextContentWithAddress:(NSString *)address
+                                 dataNum:(int)DataNum
+                                TimeData:(NSString *)TimeData
+                             electricity:(NSString *)electricity
+{
+    NSString *AddText;
+
+    NSString *dealedAddress = address ? address : @"";
+
+    AddText = [[NSString alloc] initWithFormat:@"%d)%@\n%@ : %@%%\n%@ : %@\n ",
+               DataNum,
+               TimeData,
+               [(MainClass *) MainObj Get_DefineString:STR_ACT_ELECTRIC],
+               electricity,
+               [(MainClass *) MainObj Get_DefineString:STR_ACT_LOCATION],
+               dealedAddress];
+
+    [ShowText setText:AddText];
 }
 
 - (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize
@@ -770,10 +751,8 @@ int isGPS_GSM_WIFI;
 
 - (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation: (id<MKAnnotation>) annotation 
 {
-    
     MKAnnotationView *pin = (MKAnnotationView *) [map_view dequeueReusableAnnotationViewWithIdentifier: @"VoteSpotPin"];
-    
-    
+
     if (pin == nil)
     {
          pin = [[MKAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"mapred"] ;
@@ -782,14 +761,11 @@ int isGPS_GSM_WIFI;
     {
         pin.annotation = annotation;
     }
-    int MyNum =0;
-    
-    
-    
-    
-    if([annotation isKindOfClass:[MyAnnotation class]] )
-    {
-        UIImage *tmpimage ;
+
+    int MyNum = 0;
+
+    if([annotation isKindOfClass:[MyAnnotation class]]) {
+        UIImage *tmpimage;
         
         MyNum = [(MyAnnotation *)annotation  Get_ImageNum ];
         
@@ -800,7 +776,6 @@ int isGPS_GSM_WIFI;
         if( tmpType == 0)
         {
             tmpfile =[NSString stringWithFormat:@"g-%d", MyNum ];
-//            tmpimage = [UIImage imageNamed:@"mapgreen"];
             tmpimage = [UIImage imageNamed:tmpfile ];
             if (!tmpimage) {
                 tmpimage = [UIImage imageNamed:@"mapgreen"];
@@ -809,7 +784,6 @@ int isGPS_GSM_WIFI;
         else if( tmpType == 1)
         {
             tmpfile =[NSString stringWithFormat:@"b%d", MyNum ];
-//            tmpimage = [UIImage imageNamed:@"mapblue"];
             tmpimage = [UIImage imageNamed:tmpfile ];
             if (!tmpimage) {
                 tmpimage = [UIImage imageNamed:@"mapblue"];
@@ -818,74 +792,46 @@ int isGPS_GSM_WIFI;
         else if( tmpType == 2 || tmpType == 3)
         {
             tmpfile =[NSString stringWithFormat:@"mapp%d", MyNum ];
-//            tmpimage = [UIImage imageNamed:@"mapred"];
             tmpimage = [UIImage imageNamed:tmpfile ];
             if (!tmpimage) {
                 tmpimage = [UIImage imageNamed:@"mapred"];
             }
         }
-        else{
-            
-        }
-        
-        
+
         CGImageRef imgRef = tmpimage.CGImage;
         CGFloat width = CGImageGetWidth(imgRef);
         CGFloat height = CGImageGetHeight(imgRef);
-        
-        
-        
+
         CGSize bounds = CGSizeMake(width/2, height/2);    
-        
+
         UIImage *tmpimage2 = [self reSizeImage:tmpimage toSize:bounds] ;   
-        
-        
+
         [pin setImage:tmpimage2];
         [(MyAnnotation *)annotation setTitle:@" "];
         pin.canShowCallout = YES;
-
-      //  pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        
-        
-    }else if ([annotation isKindOfClass:[LeaveAnno class]])
-    {
+    } else if ([annotation isKindOfClass:[LeaveAnno class]]) {
         UIImage *tmpimage = [UIImage imageNamed:@"pin_orange.png"];
         CGImageRef imgRef = tmpimage.CGImage;
         CGFloat width = CGImageGetWidth(imgRef);
         CGFloat height = CGImageGetHeight(imgRef);
-        
-        
-        
+
         CGSize bounds = CGSizeMake(width/2, height/2);
         
         UIImage *tmpimage2 = [self reSizeImage:tmpimage toSize:bounds] ;
-        
-        
+
         [pin setImage:tmpimage2];
     }
+
     return pin;
 }
-
 
 - (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views 
 {
     for (MKAnnotationView *view in views) 
     {
-        /*
-        if ([[view annotation] isKindOfClass:[MKUserLocation class]]) 
-        {
-            [[view superview] bringSubviewToFront:view];
-        } 
-        else 
-        {
-            [[view superview] sendSubviewToBack:view];
-        }
-         */
-        
          [[view superview] bringSubviewToFront:view];
     }
 }
-
 
 // 設定大頭針
 - (void)Set_Point: (NSString *)longitude : (NSString *)latitude : (int)ImageNum
@@ -993,22 +939,15 @@ int isGPS_GSM_WIFI;
     {
         if( fabs( (LastRo.center.longitude-v1) ) > LastRo.span.longitudeDelta/2 )
         {
-            
-            //NSLog(@"8");
-            
             MKCoordinateRegion kaos_digital;
-            
-            //   // 設定經緯度
+
             kaos_digital.center.longitude =v1 ;
             kaos_digital.center.latitude = v2;
-            
-            
-            
+
             // 設定縮放比例
             kaos_digital.span.latitudeDelta = 0.020717;
             kaos_digital.span.longitudeDelta = 0.034793;
-            
-            
+
             //  // 把region設定給MapView
             [map_view setRegion:kaos_digital];
             map_view.delegate = self;
@@ -1282,18 +1221,13 @@ int isGPS_GSM_WIFI;
     [self.swipeBar toggle];
 }
 
-- (IBAction)ibaOK:(id)sender {
-    NSLog(@"%@,ibaOK...%@",self,self.tfStart.text);
-    if ([self.tfStart.text length] != 0) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *user = [defaults objectForKey:@"userAccount"];
-        NSString *hash = [defaults objectForKey:@"userHash"];
-//        [MainObj Send_Search_ActionLoc:user andHash:hash andStartTime:self.tfStart.text];
-    }
+- (IBAction)ibaOK:(id)sender
+{
+
 }
 
-- (void)startEditTextView{
-//    [self.tfStart.delegate textFieldDidBeginEditing:self.tfStart];
+- (void)startEditTextView
+{
     [self.tfStart becomeFirstResponder];
 }
 

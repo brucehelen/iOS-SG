@@ -19,8 +19,7 @@
 @interface MyActView : UIView <MKMapViewDelegate,UITableViewDelegate,UIScrollViewDelegate,RouteListDelegate,SwipeBarDelegate,UITextFieldDelegate,BMKGeoCodeSearchDelegate>
 {
     MKCircle *leaveCircle;
-    
-    
+
     IBOutlet MKMapView *map_view;
     
     BMKMapView *baiduMapView;
@@ -31,40 +30,33 @@
     int     tarNum;
     
     BOOL   ShowWord;
-    
-    
+
     NSString *SaveName;
-    
-    
+
     IBOutlet  UIButton *Bu_Map;
     IBOutlet  UIButton *Bu_List;
-    
-    
+
     IBOutlet  UIButton *Bu_Left;
     IBOutlet  UIButton *Bu_Right;
-    
+
     IBOutlet  UIScrollView  *MyTable;
-    
+
     int TotalHei;
-    
-    
+
     int ShowCnt;
     int StartNum;
-    
-    
-    
+
     BOOL    HaveAction_Sw;
     BOOL    NeedInit;
-    
+
     //parent View
     id      MainObj;
-    
+
     BOOL isList;
-    
+
     IBOutlet UILabel *lblGPS;
     IBOutlet UILabel *lblWifi;
     IBOutlet UILabel *lblGSM;
-    
 }
 
 @property (nonatomic,strong) NSDictionary *listDic;

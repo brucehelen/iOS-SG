@@ -39,67 +39,41 @@
 
 
 
-//血壓資訊
+// 血压
 -(void)Set_Init:(NSDictionary *)dic
 {
-    NSLog(@"dic = %@",dic);
-    
+    NSLog(@"Set_Init dic = %@",dic);
+
+
     bpdDownlimit.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bpdDownlimit"]];
     bpdUplimit.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bpdUplimit"]];
-//    NSLog(@"bpdu = %@", [NSString stringWithFormat:@"%@",[dic objectForKey:@"bpdUplimit"]]);
+
     bpsDownlimit.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bpsDownlimit"]];
     bpsUplimit.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bpsUplimit"]];
     NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-    
-    if (![language isEqualToString:@"en"]) {// 非英語
-        lblHigherThan.hidden = NO;
-        lblHigherThan2.hidden = NO;
-        lblSendAlaram2.hidden = NO;
-        lblSendAlarm.hidden = NO;
-        lblEnTxt1.hidden = YES;
-        lblEnTxt2.hidden = YES;
-        lblRemind1Content.hidden = NO;
-        lblRemind1Title.hidden = NO;
-        imgRemind1.hidden = NO;
-        viewRemind2.hidden = NO;
-        viewRemind3.hidden = NO;
-        int tmpY = 30;
-        int tmpX = 8;
-        [mmhg1 setFrame:CGRectMake(130 - tmpX, 114 - tmpY + 9, mmhg1.frame.size.width, mmhg1.frame.size.height)];
-        [mmhg2 setFrame:CGRectMake(130 - tmpX, 203 - tmpY + 9, mmhg2.frame.size.width, mmhg2.frame.size.height)];
-        [bpsUplimit setFrame:CGRectMake(80 - tmpX, 208 - tmpY, bpdUplimit.frame.size.width, bpdUplimit.frame.size.height)];
-        [bpdUplimit setFrame:CGRectMake(80 - tmpX, 119 - tmpY, bpdUplimit.frame.size.width, bpdUplimit.frame.size.height)];
-        lblHigherThan.text = NSLocalizedStringFromTable(@"HigherThan", INFOPLIST, nil);
-        lblHigherThan2.text = NSLocalizedStringFromTable(@"HigherThan", INFOPLIST, nil);
-        lblSendAlarm.text = NSLocalizedStringFromTable(@"SendAlarm", INFOPLIST, nil);
-        lblSendAlaram2.text = NSLocalizedStringFromTable(@"SendAlarm", INFOPLIST, nil);
-        lblRemind1Content.text = NSLocalizedStringFromTable(@"lblRemind1Content", INFOPLIST, nil);
-        lblRemind1Title.text = NSLocalizedStringFromTable(@"lblRemind1Title", INFOPLIST, nil);
-        lblRemind2Title.text = NSLocalizedStringFromTable(@"lblRemind2Title", INFOPLIST, nil);
-        lblRemind3Sup.text = NSLocalizedStringFromTable(@"lblRemind3Sup", INFOPLIST, nil);
-        lblRemind3Title.text = NSLocalizedStringFromTable(@"lblRemind3Title", INFOPLIST, nil);
-    }
-    else{
-        lblHigherThan.hidden = YES;
-        lblHigherThan2.hidden = YES;
-        lblSendAlaram2.hidden = YES;
-        lblSendAlarm.hidden = YES;
-        lblEnTxt1.hidden = NO;
-        lblEnTxt2.hidden = NO;
-        lblRemind1Content.hidden = YES;
-        lblRemind1Title.hidden = YES;
-        imgRemind1.hidden = YES;
-        viewRemind2.hidden = YES;
-        viewRemind3.hidden = YES;
-        lblEnTxt1.textColor = [UIColor blackColor];
-        lblEnTxt2.textColor = [UIColor blackColor];
-        int tmpY = 30;
-        int tmpX = 20;
-        [mmhg1 setFrame:CGRectMake(92 - tmpX, 138 - tmpY + 6, mmhg1.frame.size.width, mmhg1.frame.size.height)];
-        [mmhg2 setFrame:CGRectMake(92 - tmpX, 229 - tmpY + 6, mmhg2.frame.size.width, mmhg2.frame.size.height)];
-        [bpsUplimit setFrame:CGRectMake(38 - tmpX, 234 - tmpY, bpdUplimit.frame.size.width, bpdUplimit.frame.size.height)];
-        [bpdUplimit setFrame:CGRectMake(38 - tmpX, 143 - tmpY, bpdUplimit.frame.size.width, bpdUplimit.frame.size.height)];
-    }
+
+    lblHigherThan.hidden = NO;
+    lblHigherThan2.hidden = NO;
+    lblSendAlaram2.hidden = NO;
+    lblSendAlarm.hidden = NO;
+    lblEnTxt1.hidden = YES;
+    lblEnTxt2.hidden = YES;
+    lblRemind1Content.hidden = NO;
+    lblRemind1Title.hidden = NO;
+    imgRemind1.hidden = NO;
+    viewRemind2.hidden = NO;
+    viewRemind3.hidden = NO;
+
+    titleLbl.text = NSLocalizedStringFromTable(@"BPThresholdTitle", INFOPLIST, nil);
+    lblHigherThan.text = NSLocalizedStringFromTable(@"HigherThan", INFOPLIST, nil);
+    lblHigherThan2.text = NSLocalizedStringFromTable(@"HigherThan", INFOPLIST, nil);
+    lblSendAlarm.text = NSLocalizedStringFromTable(@"SendAlarm", INFOPLIST, nil);
+    lblSendAlaram2.text = NSLocalizedStringFromTable(@"SendAlarm", INFOPLIST, nil);
+    lblRemind1Content.text = NSLocalizedStringFromTable(@"lblRemind1Content", INFOPLIST, nil);
+    lblRemind1Title.text = NSLocalizedStringFromTable(@"lblRemind1Title", INFOPLIST, nil);
+    lblRemind2Title.text = NSLocalizedStringFromTable(@"lblRemind2Title", INFOPLIST, nil);
+    lblRemind3Sup.text = NSLocalizedStringFromTable(@"lblRemind3Sup", INFOPLIST, nil);
+    lblRemind3Title.text = NSLocalizedStringFromTable(@"lblRemind3Title", INFOPLIST, nil);
     
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -140,7 +114,7 @@
     bpsUplimit.delegate = self;
     bgLbl.layer.cornerRadius = 8.0f;
     [bgLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
-    scrollView.contentSize = CGSizeMake(280, 787);
+    scrollView.contentSize = CGSizeMake(280, 850);
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         scrollView.contentSize = CGSizeMake(768, 1000);

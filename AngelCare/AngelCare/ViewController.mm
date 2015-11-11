@@ -104,7 +104,8 @@ long long SystemLog_expectedLength;        //檔案大小
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(Receive_Notification_Comm:)
-                                                 name:@"Receive_Notification_Comm" object:nil];
+                                                 name:@"Receive_Notification_Comm"
+                                               object:nil];
     
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
@@ -241,7 +242,7 @@ long long SystemLog_expectedLength;        //檔案大小
     }
 }
 
--(void)ReloadUserAccAndPwd
+- (void)ReloadUserAccAndPwd
 {
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
@@ -890,7 +891,7 @@ long long SystemLog_expectedLength;        //檔案大小
     
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
     
-    NSLog(@"users one = %@",usersOne);
+    NSLog(@"SafeMessage users one = %@",usersOne);
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
     
@@ -1310,9 +1311,8 @@ long long SystemLog_expectedLength;        //檔案大小
     [(MainClass *)self.view Show_SafeMap:dic];
 }
 
--(void)checkUser
+- (void)checkUser
 {
-    
     if( [(MainClass *)self.view CheckTotal] == YES)
     {
         [(MainClass *)self.view Show_GoToSet];

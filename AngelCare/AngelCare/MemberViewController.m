@@ -27,34 +27,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
-    
-    
-    
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if( [currentLanguage isEqualToString:check1]  )
-    {
-        
-        [self Set_Tw];
+
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        [self Set_Cn];
+    } else {        // en
+        [self Set_En];
     }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-            [self Set_Cn];
-        }
-        else
-        {
-            
-            [self Set_En];
-        }
-        
-    }
-	// Do any additional setup after loading the view.
+
     _webView.delegate = self;
 }
 

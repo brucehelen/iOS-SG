@@ -30,7 +30,6 @@
 		1895C9321AF365F100CD93D9 /* bgLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C92E1AF365F100CD93D9 /* bgLogin.png */; };
 		1895C9331AF365F100CD93D9 /* bxicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C92F1AF365F100CD93D9 /* bxicon.png */; };
 		1895C9341AF365F100CD93D9 /* bxlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C9301AF365F100CD93D9 /* bxlogo.png */; };
-		1895C9351AF365F100CD93D9 /* nttLogin4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C9311AF365F100CD93D9 /* nttLogin4.png */; };
 		1895C9381AF36FF100CD93D9 /* bdlogo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C9361AF36FF100CD93D9 /* bdlogo2.png */; };
 		1895C9391AF36FF100CD93D9 /* bdlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C9371AF36FF100CD93D9 /* bdlogo.png */; };
 		1895C93E1AF7179300CD93D9 /* wmicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1895C93C1AF7179300CD93D9 /* wmicon.png */; };
@@ -320,16 +319,23 @@
 		6F9C14AE17CCFE5600AE5C1E /* H_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C14A917CCFE5600AE5C1E /* H_5.png */; };
 		6FB7CC611795B42800068386 /* GroupMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB7CC601795B42800068386 /* GroupMemberView.m */; };
 		79BE093F167EC7A300D4F893 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BE093E167EC7A300D4F893 /* Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7A181B501BE317DE0032FFF2 /* KMCommonClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A181B4F1BE317DE0032FFF2 /* KMCommonClass.m */; };
 		7A30DF9F1B788C74000D60C5 /* nttBg7.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A30DF9E1B788C74000D60C5 /* nttBg7.png */; };
+		7A3722F51BEB08BB002CAD54 /* KMFreqQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3722F41BEB08BB002CAD54 /* KMFreqQuestionView.m */; };
+		7A3722F81BEB32A5002CAD54 /* KMFreqQuestionDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3722F71BEB32A5002CAD54 /* KMFreqQuestionDetailView.m */; };
 		7A4A428C1B26C40C00277B10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4A428B1B26C40C00277B10 /* Images.xcassets */; };
-		7A656C7C1BABAA2B006F2577 /* login_700_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7B1BABAA2B006F2577 /* login_700_02.png */; settings = {ASSET_TAGS = (); }; };
-		7A656C7E1BABAEEB006F2577 /* 登录按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7D1BABAEEB006F2577 /* 登录按钮.png */; settings = {ASSET_TAGS = (); }; };
-		7A72D70D1BBA3491001A8777 /* MyActSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A72D70C1BBA3490001A8777 /* MyActSearchView.m */; settings = {ASSET_TAGS = (); }; };
-		7A72D70F1BBA86D9001A8777 /* search_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A72D70E1BBA86D9001A8777 /* search_1.png */; settings = {ASSET_TAGS = (); }; };
+		7A656C7C1BABAA2B006F2577 /* login_700_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7B1BABAA2B006F2577 /* login_700_02.png */; };
+		7A656C7E1BABAEEB006F2577 /* 登录按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7D1BABAEEB006F2577 /* 登录按钮.png */; };
+		7A72D70D1BBA3491001A8777 /* MyActSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A72D70C1BBA3490001A8777 /* MyActSearchView.m */; };
+		7A72D70F1BBA86D9001A8777 /* search_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A72D70E1BBA86D9001A8777 /* search_1.png */; };
 		7A7F6DDD1B82D497004ECA87 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47484374184D86AD001351AF /* libz.dylib */; };
 		7A7F6DDF1B82D4A4004ECA87 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */; };
-		7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5131BB14DCE00DA84E6 /* head_pic.png */; settings = {ASSET_TAGS = (); }; };
-		7AB4E5161BB25A9E00DA84E6 /* icon_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5151BB25A9E00DA84E6 /* icon_new.png */; settings = {ASSET_TAGS = (); }; };
+		7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5131BB14DCE00DA84E6 /* head_pic.png */; };
+		7AB4E5161BB25A9E00DA84E6 /* icon_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5151BB25A9E00DA84E6 /* icon_new.png */; };
+		7AE943DA1BC6536E00E50DD0 /* KMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE943D91BC6536E00E50DD0 /* KMLocationManager.m */; };
+		7AE943F41BCBA62300E50DD0 /* bg_new_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE943F11BCBA62300E50DD0 /* bg_new_1.png */; };
+		7AE943F51BCBA62300E50DD0 /* bg_new_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE943F21BCBA62300E50DD0 /* bg_new_2.png */; };
+		7AE943F61BCBA62300E50DD0 /* bg_new_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE943F31BCBA62300E50DD0 /* bg_new_3.png */; };
 		7AFDCB211B9009B60013DAA5 /* icon_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDCB201B9009B60013DAA5 /* icon_a.png */; };
 		7AFDCB231B9018940013DAA5 /* libbaidumap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDCB221B9018940013DAA5 /* libbaidumap.a */; };
 		CE22B44E161ADB170053E104 /* login_bu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE22B44D161ADB170053E104 /* login_bu_1.png */; };
@@ -444,7 +450,6 @@
 		DB0C8ACA18A2465E001E611D /* nttHeartSetting.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB218A2465E001E611D /* nttHeartSetting.png */; };
 		DB0C8ACB18A2465E001E611D /* nttLocating.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB318A2465E001E611D /* nttLocating.png */; };
 		DB0C8ACC18A2465E001E611D /* nttLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB418A2465E001E611D /* nttLogin.png */; };
-		DB0C8ACD18A2465E001E611D /* nttLogin4.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB518A2465E001E611D /* nttLogin4.png */; };
 		DB0C8ACE18A2465E001E611D /* nttLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB618A2465E001E611D /* nttLogo.png */; };
 		DB0C8ACF18A2465E001E611D /* nttMeasureRemind.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB718A2465E001E611D /* nttMeasureRemind.png */; };
 		DB0C8AD018A2465E001E611D /* nttServiceLog.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0C8AB818A2465E001E611D /* nttServiceLog.png */; };
@@ -639,7 +644,6 @@
 		1895C92E1AF365F100CD93D9 /* bgLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgLogin.png; path = "../pic(orange_gray)/bgLogin.png"; sourceTree = "<group>"; };
 		1895C92F1AF365F100CD93D9 /* bxicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bxicon.png; path = "../pic(orange_gray)/bxicon.png"; sourceTree = "<group>"; };
 		1895C9301AF365F100CD93D9 /* bxlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bxlogo.png; path = "../pic(orange_gray)/bxlogo.png"; sourceTree = "<group>"; };
-		1895C9311AF365F100CD93D9 /* nttLogin4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nttLogin4.png; path = "../pic(orange_gray)/nttLogin4.png"; sourceTree = "<group>"; };
 		1895C9361AF36FF100CD93D9 /* bdlogo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bdlogo2.png; path = "../pic(orange_gray)/bdlogo2.png"; sourceTree = "<group>"; };
 		1895C9371AF36FF100CD93D9 /* bdlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bdlogo.png; path = "../pic(orange_gray)/bdlogo.png"; sourceTree = "<group>"; };
 		1895C93C1AF7179300CD93D9 /* wmicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wmicon.png; path = ../wmicon.png; sourceTree = "<group>"; };
@@ -1013,7 +1017,13 @@
 		79BE093D167EC7A300D4F893 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		79BE093E167EC7A300D4F893 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		79C7B9C916781FB3008EFCEC /* MyMapHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMapHeader.h; sourceTree = "<group>"; };
+		7A181B4E1BE317DE0032FFF2 /* KMCommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCommonClass.h; sourceTree = "<group>"; };
+		7A181B4F1BE317DE0032FFF2 /* KMCommonClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCommonClass.m; sourceTree = "<group>"; };
 		7A30DF9E1B788C74000D60C5 /* nttBg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nttBg7.png; path = "../../../pic(orange_gray)/nttBg7.png"; sourceTree = "<group>"; };
+		7A3722F31BEB08BB002CAD54 /* KMFreqQuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMFreqQuestionView.h; sourceTree = "<group>"; };
+		7A3722F41BEB08BB002CAD54 /* KMFreqQuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMFreqQuestionView.m; sourceTree = "<group>"; };
+		7A3722F61BEB32A5002CAD54 /* KMFreqQuestionDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMFreqQuestionDetailView.h; sourceTree = "<group>"; };
+		7A3722F71BEB32A5002CAD54 /* KMFreqQuestionDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMFreqQuestionDetailView.m; sourceTree = "<group>"; };
 		7A4A428B1B26C40C00277B10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 3GSW/Images.xcassets; sourceTree = "<group>"; };
 		7A656C7B1BABAA2B006F2577 /* login_700_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_700_02.png; sourceTree = "<group>"; };
 		7A656C7D1BABAEEB006F2577 /* 登录按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录按钮.png"; sourceTree = "<group>"; };
@@ -1025,6 +1035,11 @@
 		7A85A68E1B26F2A7000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = "AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/Release-iphonesimulator/libbaidumapapi.a"; sourceTree = "<group>"; };
 		7AB4E5131BB14DCE00DA84E6 /* head_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_pic.png; sourceTree = "<group>"; };
 		7AB4E5151BB25A9E00DA84E6 /* icon_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_new.png; sourceTree = "<group>"; };
+		7AE943D81BC6536E00E50DD0 /* KMLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLocationManager.h; sourceTree = "<group>"; };
+		7AE943D91BC6536E00E50DD0 /* KMLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLocationManager.m; sourceTree = "<group>"; };
+		7AE943F11BCBA62300E50DD0 /* bg_new_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_new_1.png; sourceTree = "<group>"; };
+		7AE943F21BCBA62300E50DD0 /* bg_new_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_new_2.png; sourceTree = "<group>"; };
+		7AE943F31BCBA62300E50DD0 /* bg_new_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_new_3.png; sourceTree = "<group>"; };
 		7AFDCB201B9009B60013DAA5 /* icon_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_a.png; sourceTree = "<group>"; };
 		7AFDCB221B9018940013DAA5 /* libbaidumap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumap.a; path = AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/libbaidumap.a; sourceTree = "<group>"; };
 		CE22B44D161ADB170053E104 /* login_bu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bu_1.png; sourceTree = "<group>"; };
@@ -1186,7 +1201,6 @@
 		DB0C8AB218A2465E001E611D /* nttHeartSetting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttHeartSetting.png; sourceTree = "<group>"; };
 		DB0C8AB318A2465E001E611D /* nttLocating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttLocating.png; sourceTree = "<group>"; };
 		DB0C8AB418A2465E001E611D /* nttLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttLogin.png; sourceTree = "<group>"; };
-		DB0C8AB518A2465E001E611D /* nttLogin4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttLogin4.png; sourceTree = "<group>"; };
 		DB0C8AB618A2465E001E611D /* nttLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttLogo.png; sourceTree = "<group>"; };
 		DB0C8AB718A2465E001E611D /* nttMeasureRemind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttMeasureRemind.png; sourceTree = "<group>"; };
 		DB0C8AB818A2465E001E611D /* nttServiceLog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nttServiceLog.png; sourceTree = "<group>"; };
@@ -1636,6 +1650,30 @@
 			path = base64;
 			sourceTree = "<group>";
 		};
+		7A181B4D1BE317960032FFF2 /* KMCommon */ = {
+			isa = PBXGroup;
+			children = (
+				7AE943D81BC6536E00E50DD0 /* KMLocationManager.h */,
+				7AE943D91BC6536E00E50DD0 /* KMLocationManager.m */,
+				7A181B4E1BE317DE0032FFF2 /* KMCommonClass.h */,
+				7A181B4F1BE317DE0032FFF2 /* KMCommonClass.m */,
+			);
+			name = KMCommon;
+			sourceTree = "<group>";
+		};
+		7A3722F21BEB0894002CAD54 /* KMView */ = {
+			isa = PBXGroup;
+			children = (
+				7A3722F31BEB08BB002CAD54 /* KMFreqQuestionView.h */,
+				7A3722F41BEB08BB002CAD54 /* KMFreqQuestionView.m */,
+				7A3722F61BEB32A5002CAD54 /* KMFreqQuestionDetailView.h */,
+				7A3722F71BEB32A5002CAD54 /* KMFreqQuestionDetailView.m */,
+				6FB7CC5F1795B42800068386 /* GroupMemberView.h */,
+				6FB7CC601795B42800068386 /* GroupMemberView.m */,
+			);
+			name = KMView;
+			sourceTree = "<group>";
+		};
 		7A85A68B1B26F26C000F5A7E /* Release-iphonesimulator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1722,6 +1760,9 @@
 				1895C9441AF74F1C00CD93D9 /* mhicon.png */,
 				7A72D70E1BBA86D9001A8777 /* search_1.png */,
 				1895C9451AF74F1C00CD93D9 /* mhlogo.png */,
+				7AE943F11BCBA62300E50DD0 /* bg_new_1.png */,
+				7AE943F21BCBA62300E50DD0 /* bg_new_2.png */,
+				7AE943F31BCBA62300E50DD0 /* bg_new_3.png */,
 				7A656C7B1BABAA2B006F2577 /* login_700_02.png */,
 				7AB4E5151BB25A9E00DA84E6 /* icon_new.png */,
 				182A82211AEA601B0032B613 /* ic_launcher1.png */,
@@ -1735,7 +1776,6 @@
 				1895C9371AF36FF100CD93D9 /* bdlogo.png */,
 				1895C92F1AF365F100CD93D9 /* bxicon.png */,
 				1895C9301AF365F100CD93D9 /* bxlogo.png */,
-				1895C9311AF365F100CD93D9 /* nttLogin4.png */,
 				182A82231AEA63530032B613 /* icon.png */,
 				DBBE354518A3685100F723F0 /* bgLoading.png */,
 				DBBE354918A3688F00F723F0 /* bgLoading568.png */,
@@ -1861,6 +1901,8 @@
 				7A72D70C1BBA3490001A8777 /* MyActSearchView.m */,
 				DB03463B18C8134600315A58 /* GetISOCountryCode.h */,
 				DB03463C18C8134600315A58 /* GetISOCountryCode.m */,
+				7A3722F21BEB0894002CAD54 /* KMView */,
+				7A181B4D1BE317960032FFF2 /* KMCommon */,
 				CE8D42421608737300D42FCC /* MyMapView.h */,
 				CE8D42431608737300D42FCC /* MyMapView.m */,
 				47F1D990178A662100537F93 /* SwipeBar.h */,
@@ -1873,13 +1915,13 @@
 				CE8FD8311609B44800AAB919 /* MySetView.m */,
 				CEA84EEF1636AAE500CD65BD /* UserDateView.h */,
 				CEA84EF01636AAE500CD65BD /* UserDateView.m */,
+				4770BAD71842FB6B00D5072B /* Format2Cell.h */,
 				470F69AC17855F53006CC746 /* EditPersonView.h */,
 				470F69AD17855F53006CC746 /* EditPersonView.m */,
 				470F69A017841EE5006CC746 /* Format1Cell.h */,
 				470F69A117841EE5006CC746 /* Format1Cell.m */,
 				470F69A317841EF8006CC746 /* Format1Cell.xib */,
 				475A83CA17D47CAC000E7524 /* Format1Cell_iPad.xib */,
-				4770BAD71842FB6B00D5072B /* Format2Cell.h */,
 				4770BAD81842FB6B00D5072B /* Format2Cell.m */,
 				4770BADA1842FB8500D5072B /* Format2Cell.xib */,
 				4770BADC1842FB9B00D5072B /* Format2Cell_iPad.xib */,
@@ -2022,8 +2064,6 @@
 				470190AA179E9389002F9513 /* SystemCell.h */,
 				470190AB179E938A002F9513 /* SystemCell.m */,
 				470190AD179E9397002F9513 /* SystemCell.xib */,
-				6FB7CC5F1795B42800068386 /* GroupMemberView.h */,
-				6FB7CC601795B42800068386 /* GroupMemberView.m */,
 				47AE8C26177C2E9B00D1A110 /* GroupMemberViewController.h */,
 				47AE8C27177C2E9C00D1A110 /* GroupMemberViewController.m */,
 				47AE8C2B177C319200D1A110 /* GroupMemberCell.h */,
@@ -2305,7 +2345,6 @@
 				DB0C8AB218A2465E001E611D /* nttHeartSetting.png */,
 				DB0C8AB318A2465E001E611D /* nttLocating.png */,
 				DB0C8AB418A2465E001E611D /* nttLogin.png */,
-				DB0C8AB518A2465E001E611D /* nttLogin4.png */,
 				DB0C8AB618A2465E001E611D /* nttLogo.png */,
 				DB0C8AB718A2465E001E611D /* nttMeasureRemind.png */,
 				DB0C8AB818A2465E001E611D /* nttServiceLog.png */,
@@ -2630,6 +2669,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					CEF698C916003D8900874E59 = {
+						DevelopmentTeam = 8H39TND74Z;
+					};
+				};
 			};
 			buildConfigurationList = CEF698C416003D8900874E59 /* Build configuration list for PBXProject "3GSW" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2711,7 +2755,6 @@
 				CEC930B11615ADA500821547 /* mapred.png in Resources */,
 				18C3DBBD1AF0CA47005838D0 /* icon_14.png in Resources */,
 				1895C9391AF36FF100CD93D9 /* bdlogo.png in Resources */,
-				1895C9351AF365F100CD93D9 /* nttLogin4.png in Resources */,
 				CEC930CB1615ADB100821547 /* mapgreen.png in Resources */,
 				DB0C8AC418A2465E001E611D /* nttCallPhone.png in Resources */,
 				CEC930CC1615ADB100821547 /* mapp0.png in Resources */,
@@ -2743,6 +2786,7 @@
 				CEC930D81615ADB100821547 /* mapp13.png in Resources */,
 				DB77C68518AE1224003B9AFB /* Locating.png in Resources */,
 				DB4712D319403DDB00DA4B0C /* delete.png in Resources */,
+				7AE943F41BCBA62300E50DD0 /* bg_new_1.png in Resources */,
 				CEC930D91615ADB100821547 /* mapp14.png in Resources */,
 				DBDA675F195C24A9005A4407 /* geoinfo4.png in Resources */,
 				CEC930DA1615ADB100821547 /* mapp15.png in Resources */,
@@ -2904,7 +2948,6 @@
 				47090C18178D6EB800321AAD /* MyHisCell.xib in Resources */,
 				7AB4E5161BB25A9E00DA84E6 /* icon_new.png in Resources */,
 				18C3DBB71AF0CA47005838D0 /* icon_08.png in Resources */,
-				DB0C8ACD18A2465E001E611D /* nttLogin4.png in Resources */,
 				4732E274178EBD2D00E3E54C /* Medicine-Pill_120_black.png in Resources */,
 				4732E275178EBD2D00E3E54C /* Medicine-Pill_120_green.png in Resources */,
 				4732E276178EBD2D00E3E54C /* nurse_120_black.png in Resources */,
@@ -2923,6 +2966,7 @@
 				DB0C8AD118A2465E001E611D /* nttShowPic.png in Resources */,
 				470190A4179E2569002F9513 /* history_icon@2x.png in Resources */,
 				DB77C68018AE1224003B9AFB /* DeviceStatus.png in Resources */,
+				7AE943F51BCBA62300E50DD0 /* bg_new_2.png in Resources */,
 				470190A9179E2D04002F9513 /* MyHisCell2.xib in Resources */,
 				470190AE179E9398002F9513 /* SystemCell.xib in Resources */,
 				DB13398E18F24AB600E6D183 /* icon_service_Call_02.png in Resources */,
@@ -2961,6 +3005,7 @@
 				18C3DBBB1AF0CA47005838D0 /* icon_12.png in Resources */,
 				DBD5232E1934912D00874266 /* b17.png in Resources */,
 				DB0C8AC918A2465E001E611D /* nttFigure.png in Resources */,
+				7AE943F61BCBA62300E50DD0 /* bg_new_3.png in Resources */,
 				4770BADB1842FB8500D5072B /* Format2Cell.xib in Resources */,
 				182A82221AEA601B0032B613 /* ic_launcher1.png in Resources */,
 				470994F817BB756700AD4783 /* main_08.png in Resources */,
@@ -3136,6 +3181,7 @@
 				CEA700EC1606E0070001A7DD /* SBJsonStreamParserState.m in Sources */,
 				DB8B7B691AC9388E00C4E3E6 /* LocatingEdit.m in Sources */,
 				DBEC6AC61A2F0BA200C2D082 /* HttpHelper.m in Sources */,
+				7AE943DA1BC6536E00E50DD0 /* KMLocationManager.m in Sources */,
 				47A900DD176FFB240069B9AA /* InitialSlidingViewController.m in Sources */,
 				476C6E41186C1455005691DC /* ShowImageCell.m in Sources */,
 				47A9011A17705DAE0069B9AA /* MeasureNoCell.m in Sources */,
@@ -3151,6 +3197,7 @@
 				CEA700F21606E0070001A7DD /* SBJsonWriter.m in Sources */,
 				CE8D42441608737300D42FCC /* MyMapView.m in Sources */,
 				CED461B316088CA200DD05A8 /* MyAnnotation.m in Sources */,
+				7A181B501BE317DE0032FFF2 /* KMCommonClass.m in Sources */,
 				CE8FD8321609B44800AAB919 /* MySetView.m in Sources */,
 				47A900D9176FFAFA0069B9AA /* ECSlidingViewController.m in Sources */,
 				47A901021770024F0069B9AA /* FPTouchView.m in Sources */,
@@ -3202,6 +3249,7 @@
 				470F69A217841EE5006CC746 /* Format1Cell.m in Sources */,
 				470F69A717851C21006CC746 /* AlbumViewController.m in Sources */,
 				DB48455F193DA3180037FB57 /* chkPointInPoly.m in Sources */,
+				7A3722F51BEB08BB002CAD54 /* KMFreqQuestionView.m in Sources */,
 				470F69AE17855F54006CC746 /* EditPersonView.m in Sources */,
 				470F69B117857E9A006CC746 /* EditPersonInfoCell.m in Sources */,
 				47F36D2417865EA700B4CD36 /* MLTableAlert.m in Sources */,
@@ -3237,6 +3285,7 @@
 				47F468BE17AA506100B095E1 /* NewsContentView.m in Sources */,
 				4701D27617AB65A20066D8D3 /* LeaveAnno.m in Sources */,
 				4714006E17B3287F00C4C2FE /* MyAccountView.m in Sources */,
+				7A3722F81BEB32A5002CAD54 /* KMFreqQuestionDetailView.m in Sources */,
 				476C6E3D186C13C4005691DC /* ShowImage.m in Sources */,
 				DBEC6AD31A2F0E1D00C2D082 /* NQData.m in Sources */,
 				DB13399618F252E200E6D183 /* ColorHex.m in Sources */,
@@ -3333,8 +3382,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3355,7 +3404,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
+				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3372,8 +3421,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3400,9 +3449,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
+				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3430,8 +3479,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3459,7 +3508,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
+				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3486,8 +3535,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3508,7 +3557,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
+				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3525,8 +3574,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3553,9 +3602,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
+				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3572,8 +3621,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: shuizhen pang (7284JZV5VN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuizhen pang (7284JZV5VN)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3600,9 +3649,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "17ba6fbb-17f9-4def-a80f-bf403ab4213a";
+				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

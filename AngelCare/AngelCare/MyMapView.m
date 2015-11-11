@@ -11,6 +11,14 @@
 #import "BMKMapView.h"
 #import "Base64.h"
 #import "ViewController.h"
+#import "KMLocationManager.h"
+
+@interface MyMapView()
+
+@property (nonatomic, assign) double lat;
+@property (nonatomic, assign) double lon;
+
+@end
 
 @implementation MyMapView
 {
@@ -28,9 +36,10 @@
 @synthesize privacyView,verificationText,GpsLocation,baiduMapView;
 
 // ====   IOS MAP 基本設定
-- (CLLocationCoordinate2D) convertCoordinateWithLongitude:(CLLocationDegrees) lng latitude:(CLLocationDegrees)lat{
+- (CLLocationCoordinate2D) convertCoordinateWithLongitude:(CLLocationDegrees)lng
+                                                 latitude:(CLLocationDegrees)lat
+{
     NSString *isoCode;
-    //NSInteger mapType = [[NSUserDefaults standardUserDefaults] integerForKey:@"MAP_TYPE"];
     if ([(MainClass *) MainObj CheckGoogle] == false) {
         NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=%lf&y=%lf", lng, lat]];
         
@@ -154,9 +163,6 @@
     return pin;
 }
 
-
-
-
 //===============================
 
 //清除大頭針
@@ -166,17 +172,10 @@
     //Remove the object userlocation
     [annotationsToRemove removeObject: map_view.userLocation]; 
     //Remove all annotations in the array from the mapView
-    [map_view removeAnnotations: annotationsToRemove];  
-    
-    
-    NSMutableArray *overlaysToRemove = [[NSMutableArray alloc] initWithArray: map_view.overlays]; 
-    
-    
+    [map_view removeAnnotations: annotationsToRemove];
+    NSMutableArray *overlaysToRemove = [[NSMutableArray alloc] initWithArray: map_view.overlays];
     [map_view removeOverlays:overlaysToRemove];
-    
-    
 }
-
 
 - (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize
 {
@@ -187,103 +186,89 @@
     return reSizeImage;
 }
 
-
- 
- 
- 
-
-
-
-
 //設定大頭針（會改變中心點）
--(void)Set_Point_ForAdd: (NSString *)longitude :(NSString *)latitude
+- (void)Set_Point_ForAdd: (NSString *)longitude :(NSString *)latitude
 {
     NSLog(@"here12345");
     map_view.delegate = self;
     CLLocationCoordinate2D NewPoint1;
-    
+
     double v2= [latitude doubleValue] ;
     double v1=[longitude doubleValue] ;
     
     [self findAddressUseLat:v2 andLon:v1];
     
-    NewPoint1= [self convertCoordinateWithLongitude:v1 latitude:v2];//CLLocationCoordinate2DMake(v2,v1);
+    NewPoint1= [self convertCoordinateWithLongitude:v1 latitude:v2];
     
     NSLog(@"test 2. lat:%f, lng:%f", NewPoint1.latitude, NewPoint1.longitude);
     
-    
-    
     MKCoordinateRegion kaos_digital;
-    
-    //   // 設定經緯度
-    kaos_digital.center.longitude = NewPoint1.longitude; //[longitude doubleValue];
-    kaos_digital.center.latitude = NewPoint1.latitude;//[latitude doubleValue];
-    
-    
-    
-    
-    // 設定縮放比例
-//    kaos_digital.span.latitudeDelta =map_view.region.span.latitudeDelta;
-//    kaos_digital.span.longitudeDelta = map_view.region.span.longitudeDelta;
+
+    kaos_digital.center.longitude = NewPoint1.longitude;
+    kaos_digital.center.latitude = NewPoint1.latitude;
+
     // 設定縮放比例
     kaos_digital.span.latitudeDelta = (0.018* 1000)/1118.00f ;
     kaos_digital.span.longitudeDelta =(0.018* 1000)/1118.00f ;
-    //  // 把region設定給MapView
-    
+
     [map_view setRegion:kaos_digital];    
-   // NSLog(@"set %d",2);
-    
+
     MyAnnotation * aaas3;
     aaas3 = [[MyAnnotation alloc] initWithCoordinate:NewPoint1 :TRUE  ];
-    
-    [map_view addAnnotation:aaas3];
 
+    [map_view addAnnotation:aaas3];
 }
 
-
 //設定大頭針
-
--(void)Set_Point:(NSString *)longitude :(NSString *)latitude
+- (void)Set_Point:(NSString *)longitude :(NSString *)latitude
 {
-    
-    
     CLLocationCoordinate2D NewPoint1;
     
-    double v2= [latitude doubleValue] ;
-    double v1=[longitude doubleValue] ;
+    double v2 = [latitude doubleValue] ;
+    double v1 = [longitude doubleValue] ;
     
     [self findAddressUseLat:v2 andLon:v1];
     
-    NewPoint1= [self convertCoordinateWithLongitude:v1 latitude:v2];//CLLocationCoordinate2DMake(v2,v1);
-    
-    
-    
+    NewPoint1= [self convertCoordinateWithLongitude:v1 latitude:v2];
+
     MyAnnotation * aaas3;
     aaas3 = [[MyAnnotation alloc] initWithCoordinate:NewPoint1:TRUE  ];
-    
+
     [map_view addAnnotation:aaas3];
-    
-    
-    
-    
 }
 
 
 //設定範圍顯示圈
--(void)Set_Circle:(NSString *)longitude :(NSString *)latitude :(NSString *)radius
+- (void)Set_Circle:(NSString *)longitude
+                  :(NSString *)latitude
+                  :(NSString *)radius
 {
-    
     MKCoordinateRegion kaos_digital;
-    
+
     NSLog(@"in. lat:%@, lng:%@", latitude, longitude);
-    
-    
-    [self findAddressUseLat:[latitude doubleValue] andLon:[longitude doubleValue]];
+
     //設定經緯度
     CLLocationCoordinate2D newCoordinate = [self convertCoordinateWithLongitude:[longitude doubleValue] latitude:[latitude doubleValue]];
-    
+
     NSLog(@"out. lat:%f, lng:%f", newCoordinate.latitude, newCoordinate.longitude);
-    
+
+    // 如果地址为空，重新解析
+    __weak MyMapView *weakSelf = self;
+    if (g_location.length == 0) {
+        KMLocationManager *manger = [KMLocationManager locationManager];
+        [manger startLocationWithLocation:[[CLLocation alloc] initWithLatitude:newCoordinate.longitude
+                                                                     longitude:newCoordinate.latitude]
+                              resultBlock:^(NSString *address) {
+                                  [weakSelf Set_Text:address
+                                                andE:nil
+                                                andN:g_name
+                                               andST:g_server_time
+                                               andWT:g_watch_time];
+                              }];
+    }
+
+    [self findAddressUseLat:newCoordinate.latitude andLon:newCoordinate.longitude];
+
     kaos_digital.center = newCoordinate;
     
     // 設定縮放比例
@@ -293,47 +278,37 @@
     //  // 把region設定給MapView
     [map_view setRegion:kaos_digital];
     map_view.delegate = self;
-    
-    
+
     CLLocationCoordinate2D NewPoint1 = newCoordinate;
-    
-    //    double v2= [latitude doubleValue] ;
-    //
-    //    double v1=[longitude doubleValue] ;
-    //
-    //    NewPoint1=CLLocationCoordinate2DMake(v2,v1);
-    //
+
     NSLog(@"set %f",[radius doubleValue]);
-    
-    
-    
-    
+
     NSInteger mapType = [[NSUserDefaults standardUserDefaults] integerForKey:@"MAP_TYPE"];
-    
+
     MKCircle *circle = [MKCircle circleWithCenterCoordinate:NewPoint1 radius:[radius doubleValue] ];
-    
+
     if (mapType == 1) {
         NSLog(@"BMKCircle");
         circle = [BMKCircle circleWithCenterCoordinate:NewPoint1 radius:[radius doubleValue] ];
     }
-    
+
     [map_view addOverlay:circle];
-    
 
     MyAnnotation * aaas3;
     aaas3 = [[MyAnnotation alloc] initWithCoordinate:NewPoint1:FALSE  ];
     [map_view addAnnotation:aaas3];
-    
 }
 
-
-
 //設定下方顯示欄位
--(void)Set_Text:(NSString *)location andE:(NSString *)event andN:(NSString *)name andST:(NSString *)server_time andWT:(NSString *)watch_time
+- (void)Set_Text:(NSString *)location
+            andE:(NSString *)event
+            andN:(NSString *)name
+           andST:(NSString *)server_time
+           andWT:(NSString *)watch_time
 {
     smsSendLbl.text = NSLocalizedStringFromTable(@"SMS_SEND", INFOPLIST, nil);
     NSString *AddText;
-    
+
     g_name = name;
     g_STR_MAP_IN = [(MainClass *) MainObj Get_DefineString:STR_MAP_IN];
     g_location = location;
@@ -341,7 +316,7 @@
     g_watch_time = [watch_time substringWithRange:NSMakeRange(0, 16)];
     g_STR_MAP_SERVER = [(MainClass *) MainObj Get_DefineString:STR_MAP_SERVER];
     g_server_time = [server_time substringWithRange:NSMakeRange(0, 16)];
-    //國外版需求。
+
     event = nil;
     if (event == NULL) {
         AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
@@ -351,19 +326,21 @@
                    ,g_STR_MAP_WATCH
                    ,g_watch_time
                    ,g_STR_MAP_SERVER
-                   ,g_server_time  ];
-    }else
-    {
-    
-    AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@\n%@ : %@\n%@ : %@\n ",name,[(MainClass *) MainObj Get_DefineString:STR_MAP_IN],location,event,[(MainClass *) MainObj Get_DefineString:STR_MAP_WATCH],[watch_time substringWithRange:NSMakeRange(0, 16)],[(MainClass *) MainObj Get_DefineString:STR_MAP_SERVER],[server_time substringWithRange:NSMakeRange(0, 16)]  ];
-    
+                   ,g_server_time];
+    } else {
+        AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@\n%@ : %@\n%@ : %@\n ",
+                   name,
+                   [(MainClass *)MainObj Get_DefineString:STR_MAP_IN],
+                   location,
+                   event,
+                   [(MainClass *) MainObj Get_DefineString:STR_MAP_WATCH],
+                   [watch_time substringWithRange:NSMakeRange(0, 16)],
+                   [(MainClass *) MainObj Get_DefineString:STR_MAP_SERVER],
+                   [server_time substringWithRange:NSMakeRange(0, 16)]];
     }
-    
 
-    
     [ShowText setText:AddText];
     [ShowText setTextColor:[UIColor blackColor]];
-    
 }
 
 ///  初始化Ｖiew 上的設定
@@ -440,11 +417,7 @@
     [backgroundBtn setHidden:YES];
 }
 
-
-
-
-
-//Ｇoogle Map 衛星模式按鈕Mousedown觸發
+//Google Map 衛星模式按鈕Mousedown觸發
 -(IBAction)Right_MouseDown:(id)sender
 {
     NSInteger mapType = [[NSUserDefaults standardUserDefaults] integerForKey:@"MAP_TYPE"];
@@ -476,12 +449,10 @@
 }
 
 //20130312 add by Bill sms簡訊啟動GPS Button
--(IBAction)smsBtnClick:(id)sender
+- (IBAction)smsBtnClick:(id)sender
 {
-//    NowUser = [(MainClass *)MainObj returnNowUser];
-    
     NSLog(@"smsBtnClick");
-    //isTestAcc
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:DUser]) {
@@ -489,20 +460,8 @@
         [alert show];
         return;
     }
-    //isTestAcc
-    [(MainClass *)MainObj Send_MapUserImei];//get phone data
-//    verificationText.text = @"";
-//    if (privacyView.hidden) {
-////        [self readLocalData];
-//        [(MainClass *)MainObj Send_MapUserImei];
-//        privacyView.hidden = NO;
-//        backgroundBtn.hidden = NO;
-//        NSLog(@"hidden");
-//    }else
-//    {
-//        privacyView.hidden = YES;
-//        backgroundBtn.hidden = YES;
-//    }
+
+    [(MainClass *)MainObj Send_MapUserImei];
 }
 
 BOOL keyboarshow;
@@ -629,7 +588,6 @@ BOOL keyboarshow;
     }
     
     NSLog(@"now user = %i ",NowUser);
-//    [self Send_UserDate:[AccData objectAtIndex:NowUser] :[HashData objectAtIndex:NowUser]];
 }
 
 //20130312 add by Bill privacyBtn_submit
@@ -665,7 +623,9 @@ BOOL keyboarshow;
 }
 
 //使用者完成操作時所呼叫的內建函式
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+                 didFinishWithResult:(MessageComposeResult)result
+{
     NSString *alertString;
     UIAlertView *sendAlertView = [[UIAlertView alloc] initWithTitle:nil message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     switch (result) {
@@ -677,29 +637,18 @@ BOOL keyboarshow;
             [sendAlertView show];
             privacyView.hidden = YES;
             break;
-            
-        case MessageComposeResultFailed:
-            //訊息傳送失敗
-//            alertString = [(MainClass *)MainObj Get_DefineString:SMS_ALERTMESSAGE_1] ;
-            break;
-            
-        case MessageComposeResultCancelled:
-            //訊息被使用者取消傳送
-//            alertString = [(MainClass *)MainObj Get_DefineString:SMS_ALERTMESSAGE_1] ;
 
+        case MessageComposeResultFailed:
+            break;
+
+        case MessageComposeResultCancelled:
             break;
             
         default:
             break;
     }
-    //ios7 modify
+
     [vc dismissViewControllerAnimated:YES completion:nil];
-//    [vc dismissModalViewControllerAnimated:YES];
-    
-//    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissModalViewControllerAnimated:YES];
-    
-    
-    
 }
 
 
@@ -829,14 +778,6 @@ BOOL keyboarshow;
     isGPS_GSM_WIFI = _GPS_GSM_WIFI;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 - (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees) lng latitude:(CLLocationDegrees)lat{
     NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=%lf&y=%lf", lng, lat]];
     
@@ -856,31 +797,84 @@ BOOL keyboarshow;
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
-    BMKGeoCodeSearch *_searcher =[[BMKGeoCodeSearch alloc]init];
-    _searcher.delegate = self;
+    __weak MyMapView *weakSelf = self;
 
-    //发起反向地理编码检索
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){lat, lon};
+    self.lat = lat;
+    self.lon = lon;
 
-    pt = [self convertCoordinateToBaiDuWithLongitude:pt.longitude latitude:pt.latitude];
+    KMLocationManager *locationManager = [KMLocationManager locationManager];
+    [locationManager startLocationWithLocation:[[CLLocation alloc] initWithLatitude:lat
+                                                                          longitude:lon]
+                                   resultBlock:^(NSString *address) {
+                                       [weakSelf updateTextFieldWithAddress:address];
+                                   }];
+}
 
-    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[BMKReverseGeoCodeOption alloc] init];
-    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
-    BOOL flag = [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
+#pragma mark - 导航
+- (IBAction)navButtonDidClicked:(UIButton *)sender
+{
+    [self loadMapView];
+}
 
-    if (flag == NO) NSLog(@"反geo检索发送失败");
+- (void)loadMapView
+{
+    //目的地位置
+    NSLog(@"开始导航，目的地：%f, %f", self.lat, self.lon);
+    CLLocationCoordinate2D coords2 = CLLocationCoordinate2DMake(self.lat, self.lon);
+
+    //当前的位置
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+
+    //目的地的位置
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coords2
+                                                                                       addressDictionary:nil]];
+    
+    toLocation.name = @"Destination";
+    
+    NSArray *items = [NSArray arrayWithObjects:currentLocation, toLocation, nil];
+    NSDictionary *options = @{ MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsMapTypeKey: [NSNumber numberWithInteger:MKMapTypeStandard], MKLaunchOptionsShowsTrafficKey:@YES };
+    // 打开苹果自身地图应用，并呈现特定的item
+    [MKMapItem openMapsWithItems:items launchOptions:options];
+}
+
+/// 更新地址信息
+- (void)updateTextFieldWithAddress:(NSString *)address
+{
+    if (address) {
+        NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
+                             ,g_name
+                             ,g_STR_MAP_IN
+                             ,address
+                             ,g_STR_MAP_WATCH
+                             ,g_watch_time
+                             ,g_STR_MAP_SERVER
+                             ,g_server_time];
+        
+        [ShowText setText:AddText];
+        [ShowText setTextColor:[UIColor blackColor]];
+    } else {
+        NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
+                             ,g_name
+                             ,g_STR_MAP_IN
+                             ,@" "
+                             ,g_STR_MAP_WATCH
+                             ,g_watch_time
+                             ,g_STR_MAP_SERVER
+                             ,g_server_time];
+        [ShowText setText:AddText];
+        ShowText.textColor = [UIColor blackColor];
+    }
 }
 
 //接收反向地理编码结果
 - (void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher
                             result: (BMKReverseGeoCodeResult *)result
-                        errorCode:(BMKSearchErrorCode)error{
+                        errorCode:(BMKSearchErrorCode)error
+{
     if (error == BMK_SEARCH_NO_ERROR) {
         //在此处理正常结果
         NSLog(@"正常结果 = %@",result.address);
-        //        "His_TIME" = "时间";
-        //        "His_ADDR" = "约略地址";
-        
+
         NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
                              ,g_name
                              ,g_STR_MAP_IN
@@ -888,17 +882,11 @@ BOOL keyboarshow;
                              ,g_STR_MAP_WATCH
                              ,g_watch_time
                              ,g_STR_MAP_SERVER
-                             ,g_server_time  ];
-        
+                             ,g_server_time];
+
         [ShowText setText:AddText];
         [ShowText setTextColor:[UIColor blackColor]];
-//        ShowText.text = [NSString stringWithFormat:@"%@:\r%@\r%@:\r%@\r"
-//                        ,NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil),
-//                        [dataDic objectForKey:@"server_time"],
-//                        NSLocalizedStringFromTable(@"His_ADDR", INFOPLIST, nil),
-//                        result.address];
-    }
-    else {
+    } else {
         NSLog(@"抱歉，未找到结果");
         NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
                              ,g_name
@@ -907,9 +895,9 @@ BOOL keyboarshow;
                              ,g_STR_MAP_WATCH
                              ,g_watch_time
                              ,g_STR_MAP_SERVER
-                             ,g_server_time  ];
+                             ,g_server_time];
         [ShowText setText:AddText];
-
     }
 }
+
 @end

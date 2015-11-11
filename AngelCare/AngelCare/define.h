@@ -41,6 +41,9 @@
 #define IF_AutoLocating      37
 #define IF_LocatingEdit      38
 
+#define IF_FREQ_QUESTION    1101    // 常见问题
+#define IF_FREQ_QUESTION_DETAIL 1201    // 问题详情
+
 #define TITLE_INDEX     @"title0"
 
 #define TITLE_USERDATE  @"title1"
@@ -312,7 +315,7 @@
 //cn http://china.guidercare.com:8080/angelcare
 //#define INK_Url_1 @"http://www.missionhealthtec.com:8080/angelcare"
 // 阿里云
-#define INK_Url_1 @"http://watch.medquotient.com:8080/angelcare"
+//#define INK_Url_1 SERVER_URL
 
 //#define INK_Url_1 @"http://safetywatch.cloudapp.net:8252/safetywatch"
 

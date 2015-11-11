@@ -7,29 +7,25 @@
 - (id)initWithCoordinate: (CLLocationCoordinate2D)coords : (BOOL)Is_GPS
 {
     self = [super init];
-    if (self != nil) 
-    {
+    if (self != nil) {
         coordinate = coords;
-//        IsGPS_Sw = Is_GPS;
-//        ImageNum = 1;
-        
     }
+
     return self;
 }
 
--( void) Set_ImageNum:(int)NewNum
+- ( void)Set_ImageNum:(int)NewNum
 {
     ImageNum = NewNum;
 }
 
-
--( int) Get_ImageNum
+- ( int)Get_ImageNum
 {
     
     return ImageNum;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
 
 }

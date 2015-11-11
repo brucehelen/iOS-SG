@@ -17,56 +17,36 @@
 
 @interface DeviceSet()
 
-
-
 @end
-
 
 @implementation DeviceSet
 {
     NSString *syncStr;
-//    NSArray *synctimearr;
-    
     NSString *imei;
     NSString *phone;
-    
+
     ViewController *vc;
 }
+
 @synthesize timezoneArr,langArr;
 @synthesize synctimearr;
 
-- (id)initWithFrame:(CGRect)frame
+- (void)Set_Init:(NSDictionary *)dic
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+    self.lblSync.text = NSLocalizedStringFromTable(@"Device_Set_lblSync", INFOPLIST, nil);
+    
+    [self.btnRS setTitle:NSLocalizedStringFromTable(@"Device_Set_btnRS", INFOPLIST, nil)
+                forState:UIControlStateNormal];
 
-
-
-
--(void)Set_Init:(NSDictionary *)dic
-{
-    NSLog(@"dev set = %@",dic);
     if (dic) {
-        
         switch1 = [dic objectForKey:@"Switch1"];
         switch2 = [dic objectForKey:@"Switch2"];
         switch3 = [dic objectForKey:@"Switch3"];
         switch4 = [dic objectForKey:@"Switch4"];
         switch5 = [dic objectForKey:@"Switch5"];
         NSString *tmpV = [dic objectForKey:@"voiceMail"];
-        /*
-        int tmpY = 30;
-        int tmpX = 8;
-        
-        [familyBtn setFrame:CGRectMake(130 - tmpX, 94 - tmpY + 9, familyBtn.frame.size.width, familyBtn.frame.size.height)];
-        
-        [familyLbl setFrame:CGRectMake(110 - tmpX, 84 - tmpY + 9, familyLbl.frame.size.width, familyLbl.frame.size.height)];
-        */
-        if ([[NSString stringWithFormat:@"%@",tmpV] isEqualToString:@"1"]) {
+
+        if ([[NSString stringWithFormat:@"%@", tmpV] isEqualToString:@"1"]) {
             switch6 = @"on";
         }
         else{
@@ -74,41 +54,28 @@
         }
         areaStr = [NSString stringWithFormat:@"%@",[dic objectForKey:@"Area"]];
         langStr = [NSString stringWithFormat:@"%@",[dic objectForKey:@"Language"]];
-        
+
         if ([[NSString stringWithFormat:@"%@",areaStr] isEqualToString:@""]) {
             areaStr = @"0";
         }
-        
+
         if ([[NSString stringWithFormat:@"%@",langStr] isEqualToString:@""]) {
             langStr = @"0";
         }
-        
-        
-        /*
-        [timeareaBtn setTitle:[NSString stringWithFormat:@"%@",[[timezoneArr objectAtIndex:[areaStr integerValue]] objectForKey:@"name"]] forState:UIControlStateNormal];
-        
-        [languageBtn setTitle:[NSString stringWithFormat:@"%@",[[langArr objectAtIndex:[langStr integerValue]] objectForKey:@"name"]]  forState:UIControlStateNormal];
-        */
-        
-        
-        NSLog(@"timezone arr = %@",timezoneArr);
+
         for (int i = 0; i < [timezoneArr count]; i++) {
-            
-            
-            
             if ([[[timezoneArr objectAtIndex:i] objectForKey:@"value"] integerValue] == [areaStr integerValue])
             {
                 [timeareaBtn setTitle:[NSString stringWithFormat:@"%@",[[timezoneArr objectAtIndex:i] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] forState:UIControlStateNormal];
             }
         }
-        
-        
+
         for (int j = 0; j<[langArr count]; j++) {
             if ([[[langArr objectAtIndex:j] objectForKey:@"value"] integerValue] == [langStr integerValue]) {
                 [languageBtn setTitle:[NSString stringWithFormat:@"%@",[[langArr objectAtIndex: j] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]]  forState:UIControlStateNormal];
             }
         }
-        
+
         if ([switch1 isEqualToString:@"on"]) {
             
             [smsReadBtn setImage:[UIImage imageNamed:BTN_CHECK] forState:UIControlStateNormal];
@@ -162,12 +129,8 @@
             switch6 = @"off";
             [btnVoiceMail setImage:[UIImage imageNamed:BTN_NOT_CHECK] forState:UIControlStateNormal];
         }
-
-        
-
-
     }
-    
+
     [syncLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
 }
 
@@ -294,7 +257,7 @@
     [languageLbl setTextColor:[UIColor blackColor]];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenHeight = screenRect.size.height + 120;
+    CGFloat screenHeight = screenRect.size.height + 280;
 
     [scrView setContentSize:CGSizeMake(320, screenHeight)];
 
@@ -500,27 +463,11 @@
     langStr = number;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (IBAction)timeSelect:(id)sender
 {
-    // Drawing code
-}
-*/
-
--(IBAction)timeSelect:(id)sender{
-    
-    
     self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
                   {
-                      /*
-                       if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
-                       return 1;
-                       else
-                       return [self.rowsNumField.text integerValue];
-                       */
-                          return [synctimearr count];
+                      return [synctimearr count];
                   }
                   andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath)
                   {
@@ -531,24 +478,16 @@
                       
                       //                      cell.textLabel.text = [NSString stringWithFormat:@"Section %d Row %d", indexPath.section, indexPath.row];
                           cell.textLabel.text = [NSString stringWithFormat:@"%@",[[synctimearr objectAtIndex:indexPath.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] ;
-                  
-                      
-                      
-                      
-                      //                      cell.textLabel.text = [NSString stringWithFormat:@"%@",[syncType objectAtIndex:indexPath.row]] ;
-                      
-                      
+
                       return cell;
                   }];
-    
+
     // Setting custom alert height
     self.alert.height = 350;
-    
+
     // configure actions to perform
     [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex)
      {
-         //		self.resultLabel.text = [NSString stringWithFormat:@"Selected Index\nSection: %d Row: %d", selectedIndex.section, selectedIndex.row];
-             
          [syncBtn setTitle:[NSString stringWithFormat:@"%@",[[synctimearr objectAtIndex:selectedIndex.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] forState:UIControlStateNormal];
          syncStr = [NSString stringWithFormat:@"%@",[[synctimearr objectAtIndex:selectedIndex.row] objectForKey:@"value"]];
              
@@ -556,66 +495,59 @@
          NSLog(@"syncStr str = %@",syncStr);
          
      } andCompletionBlock:^{
-         //		self.resultLabel.text = @"Cancel Button Pressed\nNo Cells Selected";
-         
+
      }];
-    
+
     [self.alert show];
-    
-    
 }
--(IBAction)ibaRemoteSynch:(id)sender{
+
+- (IBAction)ibaRemoteSynch:(id)sender
+{
     [(MainClass *)MainObj Send_MapUserImei];//get phone data
 }
--(void)SetIMEI:(NSString *)getimei AndPhone:(NSString *)_phone
+
+- (void)SetIMEI:(NSString *)getimei
+       AndPhone:(NSString *)_phone
 {
     imei = getimei;
     phone = _phone;
     UIAlertView *alert;
+
     if ([phone length] == 0) {
         alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"NOPHONENUMBER", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles:nil];
         alert.tag = 199;
         [alert show];
-    }
-    else{
+    } else {
         alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"MsgSendAlertInfoSync", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles:nil];
         alert.tag = 808;
         [alert show];
     }
-    
-    
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     if (alertView.tag == 808) {
         [self sendMsg];
     }
-    
 }
 
-- (void)sendMsg{
-    //-----
+- (void)sendMsg
+{
     NSString *verificationText = @"1122";
-    
-    //-----
-    
+
     MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init] ;
     //判斷裝置是否在可傳送訊息的狀態
     if([MFMessageComposeViewController canSendText]) {
-        
         NSString *smsbody = [NSString stringWithFormat:@"#sYc#%@#%@#",imei,verificationText];
         //設定SMS訊息內容
         controller.body = smsbody;
-        
+
         //設定接傳送對象的號碼
         controller.recipients = [NSArray arrayWithObjects:phone,nil];
-        
+
         //設定代理
         controller.messageComposeDelegate = self;
-        
-        //開啟SMS訊息
-        //            [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentModalViewController:controller animated:YES];
-        
+
         vc = (ViewController*)[[self nextResponder] nextResponder];
         NSLog(@"%@",[[self nextResponder] nextResponder]);
         [vc presentViewController:controller animated:YES completion:nil];
@@ -623,7 +555,9 @@
 }
 
 //使用者完成操作時所呼叫的內建函式
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+                 didFinishWithResult:(MessageComposeResult)result
+{
     NSString *alertString;
     UIAlertView *sendAlertView = [[UIAlertView alloc] initWithTitle:nil message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     switch (result) {
@@ -633,70 +567,45 @@
             [sendAlertView setTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil)];
             [sendAlertView setMessage:alertString];
             [sendAlertView show];
-            //            privacyView.hidden = YES;
             break;
-            
+
         case MessageComposeResultFailed:
-            //訊息傳送失敗
-            //            alertString = [(MainClass *)MainObj Get_DefineString:SMS_ALERTMESSAGE_1] ;
             break;
-            
+
         case MessageComposeResultCancelled:
-            //訊息被使用者取消傳送
-            //            alertString = [(MainClass *)MainObj Get_DefineString:SMS_ALERTMESSAGE_1] ;
-            
             break;
-            
+
         default:
             break;
     }
+
     //ios7 modify
     [vc dismissViewControllerAnimated:YES completion:nil];
-    //    [vc dismissModalViewControllerAnimated:YES];
-    
-    //    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissModalViewControllerAnimated:YES];
-    
-    
-    
 }
 
-
--(void)Set_Init_Call:(NSDictionary *)dic
+- (void)Set_Init_Call:(NSDictionary *)dic
 {
-    
     [syncLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
-    
-    if (dic) {
-        NSLog(@"dic = %@",dic);
-        NSString * tmpsyncStr = [dic objectForKey:@"value1"];
 
-        
-        
-        
-        NSLog(@"synctimearr = %@",synctimearr);
-        
-        for (int i = 0; [synctimearr count] > i; i++)
-        {
+    if (dic) {
+        NSString *tmpsyncStr = [dic objectForKey:@"value1"];
+        for (int i = 0; [synctimearr count] > i; i++) {
             if ([tmpsyncStr integerValue] == [[[[synctimearr objectAtIndex:i] objectForKey:@"id"] objectForKey:@"itemNo"] integerValue])
             {
                 [syncBtn setTitle:[[synctimearr objectAtIndex:i] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)] forState:UIControlStateNormal];
                 syncStr = [[synctimearr objectAtIndex:i] objectForKey:@"value"];
             }
-            
-            
         }
-
     }
 }
 
--(void)SaveCall
+- (void)SaveCall
 {
     saveNum = 1;
-    
+
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:syncStr,@"value",[NSString stringWithFormat:@"%i",saveNum],@"number", nil];
     NSLog(@"send dic %@",dic);
     [(MainClass *)MainObj Send_Calldata:dic];
-    
 }
 
 @end

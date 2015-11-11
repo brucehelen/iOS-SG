@@ -58,7 +58,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switchWifi;
 @property (strong, nonatomic) IBOutlet UISwitch *switchGPS;
 
-- (IBAction)ibaPressWhichW:(id)sender;
+- (IBAction)ibaPressWhichW:(UIButton *)sender;
 
 - (IBAction)ibaSync:(id)sender;
 - (IBAction)ibaGPSf:(id)sender;

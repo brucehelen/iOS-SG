@@ -277,7 +277,7 @@
 "HS_Mode2" = "学童";
 
 "HS_BPRemind" = "BPressure";
-"HS_BPRange" = "BP threshold";
+"HS_BPRange" = "血压范围";
 
 
 "HS_BSRemind" = "BGlucose";

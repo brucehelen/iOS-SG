@@ -48,7 +48,7 @@
             lblEn1.hidden = YES;
             lblEn2.hidden = YES;
             int tmpY = 30;
-            int tmpX = 20;
+            int tmpX = 10;
 
             [beforeMealUpTxt setFrame:CGRectMake(103 - tmpX, 95 - tmpY, beforeMealUpTxt.frame.size.width, beforeMealUpTxt.frame.size.height)];
             [lblUnit1 setFrame:CGRectMake(160 - tmpX, 90 - tmpY + 10, lblUnit1.frame.size.width, lblUnit1.frame.size.height)];
@@ -79,14 +79,21 @@
             [lblUnit2 setFrame:CGRectMake(102 - tmpX, 176 - tmpY + 10, lblUnit2.frame.size.width, lblUnit2.frame.size.height)];
             
         }
-        beforeMealUpTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"beforeMealUp"]];
+        
+        bgBloodMaxValue.text = NSLocalizedStringFromTable(@"bgBloodMaxValue", INFOPLIST, nil);
+        bgBloodMaxInfo.text = NSLocalizedStringFromTable(@"bgBloodMaxInfo", INFOPLIST, nil);
+        
+        int beforeMealValue = [NSString stringWithFormat:@"%@",[dic objectForKey:@"beforeMealUp"]].intValue;
+        beforeMealUpTxt.text = [NSString stringWithFormat:@"%.1f", beforeMealValue/10.0/18.0];
         beforeMealDownTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"beforeMealDown"]];
-        afterMealUpTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"afterMealUp"]];
+        
+        beforeMealValue = [NSString stringWithFormat:@"%@", [dic objectForKey:@"afterMealUp"]].intValue;
+        afterMealUpTxt.text = [NSString stringWithFormat:@"%.1f", beforeMealValue/10.0/18.0];
+
         afterMealDownTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"afterMealDown"]];
         bedTimeUpTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bedTimeUp"]];
         bedTimeDownTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bedTimeDown"]];
-        
-        
+
         UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
         numberToolbar.barStyle = UIBarStyleBlackTranslucent;
         numberToolbar.items = [NSArray arrayWithObjects:
@@ -180,7 +187,7 @@
     return YES;
 }
 
--(void)Do_Init:(id)sender
+- (void)Do_Init:(id)sender
 {
     MainObj = sender;
     beforeMealDownTxt.delegate = self;
@@ -477,63 +484,55 @@
     
 }
 
--(void)SaveBS
+- (void)SaveBS
 {
-    //判斷是否為空直
+    // 判斷是否為空直
     [beforeMealUpTxt resignFirstResponder];
     [beforeMealDownTxt resignFirstResponder];
     [afterMealUpTxt resignFirstResponder];
     [afterMealDownTxt resignFirstResponder];
     [bedTimeDownTxt resignFirstResponder];
     [bedTimeUpTxt resignFirstResponder];
-    
+
     beforeMealDownTxt.text = @"0";
     afterMealDownTxt.text = @"0";
     bedTimeUpTxt.text = @"0";
     bedTimeDownTxt.text = @"0";
-    if (![beforeMealDownTxt.text isEqualToString:@""] && ![beforeMealUpTxt.text isEqualToString:@""] && ![afterMealDownTxt.text isEqualToString:@""] &&![afterMealUpTxt.text isEqualToString:@""] &&![bedTimeUpTxt.text isEqualToString:@""] &&![bedTimeDownTxt.text isEqualToString:@""] )
+
+    if (![beforeMealDownTxt.text isEqualToString:@""] &&
+        ![beforeMealUpTxt.text isEqualToString:@""] &&
+        ![afterMealDownTxt.text isEqualToString:@""] &&
+        ![afterMealUpTxt.text isEqualToString:@""] &&
+        ![bedTimeUpTxt.text isEqualToString:@""] &&
+        ![bedTimeDownTxt.text isEqualToString:@""])
     {
-//        if ([beforeMealDownTxt.text integerValue] >= [beforeMealUpTxt.text integerValue])
-//        {
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_BS_Error1 delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
-//            
-//            [alertView show];
-//            
-//        }else if ([afterMealDownTxt.text integerValue] >= [afterMealUpTxt.text integerValue])
-//        {
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_BS_Error2 delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
-//            
-//            [alertView show];
-//            
-//        }
-//        else if ([bedTimeDownTxt.text integerValue] >= [bedTimeUpTxt.text integerValue])
-//        {
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_BS_Error3 delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
-//            
-//            [alertView show];
-//            
-//        }
-//        else
-//        {
-            NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:beforeMealDownTxt.text,@"beforeMealDown",beforeMealUpTxt.text,@"beforeMealUp",afterMealDownTxt.text,@"afterMealDown",afterMealUpTxt.text,@"afterMealUp",bedTimeUpTxt.text,@"bedTimeUp",bedTimeDownTxt.text,@"bedTimeDown",bfStartStr,@"breakfastStart",bfEndStr,@"breakfastEnd",lunchStartStr,@"lunchStart",lunchEndStr,@"lunchEnd",dinnerStartStr,@"dinnerStart",dinnerEndStr,@"dinnerEnd", nil];
-            
-            [(MainClass *)MainObj Send_BSdata:dic];
-//        }
-        
-        
-        
-    }else
-    {
+        int value1 = beforeMealUpTxt.text.floatValue*18*10;
+        NSString *string1 = [NSString stringWithFormat:@"%d", value1];
+        value1 = afterMealUpTxt.text.floatValue*18*10;
+        NSString *string2 = [NSString stringWithFormat:@"%d", value1];
+        NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             beforeMealDownTxt.text,@"beforeMealDown",
+                             string1, @"beforeMealUp",
+                             afterMealDownTxt.text, @"afterMealDown",
+                             string2, @"afterMealUp",
+                             bedTimeUpTxt.text, @"bedTimeUp",
+                             bedTimeDownTxt.text, @"bedTimeDown",
+                             bfStartStr, @"breakfastStart",
+                             bfEndStr, @"breakfastEnd",
+                             lunchStartStr, @"lunchStart",
+                             lunchEndStr, @"lunchEnd",
+                             dinnerStartStr, @"dinnerStart",
+                             dinnerEndStr, @"dinnerEnd", nil];
+
+        [(MainClass *)MainObj Send_BSdata:dic];
+    } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_REMIND_NULL delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
-        
         [alertView show];
     }
-    
-    
-    
 }
 
-- (void)setUnitForLbl{
+- (void)setUnitForLbl
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents directory
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"unit.txt"];
@@ -542,10 +541,8 @@
                                                      error:NULL];
     NSString *unit = @"";
     if ([content length] == 0) {
-        //        unitDef = 1;
         unit = @"mmol/L";
-    }
-    else{
+    } else {
         if ([content isEqualToString:@"0"]) {
             unit = @"mmol/L";
         }
@@ -556,11 +553,13 @@
             unit = @"mg/L";
         }
     }
+
     lblUnit1.text = unit;
     lblUnit2.text = unit;
 }
 
-- (void)showUnit{
+- (void)showUnit
+{
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"請選擇單位:" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:
                             @"mmol/L",
                             @"mg/dl",

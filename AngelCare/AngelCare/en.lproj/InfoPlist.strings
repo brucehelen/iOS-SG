@@ -1,9 +1,9 @@
 /* Localized versions of Info.plist keys */
 
-"CFBundleDisplayName"  = "HealthWatch";
+"CFBundleDisplayName"  = "MHWatch";
 "LANGUAGE" = "2";
 "Setting_Version" = "Version";
-"NONET" = "Unable to connect，try again later";
+"NONET" = "Unable to connect, try again later";
 
 /**********Login***************/
 "StartUse" = "Start";
@@ -12,27 +12,27 @@
 "Login_ACC" = "Please enter your account";
 "Login_PWD" = "Please enter your password";
 
-"Login_WhereToBuy" = "何处购买";
+"Login_WhereToBuy" = "How to Buy";
 "Login_UserAcc" = "Use Account Login";
 "Login_LoginBtn" = "Login";
 "Login_ForgetBtn" = "Forget password";
 "Login_NewAccBtn" = "Apply account";
 "Login_QRCodeLoginBtn" = "QRCode Login";
-"Login_AuthResend" = "验证信已送出请至Email啓动帐号";
+"Login_AuthResend" = "Congratulations!You can now use Guidercare Services by activing your account with the link sent to your email";
 "Login_EMPTY" = "Please enter your Username and password";
-"Login_QRCodeAlert" = "请输入设备密码，预设密码为000000，登入后请儘速更换您的密码。";
+"Login_QRCodeAlert" = "Please enter the device password, the default password is 000000, Log in Please change your password as soon as possible.";
 /**************************/
 
 /************忘记密码***************/
 
 "ForgetPassword" = "Forget password";
 "InsertAcc" = "Please enter your account";
-"InsertEmail" = "或输入E-mail";
+"InsertEmail" = " or email";
 "Email" = "E-mail";
-"isSentEmail" = "密码已寄至您的信箱。请至信箱收取密码";
+"isSentEmail" = "Password has been sent to your email. Please confirm receipt your password";
 
 /**********注册*************/
-"NewAcc" = "申请帐号";
+"NewAcc" = "Create a new account";
 "CheckName" = "Please enter your name";
 "Login_PWD2" = "Please enter your password again";
 "CheckButton" = "检查帐号";
@@ -41,15 +41,15 @@
 "CheckAccount3" = "此帐号已被注册";
 "CheckAccountOK" = "该帐号可以使用";
 
-"SendCheck0" = "提醒您，帐户未完成启动，请至您登录的邮件信箱进行「启动确认」。";
-"SendCheck1" = "请先验证帐号是否可用";
+"SendCheck0" = "Remind you, the account activation is not complete yet, please login to your MAIL for \"confirmation.\" ";
+"SendCheck1" = "Confirm Account activated.";
 "SendCheck2" = "Please enter your name";
 "SendCheck3" = "Password length for 8 to 12 characters";
-"SendCheck4" = "密码栏位不相符";
-"SendCheck5" = "手机号码须为数字";
-"SendCheck6" = "E-mail格式有误";
-"SendCheck7" = "请同意会员条款与隐私条款";
-"SendCheck8" = "E-mail重複";
+"SendCheck4" = "Password must match";
+"SendCheck5" = "Phone must numeric character";
+"SendCheck6" = "eMail format error";
+"SendCheck7" = "Please accept terms and conditions";
+"SendCheck8" = "eMail existed";
 
 "PhoneNumber" = "Phone";
 "Email" = "Email";
@@ -73,12 +73,15 @@
 "Bu3_05_Str" = "Activity";
 
 "Bu4_Str" = "Alert Locator";
-"SMS_SEND" = "即时定位启动";
+"SMS_SEND" = "On-Demand Tracking";
 "Bu5_Str" = "Tracker";
 "Bu6_Str" = "History";
 "Bu7_Str" = "Direct Call";
 "Bu8_Str" = "Reminder";
 "Bu9_Str" = "Settings";
+
+// "Bu10_Str" = "GeoFence"
+// "Bu10_Str" = "Position";
 "Bu10_Str" = "GeoFence";
 
 /***************************/
@@ -106,96 +109,94 @@
 /*************************/
 
 /********设备资讯***********/
-"Device_Time_on" = "Standby time";
-"Device_Time_off" = "关机";
-"Device_OffType" = "关机原因";
-"Device_Time_sync" = "Synchronization time";
+"Device_Time_on" = "Activated on";
+"Device_Time_off" = "Shutdown";
+"Device_OffType" = "Shutdown Cause";
+"Device_Time_sync" = "Syncroniza-tion time";
 "Device_Electricity" = "Battery";
-"Device_Psr_temp" = "体表温度";
-"Device_Location" = "基地台位置";
+"Device_Psr_temp" = "Skin temperature";
+"Device_Location" = "Location Report";
 "Device_FW" = "Watch Firmware";
 
-"Device_Data1" = "手动关机";
-"Device_Data2" = "低电压关机";
-"Device_Data3" = "定时关机";
-"Device_Data4" = "其他";
+"Device_Data1" = "Manual Shutdown";
+"Device_Data2" = "Low Voltage Shutdown";
+"Device_Data3" = "Schedule shutdown";
+"Device_Data4" = "Other";
 
 
 /***********************/
 
 /*********量测资讯***********/
 
-"isList" = "列表";
-"isChart" = "图表";
-"SelectRange" = "请选择范围";
+"isList" = "List";
+"isChart" = "Chart";
+"SelectRange" = "Range";
 "SelectRange\n" = "Please select a time\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 "StartTime" = "Start time";
 "EndTime" = "End time";
 "DayBtn" = "day";
 "WeekBtn" = "week";
 "MonthBtn" = "month";
-"IntervalBtn" = "interval";
+"IntervalBtn" = "Interval";
 "ForHealth" = "为了您的健康，请注意饮食及放鬆心情";
 /*************************/
 
 /* 小孩通话限制 */
 
 "C_SelectRange" = "Please select a time\n\n\n\n\n\n\n\n\n\n\n";
-"C_ALERTCHANGE" = "模式已修改";
-"C_OPEN" = "开啓";
-"C_CLOSE" = "关闭";
+"C_ALERTCHANGE" = "Alert change";
+"C_OPEN" = "Open";
+"C_CLOSE" = "Close";
 
-"C_Status" = "目前状态";
+"C_Status" = "Status";
 "C_StartTime" = "Start time";
 "C_EndTime" = "End time";
-"C_Frequency" = "循环週期";
-"C_SendAndSave" = "发送简讯储存";
+"C_Frequency" = "Frequency";
+"C_SendAndSave" = "Send And Save";
 /**************/
 
 /*********定位救援***************/
 
-"NOPHONENUMBER" = "配戴者未设定电话号码，无法以SMS简讯传送GPS启动码！";
+"NOPHONENUMBER" = "Please make sure to enter user's phone number first in the settings before using that function.";
 
 /*********活动区域***************/
 
-"Act_Map" = "地图";
-"Act_ST" = "卫星";
+"Act_Map" = "Map";
+"Act_ST" = "Satellite";
 
 /*******************************/
 
 /**********历史纪录***************/
 
-"His_Map" = "地图";
-"His_ST" = "卫星";
-"His_SOS" = "求救";
-"His_Falldown" = "跌倒";
-"His_Leave" = "离家";
-"His_Call" = "通话";
+"His_Map" = "Map";
+"His_ST" = "ST";
+"His_SOS" = "SOS";
+"His_Falldown" = "Falldown";
+"His_Leave" = "Leave";
+"His_Call" = "Call";
 
 "His_SOSTitle" = "        %@              %@";
 "His_FalldownTitle" = "        %@              %@";
 "His_LeaveTitle" = "        %@              %@";
 "His_CallTitle" = "    %@          %@          %@";
 
-"His_TIME" = "时间";
-"His_ADDR" = "约略地址";
+"His_TIME" = "Time";
+"His_ADDR" = "Address";
 "His_STARTTIME" = "Start time";
 "His_ENDTIME" = "End time";
-"His_TELLENGTH" = "长度";
+"His_TELLENGTH" = "Length";
 
 /****************************/
 
 /***********事件提醒***************/
-"EventRemind" = "事件提醒";
+"EventRemind" = "Reminders";
 "DateRemind" = "Appointment";
 "EatRemind" = "Medication";
 
-"ImportantRemind" = "重要事项";
-"ImportantRemindStr" = "提醒您【%@】有重要事项";
-
-"OnSchoolRemind" = "上学接送";
-
-"OnSchoolRemindStr" = "提醒您【%@】要记得接送小孩上下学";
+"ImportantRemind" = "Important reminder";
+"ImportantRemindStr" = "Alert for your【%@】 reminder";
+"OnSchoolRemind" = "School pick up";
+"OnSchoolRemindStr" = "Alert for your 【%@】school pick up reminder";
 
 "Mon" = "M";
 "Tue" = "T";
@@ -220,13 +221,13 @@
 "HS_SAVE" = "Save";
 "HS_TITLE" = "Setting";
 
-"HS_Measure" = "Health Parameters";
-"HS_CALL" = "通话限制";
+"HS_Measure" = "Health Setup";
+"HS_CALL" = "Sync Setup";
 "HS_Setting" = "Watch Setup";
-"HS_Setting_SMS" = "短信读取";
+"HS_Setting_SMS" = "Read SMS";
 
 // SOS
-"HS_Setting_SOSKEYLONGPUSH" = "SOS键长按";
+"HS_Setting_SOSKEYLONGPUSH" = "SOS key long push";
 "HS_Setting_SOSKEYLONGPUSH_TIP" = "Press the SOS key for a long time to send SOS distress message";
 
 // 亲情键长按
@@ -239,54 +240,54 @@
 
 // SOS短信
 "HS_Setting_SOSSMS" = "SOS message";
-"HS_Setting_SOSSMS_TIP" = "按下手表的求救按钮, 亲情号码将会接收到求救短信";
+"HS_Setting_SOSSMS_TIP" = "Press the affection key will send a SOS message to affection number";
 
-"HS_Setting_TimeZone" = "时区";
-"HS_Setting_Language" = "语言";
-"HS_Call_Sync_0" = "取消定时回报";
-"HS_Call_Sync_1" = "每小时一次";
-"HS_Call_Sync_2" = "每2小时一次";
-"HS_Call_Sync_3" = "每3小时一次";
-"HS_Call_Sync_4" = "每4小时一次";
-"HS_Call_Sync_5" = "每6小时一次";
-"HS_Call_Sync_6" = "每12小时一次";
-"HS_Call_Sync_7" = "每半小时一次";
-"HS_Call_Sync_8" = "每20分钟一次";
-"HS_Call_Sync_9" = "每15分钟一次";
-"HS_Call_Sync_10" = "每12分钟一次";
-"HS_Call_Sync_11" = "每10分钟一次";
-"HS_Call_Sync_12" = "每6分钟一次";
+"HS_Setting_TimeZone" = "Time Zone";
+"HS_Setting_Language" = "Language";
+
+"HS_Call_Sync_0" = "Cancel";
+"HS_Call_Sync_1" = "Every 1 hour";
+"HS_Call_Sync_2" = "Every 2 hours";
+"HS_Call_Sync_3" = "Every 3 hours";
+"HS_Call_Sync_4" = "Every 4 hours";
+"HS_Call_Sync_5" = "Every 6 hours";
+"HS_Call_Sync_6" = "Every 12 hours";
+"HS_Call_Sync_7" = "A half hour";
+"HS_Call_Sync_8" = "Every 20 mins";
+"HS_Call_Sync_9" = "Every 15 mins";
+"HS_Call_Sync_10" = "Every 12 mins";
+"HS_Call_Sync_11" = "Every 10 mins";
+"HS_Call_Sync_12" = "Every 6 mins";
 
 
-"HS_Fall" = "跌倒设定";
-"HS_Fall_Enable" = "跌倒开关";
-//"HS_Fall_Sence" = "敏感度";
-"HS_Fall_Sence" = "跌倒设定";
-"HS_Fall_Remind" = "跌倒通知";
-"HS_Fall_SelecSence" = "选择敏感度";
-"HS_Fall_Cancel" = "取消";
-"HS_Fall_level0" = "关闭";
-"HS_Fall_level1" = "低敏感度";
-"HS_Fall_level2" = "中敏感度";
-"HS_Fall_level3" = "高敏感度";
-"HS_Fall_level4" = "其他";
+"HS_Fall" = "Fall Detector Setup";
+"HS_Fall_Enable" = "Switch on";
+"HS_Fall_Sence" = "Fall detection ON/OFF";
+"HS_Fall_SelecSence" = "Select Sensitivity";
+"HS_Fall_Cancel" = "Cancel";
+"HS_Fall_Remind" = "Fall notifications";
+"HS_Fall_Phone1" = "Phone 1";
+"HS_Fall_Phone2" = "Phone 2";
+"HS_Fall_Phone3" = "Phone 3";
+"HS_Fall_level0" = "Off";
+"HS_Fall_level1" = "Low";
+"HS_Fall_level2" = "Med";
+"HS_Fall_level3" = "High";
+"HS_Fall_level4" = "Other";
 
-"HS_Fall_Phone1" = "电话1";
-"HS_Fall_Phone2" = "电话2";
-"HS_Fall_Phone3" = "电话3";
 
-"HS_Leave" = "离家设定";
-"HS_LeaveActRange" = "范围";
-"HS_Timeinterval" = "时间范围";
-"HS_Repetitionperiod" = "週期";
-"HS_Homeaddress" = "住家地址";
-"HS_MapEditor" = "地图";
-"HS_Range" = "范围";
-"HS_Check" = "查看";
+"HS_Leave" = "Geofence";
+"HS_LeaveActRange" = "Range";
+"HS_Timeinterval" = "Time interval";
+"HS_Repetitionperiod" = "Repetition period";
+"HS_Homeaddress" = "Home address";
+"HS_Check" = "Check";
+"HS_MapEditor" = "Map";
+"HS_Range" = "Range";
 
-"HS_ChangeMode" = "模式切换";
-"HS_Mode1" = "银髮";
-"HS_Mode2" = "学童";
+"HS_ChangeMode" = "Mode";
+"HS_Mode1" = "Older";
+"HS_Mode2" = "Child";
 
 "HS_BPRemind" = "BPressure";
 "HS_BPRange" = "BP threshold";
@@ -296,7 +297,7 @@
 "HS_BSRange" = "Blood threshold";
 "HS_BS_BEFOREMEAL" = "Before meals";
 "HS_BS_AFTEREMEAL" = "After dinner";
-"HS_BS_BEFORSLEEP" = "睡前";
+"HS_BS_BEFORSLEEP" = "Before bedtime";
 "HS_BS_MEALTIME" = "Meal time";
 "HS_BS_BREAKFAST" = "Breakfast time";
 "HS_BS_LUNCH" = "Lunch time";
@@ -313,7 +314,7 @@
 
 "HS_BORemind" = "Oximeter";
 "HS_BORange" = "Oximeter threshold";
-"HS_BORemindTxt" = "低氧 SpO2 < 90%\r\n正常 SpO2 > 95%";
+"HS_BORemindTxt" = "Low SpO2 < 90%\r\nNormal SpO2 > 95%";
 "HS_BOCon" = "Oxygen concentration";
 
 "HS_Weight" = "Body weight";
@@ -330,46 +331,38 @@
 "HS_W_IDWEIGHT" = "Weight goal";
 "HS_W_IDBODY" = "Body fat goal";
 "HS_W_PERSENT" = "%";
-"HS_BS_SELECTTIME" = "选择时间\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r";
+"HS_BS_SELECTTIME" = "Select Time\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r";
 
 "HS_Sport" = "Activity";
 "HS_S_STEPLENGTH" = "Step";
 "HS_S_IDDISTANCE" = "Distance target";
 "HS_S_IDSTEP" = "Step target";
 
-"HS_Call_EachMin" = "每%@分钟";
+"HS_Call_EachMin" = "Every %@ min";
 "HS_Call_Sync" = "Synchronization time";
 
-"HS_Call_WatchSync" = "手錶向后台同步时间间格";
-"HS_Call_GPS" = "GPS频率";
-"HS_Call_WatchGpsSync" = "手錶向后台回报GPS定位时间间格";
-"HS_CallLimit" = "通话限时";
-"HS_Call_SMS" = "手錶若每月超过此通话时数将发送简讯提醒";
-"HS_Call_phoneLimit" = "拨出限时";
-"HS_Call_MonthLimit" = "手錶每月累积拨出限时";
-"HS_Call_Minutes" = "分钟";
+"HS_Call_WatchSync" = "Server synchronization timeframe";
+"HS_Call_GPS" = "GPS positioning frequency";
+"HS_Call_WatchGpsSync" = "Frequency of GPS synching with server";
+"HS_CallLimit" = "Call restrictions";
+"HS_Call_SMS" = "After the monthly limit has been exceeded, reminding SMS will be sent out";
+"HS_Call_phoneLimit" = "Outgoing call restrictions";
+"HS_Call_MonthLimit" = "Limit per month";
+"HS_Call_Minutes" = "Minutes";
 
-"HS_SAVE_OK" = "储存成功";
+"HS_SAVE_OK" = "Save success";
 
 "HS_BP1" = "mmHg";
 "HS_BP2" = "mmHg";
 
+"HS_ShowImage" = " Share Image";
+"HS_ShowImage_upload" = "Change";
 
-"HS_ShowImage" = "展示照片";
-"HS_ShowImage_upload" = "上传照片";
-
-"HS_Tracking" = "Synchronisation Setup";
-"HS_GeoFence" = "电子围篱";
+"HS_Tracking" = "Sync Setup";
+"HS_GeoFence" = "GeoFence";
 /*******************************/
 
-
-
-
-"NEWS" = "最新消息";
-
-
-
-
+"NEWS" = "News";
 
 //个人
 "Header_Personal" = "General notifications";
@@ -381,25 +374,24 @@
 //设定
 "Header_Setting" = "configuration";
 
-//天
-"Header_Days" = "天前";
-"Header_Day" = "天前";
-//小时
-"Header_Hours" = "小时前";
-"Header_Hour" = "小时前";
+"Header_Day" = "day ago";
+"Header_Days" = "days ago";
+//小時
+"Header_Hour" = "hour ago";
+"Header_Hours" = "hours ago";
 //分
-"Header_Mins" = "分钟前";
-"Header_Min" = "分钟前";
+"Header_Min" = "minute ago";
+"Header_Mins" = "minutes ago";
 
 //系统设定-个人资料
 "Setting_Personal" = "PERSONAL INFO";
 //个人资料-我的帐号
 "Personal_MyAccount" = "My Account";
 //个人资料-我的帐号-错误
-"Personal_MyAccount_Error1" = "资料输入不完整";
-"Personal_MyAccount_Error2" = "Email格式错误";
-"Personal_MyAccount_Error3" = "电话格式错误";
-"Personal_MyAccount_Sucess" = "帐号资讯修改成功";
+"Personal_MyAccount_Error1" = "Confirm Data";
+"Personal_MyAccount_Error2" = "eMail format error";
+"Personal_MyAccount_Error3" = "Phone number must be numeric character";
+"Personal_MyAccount_Sucess" = "Successfully Change User Data";
 
 //个人资料-我的帐号-姓名
 "Personal_MyAccount_Name" = "Username";
@@ -414,42 +406,42 @@
 "Personal_ChangeInfo" = "Modify Account";
 
 //个人资料-密码修改-错误
-"Personal_PWChange_Error1" = "请输入原始密码";
-"Personal_PWChange_Error2" = "Password length for 8 to 12 characters";
-"Personal_PWChange_Error3" = "新密码栏位不相符";
-"Personal_PWChange_Sucess" = "密码修改成功";
+
+"Personal_PWChange_Error1" = "Please enter the original password";
+"Personal_PWChange_Error2" = "Password is a minimum of 8~12 characters";
+"Personal_PWChange_Error3" = "Please confirm Password";
+"Personal_PWChange_Sucess" = "Password Successfully Changed";
 
 //个人资料-我的钱包
-"Personal_Wallet" = "我的钱包";
+"Personal_Wallet" = "Wallet";
 //个人资料-配戴者管理
 "Personal_WatcherManager" = "Wearer's Management";
-"Personal_WatcherManager_Add" = "新增";
-"Personal_WatcherManager_Alarm1" = "是否要删除使用者";
-
+"Personal_WatcherManager_Add" = "Add";
+"Personal_WatcherManager_Alarm1" = "Are you sure you want to remove this wearer?";
 
 //系统设定-设定
 "Setting_Setting" = "GENERAL SETTINGS";
 //设定-讯息提醒
-"Setting_MsgAlert" = "讯息提醒";
+"Setting_MsgAlert" = "Msg Alert";
 //设定-地图设定
-"Setting_MapSet" = "地图设定";
+"Setting_MapSet" = "Map Set";
 //地图设定-内建
-"MapSet_Default" = "内建";
+"MapSet_Default" = "Default";
 //地图设定-百度
-"MapSet_Baidu" = "百度";
+"MapSet_Baidu" = "Baidu";
 //推播通知
 "Setting_Notification" = "Notification";
 //SOS SMS Alert
-"Setting_SOSSMS" = "简讯通知SOS";
+"Setting_SOSSMS" = "SOS SMS Alert";
 
 //设定-快速拨号
-"Setting_Call" = "快速拨号";
+"Setting_Call" = "Speed ​​Dial";
 //设定-蓝牙配对
-"Setting_BT" = "蓝牙配对";
+"Setting_BT" = "BT";
 //设定-常见问题
-"Setting_Question" = "常见问题";
+"Setting_Question" = "Question";
 //设定-关于我们
-"Setting_AboutUS" = "关于我们";
+"Setting_AboutUS" = "About";
 //设定-登出
 "Setting_Logout" = "Logout";
 
@@ -468,15 +460,15 @@
 //距离
 "DISTANCE" = "Distance Travelled";
 //卡路里
-"CAL" = "卡路里";
+"CAL" = "Calories";
 
-"NODATA" = "没有资料";
+"NODATA" = "No data";
 
 //血糖
-"BLOODGLUCOSE" = "血糖";
+"BLOODGLUCOSE" = "Blood glucose";
 
 //血氧
-"OXYGEN" = "血氧";
+"OXYGEN" = "Oximeter";
 
 //体重
 "WEIGHT" = "Body Weight";
@@ -486,7 +478,7 @@
 
 /*************个人讯息*********/
 
-"Person_Send" = "发送给";
+"Person_Send" = "Send";
 
 
 
@@ -496,32 +488,17 @@
 /*************系统事件*********/
 
 "System_Event0" = "emergency contacts";
-"System_Event1" = "事件提醒";
-/*
-"System_Event2" = "贴心资料-血压";
-"System_Event3" = "贴心资料-血糖";
-"System_Event4" = "贴心资料-血氧";
-"System_Event5" = "贴心资料-体重";
-"System_Event6" = "贴心设定-运动";
- */
+"System_Event1" = "Event alert";
+
 "System_Event2" = "health personal infomation";
 "System_Event3" = "health personal infomation";
 "System_Event4" = "health personal infomation";
 "System_Event5" = "health personal infomation";
 "System_Event6" = "health personal infomation";
-/*
-"System_Event7" = "配戴者";
-"System_Event8" = "配戴者";
- */
+
 "System_Event7" = "The wearer";
 "System_Event8" = "The wearer";
-/*
- "System_Event9" = "贴心设定-通话限制";
- "System_Event10" = "贴心设定-硬体设定";
- "System_Event11" = "贴心设定-跌倒设定";
- "System_Event12" = "贴心设定-离家提醒";
- "System_Event13" = "贴心设定-展示照片";
- */
+
 "System_Event9" = "Settings";
 "System_Event10" = "Settings";
 "System_Event11" = "Settings";
@@ -540,120 +517,126 @@
 "ALERT_MESSAGE_TITLE" = "Message";
 "ALERT_MESSAGE_OK" = "Ok";
 
-"SelectNumber" = "选择拨号";
+"SelectNumber" = "Select number to call";
 "SelectNumberCancel" = "Cancel";
 
 "ALERT_MESSAGE_CANCEL" = "Cancel";
 "ALERT_MESSAGE_Back" = "Cancel";
-"ALERT_MESSAGE_TITLE_INPUT" = "配戴者设定";
-"ALERT_MESSAGE_INPUT" = "请进入设定页新增配戴者";
-"ALERT_MESSAGE_CLOSE" = "关闭";
-"ALERT_MESSAGE_PICK" = "晚上10点至早上6点为睡眠时间 , 请问您确定要设定吗?";
-"ALERT_MESSAGE_DELUSER" = "你确定要移除此配戴者吗?";
+"ALERT_MESSAGE_TITLE_INPUT" = "User setting";
+"ALERT_MESSAGE_INPUT" = "Please enter the setup page and create new user";
+"ALERT_MESSAGE_CLOSE" = "Yes";
+"ALERT_MESSAGE_PICK" = "Are you sure?";
+"ALERT_MESSAGE_DELUSER" = "Are you sure you want to delet this user?";
 "ALERT_MESSAGE_ERRORSET" = "不能设定过期的时间";
-"ALERT_MESSAGE_RESEND" = "重寄验证信";
-"ALERT_MESSAGE_REMINDNULL" = "资料填写不完全";
+"ALERT_MESSAGE_RESEND" = "Re-send verification email";
+"ALERT_MESSAGE_REMINDNULL" = "Incomplete";
 
-"ALERT_BPREMIND_Error1" = "收缩压上下限设定错误";
-"ALERT_BPREMIND_Error2" = "舒张压上下限设定错误";
+"ALERT_BPREMIND_Error1" = "Systolic pressure setting error";
+"ALERT_BPREMIND_Error2" = "Diastolic pressure setting error";
 
-"ALERT_BSREMIND_Error1" = "饭前血糖上下限设定错误";
-"ALERT_BSREMIND_Error2" = "饭后血糖上下限设定错误";
-"ALERT_BSREMIND_Error3" = "睡前血糖上下限设定错误";
+"ALERT_BSREMIND_Error1" = "BG range error, before meal";
+"ALERT_BSREMIND_Error2" = "BG range error, atter meal";
+"ALERT_BSREMIND_Error3" = "BG range error, before bedtime";
 
-"ALERT_BOREMIND_Error1" = "血氧上下限设定错误";
+"ALERT_BOREMIND_Error1" = "Oximeter range error";
 
-"ALERT_ACT_Error1" = "无相关活动区域资料";
-"ALERT_MAP_Error1" = "目前无相关定位救援资料";
+"ALERT_ACT_Error1" = "No data record";
+"ALERT_MAP_Error1" = "No data record";
 
-"ErrorCode_00" = "成功";
+"ErrorCode_00" = "Success";
 "ErrorCode_01" = "Account does not exist";
-"ErrorCode_02" = "password error";
-"ErrorCode_03" = "帐户未开启";
-"ErrorCode_04" = "E-Mail不存在";
-"ErrorCode_05" = "帐户已开启";
-"ErrorCode_06" = "已被配戴者加入黑名单不允许新增";
-"ErrorCode_07" = "被新增配戴者帐号不存在";
-"ErrorCode_08" = "被新增配戴者密码错误";
-"ErrorCode_09" = "配戴者已被新增";
-"ErrorCode_10" = "配戴者相关资讯不存在";
-"ErrorCode_11" = "会员不存在";
-"ErrorCode_12" = "参数格式错误";
+"ErrorCode_02" = "Password error";
+"ErrorCode_03" = "Not certified account";
+"ErrorCode_04" = "E-Mail not exist";
+"ErrorCode_05" = "Account has opened";
+"ErrorCode_06" = "You are not allowed to add this account";
+"ErrorCode_07" = "Account does not exist";
+"ErrorCode_08" = "Password error";
+"ErrorCode_09" = "Already exists";
+"ErrorCode_10" = "User information is not available";
+"ErrorCode_11" = "User does not exist";
+"ErrorCode_12" = "Parameter format error";
 
-"ErrorCode_90" = "资料存取异常";
-"ErrorCode_99" = "程式处理异常";
+"ErrorCode_90" = "Database connection error";
+"ErrorCode_99" = "Error Has Occurred(99)";
 "ErrorCode_999" = "Error Has Occurred";
 
 /***********************************/
 
 /************SOSMap**********/
 
-"SOS_MAPTITLE" = "求救纪录";
-
-
+"SOS_MAPTITLE" = "SOS records";
 
 /************************/
 
-
 /*系统参数多语系设定*/
-"SystemLanguage" = "itemNameCn";
-
+"SystemLanguage" = "itemNameEn";
 
 "ChangePw" = "Change Password";
 "ChagneAccInfo" = "Modify Account";
 "OriginalPW" = "Original password";
 "NewPw" = "New password";
 "AgainPw" = "Confirm new password";
+
+// title
+"BPThresholdTitle" = "BP threshold";
 //
-"HigherThan" = "高于";
-"SendAlarm" = "发出警示";
+"HigherThan" = "Higher";
+"SendAlarm" = "Will alert";
 //
-"ExceedWillSendAlarm" = "高于                            将发出警示";
-"BelowWillSendAlarm" = "低于           %将会发出警示";
+"ExceedWillSendAlarm" = "Higher                             will alert";
+"BelowWillSendAlarm" = "Lower           %will alert";
+
+// bruce@20151010
+"bgBloodMaxValue" = "Criteria for the diagnosis of diabetes";
+"bgBloodMaxInfo" = "The critical values of blood glucose is 110 and 126mg/dL. fasting plasma glucose(FPG) > 126mg/dl(fasting is defined as no caloric intake for at least 8 h) is one of the conditions for the diagnosis of diabetes.";
+
 //
 //
-"lblRemind1Title" = "世界卫生组织高血压判断标准";
-"lblRemind1Content" = "1999年世界卫生组织(WHO)/国际高血压协会(ISH)《高血压防治指南》及中国卫生部/中国高血压联盟《1999 中国高血压防治指南》规定：";
-"lblRemind2Title" = "高血压的分级标准";
-"lblRemind3Title" = "国民健康局";
-"lblRemind3Sup" = "以上引用来源：国民健康局";
+"lblRemind1Title" = "WHO Judgment Standard";
+"lblRemind1Content" = "1999 World Health Organization (WHO) / International Association of hypertension (ISH):";
+"lblRemind2Title" = "Classification criteria for hypertension";
+"lblRemind3Title" = "Health Bureau";
+"lblRemind3Sup" = "Above reference source: Health Bureau";
 //
 "Remind" = "Remind";
-"IsTestAcc" = "此帐号为体验帐号，请申请新帐号将可使用此功能。";
+"IsTestAcc" = "This is only a test account. Please submit a new account to use this function.";
 //
 "StepLengthUnit" = "cm";
 "DistanceUnit" = "m";
 "StepCountUnit" = "steps";
-//未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译未翻译
-"MsgSendAlertInfo" = "本功能以简讯通知安全天使设备启动相关功能，简讯费用为使用者付费，使用上请注意。";
-"DontShowAgain" = "下次不再显示";
-"OK" = "确认";
-"SetDevicePhoneNumber" = "请设定电话号码！\n无设备电话将无法正常启动定位功能";
+
+"MsgSendAlertInfo" = "Note : this on demand tracking request requires an SMS to be sent from your mobile device to the watch";
+"DontShowAgain" = "Don't show again";
+"OK" = "OK";
+"SetDevicePhoneNumber" = "Please set device phone number!";
 //
 "TestAccount" = "Test Account";
 //
 "WebAccSup" = "Username";
 "WebPwdSup" = "Password";
 //
-"ErrorTimeOut" = "网路连线异常，请稍后再试。";
+"ErrorTimeOut" = "Network error";
 //
 "AutoLogin" = "Auto Login";
 "RememberMe"= "Remenber Me";
 //20140324
-"Delete" = "删除";
-//
-"pOPwd" = "输入您目前的密码";
-"pNPwd" = "输入新的密码";
-"pAPwd" = "再次输入新的密码";
+"Delete" = "Delete";
 
 //
-"NewGeoFence" = "建立电子围篱";
-"GeoFenceName" = "名称";
-"Reset" = "重置";
+"pOPwd" = "Current password";
+"pNPwd" = "Enter a new password";
+"pAPwd" = "Enter new password again";
+
+//
+"NewGeoFence" = "New GeoFence";
+"GeoFenceName" = "Name";
+"Reset" = "Reset";
 //
 //
-"NeedGeoFenceName" = "请输入电子围篱的名称";
-"Need3GeoFencePoints" = "产生电子围篱最少需要3个点";
+"NeedGeoFenceName" = "Need GeoFence name";
+"Need3GeoFencePoints" = "Need 3 GeoFencePoints at ";
+
 //
 //geo info
 "GeoInfo1" = "电子围篱功能可以在佩戴者（带表者）离开预先定义的范围时向照顾者发出警告。您可以通过点击不同的区域创建连接点。";
@@ -662,643 +645,91 @@
 "GeoInfo4" = "当您想删除连接点时，可以点击连接点并按“X”按钮进行删除。";
 "GeoInfo5" = "您可以通过拖动围栏的各个角来自由调整围篱范围。";
 //您已有五天没关心设备动态，APP已强制登出，请重新登入。
-"ReLogin" = "en测试";
+"ReLogin" = "en test";
 //
-"MsgSendAlertInfoSync" = "立即同步(本功能以简讯通知 安全天使 设备启动相关功能，简讯费用为使用者付费，以上请注意。";
+"MsgSendAlertInfoSync" = "Remote synch ( by sending an sms to the watch, it will trigger an automatic synchronization for a real time update, please note that an SMS fee will be charged).";
 //cell 多语系
-"SP*" = "收缩压*";
-"DP*" = "舒张压*";
+"SP*" = "SP*";
+"DP*" = "DP*";
 //
-"BG*" = "血糖*";
+"BG*" = "BG*";
 //
-"BO*" = "血氧*";
+"BO*" = "BO*";
 //
 //
-"BF%" = "体脂肪%";
+"BF%" = "BF%";
 "BMI" = "BMI";
-"BW*" = "体重*";
+"BW*" = "BW*";
 //
-"DIS*" = "距离*";
+"DIS*" = "DIS*";
 //
-"NoPhoneCantCall" = "配戴者未设定电话号码！";
+"NoPhoneCantCall" = "No Phone Can Call";
 //简讯定位
-"SMSLocating"="简讯定位";
+"SMSLocating"="SMS Locating";
 //
 "Pulse" = "Pluse";
+
 //Health Advice
-"SYSTOLIC_1_T" = "健康等级：高血压 严重超标";
-"SYSTOLIC_2_T" = "健康等级：高血压 异常上升";
-"SYSTOLIC_3_T" = "健康等级：高血压 改善良好";
-"SYSTOLIC_4_T" = "健康等级：高血压 逐渐平稳";
-"SYSTOLIC_A_T" = "健康等级：高血压 异常上升";
-"SYSTOLIC_B_T" = "健康等级：血压正常";
-"SYSTOLIC_1_SUBT" = "您的血压有长期超目标异常，请立即向医疗单位咨询改善。";
-"SYSTOLIC_2_SUBT" = "您的血压有异常升高的趋势，请注意饮食，保持运动，少油、少盐。";
-"SYSTOLIC_3_SUBT" = "您的血压有立即改善的下降趋势，若您有不适，请记得联络医疗单位。";
-"SYSTOLIC_4_SUBT" = "您的血压有逐渐平稳的下降趋势，请注意饮食，保持运动，少油、少盐。";
-"SYSTOLIC_A_SUBT" = "您的血压有异常升高的趋势，请注意饮食，保持运动，少油、少盐。";
-"SYSTOLIC_B_SUBT" = "保持心情放松，持续运动。";
-"BLOODSUGAR_1_T" = "健康等级：高血糖 严重超标";
-"BLOODSUGAR_2_T" = "健康等级：高血糖 异常上升";
-"BLOODSUGAR_3_T" = "健康等级：高血糖 改善良好";
-"BLOODSUGAR_4_T" = "健康等级：高血糖 逐渐平稳";
-"BLOODSUGAR_A_T" = "健康等级：高血糖 逐渐平稳";
-"BLOODSUGAR_B_T" = "健康等级：血糖正常";
-"BLOODSUGAR_1_SUBT" = "您的血糖有长期超目标异常，请立即向医疗单位咨询改善。";
-"BLOODSUGAR_2_SUBT" = "您的血糖有异常升高的趋势，请注意饮食糖量，并保持心情愉快。";
-"BLOODSUGAR_3_SUBT" = "您的血糖有立即改善的下降趋势，若您有不适，请记得联络医疗单位。";
-"BLOODSUGAR_4_SUBT" = "您的血糖有逐渐平稳的下降趋势，请注意饮食，勿过量摄取糖份。";
-"BLOODSUGAR_A_SUBT" = "您的血糖有异常升高的趋势，请注意饮食糖量，并保持心情愉快。";
-"BLOODSUGAR_B_SUBT" = "保持心情放松，持续运动。";
+
+"SYSTOLIC_1_T" = "Health level: Hyperglycemia Seriously super standard";
+"SYSTOLIC_2_T" = "Health level: Hyperglycemia Abnormal rise";
+"SYSTOLIC_3_T" = "Health level: Hyperglycemia Improve good";
+"SYSTOLIC_4_T" = "Health level: Hyperglycemia Gradually stable";
+"SYSTOLIC_A_T" = "Health level: Hyperglycemia Abnormal rise";
+"SYSTOLIC_B_T" = "Health level: Normal";
+"SYSTOLIC_1_SUBT" = "Your blood pressure has long-term abnormal，Please note";
+"SYSTOLIC_2_SUBT" = "Your blood pressure is abnormally high，Please note";
+"SYSTOLIC_3_SUBT" = "Your blood pressure has an immediate improvement in the downward trend";
+"SYSTOLIC_4_SUBT" = "Your blood pressure has a gradual downward trend，Please note";
+"SYSTOLIC_A_SUBT" = "Your blood pressure is abnormally high，Please note";
+"SYSTOLIC_B_SUBT" = "Stay in a relaxed mood, keep on moving";
+"BLOODSUGAR_1_T" = "Health level: Hyperglycemia Seriously super standard";
+"BLOODSUGAR_2_T" = "Health level: Hyperglycemia Abnormal rise";
+"BLOODSUGAR_3_T" = "Health level: Hyperglycemia Improve good";
+"BLOODSUGAR_4_T" = "Health level: Hyperglycemia Gradually stable";
+"BLOODSUGAR_A_T" = "Health level: Hyperglycemia Abnormal rise";
+"BLOODSUGAR_B_T" = "Health level: Normal";
+"BLOODSUGAR_1_SUBT" = "Your blood sugar has a long-term abnormal target, please immediately to the medical unit to improve";
+"BLOODSUGAR_2_SUBT" = "Your blood sugar has an unusually high trend, please pay attention to the amount of sugar, and keep a happy mood";
+"BLOODSUGAR_3_SUBT" = "Your blood sugar has a downward trend, if you have not comfortable, please remember to contact the medical unit";
+"BLOODSUGAR_4_SUBT" = "Your blood sugar is gradually steady downward trend, please pay attention to diet, not excessive intake of sugar";
+"BLOODSUGAR_A_SUBT" = "Your blood sugar has an unusually high trend, please pay attention to the amount of sugar, and keep a happy mood";
+"BLOODSUGAR_B_SUBT" = "Stay in a relaxed mood, keep on moving";
+
 
 //
-"HS_Tracking" = "Synchronisation Setup";
-"HS_GeoFence" = "电子围篱";
+"HS_Tracking" = "Sync Setup";
+"HS_GeoFence" = "GeoFence";
 "Login_QRCodeLoginBtnReturn" = "回前一頁";
-"GeoFence" = "电子围篱";
+"GeoFence" = "GeoFence";
 "HS_Position" = "Position";
 
-///* Localized versions of Info.plist keys */
-//
-//"CFBundleDisplayName"  = "Safety Watch";
-//"LANGUAGE" = "0";
-//"Setting_Version" = "Version";
-//"NONET" = "Unable to connect, try again later";
-//
-///**********Login***************/
-//"StartUse" = "Start";
-//"StartSkip" = "SKIP";
-//
-//"Login_ACC" = "Username";
-//"Login_PWD" = "Password";
-//"Login_WhereToBuy" = "How to Buy";
-//"Login_UserAcc" = "Use Account Login";
-//
-//"Login_LoginBtn" = "Login";
-//"Login_ForgetBtn" = "Forgot pwd?";
-//"Login_QRCodeLoginBtn" = "QRcode Login";
-//"Login_QRCodeLoginBtnReturn" = "Go back";
-//"Login_NewAccBtn" = "New user";
-//"Login_AuthResend" = "Congratulations!You can now use Guidercare Services by activing your account with the link sent to your email";
-//"Login_EMPTY" = "Please enter your Username and password";
-//"Login_QRCodeAlert" = "Please enter the device password, the default password is 000000, Log in Please change your password as soon as possible.";
-///**************************/
-//
-///************忘記密碼***************/
-//
-//"ForgetPassword" = "Forgot your password";
-//"InsertAcc" = "Please enter your Username";
-//"InsertEmail" = " or email";
-//"Email" = "E-mail";
-//"isSentEmail" = "Password has been sent to your email. Please confirm receipt your password";
-//
-///**********註冊*************/
-//"NewAcc" = "Create a new account";
-//"CheckName" = "Name";
-//"Login_PWD2" = "Confirm Password";
-//"CheckButton" = "Confirm User ID";
-//"CheckAccount1" = "User ID is a minimum of 6~12 characters";
-//"CheckAccount2" = "User ID contains only number and characters";
-//"CheckAccount3" = "User ID existed";
-//"CheckAccountOK" = "User ID ok";
-//
-//"SendCheck0" = "Remind you, the account activation is not complete yet, please login to your MAIL for \"confirmation.\" ";
-//"SendCheck1" = "Confirm Account activated.";
-//"SendCheck2" = "Name";
-//"SendCheck3" = "Password is a minimum of 8~12 characters";
-//"SendCheck4" = "Password must match";
-//"SendCheck5" = "Phone must numeric character";
-//"SendCheck6" = "eMail format error";
-//"SendCheck7" = "Please accept terms and conditions";
-//"SendCheck8" = "eMail existed";
-//
-//"PhoneNumber" = "Phone";
-//"Email" = "Email";
-//"MemberList" = "Terms of use";
-//"PrivacyList" = "Privacy Policy";
-//"Send" = "Submit";
-//"Create_Send" = "Create";
-//"AgreeLabel" = "Accept Terms and Conditions";
-///**************************/
-//
-///************首頁九宮格***************/
-//
-//"Bu1_Str" = "Wearer Info";
-//"Bu2_Str" = "Watch Status";
-//"Bu3_Str" = "Readings";
-//"Bu10_Str" = "Call barring";
-//
-//"Bu3_01_Str" = "BPressure";
-//"Bu3_02_Str" = "BGlucose";
-//"Bu3_03_Str" = "Oximeter";
-//"Bu3_04_Str" = "Body Weight";
-//"Bu3_05_Str" = "Activity";
-//"Bu3_06_Str" = "Activity";
-//
-//"Bu4_Str" = "Alert Locator";
-//"SMS_SEND" = "On-Demand Tracking";
-//"Bu5_Str" = "Tracker";
-//"Bu6_Str" = "History";
-//"Bu7_Str" = "Direct Call";
-//"Bu8_Str" = "Reminder";
-//"Bu9_Str" = "Settings";
-//
-///***************************/
-//
-///*******佩戴者資訊*************/
-//
-//"UserDate_Name" = "Name";
-//"UserDate_Phone" = "Phone number";
-//"UserDate_Address" = "Address";
-//"UserDate_Sex" = "Gender";
-//"UserDate_Imei" = "IMEI";
-//"UserDate_Camera" = "Camera";
-//"UserDate_Photo" = "Album";
-//"UserDate_Select" = "Source";
-//"UserDate_NOSET" = "No Data";
-//
-//"UserDate_PersonInfo" = "Wearer's details";
-//
-//"UserDate_SexBoy" = "Male";
-//"UserDate_SexGirl" = "Female";
-//
-//"UserDate_SoSInfo" = "Emergency contacts";
-//"UserDate_FamilyInfo" = "General contact details";
-//
-///*************************/
-//
-///********設備資訊***********/
-//"Device_Time_on" = "Activated on";
-//"Device_Time_off" = "Shutdown";
-//"Device_OffType" = "Shutdown Cause";
-//"Device_Time_sync" = "Syncroniza-tion time";
-//"Device_Electricity" = "Battery";
-//"Device_Psr_temp" = "Skin temperature";
-//"Device_Location" = "Location Report";
-//"Device_FW" = "Watch Firmware";
-//
-//"Device_Data1" = "Manual Shutdown";
-//"Device_Data2" = "Low Voltage Shutdown";
-//"Device_Data3" = "Schedule shutdown";
-//"Device_Data4" = "Other";
-//
-///***********************/
-//
-///*********量測資訊***********/
-//
-//"isList" = "List";
-//"isChart" = "Chart";
-//"SelectRange" = "Range";
-//"SelectRange\n" = "Range\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-//"StartTime" = "Start time";
-//"EndTime" = "End Time";
-//"DayBtn" = "Day";
-//"WeekBtn" = "Week";
-//"MonthBtn" = "Month";
-//"IntervalBtn" = "Interval" ;
-//
-///*************************/
-//
-//
-///*********定位救援***************/
-//
-//"NOPHONENUMBER" = "Please make sure to enter user's phone number first in the settings before using that function.";
-//
-///*********活動區域***************/
-//
-//"Act_Map" = "Map";
-//"Act_ST" = "Satellite";
-//
-///*******************************/
-//
-///**********歷史紀錄***************/
-//
-//"His_Map" = "Map";
-//"His_ST" = "Satellite";
-//"His_SOS" = "SOS Call";
-//"His_Falldown" = "Fall Detection";
-//"His_Leave" = "Geofence";
-//"His_Call" = "Call Record";
-//
-//
-//"His_SOSTitle" = "        %@              %@";
-//"His_FalldownTitle" = "        %@              %@";
-//"His_LeaveTitle" = "        %@              %@";
-//"His_CallTitle" = "    %@          %@    %@";
-//
-//"His_TIME" = "Time reported";
-//"His_ADDR" = "Nearest location";
-//"His_Near" = "Nearest location";
-//"His_STARTTIME" = "Start Time";
-//"His_ENDTIME" = "End Time";
-//"His_TELLENGTH" = "Length";
-//
-///****************************/
-//
-///***********事件提醒***************/
-//"EventRemind" = "Reminders";
-//"DateRemind" = "Appointment";
-//"EatRemind" = "Medication";
-//
-//"ImportantRemind" = "Important reminder";
-//"ImportantRemindStr" = "Alert for your【%@】 reminder";
-//"OnSchoolRemind" = "School pick up";
-//"OnSchoolRemindStr" = "Alert for your 【%@】school pick up reminder";
-//
-//"Mon" = "M";
-//"Tue" = "T";
-//"Wed" = "W";
-//"The" = "T";
-//"Fri" = "F";
-//"Sat" = "S";
-//"Sun" = "S";
-//
-///**************************/
-//
-//
-///*************貼心設定***************/
-//"HS_SAVE" = "Save";
-//"HS_TITLE" = "Settings";
-//
-//"HS_Measure" = "Health Parameters Setup";
-//"HS_CALL" = "Synchronisation Setup";
-//"HS_Setting" = "Watch Setup";
-//"HS_Setting_SMS" = "Read SMS";
-//"HS_Setting_SOSKEYLONGPUSH" = "SOS button 3 second press";
-//
-//"HS_Setting_BROTHER" = "Anti-disturb";
-//"HS_Setting_LongFamily" = "Speed Dial button 3 second press";
-//"HS_Setting_SOSSMS" = "SOS SMS";
-//"HS_Setting_TimeZone" = "Timezone";
-//"HS_Setting_Language" = "Language";
-//
-//"HS_Fall" = "Fall Detector Setup";
-//"HS_Fall_Enable" = "Switch on";
-////"HS_Fall_Sence" = "Sensitivity";
-//"HS_Fall_Sence" = "Fall detection ON/OFF";
-//"HS_Fall_SelecSence" = "Select Sensitivity";
-//"HS_Fall_Cancel" = "Cancel";
-//"HS_Fall_Remind" = "Fall notifications";
-//"HS_Fall_Phone1" = "Phone 1";
-//"HS_Fall_Phone2" = "Phone 2";
-//"HS_Fall_Phone3" = "Phone 3";
-//"HS_Fall_level0" = "Off";
-//"HS_Fall_level1" = "Low";
-//"HS_Fall_level2" = "Med";
-//"HS_Fall_level3" = "High";
-//"HS_Fall_level4" = "Other";
-//
-//"HS_Leave" = "Geofence";
-//"HS_LeaveActRange" = "Range";
-//"HS_Timeinterval" = "Time interval";
-//"HS_Repetitionperiod" = "Repetition period";
-//"HS_Homeaddress" = "Home address";
-//"HS_Check" = "Check";
-//"HS_MapEditor" = "Map";
-//"HS_Range" = "Range";
-//"HS_W1" = "Mon";
-//"HS_W2" = "Tue";
-//"HS_W3" = "Wed";
-//"HS_W4" = "Thu";
-//"HS_W5" = "Fri";
-//"HS_W6" = "Sat";
-//"HS_W7" = "Sun";
-//
-//"HS_ChangeMode" = "Mode";
-//"HS_Mode1" = "Older";
-//"HS_Mode2" = "Child";
-//
-//"HS_BPRemind" = "BPressure";
-//"HS_BPRange" = "BP threshold";
-//
-//
-//
-//"HS_BSRemind" = "BGlucose";
-//"HS_BSRange" = "BG threshold";
-//"HS_BS_BEFOREMEAL" = "Before meals";
-//"HS_BS_AFTEREMEAL" = "After dinner";
-//"HS_BS_BEFORSLEEP" = "Before bedtime";
-//"HS_BS_MEALTIME" = "Meal time";
-//"HS_BS_BREAKFAST" = "Breakfast time";
-//"HS_BS_LUNCH" = "Lunch time";
-//"HS_BS_DINNER" = "Dinner time";
-//"HS_BS_1" = "mg/dl";
-//
-//"HS_BORemind" = "Oximeter";
-//"HS_BORange" = "Oximeter threshold";
-//"HS_BORemindTxt" = "Low SpO2 < 90%\r\nNormal SpO2 > 95%";
-//"HS_BOCon" = "Oxygen concentration";
-//
-//"HS_Weight" = "Body Weight";
-//"HS_W_SEX" = "Sex";
-//"HS_W_BOY" = "Male";
-//"HS_W_GIRL" = "Female";
-//"HS_W_YEAR" = "Age";
-//"HS_W_OLD" = "Years";
-//"HS_W_TALL" = "Height";
-//"HS_W_CM" = "cm";
-//"HS_W_BODY" = "Body fat";
-//"HS_W_WEIGHT" = "Body weight";
-//"HS_W_KG" = "kg";
-//"HS_W_IDWEIGHT" = "Weight Goal";
-//"HS_W_IDBODY" = "Body fat goal";
-//"HS_W_PERSENT" = "%";
-//"HS_BS_SELECTTIME" = "Select Time\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r";
-//
-//"HS_Sport" = "Activity";
-//"HS_S_STEPLENGTH" = "Step";
-//"HS_S_IDDISTANCE" = "Distance target";
-//"HS_S_IDSTEP" = "Step target";
-//
-//"HS_Call_EachMin" = "Every %@ min";
-//"HS_Call_Sync_0" = "Cancel";
-//"HS_Call_Sync_1" = "Every 1 hour";
-//"HS_Call_Sync_2" = "Every 2 hours";
-//"HS_Call_Sync_3" = "Every 3 hours";
-//"HS_Call_Sync_4" = "Every 4 hours";
-//"HS_Call_Sync_5" = "Every 6 hours";
-//"HS_Call_Sync_6" = "Every 12 hours";
-//"HS_Call_Sync_7" = "A half hour";
-//"HS_Call_Sync_8" = "Every 20 mins";
-//"HS_Call_Sync_9" = "Every 15 mins";
-//"HS_Call_Sync_10" = "Every 12 mins";
-//"HS_Call_Sync_11" = "Every 10 mins";
-//"HS_Call_Sync_12" = "Every 6 mins";
-//
-//"HS_Call_Sync" = " Synched time";
-//
-//"HS_Call_WatchSync" = "Server synchronization timeframe";
-//"HS_Call_GPS" = "GPS positioning frequency";
-//"HS_Call_WatchGpsSync" = "Frequency of GPS synching with server";
-//"HS_CallLimit" = "Call restrictions";
-//"HS_Call_SMS" = "After the monthly limit has been exceeded, reminding SMS will be sent out";
-//"HS_Call_phoneLimit" = "Outgoing call restrictions";
-//"HS_Call_MonthLimit" = "Limit per month";
-//"HS_Call_Minutes" = "Minutes";
-//
-//"HS_BP1" = "mmHg";
-//"HS_BP2" = "mmHg";
-//
-//"HS_SAVE_OK" = "Saved";
-//
-//"HS_ShowImage" = " Share Image";
-//"HS_ShowImage_upload" = "Change";
-///*******************************/
-//
-//
-//
-//
-//"NEWS" = "News";
-//
-//
-//
-//
-//
-////個人
-//"Header_Personal" = "General Notification";
-////安全
-//"Header_Safe" = "Health notifications";
-////系統
-//"Header_System" = "Settings notifications";
-//
-////設定
-//"Header_Setting" = "Configuration";
-//
-////天
-//"Header_Day" = "day ago";
-//"Header_Days" = "days ago";
-////小時
-//"Header_Hour" = "hour ago";
-//"Header_Hours" = "hours ago";
-////分
-//"Header_Min" = "minute ago";
-//"Header_Mins" = "minutes ago";
-//
-////系統設定-個人資料
-//"Setting_Personal" = "Personal Info";
-////個人資料-我的帳號
-//"Personal_MyAccount" = "My Account";
-////個人資料-我的帳號-錯誤
-//"Personal_MyAccount_Error1" = "Confirm Data";
-//"Personal_MyAccount_Error2" = "eMail format error";
-//"Personal_MyAccount_Error3" = "Phone number must be numeric character";
-//"Personal_MyAccount_Sucess" = "Successfully Change User Data";
-//
-////個人資料-我的帳號-姓名
-//"Personal_MyAccount_Name" = "Username";
-////個人資料-我的帳號-Email
-//"Personal_MyAccount_Email" = "Email";
-////個人資料-我的帳號-電話
-//"Personal_MyAccount_Phone" = "Phone";
-//
-////個人資料-密碼修改
-//"Personal_PWChange" = "Change password";
-//"Personal_ChangeInfo" = "Change user info";
-//
-////個人資料 原始密碼
-//"Personal_OriginalPW" = "Original";
-//"Personal_NewPw" = "New";
-//"Personal_Again" = "Confirm";
-//
-////個人資料-密碼修改-錯誤
-//"Personal_PWChange_Error1" = "Please enter the original password";
-//"Personal_PWChange_Error2" = "Password is a minimum of 8~12 characters";
-//"Personal_PWChange_Error3" = "Please confirm Password";
-//"Personal_PWChange_Sucess" = "Password Successfully Changed";
-//
-//
-//
-////個人資料-我的錢包
-//"Personal_Wallet" = "我的錢包";
-////個人資料-配戴者管理
-//"Personal_WatcherManager" = "Wearer’s Management";
-//"Personal_WatcherManager_Add" = "Add";
-//"Personal_WatcherManager_Alarm1" = "Are you sure you want to remove this wearer?";
-//
-//
-////系統設定-設定
-//"Setting_Setting" = "General Settings";
-////設定-訊息提醒
-//"Setting_MsgAlert" = "訊息提醒";
-////設定-地圖設定
-//"Setting_MapSet" = "Map ";
-////地圖設定-內建
-//"MapSet_Default" = "Built-in";
-////地圖設定-百度
-//"MapSet_Baidu" = "Baidu";
-////推播通知
-//"Setting_Notification" = "Notifications";
-////SOS SMS Alert
-//"Setting_SOSSMS" = "SOS SMS Alert";
-////設定-快速撥號
-//"Setting_Call" = "Speed ​​Dial";
-////設定-藍牙配對
-//"Setting_BT" = "藍牙配對";
-////設定-常見問題
-//"Setting_Question" = "FAQs";
-////設定-關於我們
-//"Setting_AboutUS" = "About Us";
-////設定-登出
-//"Setting_Logout" = "Logout";
-//
-///**************************/
-////量測紀錄
-//
-////收縮壓
-//"DIASTOLIC" = "Diastolic";
-////心跳
-//"HEARTBEAT" = "Heartbeats";
-////舒張壓
-//"SYSTOLIC" = "Systolic";
-//
-////步數
-//"STEP" = "Steps";
-////距離
-//"DISTANCE" = "Distance travelled";
-////卡路里
-//"CAL" = "Calories";
-//
-//"NODATA" = "No data";
-//
-////血糖
-//"BLOODGLUCOSE" = "Blood glucose";
-//
-////血氧
-//"OXYGEN" = "Oximeter";
-//
-////體重
-//"WEIGHT" = "Body weight";
-//"BODY_FAT" = "Body fat";
-//
-///*************************/
-//
-///*************個人訊息*********/
-//
-//"Person_Send" = "send to";
-//
-//
-//
-//
-//
-//
-///*************系統事件*********/
-//
-//"System_Event0" = "emergency contacts of";
-//"System_Event1" = "event reminder of";
-//"System_Event2" = "configure - BP";
-//"System_Event3" = "configure - B gluc";
-//"System_Event4" = "configure - B oxy";
-//"System_Event5" = "heath personal information of";
-//"System_Event6" = "configure- Sports";
-//"System_Event7" = "User";
-//"System_Event8" = "user personal information of";
-//"System_Event9" = "call and synch settings of";
-//"System_Event10" = "the hardware settings of";
-//"System_Event11" = "fall detection settings of";
-//"System_Event12" = "configure-geofence";
-//
-//"System_Act0" = "remove";
-//"System_Act1" = "has updated";
-//"System_Act2" = "add";
-//
-//"System_Msg0" = "";
-//"System_Msg1" = "'s device";
-///*************************/
-//
-///**********Error Code***************/
-//"ALERT_MESSAGE_TITLE" = "Reminder";
-//"ALERT_MESSAGE_OK" = "YES";
-//"ALERT_MESSAGE_CANCEL" = "NO";
-//"ALERT_MESSAGE_Back" = "Back";
-//"SelectNumber" = "Select number to call";
-//"SelectNumberCancel" = "Cancel";
-//"ALERT_MESSAGE_TITLE_INPUT" = "User setting";
-//"ALERT_MESSAGE_INPUT" = "Please enter the setup page and create new user";
-//"ALERT_MESSAGE_CLOSE" = "Yes";
-//"ALERT_MESSAGE_PICK" = "晚上10點至早上6點為睡眠時間 , 請問您確定要設定嗎?";
-//"ALERT_MESSAGE_DELUSER" = "Are you sure you want to delet this user ?";
-//"ALERT_MESSAGE_ERRORSET" = "不能設定過期的時間";
-//"ALERT_MESSAGE_RESEND" = "Re-send verification email";
-//"ALERT_MESSAGE_REMINDNULL" = "Incomplete";
-//
-//"ALERT_BPREMIND_Error1" = "Systolic pressure setting error";
-//"ALERT_BPREMIND_Error2" = "Diastolic pressure setting error";
-//
-//"ALERT_BSREMIND_Error1" = "BG range error ,before meal";
-//"ALERT_BSREMIND_Error2" = "BG range error,atter meal";
-//"ALERT_BSREMIND_Error3" = "BG range error,before bedtime";
-//
-//"ALERT_BOREMIND_Error1" = "Oximeter range error";
-//
-//"ALERT_ACT_Error1" = "No data record";
-//"ALERT_MAP_Error1" = "No data record";
-//
-//"ErrorCode_00" = "Success";
-//"ErrorCode_01" = "Account does not exist";
-//"ErrorCode_02" = "Password error";
-//"ErrorCode_03" = "Not certified account";
-//"ErrorCode_04" = "E-Mail not exist";
-//"ErrorCode_05" = "Account has opened";
-//"ErrorCode_06" = "You are not allowed to add this account";
-//"ErrorCode_07" = "Account does not exist";
-//"ErrorCode_08" = "Password error";
-//"ErrorCode_09" = "Already exists";
-//"ErrorCode_10" = "User information is not available";
-//"ErrorCode_11" = "User does not exist";
-//"ErrorCode_12" = "Parameter format error";
-//
-//"ErrorCode_90" = "Database connection error";
-//"ErrorCode_99" = "Error Has Occurred(99)";
-//"ErrorCode_999" = "Error Has Occurred";
-//
-///***********************************/
-///************SOSMap**********/
-//
-//"SOS_MAPTITLE" = "SOS records";
-//
-//
-//
-///************************/
-//
-//
-///*系統參數多語系設定*/
-//"SystemLanguage" = "itemNameEn";
-//
-//
-///************************/
-//
-//"ChangePw" = "Change Password";
-//"ChagneAccInfo" = "Modify Account";
-//"OriginalPW" = "Original password";
-//"NewPw" = "New Password";
-//"AgainPw" = "Confirm new password";
-//"pOPwd" = "Current password";
-//"pNPwd" = "Enter a new password";
-//"pAPwd" = "Enter new password again";
-////sms check
-//"Remind" = "Reminder";
-//"IsTestAcc" = "This is only a test account. Please submit a new account to use this function.";
-////
-//"StepLengthUnit" = "cm";
-//"DistanceUnit" = "m";
-//"StepCountUnit" = "Steps";
-//"AutoLogin" = "Auto Login";
-//"RememberMe" = "Remember Me";
-//"WebAccSup" = "Username";
-//"WebPwdSup" = "Password";
-//"TestAccount" = "Test Account";
-//"MsgSendAlertInfo" = "Note : this on demand tracking request requires an SMS to be sent from your mobile device to the watch";
-//"NewWearer" = "New Wearer";
-//"SOS_Call" = "SOS Call";
-//"Fall_Detection" = "Fall Detection";
-//"Call_Detection" = "Call Record";
-//"Non_Activity" = "Non-activity";
-//"GeoFence" = "GeoFence";
-////0825
-//"MsgSendAlertInfoSync" = "Remote synch ( by sending an sms to the watch, it will trigger an automatic synchronization for a real time update, please note that an SMS fee will be charged).";
-////
-//"HS_TimerAlert" = "Timer Alert";
-//"HS_GeoFence" = "Geofence";
-//"HS_NonActivity" = "Non-activity";
-//"Join" = "Join";
-//"Quit" = "Quit";
+
+// bruce@20151009 血氧提醒
+"BORember_TIP_INFO" = "An alert will be sent when below";
+
+
+// bruce@20151013 创建自建定位的提示信息
+
+"Position_TIP_title" = "prompt";
+"Position_TIP_message" = "We need send a SMS to the watch";
+"Position_TIP_OK" = "OK";
+"Position_TIP_CANCEL" = "Cancel";
+
+"Position_TOP_name" = "Name:";
+"Position_TOP_address" = "Address:";
+
+"Position_TOP_save" = "save";
+
+"Position_Get_Wifi_info" = "Getting watch WiFi...";
+"Position_Get_WiFi_result" = "Please wait a moment to get the WiFi mac...";
+
+// Watch Setup
+"Device_Set_lblSync" = "This function can be updated immediately";
+"Device_Set_btnRS" = "Synchronize";
+
+// 自建定位create
+"Auto_location_create" = "Create";
+
+"FreqQuestionTitle" = "F&Q";
+"FreqQuestionDetailTitle" = "F&Q Detail";

@@ -16,6 +16,8 @@
 #define PWDTXT NSLocalizedStringFromTable(@"WebPwdSup", INFOPLIST, nil)
 #define TOTALPAGE 13
 
+static BOOL loginStateFlag;
+
 @interface LoginViewController ()
 {
     NSString* autoLogin;
@@ -80,9 +82,13 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     defaults = [NSUserDefaults standardUserDefaults];
     token = [defaults objectForKey:@"token"];
     [self LoadAndChangeLogo];
-	// Do any additional setup after loading the view.
-    
+
+    if (loginStateFlag == NO) {
+        loginStateFlag = YES;
+        [self loginBtnClick:nil];
+    }
 }
+
 //20140321 update
 - (void)InitBtnAutoLogin{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -188,37 +194,20 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 
 
 //點擊登入按鈕
--(IBAction)loginBtnClick:(id)sender
+- (IBAction)loginBtnClick:(id)sender
 {
-    /*GA Start*/
-    /*
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"View_Login"// Event category (required)
-                                                          action:@"Btn_Click"  // Event action (required)
-                                                           label:@"Click_Login"          // Event label
-                                                           value:nil] build]];    // Event value
-    [[GAI sharedInstance] dispatch];
-     */
-    /*GA End*/
-    
-    if (([accTxt.text length]>0) && [pwdTxt.text length]>0) {
-        
+    if (([accTxt.text length] > 0) && [pwdTxt.text length] > 0) {
         [self resetViewAndKeyBoard];
         [self loginWithAcc:accTxt.text andPwd:pwdTxt.text];
-        NSLog(@"YES");
-    }else
-    {
+    } else if (sender != nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
                                                         message:NSLocalizedStringFromTable(@"Login_EMPTY", INFOPLIST, nil)
-                              
-                              delegate
-                                                               : self cancelButtonTitle:
+                                                       delegate:self
+                                              cancelButtonTitle:
                               NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE", INFOPLIST, nil)
                                               otherButtonTitles: nil];
         
         [alert show];
-    NSLog(@"NO");
     }
 }
 
@@ -613,9 +602,8 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 }
 
 
--(void)firstLogin
+- (void)firstLogin
 {
-    NSLog(@"YES");
     iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
     
     for (int i = 0; i < TOTALPAGE; i++) {
@@ -626,50 +614,33 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         
         [firstScrollView addSubview:imageName];
     }
-    
-    int j = TOTALPAGE -1;
-    
+
+    int j = TOTALPAGE - 1;
+
     int lastPageWeight = iOSDeviceScreenSize.width*j;
     int lastPageWeight1 = iOSDeviceScreenSize.width*(j+1);
-        
+
     int centerWeight = lastPageWeight +(lastPageWeight1 - lastPageWeight)/2;
-        
+
     NSLog(@"lastPageWeight = %i lastPageWeight1 = %i centerWeight = %i",lastPageWeight ,lastPageWeight1,centerWeight);
-    
-    
+
     enterBtn = [[UIButton alloc] initWithFrame:CGRectMake(250, 400, 60, 40)];
-    [enterBtn addTarget:self action:@selector(enterBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [enterBtn addTarget:self
+                 action:@selector(enterBtnClick:)
+       forControlEvents:UIControlEventTouchUpInside];
     [enterBtn setTitle:@"SKIP" forState:UIControlStateNormal];
     [enterBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [firstView addSubview:enterBtn];
     [self.view addSubview:firstView];
-    
-    /*
-    UIButton *enterBtn = [[UIButton alloc] initWithFrame:CGRectMake(centerWeight-50, iOSDeviceScreenSize.height - 100, 100, 40)];
-    [enterBtn layer].cornerRadius = 8.0f;
-    [enterBtn layer].borderWidth = 2.0f;
-    [enterBtn layer].borderColor = [[UIColor whiteColor] CGColor];
-    [enterBtn layer].backgroundColor = [[UIColor orangeColor] CGColor];
-    [enterBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [enterBtn addTarget:self action:@selector(enterBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//    UIButton *enterBtn = [[UIButton alloc] initWithFrame:CGRectMake(3840, 0, 60, 40)];
-    
-        
-    [enterBtn setTitle:NSLocalizedStringFromTable(@"StartUse", INFOPLIST, nil) forState:UIControlStateNormal];
-    [firstScrollView addSubview:enterBtn];
-    
-    
-    [self.view addSubview:firstView];
-     */
 }
 
--(IBAction)enterBtnClick:(id)sender
+- (IBAction)enterBtnClick:(id)sender
 {
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
-    
+
     [defaults setBool:NO forKey:@"First"];
-    
+
     [firstView removeFromSuperview];
 }
 
@@ -726,7 +697,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 }
 
 //選擇下載Logo
--(void)downLoadLogo
+- (void)downLoadLogo
 {
     if (changePw.text.length >0)
     {
@@ -740,9 +711,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     }
 }
 
-
-
--(void)getLogoListWithPwd:(NSString *)pwd
+- (void)getLogoListWithPwd:(NSString *)pwd
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;

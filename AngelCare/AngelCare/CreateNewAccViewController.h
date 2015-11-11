@@ -47,8 +47,6 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *btnUser;
 
-
-
 //驗證帳號
 - (IBAction)checkBtnClick:(id)sender;
 //會員條款

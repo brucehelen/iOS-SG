@@ -26,28 +26,7 @@
 {
     if (dic)
     {
-        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-        if (![language isEqualToString:@"en"]) {// 非英語
-            lblCh.hidden = NO;
-            lblEn.hidden = YES;
-            lblUnit.hidden = YES;
-            int tmpX = 23;
-            int tmpY = 30;
-            [Down_limit setFrame:CGRectMake(86 - tmpX, 107 - tmpY, Down_limit.frame.size.width, Down_limit.frame.size.height)];
-            lblCh.text = NSLocalizedStringFromTable(@"BelowWillSendAlarm", INFOPLIST, nil);
-                lblCh.textColor = [UIColor blackColor];
-
-        }
-        else{
-            lblCh.hidden = YES;
-            lblEn.hidden = NO;
-            lblUnit.hidden = NO;
-            lblEn.textColor = [UIColor blackColor];
-            lblUnit.textColor = [UIColor blackColor];
-            int tmpX = 23;
-            int tmpY = 30;
-            [Down_limit setFrame:CGRectMake(48 - tmpX, 135 - tmpY, Down_limit.frame.size.width, Down_limit.frame.size.height)];
-        }
+        lblEn.text = NSLocalizedStringFromTable(@"BORember_TIP_INFO", INFOPLIST, nil);
         Up_limit.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uplimit"]];
         Down_limit.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"downlimit"]];
         
@@ -113,7 +92,7 @@
     return YES;
 }
 
--(void)SaveBO
+- (void)SaveBO
 {
     [Up_limit resignFirstResponder];
     [Down_limit resignFirstResponder];
@@ -148,7 +127,7 @@
 }
 
 
--(void)Do_Init:(id)sender
+- (void)Do_Init:(id)sender
 {
     MainObj = sender;
     Up_limit.delegate = self;
@@ -159,13 +138,6 @@
     back2Lbl.layer.cornerRadius = 8.0f;
     [backLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 @end

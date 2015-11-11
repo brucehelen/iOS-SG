@@ -169,8 +169,16 @@
         }
     }
 
-    //血糖要 / 10
-    NSLog(@"data arr = %@", dataArr);
+    NSLog(@"data arr = %@, %d", dataArr, tmpType);
+
+    if (tmpType == 2) {
+        for (NSDictionary *dict in dataArr) {
+            float value = [[dict objectForKey:@"bloodglucose"] floatValue];
+            int value2 = value * 10;
+            float value3 = value2/10.0;
+            [dict setValue:@(value3) forKey:@"bloodglucose"];
+        }
+    }
 }
 
 - (void) handleUnit:(NSArray *)datas{
@@ -1063,7 +1071,6 @@
     _lineGraph.first = first;
     _lineGraph.second = second;
     _lineGraph.third = third;
-//        _lineGraph.datas = pileOfData[idx];
     [self addLineGraph:_lineGraph andPageNumber:0];
     [viewG addSubview:_lineGraph];
     [_scrollview addSubview:viewG];
@@ -1183,7 +1190,7 @@
              time = [[data objectAtIndex:i-1]objectForKey:@"time"];
         }
         else{
-            time = [[data objectAtIndex:i-1]objectForKey:@"start"];
+            time = [[data objectAtIndex:i-1]objectForKey:@"end"];
         }
         time = [NSString stringWithFormat:@"%@",[time substringFromIndex:5]];
         NSDictionary *tmpDict = @{@(i): time};
@@ -1282,7 +1289,9 @@
     //    }
     [self handleData:result[0]];
 }
-- (void)handleData:(NSDictionary*)dict{
+
+- (void)handleData:(NSDictionary*)dict
+{
     NSLog(@"handle Data");
     NSArray *array = [dict objectForKey:@"Data"];
     NSLog(@"array.count %lu",(unsigned long)array.count);
@@ -1298,19 +1307,21 @@
         }
         [pileOfData addObject:tmp];
     }//donot look this
+
     NSLog(@"pileOfData %lu",(unsigned long)pileOfData.count);
     NSLog(@"pileOfData %@",pileOfData);
 }
 
-- (void)handleDataWithArray:(NSArray*)array{
-    NSLog(@"handle Data");
-//    NSArray *array = [dict objectForKey:@"Data"];
-    NSLog(@"array.count %lu",(unsigned long)array.count);
+- (void)handleDataWithArray:(NSArray*)array
+{
+    NSLog(@"handleDataWithArray");
+
     NSInteger totalData = array.count;
 
     if (totalData == 0) {
         numberOfPage = 0;
     }
+
     numberOfPage = ceil(totalData/8.0);
     for (int i = 0;  i < numberOfPage; i++) {
         NSMutableArray *tmp = [NSMutableArray new];
@@ -1322,11 +1333,13 @@
         }
         [pileOfData addObject:tmp];
     }
+
     NSLog(@"pileOfData %lu",(unsigned long)pileOfData.count);
-    NSLog(@"pileOfData %@",pileOfData);
+    NSLog(@"handleDataWithArray pileOfData -> %@", pileOfData);
 }
 
-- (void)handleBottomLbl:(NSInteger)idx{
+- (void)handleBottomLbl:(NSInteger)idx
+{
     NSLog(@"pileofdata %@",pileOfData[1]);
 }
 
@@ -1491,8 +1504,10 @@
 
     return height;
 }
+
 #pragma mark - initrange
-- (void)initRange:(NSString *)key{
+- (void)initRange:(NSString *)key
+{
     if ([key isEqualToString:@"systolic"]) {
         limitGreen = systolicGreen;
         limitOrange = systolicOrange;
@@ -1519,15 +1534,16 @@
 
 - (void)setCellLbl:(UILabel*)lbl andKey:(NSString*)key andDict:(NSDictionary*) dict
 {
-    UIColor *color=nil;
+    UIColor *color = nil;
     [self initRange:key];
     double tmp = [[dict objectForKey:key] doubleValue];
     double tmpS;
-    NSLog(@"key:%@, %@",key,[dict objectForKey:key]);
+    NSLog(@"setCellLbl key:%@, %@",key,[dict objectForKey:key]);
+
     switch (type) {
         case 1://血壓
             NSLog(@"BP ReloadData");
-            if ( tmp<= limitGreen) {
+            if ( tmp <= limitGreen) {
                 color = [UIColor colorWithRed:0/255.0 green:191/255.0 blue:202/255.0 alpha:1.0];
             }
             else if ( (tmp > limitGreen) &&
@@ -1554,7 +1570,6 @@
             break;
             
         case 3://血氧
-            //                [self BOReloadData];
             if ([key isEqualToString:@"oxygen"]) {
                 if (tmp >= 90 ) {
                     color = [UIColor colorWithRed:0/255.0 green:191/255.0 blue:202/255.0 alpha:1.0];
@@ -1566,8 +1581,6 @@
             else{
                 color = [UIColor blackColor];
             }
-            
-
             break;
             
         case 4://體重
@@ -1591,7 +1604,6 @@
             break;
             
         case 5://計步器
-            //                [self StepReloadDate];
             tmpS = 0.0;
             if (goalDis == 0 && goalStep == 0) {
                 tmpS = 0;
@@ -1628,7 +1640,7 @@
     if ([key isEqualToString:@"weight"] || [key isEqualToString:@"body_fat"]) {
         lbl.text =[NSString stringWithFormat:@"%.1f",tmp/10.0];
     }
-    
+
     if ([key isEqualToString:@"dist"]) {
         lbl.text = [dict objectForKey:@"dist"] ;
     }

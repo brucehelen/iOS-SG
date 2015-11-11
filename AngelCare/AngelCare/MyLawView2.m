@@ -259,52 +259,30 @@
         [label1 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:28] color:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]] forKey:@"bold_style"];
         
         [label1 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:24] color:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]] forKey:@"ital_style"];
-        
+
         label1.kern = 0.1;
         label1.lineHeight = 30;
-        
-        [myScrollView addSubview:label1];
-        
 
-        
+        [myScrollView addSubview:label1];
+
         CGRect  NewRect2;
         NewRect2 = CGRectMake(0, 0, 768, totalHei );
         myScrollView.contentSize  =  NewRect2.size;          
     }
-
 }
 
-
--(void)awakeFromNib
+- (void)awakeFromNib
 {
-    
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
-    
-    
-    
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if( [currentLanguage isEqualToString:check1]  )
-    {
-        [self Set_Tw];
+
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        [self Set_Cn];
+    } else {        // en
+        [self Set_En];
     }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-            [self Set_Cn];
-        }
-        else
-        {
-            
-            [self Set_En];
-        }      
-        
-    }
-    
- }
+}
 
 @end
+

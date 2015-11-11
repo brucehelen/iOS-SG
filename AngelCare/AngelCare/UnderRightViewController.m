@@ -13,7 +13,9 @@
     NSString *testAcc;
     BOOL willLogOut;
 }
+
 @property (nonatomic, assign) CGFloat peekLeftAmount;
+
 @end
 
 @implementation UnderRightViewController
@@ -35,37 +37,42 @@ long long NotiLogin_expectedLength;        //檔案大小
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
     _navi.title = NSLocalizedStringFromTable(@"Header_Setting", INFOPLIST, nil);
-    
-    
-    NSArray *set1 = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Personal_MyAccount", INFOPLIST, nil),NSLocalizedStringFromTable(@"Personal_WatcherManager", INFOPLIST, nil), nil];
-    
-    NSString *verson = [NSString stringWithFormat:@"%@ %@",NSLocalizedStringFromTable(@"Setting_Version", INFOPLIST, nil),[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
-    
-//    NSArray *set2 = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Setting_Notification", INFOPLIST, nil),
-//                     NSLocalizedStringFromTable(@"Setting_Question", INFOPLIST, nil),NSLocalizedStringFromTable(@"Setting_AboutUS", INFOPLIST, nil),NSLocalizedStringFromTable(@"Setting_Logout", INFOPLIST, nil),verson, nil];
-    
-    NSArray *set2 = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Setting_Notification", INFOPLIST, nil),NSLocalizedStringFromTable(@"Setting_Logout", INFOPLIST, nil),verson, nil];
-    
+
+    NSArray *set1 = [NSArray arrayWithObjects:
+                     NSLocalizedStringFromTable(@"Personal_MyAccount", INFOPLIST, nil),
+                     NSLocalizedStringFromTable(@"Personal_WatcherManager", INFOPLIST, nil),
+                     nil];
+
+    NSString *version = [NSString stringWithFormat:@"%@ %@",
+                         NSLocalizedStringFromTable(@"Setting_Version", INFOPLIST, nil),
+                         [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
+
+    NSArray *set2 = [NSArray arrayWithObjects:
+                     NSLocalizedStringFromTable(@"Setting_Notification", INFOPLIST, nil),
+                     NSLocalizedStringFromTable(@"Setting_F&Q", INFOPLIST, nil),
+                     NSLocalizedStringFromTable(@"Setting_Logout", INFOPLIST, nil),
+                     version, nil];
+
     settingArray = [NSArray arrayWithObjects:set1,set2, nil];
-    
-  self.peekLeftAmount = 60.0f;
-  [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
-  self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
+
+    self.peekLeftAmount = 60.0f;
+    [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
+    self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated
+{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSDictionary *dict = [defaults dictionaryRepresentation];
     NSLog(@"右側Menu");
-//    NSLog(@"userdefaults = %@",dict);
     NSLog(@"userAcc = %@",[defaults objectForKey:@"userAccount"]);
     testAcc = [defaults objectForKey:@"userAccount"];
     willLogOut = NO;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return [settingArray count];
 }
 
@@ -75,10 +82,12 @@ long long NotiLogin_expectedLength;        //檔案大小
     {
         return NSLocalizedStringFromTable(@"Setting_Personal", INFOPLIST, nil);
     }
+
     if (section == 1)
     {
         return NSLocalizedStringFromTable(@"Setting_Setting", INFOPLIST, nil);
     }
+
     return @"";
 }
 
@@ -94,73 +103,28 @@ long long NotiLogin_expectedLength;        //檔案大小
     if (cell == nil) {
         cell = [[SetCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
+
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SetCell" owner:self options:nil] objectAtIndex:0];
-    }else
-    {
+    } else {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SetCell" owner:self options:nil] objectAtIndex:0];
     }
-    
+
     cell.title.text = [[settingArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
     cell.btn1.hidden = YES;
     cell.btn2.hidden = YES;
     cell.switch1.hidden = YES;
-    
-    /*
-    if ((indexPath.section == 1 )&& (indexPath.row == 0)) {
-        NSUserDefaults *defaults;
-        defaults = [NSUserDefaults standardUserDefaults];
-        
-        if ([defaults integerForKey:@"MAP_TYPE"] == 0) {
-            [cell.btn1 setImage:[UIImage imageNamed:@"my_bu_2.png"] forState:UIControlStateNormal];
-            [cell.btn2 setImage:[UIImage imageNamed:@"my_bu_1.png"] forState:UIControlStateNormal];
-        }else
-        {
-            [cell.btn1 setImage:[UIImage imageNamed:@"my_bu_1.png"] forState:UIControlStateNormal];
-            [cell.btn2 setImage:[UIImage imageNamed:@"my_bu_2.png"] forState:UIControlStateNormal];
-        }
-     
-        cell.btn1.hidden = NO;
-        cell.btn2.hidden = NO;
-        cell.google.text = NSLocalizedStringFromTable(@"MapSet_Default", INFOPLIST, nil);
-        cell.google.hidden = NO;
-        cell.baidu.text = NSLocalizedStringFromTable(@"MapSet_Baidu", INFOPLIST, nil);
-        cell.baidu.hidden = NO;
-        [cell.btn1 setTag:0];
-        [cell.btn2 setTag:1];
-        
-        [cell.btn1 addTarget:self action:@selector(changeMapType:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell.btn2 addTarget:self action:@selector(changeMapType:) forControlEvents:UIControlEventTouchUpInside];
-        
-     
-    }
-    
-     
-    if ((indexPath.section == 1 )&& (indexPath.row == 1)) {
-        cell.switch1.hidden = NO;
-        [cell.switch1 addTarget:self action:@selector(quickCall:) forControlEvents:UIControlEventValueChanged];
-    }
-    */
-    
+
     if ((indexPath.section == 1 )&& (indexPath.row == 0)) {
         cell.switch1.hidden = NO;
         [cell.switch1 addTarget:self action:@selector(notification:) forControlEvents:UIControlEventValueChanged];
     }
-    
-//    if ((indexPath.section == 1 )&& (indexPath.row == 1)) {
-//        cell.switch1.hidden = NO;
-//        [cell.switch1 addTarget:self action:@selector(Activity_tracking:) forControlEvents:UIControlEventValueChanged];
-//    }
-    
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (indexPath.section == 0) {
         //isTestAcc
         if ([testAcc isEqualToString:@"test"]) {
@@ -168,95 +132,68 @@ long long NotiLogin_expectedLength;        //檔案大小
             [alert show];
             return;
         }
+
         //isTestAcc End
-        switch (indexPath.row) {
-                
+        switch (indexPath.row)
+        {
             case 0://我的帳號
             {
                 [self.slidingViewController resetTopViewWithAnimations:nil
                                                             onComplete:^{
                     [(MainClass *)self.slidingViewController.topViewController.view Other_MouseDown:1001];
                 }];
-            }
-                break;
+            } break;
                 
             case 1://佩戴者管理
             {
                 [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
                     [(MainClass *)self.slidingViewController.topViewController.view Other_MouseDown:1004];
                 }];
-            }
-                break;
-                
+            } break;
         }
-    
     }
-    
+
     if (indexPath.section == 1) {
         switch (indexPath.row) {
-            
-//            case 1://常見問題
-////                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mcarewatch.com.au/"]];
-//                break;
-//                
-//            case 2://關於我們
-////                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mcarewatch.com.au/"]];
-//                
-////                [self LogOut];
-//                
-////                [self tempLogout];
-//                
-//                break;
-            case 1://登出
-                NSLog(@"Activity tracking");
-                
+            case 1:     // 常见问题
+            {
+                NSLog(@"常见问题");
+                [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
+                    [(MainClass *)self.slidingViewController.topViewController.view Other_MouseDown:1100];
+                }];
+            } break;
+            case 2:     //登出
+                NSLog(@"User Log out");
                 [self LogOut];
-                
-                //                [self tempLogout];
-                
                 break;
-            case 2://登出
-                NSLog(@"isLogOut");
-                
-                [self LogOut];
-                
-                //                [self tempLogout];
-                
+            case 3:     //Version
+                NSLog(@"Version");
                 break;
-                
             default:
                 break;
         }
     }
-    
-    
 }
 
-
-
-
-
 //登出
--(void)LogOut
+- (void)LogOut
 {
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
-    
+
     NSString *acc = [defaults objectForKey:@"userAccount"];
     NSString *pwd = [defaults objectForKey:@"userHash"];
     NSString *token = [defaults objectForKey:@"token"];
-    
+
 //    NSLog(@"Top View is %@",[(ViewController *)self.slidingViewController.topViewController token]);
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, pwd,dateString];
-    
-    //    NSLog(tmpstr);
+
     
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
     //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
@@ -306,14 +243,13 @@ long long NotiLogin_expectedLength;        //檔案大小
     [self addloadingView];
 }
 
--(void)addloadingView
+- (void)addloadingView
 {
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:HUD];
-	
+
     HUD.delegate = self;
     HUD.labelText = @"Loading";
-    //    HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [HUD show:YES];
 }
 
@@ -324,21 +260,16 @@ long long NotiLogin_expectedLength;        //檔案大小
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Logout_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
+
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
+
     NSLog(@"users one = %@",usersOne);
-    
-    
-    if( [status isEqualToString:str1]  )
+
+    if ([status isEqualToString:str1])
     {
-        
-        
-        
-        
         NSUserDefaults *defaults;
         defaults = [NSUserDefaults standardUserDefaults];
         //清空所有佩戴者資料
@@ -347,15 +278,14 @@ long long NotiLogin_expectedLength;        //檔案大小
         NSString *acc = [defaults objectForKey:@"userAccount"];
         NSString *pwd = [defaults objectForKey:@"userHash"];
         //20140321
-        
+
         for (id key in dict) {
             if (![key isEqualToString:@"token"]) {
                 [defaults removeObjectForKey:key];
             }
         }
         [defaults synchronize];
-        
-        
+
         //20140321
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
@@ -379,14 +309,12 @@ long long NotiLogin_expectedLength;        //檔案大小
         }
         [defaults synchronize];
         //20140321
-        
+
         willLogOut = YES;
         UIViewController *qrcodelogin = [self.storyboard instantiateInitialViewController];
-        
+
         [self.navigationController pushViewController:qrcodelogin animated:NO];
-        
-    }else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [CheckErrorCode Check_Error:str1];
         [HUD hide:YES];
@@ -409,10 +337,7 @@ long long NotiLogin_expectedLength;        //檔案大小
     [self.navigationController pushViewController:login animated:NO];
 }
 
-
-
-
--(IBAction)quickCall:(id)sender
+- (IBAction)quickCall:(id)sender
 {
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
@@ -425,8 +350,8 @@ long long NotiLogin_expectedLength;        //檔案大小
         [defaults setInteger:0 forKey:@"quickCall"];
         NSLog(@"close");
     }
+
     [defaults synchronize];
-    
 }
 
 //開啟推播通知
@@ -439,8 +364,6 @@ long long NotiLogin_expectedLength;        //檔案大小
     NSString *pwd = [defaults objectForKey:@"userHash"];
     NSString *token = [(ViewController *)self.slidingViewController.topViewController token];
     
-    //    NSLog(@"Top View is %@",[(ViewController *)self.slidingViewController.topViewController token]);
-    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
@@ -449,10 +372,7 @@ long long NotiLogin_expectedLength;        //檔案大小
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, pwd,dateString];
     
-    //    NSLog(tmpstr);
-    
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
@@ -506,20 +426,14 @@ long long NotiLogin_expectedLength;        //檔案大小
     NSString *pwd = [defaults objectForKey:@"userHash"];
     NSString *token = [(ViewController *)self.slidingViewController.topViewController token];
     
-    //    NSLog(@"Top View is %@",[(ViewController *)self.slidingViewController.topViewController token]);
-    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, pwd,dateString];
     
-    //    NSLog(tmpstr);
-    
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);

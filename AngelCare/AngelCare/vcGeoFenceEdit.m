@@ -9,10 +9,10 @@
 #import "vcGeoFenceEdit.h"
 #import "define.h"
 #import "vcGeoInfo.h"
-//#import "MBProgressHUD.h"
+
+
 @interface vcGeoFenceEdit ()
 {
-    UIDatePicker *datePicker;
     NSString *startStr;
     NSString *endStr;
     BOOL is1;
@@ -33,42 +33,26 @@
     
     IBOutlet UIView *viewGeoInfo;
 }
+
+@property (nonatomic, strong) UIDatePicker *datePicker;
+
 @end
 
 @implementation vcGeoFenceEdit
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
-//    
-//    tapRecognizer.numberOfTapsRequired = 1;
-//    tapRecognizer.numberOfTouchesRequired = 1;
-//    [_map addGestureRecognizer:tapRecognizer];
-    
-    
+
     UILongPressGestureRecognizer *longG = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
     longG.minimumPressDuration = 0.8;
-//    longG.numberOfTapsRequired = 1;
-//    longG.numberOfTouchesRequired = 1;
+
     [_map addGestureRecognizer:longG];
     
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    
-    
+
     pinIDX = 0;
     pins = [NSMutableArray new];
     _barSearch.delegate = self;
@@ -81,7 +65,8 @@
     
     pointA = [NSMutableArray new];
 }
--(IBAction)foundTap:(UILongPressGestureRecognizer*)recognizer
+
+- (IBAction)foundTap:(UILongPressGestureRecognizer*)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan)     {
         // handling code
@@ -94,20 +79,20 @@
         [point1 setTitle:@"Click button to delete!"];
         
         point1.coordinate = tapPoint;
-//        point1.subtitle = [NSString stringWithFormat:@"Lat: %f, Long: %f",tapPoint.latitude, tapPoint.longitude];
         
         [_map addAnnotation:point1];
         [pins addObject:point1];
         if ([pins count] >= 3) {
-            //draw
             [self drawPoly];
         }
     }
     else {
-        //do anything else
+
     }
 }
-- (void)drawPoly{
+
+- (void)drawPoly
+{
     [_map removeOverlay:poly];
     //配置記憶體
     CLLocationCoordinate2D *commuterLotCoords = malloc([pins count] * sizeof(CLLocationCoordinate2D));
@@ -120,23 +105,9 @@
     poly = [MKPolygon polygonWithCoordinates:commuterLotCoords count:[pins count]];
     [_map addOverlay:poly];
 }
-//-(IBAction)foundTap:(UITapGestureRecognizer*)recognizer
-//{
-//    CGPoint point = [recognizer locationInView:_map];
-//    point.y = point.y + _map.frame.origin.y;
-//    CLLocationCoordinate2D tapPoint = [_map convertPoint:point toCoordinateFromView:self.view];
-//    
-//    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
-//    [point1 setTitle:@"Move me!"];
-//    point1.coordinate = tapPoint;
-//    point1.subtitle = [NSString stringWithFormat:@"Lat: %f, Long: %f",tapPoint.latitude, tapPoint.longitude];
-//    
-//    [_map addAnnotation:point1];
-//}
 
-
-- (void)viewWillAppear:(BOOL)animated{
-    //
+- (void)viewWillAppear:(BOOL)animated
+{
     NSLog(@"%@",[[[self.barSearch.subviews objectAtIndex:0] subviews] objectAtIndex:1]);
     UITextField *search = (UITextField *)[[[self.barSearch.subviews objectAtIndex:0] subviews] objectAtIndex:1];
     [search setBackgroundColor:[UIColor blackColor]];
@@ -147,11 +118,7 @@
                                                  NSForegroundColorAttributeName: [UIColor whiteColor]
                                                  }
      ];
-    //
- 
-    
-    //
-    
+
     UIColor *BColor = [UIColor blackColor];
     UIColor *WColor = [UIColor whiteColor];
     [self.lblEndTime setTextColor:WColor];
@@ -190,9 +157,7 @@
     [self setBgWithIs:is5 andSender:_btn5];
     [self setBgWithIs:is6 andSender:_btn6];
     [self setBgWithIs:is7 andSender:_btn7];
-    
-    
-    
+
     CLLocationCoordinate2D coor;
     if ([pins count] == 0) {
         coor.latitude = 0;
@@ -206,9 +171,7 @@
         MKCoordinateRegion adjustedRegion = [_map regionThatFits:MKCoordinateRegionMakeWithDistance(coor, 1500, 1500)];
         [_map setRegion:adjustedRegion animated:YES];
     }
-    
 
-    
     if (self.dict) {
         NSLog(@"%@",self.dict);
         [self handleDict:self.dict];
@@ -222,7 +185,9 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [_webInfo loadRequest:requestObj];
 }
-- (void)handleDict:(NSDictionary*)tmpD{
+
+- (void)handleDict:(NSDictionary*)tmpD
+{
     startStr = [tmpD objectForKey:@"fromtime"];
     [_btnStart setTitle:startStr forState:UIControlStateNormal];
     endStr = [tmpD objectForKey:@"totime"];
@@ -248,8 +213,6 @@
     if ([pointA count]>=3) {
         [self do_init];
     }
-    
-    
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color
@@ -267,7 +230,8 @@
     return image;
 }
 
-- (void)setWeek:(int)which{
+- (void)setWeek:(int)which
+{
     switch (which) {
         case 1:
             is1 = YES;
@@ -302,100 +266,90 @@
             break;
     }
 }
-- (void)didReceiveMemoryWarning
+
+
+- (IBAction)ibaSelectTime:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)ibaSelectTime:(id)sender {
     if ([UIAlertController class]) {
         [self useAlerController:sender];
-    }
-    else {
+    } else {
         // use UIAlertView
         [self addActionSheetInView:sender];
     }
 }
-- (void)useAlerController:(id)sender{
+
+- (void)useAlerController:(id)sender
+{
     // use UIAlertController
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil) message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil)
+                                                                   message:@""
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil)
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action)
                                {
                                    NSDateFormatter *pickdate = [[NSDateFormatter alloc] init];
                                    [pickdate setDateFormat:@"HH:mm"];
                                    
-                                   NSLog(@"pick = %@",[pickdate stringFromDate:[datePicker date]]);
+                                   NSLog(@"pick[%d] = %@", (int)[(UIView *)sender tag], [pickdate stringFromDate:self.datePicker.date]);
                                    switch ([(UIView*)sender tag]) {
                                        case 301:
-                                           startStr = [NSString stringWithFormat:@"%@:00",[pickdate stringFromDate:[datePicker date]]];
-                                           [_btnStart setTitle:[pickdate stringFromDate:[datePicker date]] forState:UIControlStateNormal];
+                                           startStr = [NSString stringWithFormat:@"%@:00",
+                                                       [pickdate stringFromDate:self.datePicker.date]];
+                                           [_btnStart setTitle:[pickdate stringFromDate:self.datePicker.date]
+                                                      forState:UIControlStateNormal];
                                            break;
                                        case 302:
-                                           endStr = [NSString stringWithFormat:@"%@:00",[pickdate stringFromDate:[datePicker date]]];
-                                           [_btnEnd setTitle:[pickdate stringFromDate:[datePicker date]] forState:UIControlStateNormal];
+                                           endStr = [NSString stringWithFormat:@"%@:00",
+                                                     [pickdate stringFromDate:self.datePicker.date]];
+                                           [_btnEnd setTitle:[pickdate stringFromDate:self.datePicker.date] forState:UIControlStateNormal];
                                            break;
                                            
                                        default:
                                            break;
                                    }
-                                   
                                }];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil)
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action)
                                    {
                                        
                                    }];
-    
-    [self setDatePicker];
-    
-    
-    [alert.view addSubview:datePicker];
-    
+
+    [alert.view addSubview:self.datePicker];
+
     [alert addAction:cancelAction];
     [alert addAction:okAction];
-    
-    
-    UIViewController *tmp = (UIViewController*)self;
-    [tmp presentViewController:alert animated:YES completion:nil];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
--(void)addActionSheetInView:(id)sender{
+
+-(void)addActionSheetInView:(id)sender
+{
     //update by Bill 增加\r\n讓action sheet 時間不會被蓋掉
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Safezone time\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
     sheet.tag = [(UIView*)sender tag];
     
-    [self setDatePicker];
-    
     NSLog(@"start %@",[[(UIButton*)sender titleLabel] text]);
     
-    [sheet addSubview:datePicker];
-    
+    [sheet addSubview:self.datePicker];
     [sheet showInView:self.view];
 }
-- (void) setDatePicker{
-    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
-    //    datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
-    datePicker.datePickerMode = UIDatePickerModeTime;
-    //    datePicker.maximumDate = [NSDate date];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm"];
+
+- (UIDatePicker *)datePicker
+{
+    if (_datePicker == nil) {
+        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 300, 250)];
+        _datePicker.datePickerMode = UIDatePickerModeTime;
+    }
+
+    return _datePicker;
 }
 
-- (IBAction)ibaSelectWeek:(id)sender {
-    
+- (IBAction)ibaSelectWeek:(id)sender
+{
     BOOL isDefault = NO;
     BOOL isTmp;
     switch ([(UIView*)sender tag]) {
@@ -436,28 +390,26 @@
         [self setBgWithIs:isTmp andSender:sender];
     }
 }
-- (void) setBgWithIs:(BOOL)is andSender:(id)sender{
-//    if (is) {
-//        [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:250/255.0 green:202/255.0 blue:37/255.0 alpha:1.0]];
-//    }
-//    else{
-//        [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:176/255.0 green:176/255.0 blue:176/255.0 alpha:1.0]];
-//    }
+
+- (void) setBgWithIs:(BOOL)is andSender:(id)sender
+{
     if (is) {
         [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0]];
     }
     else{
         [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1.0]];
     }
-
 }
-- (IBAction)ibaCancel:(id)sender {
+
+- (IBAction)ibaCancel:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
 }
 
-- (IBAction)ibaSave:(id)sender {
+- (IBAction)ibaSave:(id)sender
+{
     startStr = _btnStart.titleLabel.text;
     endStr = _btnEnd.titleLabel.text;
     name = _txtName.text;
@@ -533,9 +485,9 @@
 }
 
 #pragma mark - map delegate
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
-    if([overlay isKindOfClass:[MKPolygon class]]){
-        
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if([overlay isKindOfClass:[MKPolygon class]]) {
         MKPolygonRenderer *view = [[MKPolygonRenderer alloc] initWithOverlay:overlay] ;
         view.lineWidth=1;
         view.strokeColor=[UIColor blueColor];
@@ -544,6 +496,7 @@
     }
     return nil;
 }
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
     MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc]
@@ -601,25 +554,10 @@
     {
         CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
         NSLog(@"dropped at %f,%f", droppedAt.latitude, droppedAt.longitude);
-//        [(MKPointAnnotation*)annotationView.annotation setSubtitle:[NSString stringWithFormat:@"dropped at %f,%f", droppedAt.latitude, droppedAt.longitude]];
-        
-        
-//        for (int i = 0;  i < [pins count]; i++) {
-//            if (annotationView.annotation == [pins objectAtIndex:i]) {
-//                MKPointAnnotation *view = [pins objectAtIndex:i];
-//                NSLog(@"%f",view.coordinate.latitude);
-//                view.coordinate = CLLocationCoordinate2DMake(droppedAt.latitude, droppedAt.longitude);
-//                NSLog(@"%f",view.coordinate.latitude);
-////                [pins removeObjectAtIndex:i];
-//                //            NSLog(@"%d", [pins count]);
-//                
-//                
-//                break;
-//            }
-//        }
         [self drawPoly];
     }
 }
+
 #pragma mark -
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -627,15 +565,16 @@
         NSDateFormatter *pickdate = [[NSDateFormatter alloc] init];
         [pickdate setDateFormat:@"HH:mm"];
         
-        NSLog(@"pick = %@",[pickdate stringFromDate:[datePicker date]]);
+        NSLog(@"pick = %@", [pickdate stringFromDate:self.datePicker.date]);
         switch ([actionSheet tag]) {
             case 301:
-                startStr = [NSString stringWithFormat:@"%@:00",[pickdate stringFromDate:[datePicker date]]];
-                [_btnStart setTitle:[pickdate stringFromDate:[datePicker date]] forState:UIControlStateNormal];
+                startStr = [NSString stringWithFormat:@"%@:00",[pickdate stringFromDate:self.datePicker.date]];
+                [_btnStart setTitle:[pickdate stringFromDate:self.datePicker.date] forState:UIControlStateNormal];
                 break;
             case 302:
-                endStr = [NSString stringWithFormat:@"%@:00",[pickdate stringFromDate:[datePicker date]]];
-                [_btnEnd setTitle:[pickdate stringFromDate:[datePicker date]] forState:UIControlStateNormal];
+                endStr = [NSString stringWithFormat:@"%@:00",[pickdate stringFromDate:self.datePicker.date]];
+                [_btnEnd setTitle:[pickdate stringFromDate:self.datePicker.date]
+                         forState:UIControlStateNormal];
                 break;
                 
             default:
@@ -645,6 +584,7 @@
     }
     NSLog(@"action sheet index %i",buttonIndex);
 }
+
 #pragma mark - 搜尋地址
 -(void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
 {
@@ -654,43 +594,34 @@
         //Error checking
         
         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
-//        coor.latitude = 25.040875;
-//        coor.longitude = 121.577895;
-        
+        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude,
+                                                                 placemark.location.coordinate.longitude);
+
         MKCoordinateRegion adjustedRegion = [_map regionThatFits:MKCoordinateRegionMakeWithDistance(coor, 500, 500)];
         [_map setRegion:adjustedRegion animated:YES];
-//        MKCoordinateRegion region;
-//        region.center.latitude = placemark.region.center.latitude;
-//        region.center.longitude = placemark.region.center.longitude;
-//        MKCoordinateSpan span;
-//        double radius = placemark.region.radius / 1000; // convert to km
-//        
-//        NSLog(@"[searchBarSearchButtonClicked] Radius is %f", radius);
-//        span.latitudeDelta = radius / 112.0;
-//        
-//        region.span = span;
-        
-//        [_map setRegion:region animated:YES];
     }];
 }
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
     NSLog(@"%@",view);
 }
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
     return YES;
 }
+
 - (void) dismissKeyboard
 {
     // add self
     [_barSearch resignFirstResponder];
-
 }
 
-- (void)do_init{
+- (void)do_init
+{
     _map.delegate = self;
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     CLLocationCoordinate2D coor;
@@ -699,17 +630,11 @@
     coor.longitude = [[tmpD objectForKey:@"lon"]doubleValue];
     
     point.coordinate = coor;
-    
-    
-    //    [_map addAnnotation:point];
-    
-    
-    
+
     MKCoordinateRegion adjustedRegion = [_map regionThatFits:MKCoordinateRegionMakeWithDistance(coor, 1500, 1500)];
     [_map setRegion:adjustedRegion animated:YES];
     //  // 把region設定給MapView
-    
-    
+
     [self makeData];
     //配置記憶體
     //    CLLocationCoordinate2D *commuterLotCoords = malloc([pointA count] * sizeof(CLLocationCoordinate2D));
@@ -723,24 +648,21 @@
     }
     poly = [MKPolygon polygonWithCoordinates:commuterLotCoords count:[pointA count]];
     [_map addOverlay:poly];
-    
 }
-- (void)makeData{
-    //    NSDictionary *dict =
-    //    pointA = @[@{@"lat": @(25.040875),@"lon": @(121.577895)},
-    //               @{@"lat": @(25.039515),@"lon": @(121.577809)},
-    //               @{@"lat": @(25.040389),@"lon": @(121.579848)},
-    //               @{@"lat": @(25.041984),@"lon": @(121.578925)},];
-    
+
+- (void)makeData
+{
     for (int i = 0;  i < pointA.count; i++) {
         NSDictionary *dict = [pointA objectAtIndex:i];
         double lat = [[dict objectForKey:@"lat"]doubleValue];
         double lon = [[dict objectForKey:@"lon"]doubleValue];
         [self doAddPinWithLat:lat andLon:lon ];
     }
-    
 }
-- (void)doAddPinWithLat:(double)lat andLon:(double)lon{
+
+- (void)doAddPinWithLat:(double)lat
+                 andLon:(double)lon
+{
     CLLocationCoordinate2D coor;
     coor.latitude = lat;
     coor.longitude = lon;
@@ -751,12 +673,15 @@
     [_map addAnnotation:point];
     [pins addObject:point];
 }
-- (IBAction)ibaReset:(id)sender {
+
+- (IBAction)ibaReset:(id)sender
+{
     [_map removeAnnotations:_map.annotations];
     [_map removeOverlays:_map.overlays];
     [pointA removeAllObjects];
     [pins removeAllObjects];
 }
+
 -(void)addloadingView
 {
     if (!HUD) {
@@ -769,50 +694,28 @@
     //    HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [HUD show:YES];
 }
--(void)closeLoading{
+
+-(void)closeLoading
+{
     [HUD hide:YES];
 }
-- (IBAction)ibaHideWeb:(id)sender {
+
+- (IBAction)ibaHideWeb:(id)sender
+{
     [_viewWeb setHidden:YES];
 }
-- (IBAction)ibaShowWeb:(id)sender {
-//    [_viewWeb setHidden:NO];
-//    UIStoryboard *storyboard;
-//    CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
-//    if (iOSDeviceScreenSize.height == 568)
-//    {   // iPhone 5 and iPod Touch 5th generation: 4 inch screen (diagonally measured)
-//        
-//        // Instantiate a new storyboard object using the storyboard file named Storyboard_iPhone4
-//        NSLog(@"isIphone4");
-//        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone4" bundle:nil];
-//    }else
-//    {
-//        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-//    }
-//
-//    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"vcGeoInfo"];
-//    vc.view.backgroundColor = [UIColor clearColor];
-//    [vc setTransitioningDelegate:transitionController];
-//    vc.modalPresentationStyle= UIModalPresentationCustom;
-//    [self presentViewController:vc animated:YES completion:nil];
-//    [UIView animateWithDuration:0.2
-//                     animations:^{
-//                         self.frame = originalFrame;
-//                     }
-//     ];
+
+- (IBAction)ibaShowWeb:(id)sender
+{
     [self.view addSubview:viewGeoInfo];
     [viewGeoInfo setFrame:CGRectMake(0, self.view.frame.size.height, viewGeoInfo.frame.size.width, viewGeoInfo.frame.size.height)];
     [UIView animateWithDuration:1 animations:^{
         [viewGeoInfo setFrame:CGRectMake(0, 0, viewGeoInfo.frame.size.width, viewGeoInfo.frame.size.height)];
     }];
-    
 }
-- (IBAction)ibaBack:(id)sender {
-    
-//    [viewGeoInfo setFrame:CGRectMake(0, self.view.frame.size.height, viewGeoInfo.frame.size.width, viewGeoInfo.frame.size.height)];
-//    [UIView animateWithDuration:1 animations:^{
-//        
-//    }];
+
+- (IBAction)ibaBack:(id)sender
+{
     [UIView animateWithDuration:1 animations:^{
         [viewGeoInfo setFrame:CGRectMake(0, self.view.frame.size.height, viewGeoInfo.frame.size.width, viewGeoInfo.frame.size.height)];
     } completion:^(BOOL finished) {

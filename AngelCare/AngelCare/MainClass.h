@@ -63,6 +63,9 @@
 #import "AutoLocating.h"
 #import "LocatingEdit.h"
 
+#import "KMFreqQuestionView.h"
+#import "KMFreqQuestionDetailView.h"
+
 @protocol MainClassDelegate <NSObject>
 
 @optional
@@ -188,6 +191,9 @@
     
     IBOutlet ActivityAlert *ActAlert;
     IBOutlet UIView   *LoadingView;
+    
+    IBOutlet KMFreqQuestionView *freqQuestionView;
+    IBOutlet KMFreqQuestionDetailView *freqQuestionDetailView;
     
     
     //本地端儲存資料
@@ -545,5 +551,8 @@
 - (void)getWiFi;
 
 - (void)displayTimerStop;
+
+- (void)pushFreqQuestionDetailViewWithQuestion:(NSString *)question
+                                       Answers:(NSString *)answers;
 
 @end

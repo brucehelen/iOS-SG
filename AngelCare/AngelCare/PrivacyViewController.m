@@ -27,49 +27,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
     NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
     
-    
-    
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if( [currentLanguage isEqualToString:check1]  )
-    {
-        [self Set_Tw];
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        [self Set_Cn];
+    } else {        // en
+        [self Set_En];
     }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-            [self Set_Cn];
-        }
-        else
-        {
-            
-            [self Set_En];
-        }
-        
-    }
-	// Do any additional setup after loading the view.
+
     _webView.delegate = self;
 }
-- (void)viewWillAppear:(BOOL)animated{
+
+- (void)viewWillAppear:(BOOL)animated
+{
     _webView.scalesPageToFit = YES;
-    
+
     //設定網址
     NSURL *url = [NSURL URLWithString:@"http://210.242.50.125:8000/safetywatch/PrivacyPolicy.html"];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:requestObj];
-
 }
+
 -(IBAction)cancel:(id)sender
 {
     //ios7 modify
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -77,12 +62,11 @@
 -(void)Set_En
 {
     NSString *deviceType = [UIDevice currentDevice].model;
-    
+
     if( [deviceType isEqualToString:@"iPhone Simulator"] || [deviceType isEqualToString:@"iPhone"])
     {
-        
         int totalHei = 3845;
-        
+
         NMCustomLabel *label1 = [[NMCustomLabel alloc] initWithFrame:CGRectMake(5, 15, myScrollView.frame.size.width-10, totalHei)];
         label1.text =  @"<span class='ital_style'>Privacy Policy</span>\n\tYour privacy is important to mCareWatch. Our Privacy Policy covers how we collect, use, disclose, transfer, and store your information. Please take a moment to familiarize yourself with our privacy practices and let us know if you have any questions.\n\n<span class='ital_style'>Collection and Use of Personal Information</span>\n\tPersonal information is data that can be used to uniquely identify or contact a single person. You may be asked to provide your personal information anytime you are in contact with mCareWatch or mCareWatch affiliated company. mCareWatch and its affiliates may share this personal information with each other and use it consistent with this Privacy Policy. They may also combine it with other information to provide and improve our products, services, content, and promotion. Here are some examples of the types of personal information mCareWatch may collect and how we may use it.\n\n<span class='ital_style'>What personal information we collect</span>\n\tWhen you create an mCareWatch ID, register your products, apply for Location, Tracking and Measurement, or participate in an online survey, we may collect a variety of information, including your name, mailing address and specific health parameters such as Blood Glucose, Blood Pressure, Weight, Blood Oximeter information.\n\n<span class='ital_style'>How we use your personal information</span>\n\tThe personal information we collect allows us to keep you posted on mCareWatch’s latest product news, software updates, and upcoming events. It also helps to improve our services, content, and other promotional activity. If you do not want to be on our mailing list, you can opt out anytime by updating your preferences. We also use personal information to help develop, deliver, and improve our products, services, content, and promotional activity. From time to time, we may use your personal information to send important notices, such as communications about purchases and changes to our terms, conditions, and policies. Because this information is important to your engagement with mCareWatch, you may not opt out of receiving this communication. We may also use personal information for internal purposes such as auditing, data analysis, and research to improve mCareWatch’s products, services, and customer communications.\n\n<span class='ital_style'>Collection and Use of Non-Personal Information</span>\n\tWe also collect non-personal information − data that does not permit direct association with any specific individual. We may collect, use, transfer, and disclose non-personal information for any purpose. The following are some examples of non-personal information that we collect and how it may be used: information such as occupation, language, postcode, state, unique device identifier, location, and the time zone where mCareWatch product is being used. We may also collect information regarding customer activities on our website and from our other products and services. This information is aggregated and used to help us provide more useful information to our customers and to understand which parts of our website, products, and services are most popular. Aggregated data is considered non-personal information for the purposes of this Privacy Policy.\n\n<span class='ital_style'>Disclosure to Third Parties</span>\n\tAt times mCareWatch may make certain personal information available to strategic partners that work with mCareWatch to provide products and services, or that assist mCareWatch market to their customers. For example, when you purchase and activate your device, you authorize mCareWatch and its carrier to exchange the information you provide during the activation process to carry out service. If you are approved for service, your account will be governed by mCareWatch and its carrier’s respective privacy policies. Personal information will only be shared by mCareWatch to provide or improve our products, services and promotional activity; it will not be shared with third parties for their marketing purposes.\n\n<span class='ital_style'>Service Providers</span>\n\tmCareWatch shares personal information with companies who provide services such as information processing, extending credit, fulfilling customer orders, delivering products to you, managing and enhancing customer data, providing customer service, assessing your interest in our products and services, and conducting customer research or satisfaction surveys. These companies are obligated to protect your information and may be located wherever mCareWatch operates.\n\n<span class='ital_style'>Others</span>\n\tIt may be necessary − by law, legal process, litigation, and/or requests from public and governmental authorities within or outside your country of residence − for mCareWatch to disclose your personal information. We may also disclose information about you if we determine that for purposes of national security, law enforcement, or other issues of public importance, disclosure is necessary or appropriate. We may also disclose information about you if we determine that disclosure is reasonably necessary to enforce our terms and conditions or protect our operations or users. Additionally, in the event of a reorganization, merger, or sale we may transfer any and all personal information we collect to the relevant third party.\n\n<span class='ital_style'>Protection of Personal Information</span>\n\tmCareWatch takes precautions — including administrative, technical, and physical measures — to safeguard your personal information against loss, theft, and misuse, as well as against unauthorized access, disclosure, alteration, and destruction. mCareWatch online services such as the mCareWatch website use Secure Sockets Layer (SSL) encryption on all web pages where personal information is collected. To make purchases from these services, you must use an SSL-enabled browser such as Safari, Firefox, or Internet Explorer. Doing so protects the confidentiality of your personal information when transmitted online.\n\n<span class='ital_style'>Integrity and Retention of Personal Information</span>\n\tmCareWatch makes it easy for you to keep your personal information accurate, complete, and up to date. We will retain your personal information for the period necessary to fulfill the purposes outlined in this Privacy Policy unless a longer retention period is required or permitted by law.\n\n<span class='ital_style'>Access to Personal Information</span>\n\tYou can help ensure that your contact information and preferences are accurate, complete, and up to date by logging in to your account at https://www.mcarewatch.com.au For other personal information, we make good faith effort to provide you with access so you can request that we correct the data if it is inaccurate or delete the data if mCareWatch is not required to retain it by law or for legitimate business purposes. We may decline to process requests that are unreasonably repetitive, require disproportionate technical effort, jeopardize the privacy of others, are extremely impractical, or for which access is not otherwise required by local law. Access, correction, or deletion requests can be made through the regional Privacy Contact Form.\n\n<span class='ital_style'>Location-Based Services</span>\n\tTo provide location-based services on mCareWatch products, mCareWatch and our partners and licensees may collect, use, and share precise location data, including the real-time geographic location of your mCareWatch device. This location data is collected anonymously in a form that does not personally identify you and is used by mCareWatch and our partners and licensees to provide and improve location-based products and services. For example, we may share geographic location with application providers when you opt in to their location services. Some location-based services offered by mCareWatch, such as the “Find My device” feature, require your personal information for the feature to work.\n\n<span class='ital_style'>Third-Party Sites and Services</span>\n\tmCareWatch mobile APP, products, applications, and services may contain links to third-party websites, products, and services. Our products and services may also use or offer products or services from third parties − for example, a third-party mobile app. Information collected by third parties, which may include such things as location data or contact details, is governed by their privacy practices. We encourage you to read the privacy practices of these third parties.\n\n<span class='ital_style'>Our Companywide Commitment to Your Privacy</span>\n\tTo make sure your personal information is secure, we communicate our privacy and security guidelines to mCareWatch employees and strictly enforce privacy safeguards within the company.\n\n<span class='ital_style'>Privacy Questions</span>\n\tIf you have any questions or concerns about mCareWatch’s Privacy Policy or data processing, please contact us. mCareWatch may update its Privacy Policy from time to time. When we change the policy, a notice will be posted on our website along with the updated Privacy Policy.\n";
         
@@ -94,28 +78,7 @@
         label1.kern = 0.0;
         label1.lineHeight = 20;
         [myScrollView addSubview:label1];
-        
-        /*
-         
-         NMCustomLabel *label2 = [[NMCustomLabel alloc] initWithFrame:CGRectMake(30, 125, myScrollView.frame.size.width-60, 230)];
-         label2.text = @"You think water moves fast? You should see ice. It moves like it has a mind. <span class='bold_style'>Like it knows it killed the world once and got a taste for murder.</span> After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. <span class='ital_style'>Nature is lethal but it doesn't hold a candle to man.</span>";
-         [label2 setDefaultStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"HelveticaNeue" size:12] color:[UIColor colorWithRed:60/255.0 green:87/255.0 blue:186/255.0 alpha:1.0]]];
-         [label2 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"Georgia-Bold" size:16] color:[UIColor colorWithRed:98/255.0 green:186/255.0 blue:60/255.0 alpha:1.0]] forKey:@"bold_style"];
-         [label2 setStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"Verdana-Italic" size:15] color:[UIColor colorWithRed:60/255.0 green:87/255.0 blue:186/255.0 alpha:1.0]] forKey:@"ital_style"];
-         label2.kern = 0.6;
-         label2.lineHeight = 16;
-         [myScrollView addSubview:label2];
-         
-         NMCustomLabel *label3 = [[NMCustomLabel alloc] initWithFrame:CGRectMake(30, 350, myScrollView.frame.size.width-60, 50)];
-         label3.text = @"This is a picture of me: <span class='fez'>         </span>  – what do you think?";
-         [label3 setDefaultStyle:[NMCustomLabelStyle styleWithFont:[UIFont fontWithName:@"Georgia" size:14] color:[UIColor colorWithRed:98/255.0 green:227/255.0 blue:104/255.0 alpha:1]]];
-         [label3 setStyle:[NMCustomLabelStyle styleWithImage:[UIImage imageNamed:@"fez.png"] verticalOffset:-8] forKey:@"fez"];
-         label3.lineHeight = 25;
-         [myScrollView addSubview:label3];
-         
-         
-         */
-        
+
         CGRect  NewRect2;
         NewRect2 = CGRectMake(0, 0, 320, totalHei );
         myScrollView.contentSize  =  NewRect2.size;
@@ -304,57 +267,14 @@
         
         label1.kern = 0.1;
         label1.lineHeight = 30;
-        
+
         [myScrollView addSubview:label1];
-        
-        
-        
+
         CGRect  NewRect2;
         NewRect2 = CGRectMake(0, 0, 768, totalHei );
         myScrollView.contentSize  =  NewRect2.size;
     }
-    
 }
 
-/*
--(void)awakeFromNib
-{
-    
-    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
-    NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
-    
-    
-    
-    NSString *check1 = [NSString stringWithFormat:@"zh-Hant"];
-    NSString *check2 = [NSString stringWithFormat:@"zh-Hans"];
-    
-    if( [currentLanguage isEqualToString:check1]  )
-    {
-        [self Set_Tw];
-    }
-    else
-    {
-        if( [currentLanguage isEqualToString:check2]  )
-        {
-            [self Set_Cn];
-        }
-        else
-        {
-            
-            [self Set_En];
-        }
-        
-    }
-    
-}
-*/
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

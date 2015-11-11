@@ -164,40 +164,37 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
 
         static NSString *CellIdentifier = @"EatRemindCell";
         EatRemindCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
+
         if (cell == nil) {
             cell = [[EatRemindCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] ;
         }
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        {
+
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"EatRemindCell_iPad" owner:self options:nil] objectAtIndex:0];
-        }else
-        {
+        } else {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"EatRemindCell" owner:self options:nil] objectAtIndex:0];
         }
+
         //開啓狀態
-        
+
         if ([[[medRemindArr objectAtIndex:indexPath.row] objectForKey:@"on_off"] isEqualToString:@"Y"]) {
             [cell.clockBtn setTag:[[NSString stringWithFormat:@"%i1",indexPath.row+1] integerValue]];
-            
             [cell.clockBtn setImage:[UIImage imageNamed:@"Medicine-Pill_120_green.png"] forState:UIControlStateNormal];
             [cell.clockBtn addTarget:self action:@selector(medRemind:) forControlEvents:UIControlEventTouchUpInside];
-        }else
-        {
+        } else {
             [cell.clockBtn setTag:[[NSString stringWithFormat:@"%i0",indexPath.row+1] integerValue]];
             [cell.clockBtn setImage:[UIImage imageNamed:@"Medicine-Pill_120_black.png"] forState:UIControlStateNormal];
             [cell.clockBtn addTarget:self action:@selector(medRemind:) forControlEvents:UIControlEventTouchUpInside];
         }
         cell.timeLbl.text = [NSString stringWithFormat:@"%@:%@",[[medRemindArr objectAtIndex:indexPath.row] objectForKey:@"hour"],[[medRemindArr objectAtIndex:indexPath.row] objectForKey:@"min" ] ];
-        
-        
+
         cell.weekLbl.text = [weekArr objectAtIndex:indexPath.row];
         //
         NSMutableArray *weeks = [weekOn objectAtIndex:indexPath.row];
@@ -213,23 +210,21 @@
         for (int i = 0;  i < weeks.count; i++) {
             NSString *on = [weeks objectAtIndex:i];
             UILabel *lbl = [lbls objectAtIndex:i];
-//            lbl.text = [txt objectAtIndex:i];
-            
+
             if ([on isEqualToString:@"YES"]) {
                 [lbl setBackgroundColor:[UIColor colorWithRed:254/255.0 green:204/255.0 blue:79/255.0 alpha:1.0]];
-            }
-            else{
+            } else {
                 [lbl setBackgroundColor:[UIColor lightGrayColor]];
             }
             [[lbl layer] setCornerRadius:5.0f];
             [[lbl layer] setMasksToBounds:YES];
         }
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //
+
         return cell;
-        
-    }else
-    {
+
+    } else {
         if ([hosRemindArr objectAtIndex:indexPath.row]) {
             
             NSLog(@"Have hosRemindArr");
@@ -399,27 +394,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"index path = %i %i",indexPath.section,indexPath.row);
-    
-    if (indexPath.section == 0)
-    {
-        
+    if (indexPath.section == 0) {
         [(MainClass *)MainObj setEatMedDic:[medRemindArr objectAtIndex:indexPath.row]];
-    }else
-    {
-        NSLog(@"hos arr = %@",hosRemindArr);
+    } else {
         [(MainClass *)MainObj setHosDic:[hosRemindArr objectAtIndex:indexPath.row]];
     }
-    
 }
 
 
-
-//  初始化Ｖiew 上的設定
--(void)Do_Init:(id)sender
+- (void)Do_Init:(id)sender
 {
     MainObj = sender;
-    NSLog(@"Init");
 }
 
 @end

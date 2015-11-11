@@ -8,17 +8,13 @@
 
 #import "SosMapView.h"
 #import "MainClass.h"
+#import "KMLocationManager.h"
+
+@interface SosMapView()
+
+@end
 
 @implementation SosMapView
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
 - (void)Do_Init:(id)sender
 {
@@ -415,29 +411,33 @@
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
-    NSLog(@"findAddressUseLat[%f, %f]", lat, lon);
+    __weak SosMapView *weakSelf = self;
 
-    BMKGeoCodeSearch *_searcher =[[BMKGeoCodeSearch alloc] init];
-    _searcher.delegate = self;
+    KMLocationManager *locationManager = [KMLocationManager locationManager];
+    [locationManager startLocationWithLocation:[[CLLocation alloc] initWithLatitude:lat
+                                                                          longitude:lon]
+                                   resultBlock:^(NSString *address) {
+                                       [weakSelf updateTextFieldWithAddress:address];
+                                   }];
+}
 
-    //发起反向地理编码检索
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){lat, lon};
+/// 更新地址信息
+- (void)updateTextFieldWithAddress:(NSString *)address
+{
+    if (address) {
+        NSLog(@"updateTextFieldWithAddress = %@", address);
 
-    pt = [self convertCoordinateToBaiDuWithLongitude:pt.longitude latitude:pt.latitude];
-
-    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[
-                                                            BMKReverseGeoCodeOption alloc]init];
-    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
-
-    BOOL flag = [_searcher reverseGeoCode:reverseGeoCodeSearchOption];
-
-    if (flag)
-    {
-        NSLog(@"反geo检索发送成功");
-    }
-    else
-    {
-        NSLog(@"反geo检索发送失败");
+        infoTxt.text = [NSString stringWithFormat:@"%@:\r%@\r%@:\r%@\r"
+                        ,NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil),
+                        [dataDic objectForKey:@"server_time"],
+                        NSLocalizedStringFromTable(@"His_ADDR", INFOPLIST, nil),
+                        address];
+    } else {
+        NSLog(@"updateTextFieldWithAddress: 未找到结果");
+        infoTxt.text = [NSString stringWithFormat:@"%@:\r%@\rNearest location:\r%@\r",
+                        @"Time reported",
+                        [dataDic objectForKey:@"server_time"],
+                        @"抱歉，未找到结果，请稍候重试"];
     }
 }
 
