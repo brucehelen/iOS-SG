@@ -44,6 +44,8 @@
 #define IF_FREQ_QUESTION    1101    // 常见问题
 #define IF_FREQ_QUESTION_DETAIL 1201    // 问题详情
 
+#define IF_FREQ_DISCLAIMER      2101    // 免责声明
+
 #define TITLE_INDEX     @"title0"
 
 #define TITLE_USERDATE  @"title1"

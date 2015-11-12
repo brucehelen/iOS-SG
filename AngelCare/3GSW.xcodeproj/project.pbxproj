@@ -332,6 +332,8 @@
 		7A7F6DDF1B82D4A4004ECA87 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */; };
 		7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5131BB14DCE00DA84E6 /* head_pic.png */; };
 		7AB4E5161BB25A9E00DA84E6 /* icon_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5151BB25A9E00DA84E6 /* icon_new.png */; };
+		7ADE5AAA1BF32C88002CBF52 /* KMDisclaimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5AA91BF32C88002CBF52 /* KMDisclaimerView.m */; };
+		7ADE5AAD1BF47FDC002CBF52 /* KMFAQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5AAC1BF47FDC002CBF52 /* KMFAQModel.m */; };
 		7AE943DA1BC6536E00E50DD0 /* KMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE943D91BC6536E00E50DD0 /* KMLocationManager.m */; };
 		7AE943F41BCBA62300E50DD0 /* bg_new_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE943F11BCBA62300E50DD0 /* bg_new_1.png */; };
 		7AE943F51BCBA62300E50DD0 /* bg_new_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE943F21BCBA62300E50DD0 /* bg_new_2.png */; };
@@ -1035,6 +1037,10 @@
 		7A85A68E1B26F2A7000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = "AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/Release-iphonesimulator/libbaidumapapi.a"; sourceTree = "<group>"; };
 		7AB4E5131BB14DCE00DA84E6 /* head_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_pic.png; sourceTree = "<group>"; };
 		7AB4E5151BB25A9E00DA84E6 /* icon_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_new.png; sourceTree = "<group>"; };
+		7ADE5AA81BF32C88002CBF52 /* KMDisclaimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMDisclaimerView.h; sourceTree = "<group>"; };
+		7ADE5AA91BF32C88002CBF52 /* KMDisclaimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMDisclaimerView.m; sourceTree = "<group>"; };
+		7ADE5AAB1BF47FDC002CBF52 /* KMFAQModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMFAQModel.h; sourceTree = "<group>"; };
+		7ADE5AAC1BF47FDC002CBF52 /* KMFAQModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMFAQModel.m; sourceTree = "<group>"; };
 		7AE943D81BC6536E00E50DD0 /* KMLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLocationManager.h; sourceTree = "<group>"; };
 		7AE943D91BC6536E00E50DD0 /* KMLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLocationManager.m; sourceTree = "<group>"; };
 		7AE943F11BCBA62300E50DD0 /* bg_new_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_new_1.png; sourceTree = "<group>"; };
@@ -1666,8 +1672,12 @@
 			children = (
 				7A3722F31BEB08BB002CAD54 /* KMFreqQuestionView.h */,
 				7A3722F41BEB08BB002CAD54 /* KMFreqQuestionView.m */,
+				7ADE5AAB1BF47FDC002CBF52 /* KMFAQModel.h */,
+				7ADE5AAC1BF47FDC002CBF52 /* KMFAQModel.m */,
 				7A3722F61BEB32A5002CAD54 /* KMFreqQuestionDetailView.h */,
 				7A3722F71BEB32A5002CAD54 /* KMFreqQuestionDetailView.m */,
+				7ADE5AA81BF32C88002CBF52 /* KMDisclaimerView.h */,
+				7ADE5AA91BF32C88002CBF52 /* KMDisclaimerView.m */,
 				6FB7CC5F1795B42800068386 /* GroupMemberView.h */,
 				6FB7CC601795B42800068386 /* GroupMemberView.m */,
 			);
@@ -3190,6 +3200,7 @@
 				CEA700EE1606E0070001A7DD /* SBJsonStreamWriterAccumulator.m in Sources */,
 				CEA700EF1606E0070001A7DD /* SBJsonStreamWriterState.m in Sources */,
 				DBDA6762195C263B005A4407 /* vcGeoInfo.m in Sources */,
+				7ADE5AAA1BF32C88002CBF52 /* KMDisclaimerView.m in Sources */,
 				47A900F6177002140069B9AA /* PersonTableViewController.m in Sources */,
 				47A900DA176FFAFA0069B9AA /* UIImage+ImageWithUIView.m in Sources */,
 				CEA700F01606E0070001A7DD /* SBJsonTokeniser.m in Sources */,
@@ -3235,6 +3246,7 @@
 				DB8B7B5F1AC92DA200C4E3E6 /* AutoLocating.m in Sources */,
 				472BBCC117797D330042D094 /* RegexKitLite.m in Sources */,
 				DB33CCF219357EE900CBD534 /* trackingWithInterval.m in Sources */,
+				7ADE5AAD1BF47FDC002CBF52 /* KMFAQModel.m in Sources */,
 				DBEC6AC71A2F0BA200C2D082 /* NSString+UrlEncode.m in Sources */,
 				472BBCC517798D4C0042D094 /* MBProgressHUD.m in Sources */,
 				DB1743B61913865300F08C97 /* CustomChart.m in Sources */,
@@ -3404,7 +3416,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
+				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3421,8 +3433,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3451,7 +3463,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3508,7 +3520,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
+				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3557,7 +3569,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
+				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3574,8 +3586,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3604,7 +3616,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3621,8 +3633,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3651,7 +3663,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "fdc408cb-dc53-4eae-a691-15af6313d5ac";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

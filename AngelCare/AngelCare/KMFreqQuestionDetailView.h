@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KMFAQModel;
 
 @interface KMFreqQuestionDetailView : UIView
 
-- (void)do_init:(id)sender;
+- (void)do_init:(KMFAQModel*)model;
 
 @end

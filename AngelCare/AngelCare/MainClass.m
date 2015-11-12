@@ -2387,16 +2387,19 @@ BOOL    Is_Get1_Sw = false;
             [freqQuestionView do_init:self];
             [self Change_State:IF_FREQ_QUESTION];
             break;
+        case 2100:      // 免责声明
+            [disclaimerView do_init:self];
+            [self Change_State:IF_FREQ_DISCLAIMER];
+            break;
         default:
             break;
     }
 }
 
 #pragma mark - 问题详情
-- (void)pushFreqQuestionDetailViewWithQuestion:(NSString *)question
-                                       Answers:(NSString *)answers
+- (void)pushFreqQuestionDetailViewWithModel:(KMFAQModel *)model
 {
-    [freqQuestionDetailView do_init:self];
+    [freqQuestionDetailView do_init:model];
     [self Change_State:IF_FREQ_QUESTION_DETAIL];
 }
 
@@ -3317,6 +3320,9 @@ BOOL    Is_Get1_Sw = false;
         case IF_FREQ_QUESTION_DETAIL:
             [freqQuestionDetailView removeFromSuperview];
             break;
+        case IF_FREQ_DISCLAIMER:
+            [disclaimerView removeFromSuperview];
+            break;
         default:
             break;
     }
@@ -3712,6 +3718,12 @@ BOOL    Is_Get1_Sw = false;
                 TitleName.text = NSLocalizedStringFromTable(@"FreqQuestionDetailTitle", INFOPLIST, nil);
                 Bu_Save.hidden = YES;
                 [self insertSubview:freqQuestionDetailView belowSubview:insertView];
+                break;
+            case IF_FREQ_DISCLAIMER:
+                NSLog(@"IF_FREQ_DISCLAIMER");
+                TitleName.text = NSLocalizedStringFromTable(@"DisclaimerTitle", INFOPLIST, nil);
+                Bu_Save.hidden = YES;
+                [self insertSubview:disclaimerView belowSubview:insertView];
                 break;
             default:
                 NSLog(@"*** Change_State NewState unhandle: %d", NewState);

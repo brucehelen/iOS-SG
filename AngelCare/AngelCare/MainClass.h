@@ -66,6 +66,10 @@
 #import "KMFreqQuestionView.h"
 #import "KMFreqQuestionDetailView.h"
 
+#import "KMDisclaimerView.h"
+
+#import "KMFAQModel.h"
+
 @protocol MainClassDelegate <NSObject>
 
 @optional
@@ -194,8 +198,10 @@
     
     IBOutlet KMFreqQuestionView *freqQuestionView;
     IBOutlet KMFreqQuestionDetailView *freqQuestionDetailView;
-    
-    
+
+    // 免责声明
+    IBOutlet KMDisclaimerView *disclaimerView;
+
     //本地端儲存資料
     NSMutableArray  *UserData;   //佩帶者姓名
     NSMutableArray  *PhoneData;  //佩帶者電話
@@ -552,7 +558,6 @@
 
 - (void)displayTimerStop;
 
-- (void)pushFreqQuestionDetailViewWithQuestion:(NSString *)question
-                                       Answers:(NSString *)answers;
+- (void)pushFreqQuestionDetailViewWithModel:(KMFAQModel *)model;
 
 @end

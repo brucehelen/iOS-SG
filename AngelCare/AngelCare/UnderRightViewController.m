@@ -52,6 +52,7 @@ long long NotiLogin_expectedLength;        //檔案大小
     NSArray *set2 = [NSArray arrayWithObjects:
                      NSLocalizedStringFromTable(@"Setting_Notification", INFOPLIST, nil),
                      NSLocalizedStringFromTable(@"Setting_F&Q", INFOPLIST, nil),
+                     NSLocalizedStringFromTable(@"Setting_Disclaimer", INFOPLIST, nil),
                      NSLocalizedStringFromTable(@"Setting_Logout", INFOPLIST, nil),
                      version, nil];
 
@@ -143,7 +144,6 @@ long long NotiLogin_expectedLength;        //檔案大小
                     [(MainClass *)self.slidingViewController.topViewController.view Other_MouseDown:1001];
                 }];
             } break;
-                
             case 1://佩戴者管理
             {
                 [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
@@ -162,11 +162,18 @@ long long NotiLogin_expectedLength;        //檔案大小
                     [(MainClass *)self.slidingViewController.topViewController.view Other_MouseDown:1100];
                 }];
             } break;
-            case 2:     //登出
+            case 2:
+            {
+                NSLog(@"免责声明");
+                [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
+                    [(MainClass *)self.slidingViewController.topViewController.view Other_MouseDown:2100];
+                }];
+            } break;
+            case 3:     //登出
                 NSLog(@"User Log out");
                 [self LogOut];
                 break;
-            case 3:     //Version
+            case 4:     //Version
                 NSLog(@"Version");
                 break;
             default:

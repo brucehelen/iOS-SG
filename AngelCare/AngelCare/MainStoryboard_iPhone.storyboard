@@ -1115,6 +1115,7 @@
                             <outlet property="bgView8" destination="TS2-RF-ynQ" id="pTs-gq-a3T"/>
                             <outlet property="bgView9" destination="ghU-C2-0gh" id="hfI-Ct-JCL"/>
                             <outlet property="chartCustom" destination="2mx-3N-zDh" id="eYX-pm-fh9"/>
+                            <outlet property="disclaimerView" destination="gSg-zt-LfT" id="bBQ-ic-pEv"/>
                             <outlet property="freqQuestionDetailView" destination="6SV-U1-2nR" id="Zvh-Y3-AdY"/>
                             <outlet property="freqQuestionView" destination="j7Z-cu-lz5" id="ock-L1-Scu"/>
                             <outlet property="geoFS" destination="USW-k9-qeu" id="yN7-cU-qou"/>
@@ -4756,8 +4757,34 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                 <view contentMode="scaleToFill" id="6SV-U1-2nR" userLabel="KMFreqQuestionDetail - 问题详情" customClass="KMFreqQuestionDetailView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qkU-z9-6op">
+                            <rect key="frame" x="0.0" y="79" width="320" height="357"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                        </scrollView>
+                    </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="scrollView" destination="qkU-z9-6op" id="8Ro-AX-L8L"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" id="gSg-zt-LfT" userLabel="KMDisclaimerView - 免责声明" customClass="KMDisclaimerView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Mgf-L1-sWe">
+                            <rect key="frame" x="0.0" y="77" width="320" height="357"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                        </scrollView>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="scrollView" destination="Mgf-L1-sWe" id="ZfM-ZS-NgS"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" id="eiW-GO-F4m" userLabel="ShowImage" customClass="ShowImage">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>

@@ -25,7 +25,7 @@
 // 国内："Bu10_Str" = "自建定位";
 // APP图标切换
 // Setting中position隐藏，贴心设定
-#define PROGRAM_VER_ML
+//#define PROGRAM_VER_ML
 
 // 国内版本 @"http://watch.medquotient.com:8080/angelcare"
 // 马来版本 @"http://info.mhealth-management.com:9000/angelcare/"
