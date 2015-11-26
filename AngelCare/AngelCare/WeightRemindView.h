@@ -38,6 +38,15 @@
     IBOutlet UITextField *idealWeightTxt;
     IBOutlet UITextField *idealfatTxt;
 
+    __weak IBOutlet UILabel *weightTLabel;
+    
+    __weak IBOutlet UILabel *fatTLabel;
+    
+    // 目标体重
+    __weak IBOutlet UITextField *weightT;
+    // 目标体脂
+    __weak IBOutlet UITextField *fatT;
+
     int sex;
 
     id  MainObj;

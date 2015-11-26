@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s1a-hg-HVb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="s1a-hg-HVb">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -2972,84 +2972,52 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <animations/>
                         </imageView>
-                        <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qTm-i5-2j1">
-                            <rect key="frame" x="40" y="531" width="36" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="btn_check_off.png">
-                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="v0l-cW-k7q"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="短信讀取" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ogp-49-YOO">
-                            <rect key="frame" x="84" y="539" width="236" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" id="dQU-01-Hzr">
                             <rect key="frame" x="0.0" y="101" width="320" height="560"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
-                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vzK-oT-tef">
-                                    <rect key="frame" x="27" y="0.0" width="36" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="btn_check_off.png">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="THW-Qj-yrO"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SOS键长按" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vWh-Vp-mOe">
-                                    <rect key="frame" x="71" y="0.0" width="236" height="37"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="時區" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qvx-e1-Yi4">
+                                    <rect key="frame" x="13" y="319" width="80" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="04e-gz-avA">
-                                    <rect key="frame" x="27" y="75" width="36" height="37"/>
+                                <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3a-Hb-E09">
+                                    <rect key="frame" x="101" y="314" width="198" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="btn_check_off.png">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="臺北">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
                                     <connections>
-                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="e8G-PV-bhn"/>
+                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="dcH-HW-kv5"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="亲情键长按" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cJ3-Se-NF4">
-                                    <rect key="frame" x="71" y="75" width="236" height="37"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="語言" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LS8-Mw-FkZ">
+                                    <rect key="frame" x="13" y="372" width="80" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q0m-fG-gqg">
+                                    <rect key="frame" x="101" y="365" width="198" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="Y1K-kF-Ud4"/>
+                                    </connections>
+                                </button>
                                 <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9rK-8s-O6J">
-                                    <rect key="frame" x="27" y="150" width="36" height="37"/>
+                                    <rect key="frame" x="18" y="8" width="36" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -3065,113 +3033,22 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="防打擾" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H33-AP-EUO">
-                                    <rect key="frame" x="71" y="150" width="236" height="37"/>
+                                    <rect key="frame" x="62" y="8" width="236" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾选后,只有预先填写的联络人(紧急电话,亲情电话)才能够拨打电话到你的手表" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CdC-t8-NRJ">
-                                    <rect key="frame" x="71" y="180" width="240" height="35"/>
+                                    <rect key="frame" x="22" y="45" width="280" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button hidden="YES" opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kn9-hn-akj">
-                                    <rect key="frame" x="27" y="212" width="36" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="btn_check_off.png">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="PxH-Ai-b23"/>
-                                    </connections>
-                                </button>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SOS简讯" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="luy-Ta-9YQ">
-                                    <rect key="frame" x="71" y="212" width="236" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the SOS Key for a long time to send SOS distress message." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hSU-jR-b6L">
-                                    <rect key="frame" x="71" y="32" width="240" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the affection key for a long time to make a phone call." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGg-Ke-yuW">
-                                    <rect key="frame" x="71" y="110" width="240" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾选后,按下手表的求救按钮、亲友的行动电话将会接收到求救短信" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oXc-iE-NPk">
-                                    <rect key="frame" x="71" y="245" width="240" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button hidden="YES" opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Ud-Qr-c29">
-                                    <rect key="frame" x="27" y="295" width="36" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="btn_check_off.png">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="kWm-lV-qGQ"/>
-                                    </connections>
-                                </button>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Voice-mail recognition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ee6-TX-ZsV">
-                                    <rect key="frame" x="71" y="303" width="236" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OOw-1l-Fpa">
-                                    <rect key="frame" x="71" y="326" width="236" height="130"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.98823529409999999" green="0.80784313730000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <string key="text">When activating this function, voice-mail will be recognized only when pressing SOS button. If the function is activated, care-givers receiving the call must dial “1” on their Keypad within 7 seconds after answering or the call will be automatically transferred to the next pre-programmed number.</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="同步時間" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dkY-69-sur">
-                                    <rect key="frame" x="20" y="300" width="280" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.93333339689999995" green="0.79607850309999995" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uf2-Ng-MaH">
-                                    <rect key="frame" x="20" y="325" width="280" height="30"/>
+                                    <rect key="frame" x="13" y="162" width="294" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3185,70 +3062,37 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f1O-PE-RpT" userLabel="Btn Remote synch">
-                                    <rect key="frame" x="20" y="360" width="280" height="30"/>
+                                    <rect key="frame" x="18" y="240" width="280" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="立即同步">
                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <action selector="ibaRemoteSynch:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="Wi3-Ws-0lq"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This function can be updated immediately" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Aby-Dc-mym">
-                                    <rect key="frame" x="55" y="385" width="220" height="40"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="同步時間" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dkY-69-sur">
+                                    <rect key="frame" x="13" y="134" width="294" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
-                                    <color key="backgroundColor" red="0.9882352941176471" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="時區" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qvx-e1-Yi4">
-                                    <rect key="frame" x="13" y="430" width="107" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f3a-Hb-E09">
-                                    <rect key="frame" x="128" y="430" width="162" height="31"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="臺北">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="dcH-HW-kv5"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="語言" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LS8-Mw-FkZ">
-                                    <rect key="frame" x="13" y="460" width="107" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="backgroundColor" red="0.93333339689999995" green="0.79607850309999995" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q0m-fG-gqg">
-                                    <rect key="frame" x="128" y="460" width="162" height="31"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="立即同步" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nNF-KI-43Y">
+                                    <rect key="frame" x="13" y="205" width="294" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
-                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="Button">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="changeEnable:" destination="m2a-Jo-2Mo" eventType="touchUpInside" id="Y1K-kF-Ud4"/>
-                                    </connections>
-                                </button>
+                                    <color key="backgroundColor" red="0.93333339689999995" green="0.79607850309999995" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <animations/>
                         </scrollView>
@@ -3256,27 +3100,15 @@
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="SosSMSTip" destination="oXc-iE-NPk" id="gcX-hv-yBm"/>
                         <outlet property="btnRS" destination="f1O-PE-RpT" id="U4H-pp-dmA"/>
-                        <outlet property="btnVoiceMail" destination="3Ud-Qr-c29" id="QH1-5j-jYZ"/>
                         <outlet property="dontBotherBtn" destination="9rK-8s-O6J" id="Ch1-vh-J9V"/>
                         <outlet property="dontBotherLbl" destination="H33-AP-EUO" id="ufR-Pk-e6b"/>
                         <outlet property="dontBotherTipLabel" destination="CdC-t8-NRJ" id="Weg-Qt-5Wv"/>
-                        <outlet property="familyBtn" destination="04e-gz-avA" id="s85-WE-Hue"/>
-                        <outlet property="familyLbl" destination="cJ3-Se-NF4" id="LJn-S3-93f"/>
-                        <outlet property="familyTipLabel" destination="mGg-Ke-yuW" id="hDH-qw-G1M"/>
                         <outlet property="languageBtn" destination="Q0m-fG-gqg" id="034-Tk-dNU"/>
                         <outlet property="languageLbl" destination="LS8-Mw-FkZ" id="DfY-lN-VsO"/>
-                        <outlet property="lblSync" destination="Aby-Dc-mym" id="i8h-YW-9ht"/>
                         <outlet property="scrView" destination="dQU-01-Hzr" id="8F8-7p-619"/>
-                        <outlet property="smsReadBtn" destination="qTm-i5-2j1" id="OQh-sU-L9A"/>
-                        <outlet property="smsReadLbl" destination="Ogp-49-YOO" id="W9K-j6-42y"/>
-                        <outlet property="sosLongBtn" destination="vzK-oT-tef" id="H5q-lH-rKl"/>
-                        <outlet property="sosLongLbl" destination="vWh-Vp-mOe" id="ugf-HT-ysC"/>
-                        <outlet property="sosLongPressTipLabel" destination="hSU-jR-b6L" id="PJ3-gs-9Dq"/>
-                        <outlet property="sosSMSBtn" destination="kn9-hn-akj" id="Ipx-vN-fM7"/>
-                        <outlet property="sosSMSLbl" destination="luy-Ta-9YQ" id="uJv-F9-2fo"/>
                         <outlet property="syncBtn" destination="Uf2-Ng-MaH" id="p9R-71-6qj"/>
+                        <outlet property="syncImLabel" destination="nNF-KI-43Y" id="I3i-GQ-TEJ"/>
                         <outlet property="syncLbl" destination="dkY-69-sur" id="7OT-wM-O3R"/>
                         <outlet property="timeareaBtn" destination="f3a-Hb-E09" id="kOS-5h-zWT"/>
                         <outlet property="timeareaLbl" destination="Qvx-e1-Yi4" id="HDs-5z-ey0"/>
@@ -4538,16 +4370,8 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="Gsc-Db-Xwy">
-                            <rect key="frame" x="8" y="92" width="304" height="321"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <date key="date" timeIntervalSinceReferenceDate="465187811.70777202">
-                                <!--2015-09-29 02:50:11 +0000-->
-                            </date>
-                        </datePicker>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oDv-ix-N49" userLabel="确定">
-                            <rect key="frame" x="212" y="421" width="72" height="30"/>
+                            <rect key="frame" x="166" y="405" width="72" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" title="确定"/>
@@ -4556,7 +4380,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1e4-2d-rjF" userLabel="取消">
-                            <rect key="frame" x="36" y="421" width="76" height="30"/>
+                            <rect key="frame" x="82" y="405" width="76" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" title="取消"/>
@@ -4567,9 +4391,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="datePicker" destination="Gsc-Db-Xwy" id="JRa-XI-9iJ"/>
-                    </connections>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" id="4kq-Hr-Ymo" userLabel="My Act View" customClass="MyActView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -6191,7 +6012,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="年齡" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cQd-SB-Yph">
@@ -6199,7 +6019,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Iqa-jT-hzm">
@@ -6286,6 +6105,48 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="目标体重" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3iE-Ii-FVo">
+                                    <rect key="frame" x="6" y="210" width="108" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MAD-uf-vbj">
+                                    <rect key="frame" x="258" y="210" width="62" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="目标体脂" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MFr-Ru-xJo">
+                                    <rect key="frame" x="6" y="248" width="108" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="tOj-S9-qnY">
+                                    <rect key="frame" x="122" y="244" width="120" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                </textField>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ula-4A-TWP">
+                                    <rect key="frame" x="258" y="248" width="62" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="x3M-lp-VbN">
+                                    <rect key="frame" x="122" y="206" width="120" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                </textField>
                             </subviews>
                             <animations/>
                         </scrollView>
@@ -6296,6 +6157,8 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="bodyfatLbl" destination="7ny-dS-Oyv" id="QtE-d8-QcM"/>
                         <outlet property="boyLbl" destination="C3K-Eb-jCt" id="0EK-4V-wXD"/>
                         <outlet property="cmLbl" destination="9dc-IY-MlH" id="rJM-zt-Ql3"/>
+                        <outlet property="fatT" destination="tOj-S9-qnY" id="JSi-yf-uMv"/>
+                        <outlet property="fatTLabel" destination="MFr-Ru-xJo" id="TKi-Rq-68h"/>
                         <outlet property="fatTxt" destination="3is-j3-87p" id="fj8-Q5-mP5"/>
                         <outlet property="girlBtn" destination="7Tl-Ud-TAy" id="0lX-NT-v7H"/>
                         <outlet property="girlLbl" destination="9JE-jm-X1C" id="HE2-v1-Gsk"/>
@@ -6308,6 +6171,8 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="tallLbl" destination="qDH-X7-tuI" id="ajr-oi-E13"/>
                         <outlet property="tallTxt" destination="wg6-hB-hIn" id="vf3-jr-VeO"/>
                         <outlet property="weightLbl" destination="EeU-Nk-5BY" id="fvv-t2-108"/>
+                        <outlet property="weightT" destination="x3M-lp-VbN" id="Pb4-qu-Cdm"/>
+                        <outlet property="weightTLabel" destination="3iE-Ii-FVo" id="Hlh-lc-qqz"/>
                         <outlet property="weightTxt" destination="e2C-zK-lOC" id="bTp-40-zQL"/>
                         <outlet property="yearLbl" destination="cQd-SB-Yph" id="LJW-uQ-au0"/>
                         <outlet property="yearTxt" destination="Iqa-jT-hzm" id="STr-cy-ZZE"/>
@@ -7054,7 +6919,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                     </connections>
                 </view>
             </objects>
-            <point key="canvasLocation" x="181" y="-387"/>
+            <point key="canvasLocation" x="180.5" y="-387.5"/>
         </scene>
         <!--Under Right View Controller-->
         <scene sceneID="5zV-vQ-Y0V">

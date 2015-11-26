@@ -4,6 +4,9 @@
 
 #import <Availability.h>
 
+#ifndef _3GSW_PREFIX_PCH_
+#define _3GSW_PREFIX_PCH_
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -23,18 +26,21 @@
 // 还有几个地方需要手动修改
 // 马来："Bu10_Str" = "电子围栏";
 // 国内："Bu10_Str" = "自建定位";
-// APP图标切换
-// Setting中position隐藏，贴心设定
+// APP图标切换：马来英文图标，中国中文图标
+// 国内: Setting中position隐藏，贴心设定
 //#define PROGRAM_VER_ML
 
 // 国内版本 @"http://watch.medquotient.com:8080/angelcare"
 // 马来版本 @"http://info.mhealth-management.com:9000/angelcare/"
 // 苏州服务器 @"http://www.missionhealthtec.com:8080/angelcare"
-#ifdef PROGRAM_VER_ML
-    #define INK_Url_1 @"http://info.mhealth-management.com:9000/angelcare/"
-#else
-    #define INK_Url_1 @"http://watch.medquotient.com:8080/angelcare"
-#endif
+// 马来西亚服务器
+#define ML_SERVER_URL       @"http://info.mhealth-management.com:9000/angelcare/"
+// 中国服务器
+#define CN_SERVER_URL       @"http://watch.medquotient.com:8080/angelcare"
+// 测试服务器
+#define TEST_SERVER_URL     @"http://120.25.225.5:8080"
+
+extern NSString *INK_Url_1;
 
 
-
+#endif /* _3GSW_PREFIX_PCH_ */

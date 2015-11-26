@@ -3413,7 +3413,8 @@ BOOL    Is_Get1_Sw = false;
             case IF_USERDATE://配戴者資訊
                 TitleName.text = NSLocalizedStringFromTable(@"Bu1_Str", INFOPLIST, nil);
 
-                [self insertSubview:UserDateView belowSubview:insertView];
+                [self insertSubview:UserDateView
+                       belowSubview:insertView];
 
                 //設備電話判斷
                 if ([strT isEqualToString:@"YES"]) {
@@ -3578,6 +3579,7 @@ BOOL    Is_Get1_Sw = false;
                 break;
 
             case IF_WEIGHTREMIND://體重資訊
+                NSLog(@"IF_WEIGHTREMIND");
                 [TitleName setText:NSLocalizedStringFromTable(@"HS_Weight", INFOPLIST, nil)];
                 [Bu_Save setHidden:NO];
                 [self insertSubview:WeightRemindView belowSubview:insertView];
@@ -12041,33 +12043,26 @@ BOOL    Is_Get1_Sw = false;
 
 
 //解析通話限制
--(void)Http_CallInfo
+- (void)Http_CallInfo
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Call_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
+
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
+
     NSLog(@"Http_CallInfo json dic = %@",usersOne);
-    
-//    [(CallLimit *)CallLimit Do_Init:self];
-    
-    if( [status isEqualToString:str1]  )
-    {
-//        [self AlertTitleShow:NSLocalizedStringFromTable(@"HS_Weight", INFOPLIST, nil) andMessage:NSLocalizedStringFromTable(@"HS_SAVE_OK", INFOPLIST, nil)];
+
+    if([status isEqualToString:str1]) {
         [(DeviceSet *)DeviceSet Set_Init_Call:usersOne];
         //通話限制
         [self Change_State:IF_DEVSET];
-//        [self Change_State:IF_CALL];
         [HUD hide:YES];
-        
-    }else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [self Check_Error:str1];
         [HUD hide:YES];

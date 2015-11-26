@@ -231,12 +231,6 @@
     isFri = NO;
     isSat = NO;
     isSun = NO;
-    
-    
-    
-
-    
-    
 }
 
 //回診提醒隱藏星期按鈕
@@ -301,7 +295,7 @@
         if ([[dic objectForKey:@"week4"] isEqualToString:@"1"]) {
             [[TheBtn layer] setBackgroundColor:selbackgroundColor.CGColor];
             [TheBtn setTitleColor:seltitleColor forState:UIControlStateNormal];
-            isWed = YES;
+            isThe = YES;
         }
         
         if ([[dic objectForKey:@"week5"] isEqualToString:@"1"]) {
@@ -472,7 +466,7 @@
 //儲存吃藥提醒設定
 -(void)SaveMed
 {
-    NSLog(@"save");
+    NSLog(@"SaveMed");
     
     NSDateFormatter *dateFotmatter = [[NSDateFormatter alloc] init];
     [dateFotmatter setDateFormat:@"HH"];

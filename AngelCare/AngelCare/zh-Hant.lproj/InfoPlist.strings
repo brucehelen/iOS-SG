@@ -604,8 +604,8 @@
 "lblRemind1Title" = "世界卫生组织高血压判断标准";
 "lblRemind1Content" = "1999年世界卫生组织(WHO)/国际高血压协会(ISH)《高血压防治指南》及中国卫生部/中国高血压联盟《1999 中国高血压防治指南》规定：";
 "lblRemind2Title" = "高血压的分级标准";
-"lblRemind3Title" = "国民健康局";
-"lblRemind3Sup" = "以上引用来源：国民健康局";
+"lblRemind3Title" = "";
+"lblRemind3Sup" = "";
 //
 "Remind" = "Remind";
 "IsTestAcc" = "此帐号为体验帐号，请申请新帐号将可使用此功能。";

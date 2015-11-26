@@ -27,9 +27,9 @@
 {
     self.questionLabel = [[UILabel alloc] init];
     [self.scrollView addSubview:self.questionLabel];
-    self.questionLabel.frame = CGRectMake(0, EDGE_OFFSET, self.scrollView.frame.size.width, EDGE_OFFSET * 3);
     self.questionLabel.textAlignment = NSTextAlignmentCenter;
     self.questionLabel.font = [UIFont boldSystemFontOfSize:15];
+    self.questionLabel.numberOfLines = 0;
     
     self.answerLabel = [[UILabel alloc] init];
     [self.scrollView addSubview:self.answerLabel];
@@ -39,11 +39,20 @@
 {
     self.questionLabel.text = model.question;
 
-    CGRect rect = [model.answer boundingRectWithSize:CGSizeMake(self.scrollView.bounds.size.width - 2*EDGE_OFFSET, MAXFLOAT)
-                                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                                    attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}
-                                                       context:nil];
-    self.answerLabel.frame = CGRectMake(EDGE_OFFSET, EDGE_OFFSET*4 + 10, rect.size.width, ceil(rect.size.height));
+    CGRect rect = [model.question boundingRectWithSize:CGSizeMake(self.scrollView.bounds.size.width - 2*EDGE_OFFSET, MAXFLOAT)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}
+                                               context:nil];
+    self.questionLabel.frame = CGRectMake(EDGE_OFFSET, EDGE_OFFSET*3, ceil(rect.size.width) + 5, ceil(rect.size.height));
+
+    rect = [model.answer boundingRectWithSize:CGSizeMake(self.scrollView.bounds.size.width - 2*EDGE_OFFSET, MAXFLOAT)
+                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                   attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}
+                                      context:nil];
+    self.answerLabel.frame = CGRectMake(EDGE_OFFSET,
+                                        EDGE_OFFSET*3 + self.questionLabel.frame.size.height + 10,
+                                        rect.size.width,
+                                        ceil(rect.size.height));
     self.answerLabel.font = [UIFont systemFontOfSize:14];
     self.answerLabel.text = model.answer;
     self.answerLabel.numberOfLines = 0;

@@ -7,6 +7,11 @@
 "Setting_Disclaimer" = "免责声明";
 "NONET" = "网路连线异常，请稍候再尝试";
 
+/* 服务器URL配置 */
+"URL_address" = "服务器地址";
+"URL_address_message" = "请选择服务器URL地址";
+
+
 /**********Login***************/
 "StartUse" = "Start";
 "StartSkip" = "SKIP";
@@ -83,6 +88,8 @@
 "Bu9_Str" = "贴心设定";
 
 // bruce@20150930国内版本修改首页按钮文字
+// 马来："Bu10_Str" = "电子围栏";
+// 国内："Bu10_Str" = "自建定位";
 //"Bu10_Str" = "电子围栏";
 "Bu10_Str" = "自建定位";
 
@@ -226,7 +233,7 @@
 
 "HS_Measure" = "量测提醒";
 "HS_CALL" = "通话限制";
-"HS_Setting" = "硬体设定";
+"HS_Setting" = "硬件配置";
 "HS_Setting_SMS" = "短信读取";
 
 // SOS
@@ -320,7 +327,7 @@
 "HS_BORemindTxt" = "低氧 SpO2 < 90%\r\n正常 SpO2 > 95%";
 "HS_BOCon" = "血氧浓度";
 
-"HS_Weight" = "体重资讯";
+"HS_Weight" = "体重信息";
 "HS_W_SEX" = "性别";
 "HS_W_BOY" = "男";
 "HS_W_GIRL" = "女";
@@ -336,7 +343,7 @@
 "HS_W_PERSENT" = "%";
 "HS_BS_SELECTTIME" = "选择时间\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r";
 
-"HS_Sport" = "计步器";
+"HS_Sport" = "运动信息";
 "HS_S_STEPLENGTH" = "步长";
 "HS_S_IDDISTANCE" = "目标距离";
 "HS_S_IDSTEP" = "目标步数";
@@ -457,7 +464,7 @@
 //设定-关于我们
 "Setting_AboutUS" = "关于我们";
 //设定-登出
-"Setting_Logout" = "登出";
+"Setting_Logout" = "退出";
 
 /**************************/
 //量测纪录
@@ -493,11 +500,6 @@
 /*************个人讯息*********/
 
 "Person_Send" = "发送给";
-
-
-
-
-
 
 /*************系统事件*********/
 
@@ -600,7 +602,7 @@
 "HigherThan" = "高于";
 "SendAlarm" = "发出警示";
 //
-"ExceedWillSendAlarm" = "高于                            将发出警示";
+"ExceedWillSendAlarm" = "高于                                将发出警示";
 "BelowWillSendAlarm" = "低于           %将会发出警示";
 
 "bgBloodMaxValue" = "糖尿病的血糖临界值";
@@ -612,8 +614,8 @@
 "lblRemind1Title" = "世界卫生组织高血压判断标准";
 "lblRemind1Content" = "1999年世界卫生组织(WHO)/国际高血压协会(ISH)《高血压防治指南》及中国卫生部/中国高血压联盟《1999 中国高血压防治指南》规定：";
 "lblRemind2Title" = "高血压的分级标准";
-"lblRemind3Title" = "国民健康局";
-"lblRemind3Sup" = "以上引用来源：国民健康局";
+"lblRemind3Title" = "";
+"lblRemind3Sup" = "";
 //
 "Remind" = "提醒";
 "IsTestAcc" = "此帐号为体验帐号，请申请新帐号将可使用此功能。";

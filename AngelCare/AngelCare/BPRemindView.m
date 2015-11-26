@@ -58,11 +58,11 @@
     lblSendAlarm.hidden = NO;
     lblEnTxt1.hidden = YES;
     lblEnTxt2.hidden = YES;
-    lblRemind1Content.hidden = NO;
-    lblRemind1Title.hidden = NO;
-    imgRemind1.hidden = NO;
-    viewRemind2.hidden = NO;
-    viewRemind3.hidden = NO;
+    lblRemind1Content.hidden = YES;
+    lblRemind1Title.hidden = YES;
+    imgRemind1.hidden = YES;
+    viewRemind2.hidden = YES;
+    viewRemind3.hidden = YES;
 
     titleLbl.text = NSLocalizedStringFromTable(@"BPThresholdTitle", INFOPLIST, nil);
     lblHigherThan.text = NSLocalizedStringFromTable(@"HigherThan", INFOPLIST, nil);
@@ -114,7 +114,7 @@
     bpsUplimit.delegate = self;
     bgLbl.layer.cornerRadius = 8.0f;
     [bgLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
-    scrollView.contentSize = CGSizeMake(280, 850);
+    scrollView.contentSize = CGSizeMake(280, 0);
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         scrollView.contentSize = CGSizeMake(768, 1000);

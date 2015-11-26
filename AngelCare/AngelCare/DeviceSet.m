@@ -38,6 +38,8 @@
     [self.btnRS setTitle:NSLocalizedStringFromTable(@"Device_Set_btnRS", INFOPLIST, nil)
                 forState:UIControlStateNormal];
 
+    syncImLabel.text = NSLocalizedStringFromTable(@"Device_Set_btnRS", INFOPLIST, nil);
+
     if (dic) {
         switch1 = [dic objectForKey:@"Switch1"];
         switch2 = [dic objectForKey:@"Switch2"];
@@ -138,15 +140,8 @@
 //設定開啓或關閉
 -(IBAction)changeEnable:(id)sender
 {
-    NSLog(@"sender tag = %i",[(UIView*)sender tag]);
-    
-    NSLog(@"switch 1 = %@",switch1);
-    NSLog(@"switch 2 = %@",switch2);
-    NSLog(@"switch 3 = %@",switch3);
-    NSLog(@"switch 4 = %@",switch4);
-    NSLog(@"switch 5 = %@",switch5);
-    NSLog(@"switch 6 = %@",switch6);
-    
+    NSLog(@"sender tag = %ld",[(UIView*)sender tag]);
+
     switch ([(UIView*)sender tag]) {
         case 101:
             if ([switch1 isEqualToString:@"on"]) {
@@ -160,7 +155,6 @@
                 NSLog(@"switch1 on %@", switch1);
             }
             break;
-            
         case 102:
             if ([switch2 isEqualToString:@"on"]) {
                 [sosLongBtn setImage:[UIImage imageNamed:BTN_NOT_CHECK] forState:UIControlStateNormal];
@@ -222,10 +216,8 @@
         case 107:
             [self changeLanguage];
             break;
-
     }
 }
-
 
 - (void)Do_Init:(id)sender
 {
@@ -255,15 +247,13 @@
     [sosSMSLbl setTextColor:[UIColor blackColor]];
     [timeareaLbl setTextColor:[UIColor blackColor]];
     [languageLbl setTextColor:[UIColor blackColor]];
-    
+
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenHeight = screenRect.size.height + 280;
 
     [scrView setContentSize:CGSizeMake(320, screenHeight)];
 
     [syncLbl setText:HS_Call_Sync];
-
-    [syncBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 
 - (void)SaveDevSet
@@ -364,92 +354,48 @@
                       
                       return cell;
                   }];
-    
-    // Setting custom alert height
+
     self.alert.height = 350;
-    
-    // configure actions to perform
-    
-    
-    
+
     [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex){
-        //		self.resultLabel.text = [NSString stringWithFormat:@"Selected Index\nSection: %d Row: %d", selectedIndex.section, selectedIndex.row];
-        
-        
         [timeareaBtn setTitle:[NSString stringWithFormat:@"%@",[[timezoneArr objectAtIndex:selectedIndex.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] forState:UIControlStateNormal];
-         
-         
-//        areaStr = [NSString stringWithFormat:@"%i",selectedIndex.row];
         areaStr = [NSString stringWithFormat:@"%@",[[timezoneArr objectAtIndex:selectedIndex.row] objectForKey:@"value"]];
         NSLog(@"area Str = %@",areaStr);
         
     } andCompletionBlock:^{
-        //		self.resultLabel.text = @"Cancel Button Pressed\nNo Cells Selected";
-        
     }];
-    
     [self.alert show];
 }
 
-
-
 //改變時區
--(void)changeLanguage
+- (void)changeLanguage
 {
-    
-    
-    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:@"Cancel" numberOfRows:^NSInteger (NSInteger section)
-                  {
-                      /*
-                       if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
-                       return 1;
-                       else
-                       return [self.rowsNumField.text integerValue];
-                       */
+    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:@"Cancel"
+                                      numberOfRows:^NSInteger (NSInteger section) {
                       return [langArr count];
                   }
-                                          andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath)
-                  {
-                      static NSString *CellIdentifier = @"CellIdentifier";
-                      UITableViewCell *cell = [anAlert.table dequeueReusableCellWithIdentifier:CellIdentifier];
-                      if (cell == nil)
-                          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                      
-                      //                      cell.textLabel.text = [NSString stringWithFormat:@"Section %d Row %d", indexPath.section, indexPath.row];
-                      
-                      cell.textLabel.text = [NSString stringWithFormat:@"%@",[[langArr objectAtIndex:indexPath.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]];
-                      
-                      
-                      
-                      return cell;
-                  }];
-    
-    // Setting custom alert height
+                                          andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath) {
+                                              static NSString *CellIdentifier = @"CellIdentifier";
+                                              UITableViewCell *cell = [anAlert.table dequeueReusableCellWithIdentifier:CellIdentifier];
+                                              if (cell == nil)
+                                                  cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                                              cell.textLabel.text = [NSString stringWithFormat:@"%@",[[langArr objectAtIndex:indexPath.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]];
+                                              return cell;
+                                          }];
     self.alert.height = 350;
-    
-    // configure actions to perform
-    
-    
-    
+
     [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex){
-        //		self.resultLabel.text = [NSString stringWithFormat:@"Selected Index\nSection: %d Row: %d", selectedIndex.section, selectedIndex.row];
-        
-        
         [languageBtn setTitle:[NSString stringWithFormat:@"%@",[[langArr objectAtIndex:selectedIndex.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] forState:UIControlStateNormal];
-//        langStr = [NSString stringWithFormat:@"%i",selectedIndex.row];
+
         langStr = [NSString stringWithFormat:@"%@",[[langArr objectAtIndex:selectedIndex.row] objectForKey:@"value"]];
         NSLog(@"Lang Str = %@",langStr);
     } andCompletionBlock:^{
-        //		self.resultLabel.text = @"Cancel Button Pressed\nNo Cells Selected";
-        
     }];
-    
+
     [self.alert show];
 }
 
-
-
--(void)ChangeTimeZoneTitle:(NSString *)name SelectNumber:(NSString *)number;
+- (void)ChangeTimeZoneTitle:(NSString *)name SelectNumber:(NSString *)number;
 {
     NSLog(@"time zone title = %@ %@",name , number);
     [timeareaBtn setTitle:name forState:UIControlStateNormal];
@@ -457,7 +403,7 @@
 }
 
 
--(void)ChangeLanguageTitle:(NSString *)name SelectNumber:(NSString *)number
+- (void)ChangeLanguageTitle:(NSString *)name SelectNumber:(NSString *)number
 {
     [languageBtn setTitle:name forState:UIControlStateNormal];
     langStr = number;
@@ -475,17 +421,13 @@
                       UITableViewCell *cell = [anAlert.table dequeueReusableCellWithIdentifier:CellIdentifier];
                       if (cell == nil)
                           cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                      
-                      //                      cell.textLabel.text = [NSString stringWithFormat:@"Section %d Row %d", indexPath.section, indexPath.row];
                           cell.textLabel.text = [NSString stringWithFormat:@"%@",[[synctimearr objectAtIndex:indexPath.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] ;
 
                       return cell;
                   }];
 
-    // Setting custom alert height
     self.alert.height = 350;
 
-    // configure actions to perform
     [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex)
      {
          [syncBtn setTitle:[NSString stringWithFormat:@"%@",[[synctimearr objectAtIndex:selectedIndex.row] objectForKey:NSLocalizedStringFromTable(@"SystemLanguage", INFOPLIST, nil)]] forState:UIControlStateNormal];
@@ -586,6 +528,8 @@
 - (void)Set_Init_Call:(NSDictionary *)dic
 {
     [syncLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
+
+    syncImLabel.backgroundColor = [ColorHex colorWithHexString:@"3c3c3c"];
 
     if (dic) {
         NSString *tmpsyncStr = [dic objectForKey:@"value1"];

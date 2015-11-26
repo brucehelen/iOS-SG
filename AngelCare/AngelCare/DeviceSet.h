@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+
 @class MLTableAlert;
 
-@interface DeviceSet : UIView
-<MFMessageComposeViewControllerDelegate>
+@interface DeviceSet : UIView <MFMessageComposeViewControllerDelegate>
 {
     IBOutlet UIButton *smsReadBtn;
     IBOutlet UIButton *sosLongBtn;
@@ -43,25 +43,25 @@
 
     IBOutlet UILabel *timeareaLbl;
     IBOutlet UILabel *languageLbl;
-    
+
     NSString *switch1;
     NSString *switch2;
     NSString *switch3;
     NSString *switch4;
     NSString *switch5;
     NSString *switch6;
-    
+
     NSString *areaStr;
     NSString *langStr;
-
     id MainObj;
-
     int saveNum;
-
     IBOutlet UIScrollView *scrView;
 
     IBOutlet UILabel *syncLbl;
     IBOutlet UIButton *syncBtn;
+
+    __weak IBOutlet UILabel *syncImLabel;
+    
 }
 
 @property (strong, nonatomic) IBOutlet UIButton *btnRS;
@@ -71,7 +71,6 @@
 @property (nonatomic,strong) NSArray *langArr;
 @property (strong, nonatomic) MLTableAlert *alert;
 @property (nonatomic,strong) NSArray *synctimearr;
-
 
 - (void)Set_Init:(NSDictionary *)dic;
 

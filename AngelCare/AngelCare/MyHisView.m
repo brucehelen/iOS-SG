@@ -38,27 +38,19 @@
 }
 @synthesize list,nowSelect;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-//  初始化Ｖiew 上的設定
--(void)Do_Init:(id)sender
+- (void)Do_Init:(id)sender
 {
     MainObj = sender;
-    
+
     [[list layer] setCornerRadius:8.0f];
     [[list layer] setMasksToBounds:YES];
-    //5 non activity hidden
-//    [scrTitle setContentSize:CGSizeMake(641 - 107, 51)];
-    //6
+
+#ifdef PROGRAM_VER_ML
     [scrTitle setContentSize:CGSizeMake(641 - 107 * 2, 51)];
-//    NSArray *arrayX = @[@0,@107,@214,@321,@428,@535];
+#else
+    [scrTitle setContentSize:CGSizeMake(641 - 107 * 3, 51)];
+#endif /* PROGRAM_VER_ML */
+
     //call record
     [img1 setFrame:CGRectMake(0, 0, img1.frame.size.width, img1.frame.size.height)];
     [btn1 setFrame:CGRectMake(0, 0, btn1.frame.size.width, btn1.frame.size.height)];
@@ -81,38 +73,36 @@
     [btn7 setFrame:CGRectMake(btn6.frame.origin.x+107, 0, btn1.frame.size.width, btn1.frame.size.height)];
     [img7 setHidden:YES];
     [btn7 setHidden:YES];
-    
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
     if (nowSelect == 5) {
         return 60;
     }
+
     return 30;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    //    UIView *titleView = [[UIView alloc] initWithFrame:CGRectZero];
-    
     UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         titleLbl.frame = CGRectMake(0, 0, 768, 50);
     }
-    
-    
+
     NSLog(@"now select %i",nowSelect);
-    
+
     switch (nowSelect) {
         default:
         case 1:
             titleLbl.text = [NSString stringWithFormat:@" %@",NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil)];
-            //            titleLbl.text = [NSString stringWithFormat:His_SOSTitle,NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil),NSLocalizedStringFromTable(@"His_ADDR", INFOPLIST, nil)];
             break;
             
         case 2:
             titleLbl.text = [NSString stringWithFormat:@" %@",NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil)];
-            //            titleLbl.text = [NSString stringWithFormat:His_FalldownTitle,NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil),NSLocalizedStringFromTable(@"His_ADDR", INFOPLIST, nil)];
             break;
             
         case 3:
@@ -123,24 +113,19 @@
             titleLbl.text = [NSString stringWithFormat:His_CallTitle,NSLocalizedStringFromTable(@"His_STARTTIME", INFOPLIST, nil),NSLocalizedStringFromTable(@"His_ENDTIME", INFOPLIST, nil),NSLocalizedStringFromTable(@"His_TELLENGTH", INFOPLIST, nil)];
             break;
         case 5:
-            //            titleLbl.text = [NSString stringWithFormat:@"  %@     %@    %@",@"From time",@"To time",@"Create time"];
             titleLbl.text = [NSString stringWithFormat:@" Wearer has no activity detected for\n specific time period. Time reported:"];
             break;
         case 6:
-            //            titleLbl.text = [NSString stringWithFormat:@"  %@     %@    %@",@"From time",@"To time",@"Create time"];
             titleLbl.text = [NSString stringWithFormat:@" %@",NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil)];
             break;
-            
     }
-    
-    //    [titleView addSubview:titleLbl];
+
     titleLbl.layer.cornerRadius = 8.0f;
     [titleLbl setTextColor:[UIColor whiteColor]];
     titleLbl.backgroundColor = [ColorHex colorWithHexString:@"3c3c3c"];
     titleLbl.numberOfLines = 0;
     return titleLbl;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -177,18 +162,7 @@
                                                 context:nil];
             size = textRect.size;
         }
-        
-        
-        //        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        //        {
-        //            size = [str boundingRectWithSize:BOLIVIASize
-        //                                     options:NSStringDrawingUsesLineFragmentOrigin
-        //                                  attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}
-        //                                     context:nil].size;
-        //            return size.height+20;
-        //        }
-    }else
-    {
+    } else {
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0f]};
         if ([[[UIDevice currentDevice] systemVersion]intValue] < 7){
             //iOS 6 work
@@ -203,21 +177,8 @@
                                             context:nil];
             size = rect.size;
         }
-        
-        //        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        //         {
-        //             CGRect tmp = [str boundingRectWithSize:CGSizeMake(607, MAXFLOAT)
-        //                                             options:NSStringDrawingUsesLineFragmentOrigin
-        //                                          attributes:attributes
-        //                                             context:nil];
-        //             size = tmp.size;
-        ////             size = [str sizeWithFont:[UIFont systemFontOfSize:17.0f] constrainedToSize:CGSizeMake(607, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-        //         }
-        //        CGSize size = [str sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}];
     }
-    
-    //NSLog(@"size height = %f",size.height);
-    
+
     if (size.height  < 30)
     {
         return size.height+30;
@@ -226,12 +187,10 @@
     return size.height+40;
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
@@ -246,20 +205,16 @@
     return [listArr count];
 }
 
-- (NSString*)returnDDMMHHmm:(NSString*)string{
+- (NSString*)returnDDMMHHmm:(NSString*)string
+{
     NSString *result = string;
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-//    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
-//    NSDateFormatter *dateFormatNew = [[NSDateFormatter alloc]init];
-//    [dateFormatNew setDateFormat:@"HH:mm MM-dd-yyy "];
-//    NSDate *tmp = [dateFormat dateFromString:string];
-//    result = [dateFormatNew stringFromDate:tmp] ;
+
     return result;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (nowSelect < 4) {
-        
         NSString *cellIdentifier = @"MyHisCell";
         MyHisCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
@@ -280,11 +235,6 @@
         if (nowSelect == 3) {
             CGSize size;
             NSString *str = [NSString stringWithFormat:@"%@",[[listArr objectAtIndex:indexPath.row] objectForKey:@"address"]];
-            //            if ([[[UIDevice currentDevice] systemVersion]intValue] < 7){
-            //                //iOS 6 work
-            //                CGSize size = [str sizeWithFont:cell.titleLbl.font constrainedToSize:CGSizeMake(cell.titleLbl.frame.size.width, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-            //            }
-            //            else{
             //iOS 7 related work
             CGSize BOLIVIASize = CGSizeMake(cell.titleLbl.frame.size.width, MAXFLOAT);
             CGRect textRect = [str boundingRectWithSize:BOLIVIASize
@@ -292,13 +242,7 @@
                                              attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}
                                                 context:nil];
             size = textRect.size;
-            
-            //            }
-            
-            
-            
-            
-            
+
             //根据计算结果重新设置UILabel的尺寸
             [cell.titleLbl setFrame:CGRectMake(105, 0, 207, size.height)];
             //            [cell.viewBg setFrame:CGRectMake(105, 0, 207, size.height)];
@@ -315,11 +259,9 @@
             //            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(findAddress:)] ;
             //            [cell.titleLbl addGestureRecognizer:tapGesture];
             
-            
-            NSString *str = [places objectAtIndex:indexPath.row];//[NSString stringWithFormat:@"%@",[[listArr objectAtIndex:indexPath.row] objectForKey:@"place"]];
-            
+            NSString *str = [places objectAtIndex:indexPath.row];
             CGSize size;
-            
+
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1)
             {
                 if ([[[UIDevice currentDevice] systemVersion]intValue] < 7){
@@ -336,12 +278,8 @@
                                                         context:nil];
                     
                     size = textRect.size;
-                    
                 }
-                
-                
-            }else
-            {
+            } else {
                 if ([[[UIDevice currentDevice] systemVersion]intValue] < 7){
                     //iOS 6 work
                     size = [str sizeWithFont:cell.titleLbl.font constrainedToSize:CGSizeMake(cell.titleLbl.frame.size.width, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
@@ -356,16 +294,8 @@
                                                  attributes:attributes
                                                     context:nil];
                     size = rect.size;
-                    
-                    
                 }
-                
-                
             }
-            /*
-             CGSize size = [str sizeWithFont:cell.titleLbl.font constrainedToSize:CGSizeMake(cell.titleLbl.frame.size.width, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-             */
-            
             
             [cell.titleLbl setFrame:CGRectMake(cell.titleLbl.frame.origin.x, cell.titleLbl.frame.origin.y, cell.titleLbl.frame.size.width, size.height+30)];
             [cell.viewBg setFrame:CGRectMake(cell.titleLbl.frame.origin.x, cell.titleLbl.frame.origin.y + 2, cell.titleLbl.frame.size.width, size.height+24)];
@@ -382,12 +312,8 @@
         }
         //修正日期格式
         cell.timeLbl.text = [[listArr objectAtIndex:indexPath.row] objectForKey:@"datatime"];
-//        cell.timeLbl.text = [NSString stringWithFormat:@"%@",[[listArr objectAtIndex:indexPath.row] objectForKey:@"datatime"] ];
-        
-        
         return cell;
-    }
-    else{
+    } else {
         NSString *cellIdentifier = @"MyHisCell2";
         MyHisCell2 *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
@@ -418,7 +344,6 @@
             cell.endTimeLbl.text = @"";//[[NSString stringWithFormat:@"%@",[_dict objectForKey:@"To"]] substringToIndex:5];
             cell.lengthLbl.text = @"";//[[NSString stringWithFormat:@"%@",[[listArr objectAtIndex:indexPath.row]objectForKey:@"createTime"]]substringToIndex:11];
             [cell.startTimeLbl setFrame:CGRectMake(cell.startTimeLbl.frame.origin.x+10, cell.startTimeLbl.frame.origin.y, 300, cell.startTimeLbl.frame.size.height)];
-            
         }
         if (nowSelect == 6) {
             //GeoFence
@@ -438,7 +363,6 @@
             cell.endTimeLbl.text = @"";
             cell.lengthLbl.text = @"";
             [cell.startTimeLbl setFrame:CGRectMake(cell.startTimeLbl.frame.origin.x+10, cell.startTimeLbl.frame.origin.y, 300, cell.startTimeLbl.frame.size.height)];
-            
         }
         return cell;
     }
@@ -448,10 +372,7 @@
 {
     NSLog(@"test %li",(long)indexPath.row);
     NSLog(@"list = %@",[listArr objectAtIndex:indexPath.row]);
-    
-    
-    
-    
+
     if (nowSelect == 7) {
         NSDictionary *dict = [listArr objectAtIndex:indexPath.row];
         NSDictionary *station = [dict objectForKey:@"station"];
@@ -467,7 +388,7 @@
         if (location_type) {
             [res setObject:location_type forKey:@"location_type"];
         }
-        
+
         //gsm
         NSString *gsmL = @"";
         if ([station objectForKey:@"longitude"]) {
@@ -485,7 +406,7 @@
             [res setObject:latitude forKey:@"latitude"];
         if (station_radius.length != 0)
             [res setObject:station_radius forKey:@"station_radius"];
-        
+
         //gps
         NSString *gpsL = @"";
         if ([mark objectForKey:@"longitude"]) {
@@ -510,9 +431,7 @@
         else{
             [self showNoLocationData];
         }
-
-    }
-    else{
+    } else {
         //判斷定位失敗
         NSLog(@"判斷定位失敗");
         NSDictionary *dict = [listArr objectAtIndex:indexPath.row] ;
@@ -524,33 +443,30 @@
         else{
             [(MainClass *)MainObj Send_HisMapdata:[listArr objectAtIndex:indexPath.row]];
         }
-        
     }
 }
 
-- (void)showNoLocationData{
+- (void)showNoLocationData
+{
     if ([UIAlertController class]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedStringFromTable(@"Reminder", INFOPLIST, nil) message:@"No Location Data" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             
         }];
-        
+
         [alert addAction:okAction];
-        
+
         UIViewController *tmp = (UIViewController*)[[self nextResponder]nextResponder];
         [tmp presentViewController:alert animated:YES completion:nil];
-        
-    }
-    else{
+    } else {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Reminder", INFOPLIST, nil) message:@"No Location Data" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
 }
 
-
 //  設定此Ｖiew
--(void)Set_Init:(NSArray *)arr
+- (void)Set_Init:(NSArray *)arr
 {
     listArr = arr;
     NSLog(@"list arr = %@",listArr);
@@ -559,7 +475,7 @@
     lbl2.text = FalldownTitle;
     lbl3.text = LeaveTitle;
     lbl4.text = CallTitle;
-    
+
     img1.image = [UIImage imageNamed:@"icon_his_off.png"];
     img2.image = [UIImage imageNamed:@"icon_his_off.png"];
     img3.image = [UIImage imageNamed:@"icon_his_off.png"];
@@ -567,37 +483,36 @@
     img5.image = [UIImage imageNamed:@"icon_his_off.png"];
     img6.image = [UIImage imageNamed:@"icon_his_off.png"];//電子圍籬
     img7.image = [UIImage imageNamed:@"icon_his_off.png"];//電子圍籬
-    
+
     UIColor *m_color = [UIColor whiteColor];
     [btn1 setTitleColor:m_color forState:UIControlStateNormal];
     btn1.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn1 setTitle:SOSTitle forState:UIControlStateNormal];
-    
+
     [btn2 setTitleColor:m_color forState:UIControlStateNormal];
     btn2.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn2 setTitle:FalldownTitle forState:UIControlStateNormal];
-    
+
     [btn3 setTitleColor:m_color forState:UIControlStateNormal];
     btn3.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn3 setTitle:LeaveTitle forState:UIControlStateNormal];
-    
+
     [btn4 setTitleColor:m_color forState:UIControlStateNormal];
     btn4.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn4 setTitle:CallTitle forState:UIControlStateNormal];
-    
+
     [btn5 setTitleColor:m_color forState:UIControlStateNormal];
     btn5.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn5 setTitle:NonActivity forState:UIControlStateNormal];
-    
+
     [btn6 setTitleColor:m_color forState:UIControlStateNormal];
     btn6.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn6 setTitle:GeoFence forState:UIControlStateNormal];
-    
+
     [btn7 setTitleColor:m_color forState:UIControlStateNormal];
     btn7.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn7 setTitle:TimeAlert forState:UIControlStateNormal];
-    
-    
+
     switch (nowSelect) {
         case 2:
             img2.image = [UIImage imageNamed:@"icon_his_on.png"];
@@ -631,14 +546,9 @@
             [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             break;
     }
-    
-    
 
-    
     [list reloadData];
 }
-
-
 
 
 //三個類別按鈕mousedown觸發
@@ -648,14 +558,10 @@
     [btn2 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [btn3 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [btn4 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    
-    //    [(UIButton *)sender setBackgroundImage:[UIImage imageNamed:@"history_icon.png"] forState:UIControlStateNormal];
-    
-    
+
     list.allowsSelection = YES;
     switch ([(UIView*)sender tag])
     {
-            
         case 101://緊急求救
             img1.image = [UIImage imageNamed:@"icon_his_on.png"];
             [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -713,24 +619,13 @@
             NSLog(@"select No. %li",(long)[(UIView*)sender tag]);
             break;
     }
-    
 }
 
 //傳送已收到的Arr
--(void)sendListArr:(NSArray *)arr
+- (void)sendListArr:(NSArray *)arr
 {
     listArr = arr;
-    
 }
 
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

@@ -23,8 +23,7 @@
 //血氧資訊
 - (void)Set_Init:(NSDictionary *)dic
 {
-    if (dic)
-    {
+    if (dic) {
         if ([[dic objectForKey:@"sex"] integerValue] == 0) {
             [menBtn setImage:[UIImage imageNamed:@"my_bu_2.png"] forState:UIControlStateNormal];
             [girlBtn setImage:[UIImage imageNamed:@"my_bu_1.png"] forState:UIControlStateNormal];
@@ -38,8 +37,8 @@
         weightTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"weight"]];
         tallTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"height"]];
         fatTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bodyfat"]];
-        idealWeightTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"weightT"]];
-        idealfatTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bodyfatT"]];
+        weightT.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"weightT"]];
+        fatT.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bodyfatT"]];
 
         UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
         numberToolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -113,11 +112,17 @@
     idealWeightLbl.text = NSLocalizedStringFromTable(@"HS_W_IDWEIGHT", INFOPLIST, nil);
         idealWeightLbl.textColor = [UIColor blackColor];
     
+    weightTLabel.text = NSLocalizedStringFromTable(@"HS_W_IDWEIGHT", INFOPLIST, nil);
+    
     kgLbl2.text = NSLocalizedStringFromTable(@"HS_W_KG", INFOPLIST, nil);
         kgLbl2.textColor = [UIColor blackColor];
     
     idealbodyLbl.text = NSLocalizedStringFromTable(@"HS_W_IDBODY", INFOPLIST, nil);
         idealbodyLbl.textColor = [UIColor blackColor];
+    
+    fatTLabel.text = NSLocalizedStringFromTable(@"HS_W_IDBODY", INFOPLIST, nil);
+    
+    
     persentLbl2.text = NSLocalizedStringFromTable(@"HS_W_PERSENT", INFOPLIST, nil);
         persentLbl2.textColor = [UIColor blackColor];
 }
@@ -143,8 +148,7 @@
     [UIView setAnimationDuration:animationDuration];
     float width = self.frame.size.width;
     float height = self.frame.size.height;
-    if(offset > 0)
-    {
+    if (offset > 0) {
         CGRect rect = CGRectMake(0.0f, -offset,width,height);
         self.frame = rect;
     }
@@ -172,9 +176,9 @@
                              weightTxt.text, @"weight",
                              tallTxt.text, @"height",
                              fatTxt.text, @"bodyfat",
-                             //idealWeightTxt.text, @"weightT",     // nil
+                             weightT.text, @"weightT",
                              weightTxt.text, @"weightT",
-                             //idealfatTxt.text, @"bodyfatT",       // nil
+                             fatT.text, @"bodyfatT",
                              fatTxt.text, @"bodyfatT",
                              [NSString stringWithFormat:@"%i", sex], @"sex",
                              nil];

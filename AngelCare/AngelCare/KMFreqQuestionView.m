@@ -16,6 +16,7 @@
 @property (weak, nonatomic) MainClass *mainClass;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *enDataArray;
 
 @end
 
@@ -29,42 +30,59 @@
     [self initData];
 }
 
+// 初始化中文常见问题列表
 - (void)initData
 {
     _dataArray = [NSMutableArray array];
 
     // 问题1
     KMFAQModel *model = [[KMFAQModel alloc] init];
-    model.question = @"产品功能介绍";
-    model.answer = @"健康表就像是一款智能手表，可以在手机上实时看到家人健康测量数据，它具有通话和处理移动数据功能，手表的GPS追踪和定位带来随时随地对家人的关怀对自己身体情况的及时了解，手表可以通过蓝牙感测其他康美医疗器械所量测的健康数据让您能最直观的掌握家人或自己的身体状况。同时，在遇到突发情况的时候手表可以采集生命指标数据作为监控和管理，查询智能手表的活动轨迹，接收到智能手表求救 。还可以设定家人智能手表提醒时间和事项，可拨打智能手表电话及发送短信。\n\
-主要包括有记录佩戴者资料、检测设备状态、量测记录、定位救援、活动区域记录、服务记录、通话速拨、时间提醒、设定量测提醒、硬体设定、展示照片程序。\n\
-佩戴者资料：您可以设定个人咨询、紧急电话、亲情电话等咨询\n\
-检测设备状态：关于检测设备状态包括开关机咨询、电量、版本、定位地址、同步时间\n\
-量测记录：在量测记录上可查询血压、血糖、血氧、体重体脂、活动量分析记录\n\
-定位救援：遇到紧急情况的时候定位救援可提示SOS求救、跌倒求救即时定位地点、时间、讯息\n\
-活动区域：：手机APP可查询佩戴手表者的历史活动区域、每小时会定时记录佩戴者所经历过的地点及基地台定位的位置\n\
-服务记录：查询求救、跌倒、通话记录\n\
-通话速拨：可直接拨号值佩戴者手表（个人资讯-->设定手机号码）\n\
-时间提醒：可设定吃药提醒及回诊提醒，设定时间到时，手表会发出提醒及讯息\n\
-贴心设定：可设定量测提醒、硬体设定、展示照片";
+    model.question = @"为何在APP上设置\"紧急号码\"和\"亲情号码\"后，并没有上传或同步至智慧手表上？";
+    model.answer = @"为求省电和节省封包费用，原始设定每整点时资料才会上传并于服务器同步，若您希望每次设定完成后立即更新，请设定完成后，将智慧手表主动关机，静置5分钟后再次开启，开启后先前所变更之号码可立即更新。";
     [_dataArray addObject:model];
     
     // 问题2
     model = [[KMFAQModel alloc] init];
-    model.question = @"手机下载APP连接手表方法";
-    model.answer = @"您在手机APP首页输入手表的imei号（手表——拨号——拨号键中按向上箭头输入*#06*——出现imei号——将imei号输入到手机APP上），也可以在手表的外包装盒的侧面看到imei号";
+    model.question = @"为何在按下\"紧急求救按键\"，定位资料并没有出现在地图中？";
+    model.answer = @"即时定位的信息传出后，需在信息确认传送成功后才会更新，会开启GPS,GSM 多基站定位，依据不同的定位方式，有不同的准确度显示。";
     [_dataArray addObject:model];
     
     // 问题3
     model = [[KMFAQModel alloc] init];
-    model.question = @"健康表调节声音大小的方式";
-    model.answer = @"您需要在通话的时候同时操作手表右侧上下键调节音量大小";
+    model.question = @"为何开启\"跌倒侦测\"后，有时没有跌倒也会报警？有保证跌倒时一定会有报警吗？";
+    model.answer = @"跌倒侦测为辅助功能，因光靠手的行为模式是无法百分之百判断是否跌倒，本功能仅供参考，使用者可以决定是否开启。跌倒时，还是可以通过随身的手表按下红色求救键，达到求救目的。";
+    [_dataArray addObject:model];
+
+    // Q4
+    model = [[KMFAQModel alloc] init];
+    model.question = @"智慧手表每月的GPRS 数据传输封包使用量约为多少？";
+    model.answer = @"正常待机，每月最大上网封包流量大约为 2-3M ，但仍依据实际使用情况及频率而定。";
     [_dataArray addObject:model];
     
+    // Q5
     model = [[KMFAQModel alloc] init];
-    model.question = @"没有sim卡的手表是否能正常操作";
-    model.answer = @"可以使用手表的基本操作，但是不能进行数据上传。因为跟sim卡有关的不能操作（比如短信、通话），其他都能，在有WIFI的情况下所有操作后台或者app是也可以上传数据的（比如：侧心率、血压、计步器等）。手表自身无流量，无WIFI情况下是不可传输数据的";
+    model.question = @"紧急号码若设定一组以上，将于何种状态下执行轮拨？";
+    model.answer = @"若设定一组以上的紧急号码，则在第一组号码拨通30秒无人接听的情况下，轮拨下一组号码，直至拨通或您主动挂断。";
     [_dataArray addObject:model];
+    
+    // Q6
+    model = [[KMFAQModel alloc] init];
+    model.question = @"按下 \"紧急号码\"和\"亲情号码\" 有何不同？";
+    model.answer = @"按“紧急号码”将立即拨号，并做即时A-GPS 定位，按下亲情号码，将立即拨号但并不支持即时定位功能。";
+    [_dataArray addObject:model];
+    
+    // Q7
+    model = [[KMFAQModel alloc] init];
+    model.question = @"如何设定及配对智慧手表的蓝牙量测设备？";
+    model.answer = @"在设置界面，4.通讯设置，点选（1）蓝牙，激活蓝牙在3我的装置，选择要配对的量测设备，即可进行自动配对。";
+    [_dataArray addObject:model];
+}
+
+// 初始化英文常见问题
+- (void)initEnData
+{
+    _enDataArray = [NSMutableArray array];
+    
 }
 
 - (void)do_init:(id)sender
@@ -72,9 +90,25 @@
     self.mainClass = sender;
 }
 
+// 检测是否是中文
+- (BOOL)checkUserLangaueSetting
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
+    NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
+
+    if ([currentLanguage hasPrefix:@"zh-"]) return YES;
+    
+    return NO;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataArray.count;
+    if ([self checkUserLangaueSetting]) {
+        return _dataArray.count;
+    } else {
+        return _enDataArray.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,8 +118,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    // TODO: 需要改成真正的数据模型
-    KMFAQModel *model = _dataArray[indexPath.row];
+    KMFAQModel *model = nil;
+
+    if ([self checkUserLangaueSetting]) {
+        model = _dataArray[indexPath.row];
+    } else {
+        model = _enDataArray[indexPath.row];
+    }
+
     cell.textLabel.text = model.question;
 
     return cell;
@@ -95,7 +135,14 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    KMFAQModel *model = _dataArray[indexPath.row];
+    KMFAQModel *model = nil;
+    
+    if ([self checkUserLangaueSetting]) {
+        model = _dataArray[indexPath.row];
+    } else {
+        model = _enDataArray[indexPath.row];
+    }
+
     [self.mainClass pushFreqQuestionDetailViewWithModel:model];
 }
 

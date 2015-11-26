@@ -405,13 +405,12 @@
 
 
 //設定範圍顯示圈
--(void)Set_Circle:(NSString *)longitudes :(NSString *)latitudes :(NSString *)aradius
+- (void)Set_Circle:(NSString *)longitudes :(NSString *)latitudes :(NSString *)aradius
 {
-    
     MKCoordinateRegion kaos_digital;
-    
+
     NSLog(@"in. lat:%@, lng:%@", latitudes, longitudes);
-    
+
     //設定經緯度
     CLLocationCoordinate2D newCoordinate = [self convertCoordinateWithLongitude:[longitudes doubleValue] latitude:[latitudes doubleValue]];
     
@@ -422,30 +421,21 @@
     // 設定縮放比例
     kaos_digital.span.latitudeDelta = (0.018* [aradius doubleValue])/1118.00f ;
     kaos_digital.span.longitudeDelta =(0.018* [aradius doubleValue])/1118.00f ;
-    
-    //  // 把region設定給MapView
+
+    // 把region設定給MapView
     [map_view setRegion:kaos_digital];
     map_view.delegate = self;
-    
-    
+
     CLLocationCoordinate2D NewPoint1 = newCoordinate;
-    
-    //    double v2= [latitude doubleValue] ;
-    //
-    //    double v1=[longitude doubleValue] ;
-    //
-    //    NewPoint1=CLLocationCoordinate2DMake(v2,v1);
-    //
+
     NSLog(@"set %f",[aradius doubleValue]);
-    
-    
+
     NSInteger mapType = [[NSUserDefaults standardUserDefaults] integerForKey:@"MAP_TYPE"];
     
     MKCircle *circle = [MKCircle circleWithCenterCoordinate:NewPoint1 radius:[aradius doubleValue] ];
     
     if (mapType == 1) {
         NSLog(@"BMKCircle");
-//        circle = [BMKCircle circleWithCenterCoordinate:NewPoint1 radius:[aradius doubleValue] ];
     }
     
     [map_view addOverlay:circle];
@@ -454,12 +444,10 @@
     MyAnnotation * aaas3;
     aaas3 = [[MyAnnotation alloc] initWithCoordinate:NewPoint1:FALSE  ];
     [map_view addAnnotation:aaas3];
-    
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    
     CGRect frames = textField.frame;
     int offset = frames.origin.y + 32 - (self.frame.size.height - 300.0);//键盘高度216
     NSTimeInterval animationDuration = 0.30f;
@@ -475,7 +463,6 @@
     [UIView commitAnimations];
 }
 
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     NSLog(@"return = %@",textField);
@@ -490,16 +477,14 @@
     return YES;
 }
 
-
--(NSDictionary *)saveAddr
+- (NSDictionary *)saveAddr
 {
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:longitude,@"longitude",latitude,@"latitude",radius,@"radius",addrString,@"address", nil];
-    
+
     return dic;
 }
 
-
--(IBAction)checkAddrString:(id)sender
+- (IBAction)checkAddrString:(id)sender
 {
     addrString = addrTxt.text;
     //地址轉經緯度座標
@@ -511,29 +496,27 @@
          latitude = [NSString stringWithFormat:@"%f",placemark.location.coordinate.latitude];
          longitude = [NSString stringWithFormat:@"%f",placemark.location.coordinate.longitude];
      }];
-    
+
     [self ClearPoint:self];
     [self Set_Circle:longitude :latitude :radius];
 }
 
 
-- (IBAction)changeRange:(id)sender {
-    
+- (IBAction)changeRange:(id)sender
+{
     NSLog(@"changeRange Click");
-    
-    
+
     UIActionSheet *changeRange = [[UIActionSheet alloc] initWithTitle:@"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"確定", nil];
-    
+
     UIPickerView *rangePicker = [[UIPickerView alloc] init];
     rangePicker.delegate = self;
     rangePicker.dataSource = self;
     rangePicker.showsSelectionIndicator = YES;
     [rangePicker selectRow:selectNum inComponent:0 animated:YES];
-    
-    [changeRange addSubview:rangePicker];
-    
-    [changeRange showInView:self];
 
+    [changeRange addSubview:rangePicker];
+
+    [changeRange showInView:self];
 }
 
 
@@ -564,24 +547,17 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
     if (buttonIndex == 0) {
-        
         NSLog(@"select %i",buttonIndex);
         radius = [rangeArr objectAtIndex:selectNum];
         NSLog(@"button Index = %i",selectNum);
         [rangeBtn setTitle:[NSString stringWithFormat:@"%@M",radius] forState:UIControlStateNormal];
         [self ClearPoint:self];
         [self Set_Circle:longitude :latitude :radius ];
-        
     }
-    
-   
 }
 
-
-
--(NSArray *)getRangeArr
+- (NSArray *)getRangeArr
 {
     NSArray *range = [[NSArray alloc] initWithObjects:@"50",@"100",@"150",@"200", nil];
     

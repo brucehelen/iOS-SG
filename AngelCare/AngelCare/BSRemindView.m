@@ -24,25 +24,24 @@
 - (void)Set_Init:(NSDictionary *)dic
 {
     NSLog(@"dic = %@",dic);
-    
+
     //read file
     [self setUnitForLbl];
     lblUnit1.userInteractionEnabled = YES;
     lblUnit2.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture1 =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUnit)] ;
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUnit)];
     UITapGestureRecognizer *tapGesture2 =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUnit)] ;
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUnit)];
     [lblUnit1 addGestureRecognizer:tapGesture1];
     [lblUnit2 addGestureRecognizer:tapGesture2];
-    
-    
+
     if (dic) {
         NSLog(@"text");
         NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
         
         if (![language isEqualToString:@"en"]) {// 非英語
-            viewRemind.hidden = NO;
+            viewRemind.hidden = YES;
             lblCh1.hidden = NO;
             lblCh2.hidden = NO;
             lblEn1.hidden = YES;
@@ -59,7 +58,6 @@
                     lblCh1.textColor = [UIColor blackColor];
             lblCh2.text = NSLocalizedStringFromTable(@"ExceedWillSendAlarm", INFOPLIST, nil);
                     lblCh2.textColor = [UIColor blackColor];
-
         }
         else{
             viewRemind.hidden = YES;
@@ -101,24 +99,21 @@
                                [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
                                nil];
         [numberToolbar sizeToFit];
-        
+
         beforeMealUpTxt.inputAccessoryView = numberToolbar;
         beforeMealDownTxt.inputAccessoryView = numberToolbar;
         afterMealUpTxt.inputAccessoryView = numberToolbar;
         afterMealDownTxt.inputAccessoryView = numberToolbar;
         bedTimeDownTxt.inputAccessoryView = numberToolbar;
         bedTimeUpTxt.inputAccessoryView = numberToolbar;
-        
-        
+
         bfStartStr = [dic objectForKey:@"breakfastStart"];
         bfEndStr = [dic objectForKey:@"breakfastEnd"];
         lunchStartStr = [dic objectForKey:@"lunchStart"];
         lunchEndStr = [dic objectForKey:@"lunchEnd"];
         dinnerStartStr = [dic objectForKey:@"dinnerStart"];
         dinnerEndStr = [dic objectForKey:@"dinnerEnd"];
-        
-        
-        
+
         [bfStartBtn setTitle:bfStartStr forState:UIControlStateNormal];
         [bfEndBtn setTitle:bfEndStr forState:UIControlStateNormal];
         [lunchStartBtn setTitle:lunchStartStr forState:UIControlStateNormal];
@@ -131,11 +126,8 @@
         lunchEndBtn.backgroundColor=[UIColor yellowColor];
         dinnerStartBtn.backgroundColor=[UIColor yellowColor];
         dinnerEndBtn.backgroundColor=[UIColor yellowColor];
-        
     }
-    
 }
-
 
 -(IBAction)donwWithTxt:(id)sender
 {
@@ -202,7 +194,7 @@
     bgLbl2.layer.cornerRadius = 8.0f;
     [bgLbl2 setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
 
-    scrollView.contentSize = CGSizeMake(304, 559);
+    scrollView.contentSize = CGSizeMake(304, 0);
     titleLbl1.text = NSLocalizedStringFromTable(@"HS_BSRange", INFOPLIST, ni);
     titleLbl2.text = NSLocalizedStringFromTable(@"HS_BS_MEALTIME", INFOPLIST, ni);
     
@@ -569,7 +561,8 @@
     [popup showInView:[UIApplication sharedApplication].keyWindow];
 }
 
-- (void)writeUnitToFile:(NSString*)unit{
+- (void)writeUnitToFile:(NSString*)unit
+{
     NSLog(@"%@,writeUnitToFile",self);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents directory
@@ -578,17 +571,9 @@
     BOOL succeed = [unit writeToFile:[documentsDirectory stringByAppendingPathComponent:@"unit.txt"]
                           atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if (!succeed){
-        // Handle error here
+
     }
-    
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 @end

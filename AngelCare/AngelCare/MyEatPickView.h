@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface MyEatPickView : UIView
-{    
+{
     IBOutlet UIDatePicker *MyPick;
-    
+
     IBOutlet UIButton *MonBtn;
     IBOutlet UIButton *TueBtn;
     IBOutlet UIButton *WedBtn;
@@ -19,7 +19,7 @@
     IBOutlet UIButton *FriBtn;
     IBOutlet UIButton *SatBtn;
     IBOutlet UIButton *SunBtn;
-    
+
     BOOL isMon;
     BOOL isTue;
     BOOL isWed;
@@ -27,7 +27,7 @@
     BOOL isFri;
     BOOL isSat;
     BOOL isSun;
-    
+
     NSString *s_team;   //第幾組
     
     //parent View

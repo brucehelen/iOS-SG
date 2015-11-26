@@ -7,10 +7,9 @@
 //
 
 #import "LoginViewController.h"
-//#define ACCTXT NSLocalizedStringFromTable(@"Login_ACC", INFOPLIST, nil)
-//#define PWDTXT NSLocalizedStringFromTable(@"Login_PWD", INFOPLIST, nil)
-//
-//#define ACCTXT NSLocalizedStringFromTable(@"Login_ACC", INFOPLIST, nil)
+
+// server url
+NSString *INK_Url_1;
 
 #define ACCTXT NSLocalizedStringFromTable(@"WebAccSup", INFOPLIST, nil)
 #define PWDTXT NSLocalizedStringFromTable(@"WebPwdSup", INFOPLIST, nil)
@@ -45,18 +44,13 @@ NSURLConnection *ChangeImgUrl_Connect;
 NSMutableData *ChangeImgUrl_tempData;    //下載時暫存用的記憶體
 long long ChangeImgUrl_expectedLength;        //檔案大小
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self initURLAddress];
+
     iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
     [pageControl setNumberOfPages:TOTALPAGE];
     pageControl.currentPage = 0;
@@ -69,15 +63,20 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     pwdTxt.placeholder = PWDTXT;
     [pwdTxt setSecureTextEntry:YES];
     [loginBtn setTitle:NSLocalizedStringFromTable(@"Login_LoginBtn", INFOPLIST, nil) forState:UIControlStateNormal];
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(btnLongClicked:)];
+    longPress.minimumPressDuration = 5.0;
+    [loginBtn addGestureRecognizer:longPress];
+
     [forgetBtn setTitle:NSLocalizedStringFromTable(@"Login_ForgetBtn", INFOPLIST, nil) forState:UIControlStateNormal];
     [createBtn setTitle:NSLocalizedStringFromTable(@"Login_NewAccBtn", INFOPLIST, nil) forState:UIControlStateNormal];
     [qrcodeLoginBtn setTitle:NSLocalizedStringFromTable(@"Login_QRCodeLoginBtnReturn", INFOPLIST, nil) forState:UIControlStateNormal];
-    //20140321 update
+    // 20140321 update
     self.lblAutoLogin.text = NSLocalizedStringFromTable(@"AutoLogin", INFOPLIST, nil);
     self.lblRememberMe.text = NSLocalizedStringFromTable(@"RememberMe", INFOPLIST, nil);
     [self InitBtnAutoLogin];
     [self InitBtnRememberMe];
-    //20140321 update
+    // 20140321 update
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
     token = [defaults objectForKey:@"token"];
@@ -89,8 +88,28 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     }
 }
 
+#pragma mark - 读取URL
+- (void)initURLAddress
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+
+    NSString *value = [ud objectForKey:@"server_base_url"];
+    if (value) {
+        INK_Url_1 = [value copy];
+    } else {
+#if PROGRAM_VER_ML
+        [ud setObject:ML_SERVER_URL forKey:@"server_base_url"];
+        INK_Url_1 = [ML_SERVER_URL copy];
+#else
+        [ud setObject:CN_SERVER_URL forKey:@"server_base_url"];
+        INK_Url_1 = [CN_SERVER_URL copy];
+#endif
+    }
+}
+
 //20140321 update
-- (void)InitBtnAutoLogin{
+- (void)InitBtnAutoLogin
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
     NSString *filePath = [documentsPath stringByAppendingPathComponent:@"AutoLogin"]; //Add the file name
@@ -99,7 +118,9 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     
     [self changeAutoLoginImage];
 }
-- (void)InitBtnRememberMe{
+
+- (void)InitBtnRememberMe
+{
     NSArray *paths2 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath2 = [paths2 objectAtIndex:0]; //Get the docs directory
     NSString *filePath2 = [documentsPath2 stringByAppendingPathComponent:@"rememberMe"]; //Add the file name
@@ -113,7 +134,9 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     }
     [self changeRememberMeImage];
 }
-- (void)changeRememberMeImage{
+
+- (void)changeRememberMeImage
+{
     if ([rememberMe isEqualToString:@"YES"]) {
         [self.btnRememberMe setBackgroundImage:[UIImage imageNamed:@"check_on.png"] forState:UIControlStateNormal];
     }
@@ -121,42 +144,40 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         [self.btnRememberMe setBackgroundImage:[UIImage imageNamed:@"check_off.png"] forState:UIControlStateNormal];
     }
 }
-- (void)changeAutoLoginImage{
+
+- (void)changeAutoLoginImage
+{
     if ([autoLogin isEqualToString:@"YES"]) {
         [self.btnAutoLogin setBackgroundImage:[UIImage imageNamed:@"check_on.png"] forState:UIControlStateNormal];
     }
     else{
         [self.btnAutoLogin setBackgroundImage:[UIImage imageNamed:@"check_off.png"] forState:UIControlStateNormal];
     }
-    
 }
-//20140321 update
 
-- (void)scrollViewDidScroll:(UIScrollView *)sender {
+// 20140321 update
+- (void)scrollViewDidScroll:(UIScrollView *)sender
+{
     CGFloat width = firstScrollView.frame.size.width;
     NSInteger currentPage = ((firstScrollView.contentOffset.x - width / 2) / width) + 1;
     [pageControl setCurrentPage:currentPage];
 }
 
-
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
     NSLog(@"scrollView end %f %f",scrollView.contentOffset.x,scrollView.contentOffset.y);
-    
+
     if (scrollView.contentOffset.x >= 3840) {
         [enterBtn setTitle:NSLocalizedStringFromTable(@"StartUse", INFOPLIST, nil) forState:UIControlStateNormal];
-    }else
+    }
+    else
     {
         [enterBtn setTitle:@"SKIP" forState:UIControlStateNormal];
     }
-    
 }
-
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    
     CGRect frames = textField.frame;
     int offset = frames.origin.y + 32 - (self.view.frame.size.height - 300.0);//键盘高度216
     NSTimeInterval animationDuration = 0.30f;
@@ -185,15 +206,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     return YES;
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-//點擊登入按鈕
+// 登入按鈕
 - (IBAction)loginBtnClick:(id)sender
 {
     if (([accTxt.text length] > 0) && [pwdTxt.text length] > 0) {
@@ -208,6 +221,74 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
                                               otherButtonTitles: nil];
         
         [alert show];
+    }
+}
+
+#pragma mark - 长按选择url地址
+- (void)btnLongClicked:(UILongPressGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        NSString *title = NSLocalizedStringFromTable(@"URL_address", INFOPLIST, nil);
+        NSString *message = NSLocalizedStringFromTable(@"URL_address_message", INFOPLIST, nil);
+        NSString *titleUrl1 = CN_SERVER_URL;
+        NSString *titleUrl2 = ML_SERVER_URL;
+        NSString *titleUrl3 = TEST_SERVER_URL;
+
+        NSUserDefaults *url = [NSUserDefaults standardUserDefaults];
+
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                                 message:message
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertActionStyle style;
+
+        NSLog(@"INK_Url_1 = %@", INK_Url_1);
+
+        // URL1
+        if ([titleUrl1 isEqualToString:INK_Url_1]) {
+            style = UIAlertActionStyleDestructive;
+        } else {
+            style = UIAlertActionStyleDefault;
+        }
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"地址1"
+                                                          style:style
+                                                        handler:^(UIAlertAction *action) {
+                                                            INK_Url_1 = [titleUrl1 copy];
+                                                            [url setObject:titleUrl1 forKey:@"server_base_url"];
+                                                        }];
+        
+        // URL2
+        if ([titleUrl2 isEqualToString:INK_Url_1]) {
+            style = UIAlertActionStyleDestructive;
+        } else {
+            style = UIAlertActionStyleDefault;
+        }
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"地址2"
+                                                          style:style
+                                                        handler:^(UIAlertAction *action) {
+                                                            INK_Url_1 = [titleUrl2 copy];
+                                                            [url setObject:titleUrl2 forKey:@"server_base_url"];
+                                                        }];
+        
+        // URL3
+        if ([titleUrl3 isEqualToString:INK_Url_1]) {
+            style = UIAlertActionStyleDestructive;
+        } else {
+            style = UIAlertActionStyleDefault;
+        }
+        UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"地址3"
+                                                          style:style
+                                                        handler:^(UIAlertAction *action) {
+                                                            INK_Url_1 = [titleUrl3 copy];
+                                                            [url setObject:titleUrl3 forKey:@"server_base_url"];
+                                                        }];
+
+        // Add the actions
+        [alertController addAction:action1];
+        [alertController addAction:action2];
+        [alertController addAction:action3];
+
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 
@@ -505,7 +586,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     
 }
 
-
 //alertView
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -518,7 +598,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         }
     }
 }
-
 
 //重寄驗證信
 -(void)Resend:(NSString *)account
@@ -545,9 +624,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     [self addLoadingView];
 }
 
-
-
-
 //設定推播Token
 -(void)setToken:(NSString *)temptoken
 {
@@ -555,19 +631,10 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     NSLog(@"is token = %@",token);
 }
 
-
-
-
-
-
-
-
-
 -(IBAction)backgroundBtn_Click:(id)sender
 {
     [self resetViewAndKeyBoard];
 }
-
 
 -(void)resetViewAndKeyBoard
 {
@@ -590,17 +657,15 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 	
     HUD.delegate = self;
     HUD.labelText = @"Loading";
-    //    HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [HUD show:YES];
 }
 
 
--(NSString *)returnToken
+- (NSString *)returnToken
 {
     NSLog(@"token %@",token);
     return token;
 }
-
 
 - (void)firstLogin
 {
@@ -644,15 +709,12 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     [firstView removeFromSuperview];
 }
 
--(IBAction)QrcodeLogin:(id)sender
+- (IBAction)QrcodeLogin:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self dismissModalViewControllerAnimated:YES];
 }
 
-
-//隱藏功能換Logo
--(IBAction)changeLogo:(id)sender
+- (IBAction)changeLogo:(id)sender
 {
     changeCount ++;
     NSLog(@"Change Logo Click %i",changeCount);
@@ -716,30 +778,26 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
     NSString *httpBodyString;
-    
+
     httpBodyString = [NSString stringWithFormat:@"demoKey=%@",pwd];
-    
+
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     NSString *loginApi = [NSString stringWithFormat:@"http://210.242.50.125:8080/salesWeb/API/getPicList.do"];
     
     NSLog(@"changeLogo API = %@?%@",loginApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:loginApi]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:httpBody];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
-    
-    
-    
+
     ChangeLogo_tempData = [NSMutableData alloc];
     ChangeLogo_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [self addLoadingView];
 }
 
-
--(void)HttpChangeLogoURL
+- (void)HttpChangeLogoURL
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:ChangeLogo_tempData];
@@ -751,54 +809,37 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     NSLog(@"usersOne = %@",usersOne);
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-    [HUD hide:YES];
-    
-    if( [status isEqualToString:str1]  )
-    {
-    self.alert = [MLTableAlert tableAlertWithTitle:@"圖片列表" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
-                  {
-                      /*
-                       if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
-                       return 1;
-                       else
-                       return [self.rowsNumField.text integerValue];
-                       */
-                      return [[usersOne objectForKey:@"list"] count];
-                  }
-                                          andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath)
-                  {
-                      static NSString *CellIdentifier = @"CellIdentifier";
-                      UITableViewCell *cell = [anAlert.table dequeueReusableCellWithIdentifier:CellIdentifier];
-                      if (cell == nil)
-                          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                      
-                      
-                      
-                      
-                      cell.textLabel.text = [NSString stringWithFormat:@"%@",[[[usersOne objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"name"]];
 
-                      
-                      return cell;
-                  }];
-    
-    // Setting custom alert height
-    self.alert.height = 350;
-    
-    // configure actions to perform
-    
-    
-    
-    [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex)
-     {
-         //		self.resultLabel.text = [NSString stringWithFormat:@"Selected Index\nSection: %d Row: %d", selectedIndex.section, selectedIndex.row];
-         [self downLoadImage:[[[[usersOne objectForKey:@"list"] objectAtIndex:selectedIndex.row] objectForKey:@"pid"] integerValue]];
-     } andCompletionBlock:^{
-         //		self.resultLabel.text = @"Cancel Button Pressed\nNo Cells Selected";
-         
-     }];
-    
-    [self.alert show];
+    [HUD hide:YES];
+
+    if([status isEqualToString:str1]) {
+        self.alert = [MLTableAlert tableAlertWithTitle:@"圖片列表" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil)
+                                          numberOfRows:^NSInteger (NSInteger section)
+                      {
+                          return [[usersOne objectForKey:@"list"] count];
+                      }
+                                              andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath)
+                      {
+                          static NSString *CellIdentifier = @"CellIdentifier";
+                          UITableViewCell *cell = [anAlert.table dequeueReusableCellWithIdentifier:CellIdentifier];
+                          if (cell == nil)
+                              cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                          
+                          cell.textLabel.text = [NSString stringWithFormat:@"%@",[[[usersOne objectForKey:@"list"] objectAtIndex:indexPath.row] objectForKey:@"name"]];
+                          
+                          return cell;
+                      }];
+        
+        // Setting custom alert height
+        self.alert.height = 350;
+        
+        [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex)
+         {
+             [self downLoadImage:[[[[usersOne objectForKey:@"list"] objectAtIndex:selectedIndex.row] objectForKey:@"pid"] integerValue]];
+         } andCompletionBlock:^{
+         }];
+
+        [self.alert show];
     }else
     {
         NSString *str1 =[usersOne objectForKey:@"msg"];
@@ -807,18 +848,15 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     }
 }
 
-
-//選擇後開始下載圖片
--(void)downLoadImage:(int)selectNum
+// 選擇後開始下載圖片
+- (void)downLoadImage:(int)selectNum
 {
     NSLog(@"select Num = %i",selectNum);
     [changeLogo removeFromSuperview];
     [self downLoadImageUrl:changePwStr andPid:selectNum];
 }
 
-
-
--(void)downLoadImageUrl:(NSString *)pwd andPid:(int)pid
+- (void)downLoadImageUrl:(NSString *)pwd andPid:(int)pid
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
@@ -836,19 +874,13 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:httpBody];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
-    
-    
-    
+
     ChangeImgUrl_tempData = [[NSMutableData alloc] init];
     ChangeImgUrl_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [self addLoadingView];
 }
 
-
-
-
--(void)HttpChangeImage
+- (void)HttpChangeImage
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:ChangeImgUrl_tempData];
@@ -890,7 +922,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
                 //Save Image to Directory
                 [self saveImage:imageFromURL withFileName:@"ios_logo" ofType:@"png" inDirectory:documentsDirectoryPath];
             }
-            
+
             //下載儲存icon
             if ([[[imgArr objectAtIndex:i] objectForKey:@"type"] integerValue] == 2)
             {
@@ -901,29 +933,30 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
                 [self saveImage:imageFromURL withFileName:@"ios_bar" ofType:@"png" inDirectory:documentsDirectoryPath];
             }
         }
-        
+
         [self LoadAndChangeLogo];
-        
-    }else
-    {
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         [CheckErrorCode Check_Error:str1 WithSender:self];
         NSLog(@"error happen");
     }
 }
 
-
-
--(UIImage *) getImageFromURL:(NSString *)fileURL {
+- (UIImage *)getImageFromURL:(NSString *)fileURL
+{
     UIImage * result;
-    
+
     NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
     result = [UIImage imageWithData:data];
-    
+
     return result;
 }
 
--(void) saveImage:(UIImage *)image withFileName:(NSString *)imageName ofType:(NSString *)extension inDirectory:(NSString *)directoryPath {
+- (void)saveImage:(UIImage *)image
+     withFileName:(NSString *)imageName
+           ofType:(NSString *)extension
+      inDirectory:(NSString *)directoryPath
+{
     if ([[extension lowercaseString] isEqualToString:@"png"]) {
         [UIImagePNGRepresentation(image) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"png"]] options:NSAtomicWrite error:nil];
     } else if ([[extension lowercaseString] isEqualToString:@"jpg"] || [[extension lowercaseString] isEqualToString:@"jpeg"]) {
@@ -934,36 +967,35 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 }
 
 
--(UIImage *) loadImage:(NSString *)fileName ofType:(NSString *)extension inDirectory:(NSString *)directoryPath {
+- (UIImage *)loadImage:(NSString *)fileName
+                ofType:(NSString *)extension
+           inDirectory:(NSString *)directoryPath
+{
     UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
     
     return result;
 }
 
 //下載並更換Logo
--(void)LoadAndChangeLogo
+- (void)LoadAndChangeLogo
 {
     //Definitions
     NSString * documentsDirectoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     //Load Image From Directory
     UIImage * imageFromWeb = [self loadImage:@"ios_logo" ofType:@"png" inDirectory:documentsDirectoryPath];
-    
+
     if (imageFromWeb)
     {
         img_logo.image = imageFromWeb;
-    }else
-    {
+    } else {
         img_logo.image = [UIImage imageNamed:@"logo.png"];
     }
-    
 }
 
-
-
-
--(void)clearLogo
+- (void)clearLogo
 {
     [changeLogo removeFromSuperview];
+
     //Definitions
     NSString * documentsDirectoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
@@ -993,13 +1025,12 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 }
 
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-//    self.screenName = @"View_Login";
     [super viewDidAppear:animated];
 }
 
-//20140321 update
+// 20140321 update
 - (IBAction)ibaAutoLogin:(id)sender {
     if ([autoLogin isEqualToString:@"YES"]) {
         autoLogin = @"NO";

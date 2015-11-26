@@ -31,6 +31,8 @@
     NSString *g_watch_time;
     NSString *g_STR_MAP_SERVER;
     NSString *g_server_time;
+    
+    NSString *g_event;
 }
 
 @synthesize privacyView,verificationText,GpsLocation,baiduMapView;
@@ -247,10 +249,12 @@
 
     NSLog(@"in. lat:%@, lng:%@", latitude, longitude);
 
-    //設定經緯度
+    // 設定經緯度
     CLLocationCoordinate2D newCoordinate = [self convertCoordinateWithLongitude:[longitude doubleValue] latitude:[latitude doubleValue]];
 
     NSLog(@"out. lat:%f, lng:%f", newCoordinate.latitude, newCoordinate.longitude);
+    self.lat = newCoordinate.latitude;
+    self.lon = newCoordinate.longitude;
 
     // 如果地址为空，重新解析
     __weak MyMapView *weakSelf = self;
@@ -260,7 +264,7 @@
                                                                      longitude:newCoordinate.latitude]
                               resultBlock:^(NSString *address) {
                                   [weakSelf Set_Text:address
-                                                andE:nil
+                                                andE:g_event
                                                 andN:g_name
                                                andST:g_server_time
                                                andWT:g_watch_time];
@@ -270,12 +274,12 @@
     [self findAddressUseLat:newCoordinate.latitude andLon:newCoordinate.longitude];
 
     kaos_digital.center = newCoordinate;
-    
+
     // 設定縮放比例
     kaos_digital.span.latitudeDelta = (0.018* [radius doubleValue])/1118.00f ;
     kaos_digital.span.longitudeDelta =(0.018* [radius doubleValue])/1118.00f ;
-    
-    //  // 把region設定給MapView
+
+    // 把region設定給MapView
     [map_view setRegion:kaos_digital];
     map_view.delegate = self;
 
@@ -308,8 +312,10 @@
 {
     smsSendLbl.text = NSLocalizedStringFromTable(@"SMS_SEND", INFOPLIST, nil);
     NSString *AddText;
+    NSString *event_lat_lon;
 
     g_name = name;
+    g_event = event;
     g_STR_MAP_IN = [(MainClass *) MainObj Get_DefineString:STR_MAP_IN];
     g_location = location;
     g_STR_MAP_WATCH = [(MainClass *) MainObj Get_DefineString:STR_MAP_WATCH];
@@ -317,8 +323,13 @@
     g_STR_MAP_SERVER = [(MainClass *) MainObj Get_DefineString:STR_MAP_SERVER];
     g_server_time = [server_time substringWithRange:NSMakeRange(0, 16)];
 
-    event = nil;
-    if (event == NULL) {
+    if (self.lat > 0.001) {
+        event_lat_lon = [NSString stringWithFormat:@"%@[%.5f,%.5f]", event, self.lon, self.lat];
+    } else {
+        event_lat_lon = event;
+    }
+
+    if (event == nil) {
         AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
                    ,g_name
                    ,g_STR_MAP_IN
@@ -332,7 +343,7 @@
                    name,
                    [(MainClass *)MainObj Get_DefineString:STR_MAP_IN],
                    location,
-                   event,
+                   event_lat_lon,
                    [(MainClass *) MainObj Get_DefineString:STR_MAP_WATCH],
                    [watch_time substringWithRange:NSMakeRange(0, 16)],
                    [(MainClass *) MainObj Get_DefineString:STR_MAP_SERVER],
@@ -840,11 +851,20 @@ BOOL keyboarshow;
 /// 更新地址信息
 - (void)updateTextFieldWithAddress:(NSString *)address
 {
+    NSString *event_lat_lon;
+
+    if (self.lat > 0.001) {
+        event_lat_lon = [NSString stringWithFormat:@"%@[%.5f,%.5f]", g_event, self.lon, self.lat];
+    } else {
+        event_lat_lon = g_event;
+    }
+
     if (address) {
-        NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
+        NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@\n%@ : %@\n%@ : %@\n "
                              ,g_name
                              ,g_STR_MAP_IN
                              ,address
+                             ,event_lat_lon
                              ,g_STR_MAP_WATCH
                              ,g_watch_time
                              ,g_STR_MAP_SERVER
@@ -853,10 +873,11 @@ BOOL keyboarshow;
         [ShowText setText:AddText];
         [ShowText setTextColor:[UIColor blackColor]];
     } else {
-        NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@ : %@\n%@ : %@\n "
+        NSString *AddText = [[NSString alloc] initWithFormat:@"%@ %@ %@\n%@\n%@ : %@\n%@ : %@\n "
                              ,g_name
                              ,g_STR_MAP_IN
                              ,@" "
+                             ,event_lat_lon
                              ,g_STR_MAP_WATCH
                              ,g_watch_time
                              ,g_STR_MAP_SERVER

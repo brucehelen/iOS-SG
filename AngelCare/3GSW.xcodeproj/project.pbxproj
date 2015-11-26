@@ -332,6 +332,7 @@
 		7A7F6DDF1B82D4A4004ECA87 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */; };
 		7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5131BB14DCE00DA84E6 /* head_pic.png */; };
 		7AB4E5161BB25A9E00DA84E6 /* icon_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5151BB25A9E00DA84E6 /* icon_new.png */; };
+		7AC768BA1BFAF87500345FFD /* History.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AC768B91BFAF87500345FFD /* History.txt */; };
 		7ADE5AAA1BF32C88002CBF52 /* KMDisclaimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5AA91BF32C88002CBF52 /* KMDisclaimerView.m */; };
 		7ADE5AAD1BF47FDC002CBF52 /* KMFAQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE5AAC1BF47FDC002CBF52 /* KMFAQModel.m */; };
 		7AE943DA1BC6536E00E50DD0 /* KMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE943D91BC6536E00E50DD0 /* KMLocationManager.m */; };
@@ -1037,6 +1038,7 @@
 		7A85A68E1B26F2A7000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = "AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/Release-iphonesimulator/libbaidumapapi.a"; sourceTree = "<group>"; };
 		7AB4E5131BB14DCE00DA84E6 /* head_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_pic.png; sourceTree = "<group>"; };
 		7AB4E5151BB25A9E00DA84E6 /* icon_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_new.png; sourceTree = "<group>"; };
+		7AC768B91BFAF87500345FFD /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
 		7ADE5AA81BF32C88002CBF52 /* KMDisclaimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMDisclaimerView.h; sourceTree = "<group>"; };
 		7ADE5AA91BF32C88002CBF52 /* KMDisclaimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMDisclaimerView.m; sourceTree = "<group>"; };
 		7ADE5AAB1BF47FDC002CBF52 /* KMFAQModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMFAQModel.h; sourceTree = "<group>"; };
@@ -1762,6 +1764,7 @@
 		CEF698BF16003D8900874E59 = {
 			isa = PBXGroup;
 			children = (
+				7AC768B91BFAF87500345FFD /* History.txt */,
 				7A4A428B1B26C40C00277B10 /* Images.xcassets */,
 				182A82251AEA636D0032B613 /* Default-568h@2x.png */,
 				7AB4E5131BB14DCE00DA84E6 /* head_pic.png */,
@@ -2679,11 +2682,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				TargetAttributes = {
-					CEF698C916003D8900874E59 = {
-						DevelopmentTeam = 8H39TND74Z;
-					};
-				};
 			};
 			buildConfigurationList = CEF698C416003D8900874E59 /* Build configuration list for PBXProject "3GSW" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2781,6 +2779,7 @@
 				DBBA448F1A7F5EC000744087 /* icon_his_on.png in Resources */,
 				CEC930CF1615ADB100821547 /* mapp3.png in Resources */,
 				CEC930D01615ADB100821547 /* mapp4.png in Resources */,
+				7AC768BA1BFAF87500345FFD /* History.txt in Resources */,
 				CEC930D11615ADB100821547 /* mapp5.png in Resources */,
 				CEC930D21615ADB100821547 /* mapp6.png in Resources */,
 				CEC930D31615ADB100821547 /* mapp7.png in Resources */,
@@ -3394,8 +3393,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3434,11 +3433,12 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AngelCare",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3461,9 +3461,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3491,8 +3491,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3547,8 +3547,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rachel tee (8H39TND74Z)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rachel tee (8H39TND74Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3587,11 +3587,12 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AngelCare",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3614,9 +3615,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3634,11 +3635,12 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AngelCare",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3661,9 +3663,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ml.mhwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
