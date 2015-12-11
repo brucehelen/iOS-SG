@@ -280,18 +280,18 @@ long long NotiLogin_expectedLength;        //檔案大小
         NSUserDefaults *defaults;
         defaults = [NSUserDefaults standardUserDefaults];
         //清空所有佩戴者資料
-        NSDictionary * dict = [defaults dictionaryRepresentation];
+        //NSDictionary * dict = [defaults dictionaryRepresentation];
         //20140321
         NSString *acc = [defaults objectForKey:@"userAccount"];
         NSString *pwd = [defaults objectForKey:@"userHash"];
         //20140321
 
-        for (id key in dict) {
-            if (![key isEqualToString:@"token"]) {
-                [defaults removeObjectForKey:key];
-            }
-        }
-        [defaults synchronize];
+//        for (id key in dict) {
+//            if (![key isEqualToString:@"token"]) {
+//                [defaults removeObjectForKey:key];
+//            }
+//        }
+//        [defaults synchronize];
 
         //20140321
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -331,15 +331,15 @@ long long NotiLogin_expectedLength;        //檔案大小
 //暫時使用此方法  等Token問題解決
 -(void)tempLogout
 {
-    NSUserDefaults *defaults;
-    defaults = [NSUserDefaults standardUserDefaults];
-    //清空所有佩戴者資料
-    NSDictionary * dict = [defaults dictionaryRepresentation];
-    for (id key in dict) {
-        [defaults removeObjectForKey:key];
-    }
-    [defaults synchronize];
-    
+//    NSUserDefaults *defaults;
+//    defaults = [NSUserDefaults standardUserDefaults];
+//    //清空所有佩戴者資料
+//    NSDictionary * dict = [defaults dictionaryRepresentation];
+//    for (id key in dict) {
+//        [defaults removeObjectForKey:key];
+//    }
+//    [defaults synchronize];
+
     UIViewController *login = [self.storyboard instantiateInitialViewController];
     [self.navigationController pushViewController:login animated:NO];
 }

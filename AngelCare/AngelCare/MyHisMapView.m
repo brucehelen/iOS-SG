@@ -455,6 +455,9 @@
 - (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees)lng
                                                         latitude:(CLLocationDegrees)lat
 {
+    // bruce@20151127
+    return CLLocationCoordinate2DMake(lat, lng);
+
     NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=%lf&y=%lf", lng, lat]];
     
     NSURLResponse *response;
@@ -473,6 +476,9 @@
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
+    // bruce@20151127
+    return;
+
     __weak MyHisMapView *weakSelf = self;
 
     KMLocationManager *manger = [KMLocationManager locationManager];
@@ -501,9 +507,10 @@
 }
 
 //接收反向地理编码结果
--(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:
-(BMKReverseGeoCodeResult *)result
-errorCode:(BMKSearchErrorCode)error{
+- (void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher
+                            result:(BMKReverseGeoCodeResult *)result
+                         errorCode:(BMKSearchErrorCode)error
+{
   if (error == BMK_SEARCH_NO_ERROR) {
       //在此处理正常结果
       NSLog(@"正常结果 = %@",result.address);

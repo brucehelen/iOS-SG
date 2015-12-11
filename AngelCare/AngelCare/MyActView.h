@@ -21,15 +21,13 @@
     MKCircle *leaveCircle;
 
     IBOutlet MKMapView *map_view;
-    
+
     BMKMapView *baiduMapView;
     IBOutlet MKMapView *googleMapView;
-    
-    IBOutlet  UITextView   *ShowText;   
-    
-    int     tarNum;
-    
-    BOOL   ShowWord;
+    IBOutlet UITextView *ShowText;
+
+    int tarNum;
+    BOOL ShowWord;
 
     NSString *SaveName;
 
@@ -50,7 +48,7 @@
     BOOL    NeedInit;
 
     //parent View
-    id      MainObj;
+    id MainObj;
 
     BOOL isList;
 

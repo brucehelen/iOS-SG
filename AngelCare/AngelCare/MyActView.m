@@ -11,6 +11,12 @@
 #import "Base64.h"
 #import "KMLocationManager.h"
 
+@interface MyActView()
+
+@property (nonatomic, copy) NSString *globalLocation;
+
+@end
+
 
 @implementation MyActView
 {
@@ -51,6 +57,9 @@ int isGPS_GSM_WIFI;
 - (CLLocationCoordinate2D) convertCoordinateWithLongitude:(CLLocationDegrees)lng
                                                  latitude:(CLLocationDegrees)lat
 {
+    // bruce@20151127
+    return CLLocationCoordinate2DMake(lat, lng);
+
     NSString *isoCode;
     if ([(MainClass *) MainObj CheckGoogle] == false) {
         NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=%lf&y=%lf", lng, lat]];
@@ -157,13 +166,20 @@ int isGPS_GSM_WIFI;
 
         ShowWord = false;
         MyAnnotation *tmp = (MyAnnotation*)view.annotation;
-        [self findAddressUseLat:[[Array_latitudeDate objectAtIndex:MyNum]doubleValue]
-                         andLon:[[Array_longitudeDate objectAtIndex:MyNum]doubleValue]
-                         andAnn:tmp];
+        
+        currentAnn.title = [Array_locationDate objectAtIndex:MyNum];
+        NSLog(@"currentAnn.title = %@", currentAnn.title);
+        if (tmp) {
+            currentAnn = tmp;
+        }
+//        [self findAddressUseLat:[[Array_latitudeDate objectAtIndex:MyNum]doubleValue]
+//                         andLon:[[Array_longitudeDate objectAtIndex:MyNum]doubleValue]
+//                         andAnn:tmp];
     }
 }
 
-- (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees) lng latitude:(CLLocationDegrees)lat{
+- (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees)lng latitude:(CLLocationDegrees)lat
+{
     NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=%lf&y=%lf", lng, lat]];
     
     NSURLResponse *response;
@@ -225,6 +241,7 @@ int isGPS_GSM_WIFI;
     NSMutableArray *overlaysToRemove = [[NSMutableArray alloc] initWithArray: map_view.overlays];
 
     NSLog(@"circle = %@",overlaysToRemove);
+
     [map_view removeOverlays:overlaysToRemove];
 }
 
@@ -700,6 +717,7 @@ int isGPS_GSM_WIFI;
                    [(MainClass *) MainObj Get_DefineString:STR_ACT_LOCATION],
                    location];
         [ShowText setText:AddText];
+        
     } else {
         __weak MyActView *weakSelf = self;
 

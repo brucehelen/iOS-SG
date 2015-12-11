@@ -91,19 +91,21 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 #pragma mark - 读取URL
 - (void)initURLAddress
 {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    NSString *value = [ud objectForKey:@"server_base_url"];
+    NSString *value = [defaults objectForKey:@"server_base_url"];
     if (value) {
         INK_Url_1 = [value copy];
+        NSLog(@"get saved INK_Url_1: %@", INK_Url_1);
     } else {
 #if PROGRAM_VER_ML
-        [ud setObject:ML_SERVER_URL forKey:@"server_base_url"];
+        [defaults setObject:ML_SERVER_URL forKey:@"server_base_url"];
         INK_Url_1 = [ML_SERVER_URL copy];
 #else
-        [ud setObject:CN_SERVER_URL forKey:@"server_base_url"];
+        [defaults setObject:CN_SERVER_URL forKey:@"server_base_url"];
         INK_Url_1 = [CN_SERVER_URL copy];
 #endif
+        [defaults synchronize];
     }
 }
 
@@ -255,8 +257,10 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
                                                         handler:^(UIAlertAction *action) {
                                                             INK_Url_1 = [titleUrl1 copy];
                                                             [url setObject:titleUrl1 forKey:@"server_base_url"];
+                                                            NSLog(@"new INK_Url_1 = %@", INK_Url_1);
+                                                            [url synchronize];
                                                         }];
-        
+
         // URL2
         if ([titleUrl2 isEqualToString:INK_Url_1]) {
             style = UIAlertActionStyleDestructive;
@@ -268,8 +272,10 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
                                                         handler:^(UIAlertAction *action) {
                                                             INK_Url_1 = [titleUrl2 copy];
                                                             [url setObject:titleUrl2 forKey:@"server_base_url"];
+                                                            NSLog(@"new INK_Url_1 = %@", INK_Url_1);
+                                                            [url synchronize];
                                                         }];
-        
+
         // URL3
         if ([titleUrl3 isEqualToString:INK_Url_1]) {
             style = UIAlertActionStyleDestructive;
@@ -281,6 +287,8 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
                                                         handler:^(UIAlertAction *action) {
                                                             INK_Url_1 = [titleUrl3 copy];
                                                             [url setObject:titleUrl3 forKey:@"server_base_url"];
+                                                            NSLog(@"new INK_Url_1 = %@", INK_Url_1);
+                                                            [url synchronize];
                                                         }];
 
         // Add the actions
@@ -446,7 +454,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 }
 
 //讀取登入資料
--(void)HttpReadLoginData
+- (void)HttpReadLoginData
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Login_tempData];
@@ -473,8 +481,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
 
     if ([status isEqualToString:str1])
     {
-//        UIViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"navi"];
-//        [self presentModalViewController:ViewController animated:YES];
         [self loadUserDic:[usersOne objectForKey:@"list"]];
     }
     else
@@ -494,22 +500,18 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
     //清空所有佩戴者資料
-    NSDictionary * dict = [defaults dictionaryRepresentation];
-    for (id key in dict) {
-        [defaults removeObjectForKey:key];
-    }
-    [defaults synchronize];
+//    NSDictionary * dict = [defaults dictionaryRepresentation];
+//    for (id key in dict) {
+//        [defaults removeObjectForKey:key];
+//    }
+//    [defaults synchronize];
     int accNum = 0;
     
     for (int i=0; i<[arr count]; i++) {
-        
-//        if ([[[arr objectAtIndex:i] objectForKey:@"type"] integerValue] != 0 )
-        //擋住使用者 type = 1 is 700
         if ([[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"type"]] isEqualToString:UserDeviceType1] ||
             [[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"type"]] isEqualToString:UserDeviceType2]
             )
         {
-        
             [defaults setObject:[[arr objectAtIndex:i] objectForKey:@"account"] forKey:[NSString stringWithFormat:@"Acc%i",accNum+1]];
             [defaults setObject:[[arr objectAtIndex:i] objectForKey:@"name"] forKey:[NSString stringWithFormat:@"Name%i",accNum+1]];
             [defaults setObject:[[arr objectAtIndex:i] objectForKey:@"phone"] forKey:[NSString stringWithFormat:@"Phone%i",accNum+1]];
@@ -517,16 +519,10 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
             
             NSLog(@"account Acc %@ Key %@",[[arr objectAtIndex:i] objectForKey:@"account"],[NSString stringWithFormat:@"Acc%i",accNum+1]);
              NSLog(@"Name %@ Key %@",[[arr objectAtIndex:i] objectForKey:@"name"],[NSString stringWithFormat:@"Name%i",accNum+1]);
-                
             accNum++;
         }
     }
-//    if (accTxt.text.length == 0) {
-//        
-//    }
-//    else{
-//        
-//    }
+
     [defaults setObject:accTxt.text forKey:@"userAccount"];
     [defaults setObject:pwdTxt.text forKey:@"userHash"];
     [defaults setInteger:accNum forKey:@"totalcount"];
@@ -537,8 +533,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     //save accList 擋住使用者(需要)
     [defaults setObject:arr forKey:@"accList"];
     [defaults synchronize];
-
-//    [defaults synchronize];
     
     UIViewController *naviViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"navi"];
     //ios7 modify
@@ -547,9 +541,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         NSLog(@"default = %@",[defaults objectForKey:@"Name1"]);
         [HUD hide:YES];
     }];
-//    [self presentModalViewController:naviViewController animated:YES];
-    
-    
 }
 
 

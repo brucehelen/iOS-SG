@@ -172,9 +172,13 @@
     lat = [[[NSString alloc] initWithData:[Base64 decode:[result objectForKey:@"y"]] encoding:NSUTF8StringEncoding] doubleValue];
     return CLLocationCoordinate2DMake(lat, lng);
 }
-- (CLLocationCoordinate2D) convertCoordinateWithLongitude:(CLLocationDegrees) lng latitude:(CLLocationDegrees)lat{
-    
-    //    NSInteger mapType = [[NSUserDefaults standardUserDefaults] integerForKey:@"MAP_TYPE"];
+
+- (CLLocationCoordinate2D) convertCoordinateWithLongitude:(CLLocationDegrees)lng
+                                                 latitude:(CLLocationDegrees)lat
+{
+    // bruce@20151127
+    return CLLocationCoordinate2DMake(lat, lng);
+
     NSString *isoCode;
     if ([(MainClass *) MainObj CheckGoogle] == false) {
         NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=%lf&y=%lf", lng, lat]];

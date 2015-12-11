@@ -42,6 +42,10 @@
                                                  latitude:(CLLocationDegrees)lat
 {
     NSString *isoCode;
+    
+    // bruce@20151126测试
+    return CLLocationCoordinate2DMake(lat, lng);
+    
     if ([(MainClass *) MainObj CheckGoogle] == false) {
         NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=%lf&y=%lf", lng, lat]];
         
@@ -276,8 +280,8 @@
     kaos_digital.center = newCoordinate;
 
     // 設定縮放比例
-    kaos_digital.span.latitudeDelta = (0.018* [radius doubleValue])/1118.00f ;
-    kaos_digital.span.longitudeDelta =(0.018* [radius doubleValue])/1118.00f ;
+    kaos_digital.span.latitudeDelta = (0.018* [radius doubleValue])/1118.00f;
+    kaos_digital.span.longitudeDelta =(0.018* [radius doubleValue])/1118.00f;
 
     // 把region設定給MapView
     [map_view setRegion:kaos_digital];
@@ -808,6 +812,9 @@ BOOL keyboarshow;
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
+    // bruce@20151126
+    return;
+
     __weak MyMapView *weakSelf = self;
 
     self.lat = lat;
@@ -887,7 +894,7 @@ BOOL keyboarshow;
     }
 }
 
-//接收反向地理编码结果
+// 接收反向地理编码结果
 - (void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher
                             result: (BMKReverseGeoCodeResult *)result
                         errorCode:(BMKSearchErrorCode)error

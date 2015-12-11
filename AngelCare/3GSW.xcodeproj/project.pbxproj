@@ -319,6 +319,11 @@
 		6F9C14AE17CCFE5600AE5C1E /* H_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C14A917CCFE5600AE5C1E /* H_5.png */; };
 		6FB7CC611795B42800068386 /* GroupMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB7CC601795B42800068386 /* GroupMemberView.m */; };
 		79BE093F167EC7A300D4F893 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BE093E167EC7A300D4F893 /* Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7A010EAF1C1815EA00AFC4DD /* hypertension_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A010EAE1C1815EA00AFC4DD /* hypertension_cn.html */; };
+		7A010EB11C18164300AFC4DD /* index_cn.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A010EB01C18164300AFC4DD /* index_cn.css */; };
+		7A010EB31C18176200AFC4DD /* hypotension_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A010EB21C18176200AFC4DD /* hypotension_cn.html */; };
+		7A010EB51C1819BB00AFC4DD /* hypoglycemia_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A010EB41C1819BB00AFC4DD /* hypoglycemia_cn.html */; };
+		7A010EB71C1819F100AFC4DD /* highbloodsugar_cn.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A010EB61C1819F100AFC4DD /* highbloodsugar_cn.html */; };
 		7A181B501BE317DE0032FFF2 /* KMCommonClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A181B4F1BE317DE0032FFF2 /* KMCommonClass.m */; };
 		7A30DF9F1B788C74000D60C5 /* nttBg7.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A30DF9E1B788C74000D60C5 /* nttBg7.png */; };
 		7A3722F51BEB08BB002CAD54 /* KMFreqQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3722F41BEB08BB002CAD54 /* KMFreqQuestionView.m */; };
@@ -1020,6 +1025,11 @@
 		79BE093D167EC7A300D4F893 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		79BE093E167EC7A300D4F893 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		79C7B9C916781FB3008EFCEC /* MyMapHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMapHeader.h; sourceTree = "<group>"; };
+		7A010EAE1C1815EA00AFC4DD /* hypertension_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = hypertension_cn.html; sourceTree = "<group>"; };
+		7A010EB01C18164300AFC4DD /* index_cn.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index_cn.css; sourceTree = "<group>"; };
+		7A010EB21C18176200AFC4DD /* hypotension_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = hypotension_cn.html; sourceTree = "<group>"; };
+		7A010EB41C1819BB00AFC4DD /* hypoglycemia_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = hypoglycemia_cn.html; sourceTree = "<group>"; };
+		7A010EB61C1819F100AFC4DD /* highbloodsugar_cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = highbloodsugar_cn.html; sourceTree = "<group>"; };
 		7A181B4E1BE317DE0032FFF2 /* KMCommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMCommonClass.h; sourceTree = "<group>"; };
 		7A181B4F1BE317DE0032FFF2 /* KMCommonClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMCommonClass.m; sourceTree = "<group>"; };
 		7A30DF9E1B788C74000D60C5 /* nttBg7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nttBg7.png; path = "../../../pic(orange_gray)/nttBg7.png"; sourceTree = "<group>"; };
@@ -1511,6 +1521,11 @@
 				32A6839A1B9D76D700484958 /* index.css */,
 				32A683961B9D716800484958 /* highbloodsugar.html */,
 				32A683971B9D716800484958 /* hypertension.html */,
+				7A010EAE1C1815EA00AFC4DD /* hypertension_cn.html */,
+				7A010EB21C18176200AFC4DD /* hypotension_cn.html */,
+				7A010EB41C1819BB00AFC4DD /* hypoglycemia_cn.html */,
+				7A010EB61C1819F100AFC4DD /* highbloodsugar_cn.html */,
+				7A010EB01C18164300AFC4DD /* index_cn.css */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -2682,6 +2697,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					CEF698C916003D8900874E59 = {
+						DevelopmentTeam = ZV2299XXGK;
+					};
+				};
 			};
 			buildConfigurationList = CEF698C416003D8900874E59 /* Build configuration list for PBXProject "3GSW" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2787,6 +2807,7 @@
 				7A30DF9F1B788C74000D60C5 /* nttBg7.png in Resources */,
 				DB89EB8B1949A4E000E3843C /* icon_geo.png in Resources */,
 				CEC930D41615ADB100821547 /* mapp8.png in Resources */,
+				7A010EB11C18164300AFC4DD /* index_cn.css in Resources */,
 				4748E8521846033A00058EFB /* icon_people.png in Resources */,
 				DBD523231934912D00874266 /* b6.png in Resources */,
 				CEC930D51615ADB100821547 /* mapp9.png in Resources */,
@@ -2875,6 +2896,7 @@
 				4767C17A170AB88A003713F7 /* icon_refresh.png in Resources */,
 				DBDEEE0118DC1A0E0029F35C /* check_on.png in Resources */,
 				DB4712D419403DDB00DA4B0C /* edit.png in Resources */,
+				7A010EB31C18176200AFC4DD /* hypotension_cn.html in Resources */,
 				DB46A7811937251B00F5BEC4 /* check_ok.png in Resources */,
 				DB876ED819406CFF00D8F759 /* icon_week_MG.png in Resources */,
 				DBBE354718A3685100F723F0 /* bgLoading.png in Resources */,
@@ -2923,6 +2945,7 @@
 				DB1339AD18F2AE3C00E6D183 /* icon_add.png in Resources */,
 				18C3DBBF1AF0CA47005838D0 /* icon_16.png in Resources */,
 				470F69A91785548A006CC746 /* camera.png in Resources */,
+				7A010EB51C1819BB00AFC4DD /* hypoglycemia_cn.html in Resources */,
 				470F69AB17855706006CC746 /* icon_edit.png in Resources */,
 				470F69B317857EA7006CC746 /* EditPersonInfoCell.xib in Resources */,
 				47F36D1A17865E8E00B4CD36 /* MLTableAlertBackground.png in Resources */,
@@ -3026,6 +3049,7 @@
 				470C621A17BC7D1800F6C711 /* bpremind2.png in Resources */,
 				470C621C17BC7DC100F6C711 /* bpreimd3.png in Resources */,
 				470C621E17BC884900F6C711 /* weightremind.png in Resources */,
+				7A010EB71C1819F100AFC4DD /* highbloodsugar_cn.html in Resources */,
 				6F95121117BD249600713F3F /* MainStoryboard_iPhone4.storyboard in Resources */,
 				DB0C8AC318A2465E001E611D /* nttCallLimit.png in Resources */,
 				471086C517BDE0F500E8C48E /* main_03_1.png in Resources */,
@@ -3047,6 +3071,7 @@
 				DBF69F9719385CB900A692C1 /* icon_week_T.png in Resources */,
 				6F9C14AC17CCFE5600AE5C1E /* H_3.png in Resources */,
 				6F9C14AD17CCFE5600AE5C1E /* H_4.png in Resources */,
+				7A010EAF1C1815EA00AFC4DD /* hypertension_cn.html in Resources */,
 				6F9C14AE17CCFE5600AE5C1E /* H_5.png in Resources */,
 				DBDA675D195C24A9005A4407 /* geoinfo2.png in Resources */,
 				47AF493717CDB71400A0665F /* type01.png in Resources */,
@@ -3433,7 +3458,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3461,9 +3486,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.missionhealth.new-watch1111";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3587,7 +3612,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3615,9 +3640,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.missionhealth.new-watch1111";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3635,7 +3660,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3663,9 +3688,9 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.missionhealth.new-watch1111";
 				PRODUCT_NAME = 3GSW;
-				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

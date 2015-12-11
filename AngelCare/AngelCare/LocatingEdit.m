@@ -113,17 +113,20 @@
 - (CLLocationCoordinate2D) convertCoordinateToBaiDuWithLongitude:(CLLocationDegrees) lng
                                                         latitude:(CLLocationDegrees)lat
 {
+    // bruce@20151127
+    return CLLocationCoordinate2DMake(lat, lng);
+
     NSURL *convertorURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.map.baidu.com/ag/coord/convert?from=0&to=4&x=%lf&y=%lf", lng, lat]];
-    
+
     NSURLResponse *response;
     NSError *error;
-    
+
     NSData *resultData = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:convertorURL] returningResponse:&response error:&error];
-    
+
     NSString *resultString = [[NSString alloc] initWithData:resultData encoding:NSUTF8StringEncoding];
-    
+
     NSDictionary *result = [resultString JSONValue];
-    
+
     lng = [[[NSString alloc] initWithData:[Base64 decode:[result objectForKey:@"x"]] encoding:NSUTF8StringEncoding] doubleValue];
     lat = [[[NSString alloc] initWithData:[Base64 decode:[result objectForKey:@"y"]] encoding:NSUTF8StringEncoding] doubleValue];
     return CLLocationCoordinate2DMake(lat, lng);
@@ -131,6 +134,9 @@
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
+    // bruce@20151127
+    return;
+
     __weak LocatingEdit *weakSelf = self;
 
     KMLocationManager *locationManager = [KMLocationManager locationManager];

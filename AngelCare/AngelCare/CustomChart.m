@@ -369,9 +369,15 @@
     _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, pY, 320, 37)];
 //    [_pageControl setNumberOfPages:pileOfData.count];
     NSInteger m_numberOfPage = 1;
+
     if((type == 1) || (type == 2)){
+#if PROGRAM_VER_ML
+        m_numberOfPage = 2;
+#else
         m_numberOfPage = 3;
+#endif
     }
+
     [_pageControl setNumberOfPages:m_numberOfPage];
     [_pageControl setCurrentPage:0];
     _pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
@@ -797,45 +803,34 @@
 
     UIWebView *viewG = [[UIWebView alloc]initWithFrame:CGRectMake(320*2, 2, 320, 375 + wY)];
     viewG.scalesPageToFit = YES;
-    NSString *urlString = @"";
     NSString *urlLocalString = nil;
     switch (type) {
         case 1:     // 血压
             if (overXType.length == 0 || [overXType isEqualToString:@"B"]) {
-                urlString = @"http://210.242.50.125:7000/angelcare/hypotension.html";
+                urlLocalString = @"hypotension_cn";
             } else {
-                urlString = @"http://210.242.50.125:7000/angelcare/hypertension.html";
+                urlLocalString = @"hypertension_cn";
             }
-            urlLocalString = @"hypertension";
             break;
         case 2:     // 血糖
             if (overXType.length == 0 || [overXType isEqualToString:@"B"]) {
-                urlString = @"http://210.242.50.125:7000/angelcare/hypoglycemia.html";
+                urlLocalString = @"hypoglycemia_cn";
             } else {
-                urlString = @"http://210.242.50.125:7000/angelcare/highbloodsugar.html";
+                urlLocalString = @"highbloodsugar_cn";
             }
-            urlLocalString = @"highbloodsugar";
             break;
         default:
             break;
     }
 
-    NSURL *url = nil;
-
-    // 取得当前系统的语言，如果不是中文就加载本地的html文件
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSArray * allLanguages = [defaults objectForKey:@"AppleLanguages"];
-    NSString * preferredLang = [allLanguages objectAtIndex:0];
-
     NSString* path = [[NSBundle mainBundle] pathForResource:urlLocalString ofType:@"html"];
-    if ([preferredLang isEqualToString:@"zh-Hans"] || path == nil) {
-        url = [NSURL URLWithString:urlString];
-    } else {
-        url = [NSURL fileURLWithPath:path];
-    }
+    NSLog(@"load local html: %@, %@", urlLocalString, path);
 
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [viewG loadRequest:requestObj];
+    if (path) {
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [viewG loadRequest:requestObj];
+    }
 
     [viewG setBackgroundColor:[UIColor whiteColor]];
     [_scrollview addSubview:viewG];

@@ -3537,7 +3537,7 @@ BOOL    Is_Get1_Sw = false;
                 //顯示地圖/衛星 切換Btn顯示
                 [Bu_MapSet setHidden:NO];
                 [Bu_MapSet setBackgroundImage:[UIImage imageNamed:@"icon_map.png"] forState:UIControlStateNormal];
-                [TitleName setText: [  Array_show objectForKey : TITLE_MAP  ] ];
+                [TitleName setText:[Array_show objectForKey:TITLE_MAP]];
                 [self insertSubview:MyMapView belowSubview:insertView];
                 break;
 
@@ -10926,42 +10926,38 @@ BOOL    Is_Get1_Sw = false;
 }
 
 //簡訊定位(回傳解析)
--(void) Http_Process_GetSMSMap
+- (void)Http_Process_GetSMSMap
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Sms_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
+
     NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
+
     NSString *status = [usersOne objectForKey:@"status"];
     NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-    if( [status isEqualToString:str1]  )
-    {
-        //     NSLog(@" get loc");
+
+    if([status isEqualToString:str1]) {
         NSLog(@"map server time = %@",mapServerTime);
         NSLog(@"sms server time = %@",smsServerTime);
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy/MM/dd H:m:s"];
-        
+
         NSDate *serverDate = [formatter dateFromString:mapServerTime];
         NSDate *smsDate = [formatter dateFromString:smsServerTime];
-        
+
         NSDate *newLoction = [serverDate laterDate:smsDate];
-        
+
         NSLog(@"newLoction = %@",newLoction);
-        
+
         BOOL isGps;
-        
+
         if ([newLoction isEqualToDate:serverDate]) {
             usersOne = sosMap;
             isGps = YES;
             NSLog(@"server time");
-            
-        }else
-        {
+        } else {
             NSLog(@"SMS time");
             isGps = NO;
         }
@@ -10969,7 +10965,7 @@ BOOL    Is_Get1_Sw = false;
         [(MyMapView *)MyMapView Do_Init:self];
         [(MyMapView *)MyMapView setGpsLocation:isGps];
 
-        [self Change_State:IF_MAP ];
+        [self Change_State:IF_MAP];
 
         id station = [usersOne objectForKey:@"station"];
 
@@ -11000,17 +10996,14 @@ BOOL    Is_Get1_Sw = false;
         }
 
         id station2 = [usersOne objectForKey:@"data"];
-        
-        if ([station2 isKindOfClass:[NSArray class]])
-        {
+
+        if ([station2 isKindOfClass:[NSArray class]]) {
             NSArray *tmpb2 = station2;
-            for(int j =0;j< tmpb2.count;j++ )
-            {
+            for (int j =0;j< tmpb2.count;j++ ) {
                 id buf1 = [tmpb2 objectAtIndex:j];
-                
-                
-                NSDictionary *true1 =    buf1;
-                
+
+                NSDictionary *true1 = buf1;
+
                 location = [true1 objectForKey:@"location"];
                 event = [true1 objectForKey:@"event"];
                 name = [true1 objectForKey:@"name"];
@@ -11018,13 +11011,12 @@ BOOL    Is_Get1_Sw = false;
                 watch_time = [true1 objectForKey:@"watch_time"];
 
                 [(MyMapView *)MyMapView Set_Text:location andE:event andN:name andST:server_time andWT:watch_time];
-
                 break;
             }
         }
-        
+
         id station3 = [usersOne objectForKey:@"mark"];
-        
+
         if ([station3 isKindOfClass:[NSArray class]])
         {
             NSArray *tmpb3 = station3;
@@ -11055,7 +11047,7 @@ BOOL    Is_Get1_Sw = false;
     }
 }
 
-//使用者咨訊修改解析
+// 使用者咨訊修改解析
 - (void)Http_UpdateUserInfo
 {
     NSError *error;
