@@ -18,6 +18,7 @@
 - (CLLocationCoordinate2D)convertCoordinateWithLongitude:(CLLocationDegrees)lng
                                                 latitude:(CLLocationDegrees)lat
 {
+    return CLLocationCoordinate2DMake(lat, lng);
     NSString *isoCode;
 
     if ([(MainClass *) MainObj CheckGoogle] == false) {
@@ -137,7 +138,7 @@
                         Lat:[mapDic objectForKey:@"latitude"]
                      Radius:@"1096"];
 
-        NSString *textStr = [NSString stringWithFormat:@"%@:%@\r\n%@:%@",@"時間",[mapDic objectForKey:@"datatime"],@"地點",@""];
+        NSString *textStr = [NSString stringWithFormat:@"%@:%@\r\n%@:%@",@"时间",[mapDic objectForKey:@"datatime"],@"地点",[mapDic objectForKey:@"place"]];
 
         [self Set_textView:textStr];
         double lat = [[mapDic objectForKey:@"latitude"] doubleValue];

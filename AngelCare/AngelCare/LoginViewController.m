@@ -236,6 +236,9 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         NSString *titleUrl2 = ML_SERVER_URL;
         NSString *titleUrl3 = TEST_SERVER_URL;
 
+        // check ios version
+        if (IOS_VERSION < 8.0) return;
+
         NSUserDefaults *url = [NSUserDefaults standardUserDefaults];
 
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title

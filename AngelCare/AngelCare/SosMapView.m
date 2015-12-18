@@ -138,8 +138,15 @@
     [dateFormatNew setDateFormat:@"dd/MM/yyyy HH:mm"];
     NSDate *tmp = [dateFormat dateFromString:serverTime];
     serverTime = [dateFormatNew stringFromDate:tmp];
-    infoTxt.text = [NSString stringWithFormat:@"上传时间:%@\r接近地点:%@\r",[dataDic objectForKey:@"server_time"],@""];
-    [self findAddressUseLat:[latitudeStr doubleValue] andLon:[longitudeStr doubleValue]];
+
+    infoTxt.text = [NSString stringWithFormat:@"%@:\r%@\r%@:\r%@\r"
+                    ,NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil),
+                    [dataDic objectForKey:@"server_time"],
+                    NSLocalizedStringFromTable(@"His_ADDR", INFOPLIST, nil),
+                    [dataDic objectForKey:@"place"]];
+    infoTxt.textColor = [UIColor blackColor];
+    
+    //[self findAddressUseLat:[latitudeStr doubleValue] andLon:[longitudeStr doubleValue]];
 }
 
 
@@ -415,6 +422,7 @@
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
+    return;
     __weak SosMapView *weakSelf = self;
 
     KMLocationManager *locationManager = [KMLocationManager locationManager];
