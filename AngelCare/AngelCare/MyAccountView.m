@@ -417,7 +417,7 @@
                           
                           delegate
                                                            : self cancelButtonTitle:
-                          NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE", INFOPLIST, nil)
+                          kLoadString(@"ALERT_MESSAGE_CLOSE")
                                           otherButtonTitles: nil];
     
     [alert show];

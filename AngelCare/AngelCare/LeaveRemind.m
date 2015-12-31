@@ -272,7 +272,7 @@
 }
 - (void)useActionSheet:(id)sender{
     selectBtn = sender;
-    UIActionSheet *changeRange = [[UIActionSheet alloc] initWithTitle:@"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
+    UIActionSheet *changeRange = [[UIActionSheet alloc] initWithTitle:@"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
     [changeRange setTag:101];
     
     datePicker = [[UIDatePicker alloc] init];
@@ -339,7 +339,7 @@
     [tmp presentViewController:alert animated:YES completion:nil];
 }
 -(void)useACTRange:(id)sender{
-    UIActionSheet *changeRange = [[UIActionSheet alloc] initWithTitle:@"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
+    UIActionSheet *changeRange = [[UIActionSheet alloc] initWithTitle:@"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n" delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
     [changeRange setTag:201];
     UIPickerView *rangePicker = [[UIPickerView alloc] init];
     rangePicker.delegate = self;

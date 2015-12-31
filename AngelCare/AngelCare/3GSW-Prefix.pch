@@ -42,4 +42,6 @@
 
 extern NSString *INK_Url_1;
 
+#define kLoadString(key)    (NSLocalizedStringFromTable(key, INFOPLIST, nil).length ? NSLocalizedStringFromTable(key, INFOPLIST, nil) : @"OK")
+
 #endif /* _3GSW_PREFIX_PCH_ */

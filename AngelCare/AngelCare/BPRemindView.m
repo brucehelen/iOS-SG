@@ -79,7 +79,7 @@
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     numberToolbar.items = [NSArray arrayWithObjects:
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
+                           [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
                            nil];
     [numberToolbar sizeToFit];
     bpdDownlimit.inputAccessoryView = numberToolbar;
@@ -142,7 +142,7 @@
     return YES;
 }
 
--(void)SaveBP
+- (void)SaveBP
 {
     [bpdDownlimit resignFirstResponder];
     [bpdUplimit resignFirstResponder];
@@ -151,46 +151,42 @@
     //
     bpdDownlimit.text = @"0";
     bpsDownlimit.text = @"0";
-    if (![bpdUplimit.text isEqualToString:@""] && ![bpdDownlimit.text isEqualToString:@""] && ![bpsDownlimit.text isEqualToString:@""] && ![bpsUplimit.text isEqualToString:@""]) {
-        NSLog(@"ok");
-        
-        if ([bpdUplimit.text integerValue]<=[bpdDownlimit.text integerValue])
-        {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_BP_Error1 delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
+    if (![bpdUplimit.text isEqualToString:@""] &&
+        ![bpdDownlimit.text isEqualToString:@""] &&
+        ![bpsDownlimit.text isEqualToString:@""] &&
+        ![bpsUplimit.text isEqualToString:@""]) {
+
+        if ([bpdUplimit.text integerValue] <= [bpdDownlimit.text integerValue]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE
+                                                                message:ALERT_BP_Error1
+                                                               delegate:self
+                                                      cancelButtonTitle:ALERT_REMIND_OK
+                                                      otherButtonTitles: nil];
+            [alertView show];
+        } else if ([bpsUplimit.text integerValue] <= [bpsDownlimit.text integerValue]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE
+                                                                message:ALERT_BP_Error2
+                                                               delegate:self
+                                                      cancelButtonTitle:ALERT_REMIND_OK
+                                                      otherButtonTitles: nil];
             
             [alertView show];
-            NSLog(@"error 1 bpsu %@ bpsd %@",bpdUplimit.text,bpdDownlimit.text);
-            
-        }else if ([bpsUplimit.text integerValue]<= [bpsDownlimit.text integerValue])
-        {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_BP_Error2 delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
-            
-            [alertView show];
-            NSLog(@"error 2");
-        }else
-        {
-        
-        NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:bpdDownlimit.text,@"bpdDownlimit",bpdUplimit.text,@"bpdUplimit",bpsDownlimit.text,@"bpsDownlimit",bpsUplimit.text,@"bpsUplimit", nil];
-        
-        [(MainClass *)MainObj Send_BPdata:dic];
+        } else {
+            NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 bpdDownlimit.text, @"bpdDownlimit",
+                                 bpdUplimit.text, @"bpdUplimit",
+                                 bpsDownlimit.text, @"bpsDownlimit",
+                                 bpsUplimit.text, @"bpsUplimit", nil];
+            [(MainClass *)MainObj Send_BPdata:dic];
         }
-    }else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_REMIND_NULL delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
-        
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE
+                                                            message:ALERT_REMIND_NULL
+                                                           delegate:self
+                                                  cancelButtonTitle:ALERT_REMIND_OK
+                                                  otherButtonTitles: nil];
         [alertView show];
     }
-    
-    
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -75,4 +75,7 @@
 
 -(IBAction)changeFunction:(id)sender;
 -(void)loginWithAcc:(NSString *)acc andPwd:(NSString *)pwd;
+
+
+
 @end

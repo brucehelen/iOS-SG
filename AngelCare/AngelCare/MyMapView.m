@@ -471,7 +471,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:DUser]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -769,7 +769,7 @@ BOOL keyboarshow;
     }
     else{
         UIAlertView *alert;
-        alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"MsgSendAlertInfo", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles:NSLocalizedStringFromTable(@"DontShowAgain", INFOPLIST, nil), nil];
+        alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"MsgSendAlertInfo", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles:NSLocalizedStringFromTable(@"DontShowAgain", INFOPLIST, nil), nil];
         alert.tag = 808;
         [alert show];
     }

@@ -81,7 +81,7 @@
         numberToolbar.barStyle = UIBarStyleBlackTranslucent;
         numberToolbar.items = [NSArray arrayWithObjects:
                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                               [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithphone1Txt)],
+                               [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneWithphone1Txt)],
                                nil];
         [numberToolbar sizeToFit];
         
@@ -89,7 +89,7 @@
         numberToolbar2.barStyle = UIBarStyleBlackTranslucent;
         numberToolbar2.items = [NSArray arrayWithObjects:
                                 [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                                [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithphone2Txt)],
+                                [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneWithphone2Txt)],
                                 nil];
         [numberToolbar2 sizeToFit];
         
@@ -97,7 +97,7 @@
         numberToolbar3.barStyle = UIBarStyleBlackTranslucent;
         numberToolbar3.items = [NSArray arrayWithObjects:
                                 [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                                [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithphone3Txt)],
+                                [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneWithphone3Txt)],
                                 nil];
         [numberToolbar3 sizeToFit];
         

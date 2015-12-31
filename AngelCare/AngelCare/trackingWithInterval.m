@@ -79,14 +79,6 @@
     
     _lblWStart.text = NSLocalizedStringFromTable(@"C_StartTime", INFOPLIST, nil);
     _lblWEnd.text = NSLocalizedStringFromTable(@"C_EndTime", INFOPLIST, nil);
-//    NSDictionary *dict = @{@"wifiV": wifiVal,
-//                           @"wifiS": wifiStart,
-//                           @"wifiE": wifiEnd,
-//                           @"wifiO": wifiOn,
-//                           @"gpsV": gpsVal,
-//                           @"gpsS": gpsStart,
-//                           @"gpsE": gpsEnd,
-//                           @"gpsO": gpsOn};
 
     syncStr = [NSString stringWithFormat:@"%@",[dict objectForKey:@"wifiV"]];
     wifiV = [NSString stringWithFormat:@"%@",[dict objectForKey:@"wifiV"]];
@@ -96,7 +88,7 @@
     gpsV = [NSString stringWithFormat:@"%@",[dict objectForKey:@"gpsV"]];
     startGStr = [NSString stringWithFormat:@"%@",[dict objectForKey:@"gpsS"]];
     endGStr = [NSString stringWithFormat:@"%@",[dict objectForKey:@"gpsE"]];
-    
+
     wifiOn = [NSString stringWithFormat:@"%@",[dict objectForKey:@"wifiO"]];
     gpsOn = [NSString stringWithFormat:@"%@",[dict objectForKey:@"gpsO"]];
 
@@ -104,8 +96,6 @@
     [_switchGPS setTintColor:[UIColor orangeColor]];
     [_switchWifi setOnTintColor:[UIColor orangeColor]];
     [_switchWifi setTintColor:[UIColor orangeColor]];
-
-//    [_btnSwitch setThumbTintColor:[UIColor whiteColor]];//可設定圓鈕顏色
 
     if ([wifiOn isEqualToString:@"1"]) {
         [_switchWifi setOn:YES];
@@ -279,40 +269,70 @@
          withStatus:(NSString*)status
            withWeek:(NSString*)idxW
 {
-    if ([status isEqualToString:@"YES"]) {
-        [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_d"]
-                       forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blueColor]
-                  forState:UIControlStateNormal];
-    } else {
-        [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_u"]
-                       forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor greenColor]
-                  forState:UIControlStateNormal];
-    }
-
     int w = [idxW intValue];
     switch (w) {
         case 1:
-            [btn setTitle:@"M" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mon_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mon"]
+                               forState:UIControlStateNormal];
+            }
             break;
         case 2:
-            [btn setTitle:@"T" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_tue_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_tue"]
+                               forState:UIControlStateNormal];
+            }
             break;
         case 3:
-            [btn setTitle:@"W" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_wed_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_wed"]
+                               forState:UIControlStateNormal];
+            }
             break;
         case 4:
-            [btn setTitle:@"T" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_thu_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_thu"]
+                               forState:UIControlStateNormal];
+            }
             break;
         case 5:
-            [btn setTitle:@"F" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_fri_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_fri"]
+                               forState:UIControlStateNormal];
+            }
             break;
         case 6:
-            [btn setTitle:@"S" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sat_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sat"]
+                               forState:UIControlStateNormal];
+            }
             break;
         case 7:
-            [btn setTitle:@"S" forState:UIControlStateNormal];
+            if ([status isEqualToString:@"YES"]) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sun_01"]
+                               forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sun"]
+                               forState:UIControlStateNormal];
+            }
             break;
         default:
             break;
@@ -321,7 +341,7 @@
 
 - (IBAction)ibaSyncAndGpsf:(id)sender {
     NSArray *tmpTimes = @[@"0",@"5",@"10",@"15",@"20",@"30"];
-    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
+    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") numberOfRows:^NSInteger (NSInteger section)
                   {
                       /*
                        if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
@@ -479,26 +499,30 @@
     UIViewController *tmp = (UIViewController*)[[self nextResponder]nextResponder];
     [tmp presentViewController:alert animated:YES completion:nil];
 }
--(void)addActionSheetInView:(id)sender{
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
+
+- (void)addActionSheetInView:(id)sender
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil)
+                                                       delegate:self
+                                              cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL")
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
     sheet.tag = [(UIView*)sender tag];
-    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
-    
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 20, 300, 300)];
+
     datePicker.datePickerMode = UIDatePickerModeTime;
-    
-    
     NSLog(@"start %@",[[(UIButton*)sender titleLabel] text]);
-    
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
-    
-    
     [sheet addSubview:datePicker];
-    
+
     [sheet showInView:self];
 }
-- (void) setDatePicker{
-    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
+
+- (void)setDatePicker
+{
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 20, 300, 300)];
     //    datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
     datePicker.datePickerMode = UIDatePickerModeTime;
     //    datePicker.maximumDate = [NSDate date];
@@ -506,6 +530,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
 }
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
@@ -541,7 +566,7 @@
 
 - (IBAction)ibaOpenWhich:(id)sender {
     NSArray *tmpA = @[@"GPS",@"Wifi",@"None"];
-    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
+    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") numberOfRows:^NSInteger (NSInteger section)
                   {
                       /*
                        if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
@@ -690,173 +715,143 @@
         case 601:
             if ([w1 isEqualToString:@"YES"]) {
                 w1 = @"NO";
-                [_btnW1 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW1 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w1 = @"YES";
-                [_btnW1 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW1 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW1
+                   withStatus:w1
+                     withWeek:@"1"];
             break;
         case 602:
             if ([w2 isEqualToString:@"YES"]) {
                 w2 = @"NO";
-                [_btnW2 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW2 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w2 = @"YES";
-                [_btnW2 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW2 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW2
+                   withStatus:w2
+                     withWeek:@"2"];
             break;
         case 603:
             if ([w3 isEqualToString:@"YES"]) {
                 w3 = @"NO";
-                [_btnW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW3 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w3 = @"YES";
-                [_btnW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW3 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW3
+                   withStatus:w3
+                     withWeek:@"3"];
             break;
         case 604:
             if ([w4 isEqualToString:@"YES"]) {
                 w4 = @"NO";
-                [_btnW4 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW4 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w4 = @"YES";
-                [_btnW4 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW4 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW4
+                   withStatus:w4
+                     withWeek:@"4"];
             break;
         case 605:
             if ([w5 isEqualToString:@"YES"]) {
                 w5 = @"NO";
-                [_btnW5 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW5 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w5 = @"YES";
-                [_btnW5 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW5 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW5
+                   withStatus:w5
+                     withWeek:@"5"];
             break;
         case 606:
             if ([w6 isEqualToString:@"YES"]) {
                 w6 = @"NO";
-                [_btnW6 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW6 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w6 = @"YES";
-                [_btnW6 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW6 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW6
+                   withStatus:w6
+                     withWeek:@"6"];
             break;
         case 607:
             if ([w7 isEqualToString:@"YES"]) {
                 w7 = @"NO";
-                [_btnW7 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnW7 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 w7 = @"YES";
-                [_btnW7 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnW7 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnW7
+                   withStatus:w7
+                     withWeek:@"7"];
             break;
-            
         case 701:
             if ([gw1 isEqualToString:@"YES"]) {
                 gw1 = @"NO";
-                [_btnGW1 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW1 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw1 = @"YES";
-                [_btnGW1 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW1 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW1
+                   withStatus:gw1
+                     withWeek:@"1"];
             break;
         case 702:
             if ([gw2 isEqualToString:@"YES"]) {
                 gw2 = @"NO";
-                [_btnGW2 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW2 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw2 = @"YES";
-                [_btnGW2 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW2 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW2
+                   withStatus:gw2
+                     withWeek:@"2"];
             break;
         case 703:
             if ([gw3 isEqualToString:@"YES"]) {
                 gw3 = @"NO";
-                [_btnGW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW3 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw3 = @"YES";
-                [_btnGW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW3 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW3
+                   withStatus:gw3
+                     withWeek:@"3"];
             break;
         case 704:
             if ([gw4 isEqualToString:@"YES"]) {
                 gw4 = @"NO";
-                [_btnGW4 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW4 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw4 = @"YES";
-                [_btnGW4 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW4 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW4
+                   withStatus:gw4
+                     withWeek:@"4"];
             break;
         case 705:
             if ([gw5 isEqualToString:@"YES"]) {
                 gw5 = @"NO";
-                [_btnGW5 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW5 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw5 = @"YES";
-                [_btnGW5 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW5 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW5
+                   withStatus:gw5
+                     withWeek:@"5"];
             break;
         case 706:
             if ([gw6 isEqualToString:@"YES"]) {
                 gw6 = @"NO";
-                [_btnGW6 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW6 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw6 = @"YES";
-                [_btnGW6 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW6 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW6
+                   withStatus:gw6
+                     withWeek:@"6"];
             break;
         case 707:
             if ([gw7 isEqualToString:@"YES"]) {
                 gw7 = @"NO";
-                [_btnGW7 setBackgroundImage:[UIImage imageNamed:@"icon_week_u"] forState:UIControlStateNormal];
-                [_btnGW7 setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-            }
-            else{
+            } else {
                 gw7 = @"YES";
-                [_btnGW7 setBackgroundImage:[UIImage imageNamed:@"icon_week_d"] forState:UIControlStateNormal];
-                [_btnGW7 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             }
+            [self setBtnImage:_btnGW7
+                   withStatus:gw7
+                     withWeek:@"7"];
             break;
-
         default:
             break;
     }

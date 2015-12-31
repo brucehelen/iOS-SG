@@ -59,8 +59,8 @@
         NSDate *maxDate = [dateFormatter dateFromString:maxDayStr];
         NSDate *minDate = [dateFormatter dateFromString:minDayStr];
         
-        MyPick.maximumDate = maxDate;
-        MyPick.minimumDate = minDate;
+//        MyPick.maximumDate = maxDate;
+//        MyPick.minimumDate = minDate;
         
         [self Btn_init];
         

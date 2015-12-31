@@ -560,4 +560,6 @@
 
 - (void)pushFreqQuestionDetailViewWithModel:(KMFAQModel *)model;
 
+- (void)handleRemoteMsgWithType:(NSInteger)type;
+
 @end

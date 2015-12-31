@@ -83,7 +83,7 @@ long long Forget_expectedLength;        //檔案大小
         
         NSString *forgetpassword = [NSString stringWithFormat:@"%@%@",NSLocalizedStringFromTable(@"InsertAcc", INFOPLIST, nil),NSLocalizedStringFromTable(@"InsertEmail", INFOPLIST, nil)];
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:forgetpassword delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:forgetpassword delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_OK") otherButtonTitles: nil];
         
         [alertView show];
     }
@@ -161,7 +161,7 @@ long long Forget_expectedLength;        //檔案大小
     
     if( [status isEqualToString:str1]  )
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"isSentEmail", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"isSentEmail", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_TITLE") otherButtonTitles: nil];
         
         [alertView setTag:101];
         [alertView show];

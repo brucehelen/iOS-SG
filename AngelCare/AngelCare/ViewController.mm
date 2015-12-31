@@ -11,12 +11,12 @@
 #import <QRCodeReader.h>
 #import "AppDelegate.h"
 
-#define UserDate_Camera NSLocalizedStringFromTable(@"UserDate_Camera", INFOPLIST, nil)
-#define UserDate_Photo NSLocalizedStringFromTable(@"UserDate_Photo", INFOPLIST, nil)
-#define UserDate_Select NSLocalizedStringFromTable(@"UserDate_Select", INFOPLIST, nil)
-#define UserDate_CANCEL NSLocalizedStringFromTable(@"ALERT_MESSAGE_Back", INFOPLIST, nil)
+#define UserDate_Camera kLoadString(@"UserDate_Camera")
+#define UserDate_Photo kLoadString(@"UserDate_Photo")
+#define UserDate_Select kLoadString(@"UserDate_Select")
+#define UserDate_CANCEL kLoadString(@"ALERT_MESSAGE_Back")
 //20140324 刪除照片
-#define UserDate_Delete NSLocalizedStringFromTable(@"Delete", INFOPLIST, nil)
+#define UserDate_Delete kLoadString(@"Delete")
 @interface ViewController ()
 {
     UIButton *button;
@@ -68,18 +68,16 @@ long long SystemLog_expectedLength;        //檔案大小
 //目前無使用
 -(void)Check_Mode
 {
-    
     [(MainClass *)self.view Check_Mode];
 }
 
 //推播點選 ～ 依據內容後轉變顯示幕
 -(void)Go_SelectState:(int )SelValue
 {
-    [(MainClass *)self.view Go_State:SelValue];
     
 }
 
--(void)GetToken
+- (void)GetToken
 {
     LoginViewController *login = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
     NSLog(@"token = %@",[login returnToken]);
@@ -102,18 +100,18 @@ long long SystemLog_expectedLength;        //檔案大小
 
 - (void)viewDidLoad
 {
+    NSLog(@"**** ViewController viewDidLoad ****");
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(Receive_Notification_Comm:)
+                                             selector:@selector(Wait_Receive_Notification_Comm:)
                                                  name:@"Receive_Notification_Comm"
                                                object:nil];
-    
     NSUserDefaults *defaults;
     defaults = [NSUserDefaults standardUserDefaults];
-    
+
     userAccount = [defaults objectForKey:@"userAccount"];
     userHash = [defaults objectForKey:@"userHash"];
     token = [defaults objectForKey:@"token"];
-    
+
     [self ReloadUserAccAndPwd];
     [self slider_init];
     [self checkUser];
@@ -126,21 +124,76 @@ long long SystemLog_expectedLength;        //檔案大小
     safecount = 0;
     systemcount = 0;
     [(MainClass*)self.view setHiddenBack:YES];
+    
+    [self checkRemoteNotification];
 }
 
+// fix bug: 账号退出再登入重复监听消息
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"**** viewDidDisappear ****");
+
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)checkRemoteNotification
+{
+    // 测试后台推送
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefault valueForKey:@"remotePushMsg"];
+    if (data) {     // 有推送信息
+        NSDictionary *myDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSDictionary *pushMsgDict = myDict[@"pushMsgDict"];
+        NSLog(@"savedDict %@", pushMsgDict);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Receive_Notification_Comm"
+                                                            object:[[pushMsgDict objectForKey:@"aps"] objectForKey:@"alert"]];
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
+        // 清除推送信息
+        [userDefault setObject:nil forKey:@"remotePushMsg"];
+    }
+}
+
+- (void)showAlertMsg:(NSString *)msg
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"远程推送"
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"退出"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)Wait_Receive_Notification_Comm:(NSNotification*)notify
+{
+    if (notify) {
+        // 等待1秒执行
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self Receive_Notification_Comm:notify];
+        });
+    }
+}
 
 // 收到推播訊息切換viewController
 - (void)Receive_Notification_Comm:(NSNotification*)notify
 {
     NSDictionary *userInfo = [notify object];
-    NSLog(@"notify = %@",[userInfo objectForKey:@"loc-key"]);
-    [self changePushUser:[[userInfo objectForKey:@"loc-args"] objectAtIndex:0]];
 
-    NSLog(@"changePush user = %@", [[userInfo objectForKey:@"loc-args"] objectAtIndex:0]);
+    // test
+    //[self showAlertMsg:[NSString stringWithFormat:@"%@", userInfo]];
+
+    // 是哪个用户发送的消息
+    NSString *userName = [[userInfo objectForKey:@"loc-args"] objectAtIndex:0];
+    NSLog(@"changePush user = %@", userName);
+    [self changePushUser:userName];
+
+    // 推送的字段，根据这个字段判断是什么类型的异常，并调到相应的UI
+    NSString *loc_key = [userInfo objectForKey:@"loc-key"];
+    NSLog(@"notify = %@", loc_key);
 
 //    NSString *check1 = [NSString stringWithFormat:@"TURNOFF_BY_SELF"];//自行關閉電源
 //    NSString *check2 = [NSString stringWithFormat:@"TURNOFF_BY_LOW_BATTERY"];
-    NSString *check3 = [NSString stringWithFormat:@"EMERGENCY_SOS"];
+//    NSString *check3 = [NSString stringWithFormat:@"EMERGENCY_SOS"];
 //    NSString *check4 = [NSString stringWithFormat:@"EMERGENCY_GPS_SUCCESS"];
 //    NSString *check5 = [NSString stringWithFormat:@"FALLDOWN_ACTIVATE"];
 //    NSString *check6 = [NSString stringWithFormat:@"FALLDOWN_GPS_SUCCESS"];
@@ -149,96 +202,28 @@ long long SystemLog_expectedLength;        //檔案大小
 //    NSString *check9 = [NSString stringWithFormat:@"VITAL_HIGH_BG"];
 //    NSString *check10 = [NSString stringWithFormat:@"VITAL_HIGH_WT"];
 //    NSString *check12 = [NSString stringWithFormat:@"SYSTEM_MESSAGE"];
-//    NSString *check13 = [NSString stringWithFormat:@"DEVICE_LOWPOWER"];
+//    NSString *check13 = [NSString stringWithFormat:@"DEVICE_LOWPOWER"];.0
 //    NSString *check14 = [NSString stringWithFormat:@"NONMOVENT"];
 //    NSString *check15 = [NSString stringWithFormat:@"GEOFENCE_OUT"];
 
-    NSString *chk_nonmovent = @"NONMOVENT";
-    //    NSString *chk_geoIn = @"GEOFENCE_IN";
-    NSString *chk_geoOut = @"GEOFENCE_OUT";
-    NSString *chk_AmberAlarm = @"AMBER_ALARM";
+//    NSString *chk_nonmovent = @"NONMOVENT";
+//    //    NSString *chk_geoIn = @"GEOFENCE_IN";
+//    NSString *chk_geoOut = @"GEOFENCE_OUT";
+//    NSString *chk_AmberAlarm = @"AMBER_ALARM";
 
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-    if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
-    {
-        //Do checking here.
-        //        if(  [[userInfo objectForKey:@"loc-key"] isEqualToString:check1]   )
-        //        {
-        //            //        [ self Go_SelectState:1];
-        //        }
-        //        else if(  [[ userInfo objectForKey:@"loc-key"] isEqualToString:check2]   )
-        //        {
-        //            //        [ self Go_SelectState:2];
-        //        }
-        //        else if(  [[userInfo objectForKey:@"loc-key"] isEqualToString:check3]   )
-        //        {
-        //            [self getSafeAcc:userAccount andPwd:userHash];
-        //            [ self Go_SelectState:3];
-        //        }
-        //        else if(  [[userInfo objectForKey:@"loc-key"] isEqualToString:check4]   )
-        //        {
-        //            [ self Go_SelectState:3];
-        //        }
-        //        else if(  [[userInfo objectForKey:@"loc-key"] isEqualToString:check5]   )
-        //        {
-        //            [ self Go_SelectState:5];
-        //        }
-        //        else if(  [[userInfo objectForKey:@"loc-key"] isEqualToString:check6]   )
-        //        {
-        //            [ self Go_SelectState:6];
-        //        }
-        //        else if(  [[userInfo objectForKey:@"loc-key"] isEqualToString:check7]   )
-        //        {
-        //            [ self Go_SelectState:4];
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check8]   )
-        //        {
-        //            [ self Go_SelectState:8];
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check9]   )
-        //        {
-        //            //        [ self Go_SelectState:9];
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check10]   )
-        //        {
-        //            //        [ self Go_SelectState:10];
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check12]   )
-        //        {
-        //            [self getSystemAcc:userAccount andPwd:userHash];
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check13]   )
-        //        {
-        //            //弱電推播
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check14]   )
-        //        {
-        //            //弱電推播
-        //        }
-        //        else if (  [[userInfo objectForKey:@"loc-key"] isEqualToString:check15]   )
-        //        {
-        //            //弱電推播
-        //        }
-        //        else{
-        //
-        //        }
-        if([[userInfo objectForKey:@"loc-key"] isEqualToString:check3])
-        {
-            [self getSafeAcc:userAccount andPwd:userHash];
-            [ self Go_SelectState:3];
-        }
-        else if([[userInfo objectForKey:@"loc-key"] isEqualToString:chk_nonmovent])
-        {
-            [ self Go_SelectState:205];
-        }
-        else if([[userInfo objectForKey:@"loc-key"] isEqualToString:chk_geoOut])
-        {
-            [ self Go_SelectState:206];
-        }
-        else if([[userInfo objectForKey:@"loc-key"] isEqualToString:chk_AmberAlarm])
-        {
-            [ self Go_SelectState:207];
-        }
+    NSLog(@"state = %d", (int)state);
+
+    if ([loc_key isEqualToString:@"FALLDOWN_ACTIVATE"]) {           // 跌倒
+        [(MainClass *)self.view handleRemoteMsgWithType:1];
+    } else if([loc_key isEqualToString:@"EMERGENCY_SOS"]) {         // 紧急救援
+        [(MainClass *)self.view handleRemoteMsgWithType:1];
+    } else if ([loc_key isEqualToString:@"VITAL_HIGH_BP"]) {        // 高压
+        [(MainClass *)self.view handleRemoteMsgWithType:2];
+    } else if ([loc_key isEqualToString:@"VITAL_HIGH_BG"]) {        // 高血糖
+        [(MainClass *)self.view handleRemoteMsgWithType:2];
+    } else if ([loc_key isEqualToString:@"VITAL_HIGH_WT"]) {
+        [(MainClass *)self.view handleRemoteMsgWithType:2];
     }
 }
 
@@ -264,15 +249,8 @@ long long SystemLog_expectedLength;        //檔案大小
     if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
         UIViewController *under = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
         self.slidingViewController.underRightViewController = under;
-        
     }
 //    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 //右側功能列表
@@ -325,25 +303,18 @@ long long SystemLog_expectedLength;        //檔案大小
     else
     {
         httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@%%20%@&device=0&token=%@&appid=%i",acc, hash,[arr objectAtIndex:0],[arr objectAtIndex:1],token,APPID];
-        
     }
-    
-    
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     NSString *loginApi = [NSString stringWithFormat:@"%@/AppLogin.html",INK_Url_1];
-    
-    
+
     NSLog(@"更新使用者資訊Api %@?%@",loginApi,httpBodyString);
-    
+
     [request setURL:[NSURL URLWithString:loginApi]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:httpBody];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
-    
-    
-    
+
     Update_tempData = [NSMutableData alloc];
     Update_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -400,7 +371,6 @@ long long SystemLog_expectedLength;        //檔案大小
     News_tempData = [NSMutableData alloc];
     News_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
-
 
 //取得個人訊息
 -(void)getPersonAcc:(NSString *)acc andPwd:(NSString *)pwd
@@ -509,16 +479,13 @@ long long SystemLog_expectedLength;        //檔案大小
     Safe_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-
-
 //回寫安全訊息Log
 -(void)setLogSafeAcc:(NSString *)acc andPwd:(NSString *)pwd
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, pwd,dateString];
     
@@ -542,13 +509,8 @@ long long SystemLog_expectedLength;        //檔案大小
     request.timeoutInterval = TimeOutLimit;
     NSString *httpBodyString;
     
-    
-    //    httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@",acc, hash,dateString];
-    
     httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@&type=1",acc, hash,dateString];
-    
-    
-    
+
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     
     NSString *loginApi = [NSString stringWithFormat:@"%@/API/AppSetMsgReadTime.html",INK_Url_1];
@@ -563,10 +525,6 @@ long long SystemLog_expectedLength;        //檔案大小
     SafeLog_tempData = [NSMutableData alloc];
     SafeLog_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
-
-
-
-
 
 //回寫系統訊息Log
 -(void)setLogSystemAcc:(NSString *)acc andPwd:(NSString *)pwd
@@ -598,14 +556,11 @@ long long SystemLog_expectedLength;        //檔案大小
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
     NSString *httpBodyString;
-    
-    
+
     //    httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@",acc, hash,dateString];
-    
+
     httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@&type=2",acc, hash,dateString];
-    
-    
-    
+
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     
     NSString *loginApi = [NSString stringWithFormat:@"%@/API/AppSetMsgReadTime.html",INK_Url_1];
@@ -628,19 +583,17 @@ long long SystemLog_expectedLength;        //檔案大小
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, pwd,dateString];
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
     
     NSLog(@"dataIn: %@", dataIn);
-    
+
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     NSString *hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -653,13 +606,8 @@ long long SystemLog_expectedLength;        //檔案大小
     request.timeoutInterval = TimeOutLimit;
     NSString *httpBodyString;
     
-    
-    //    httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@",acc, hash,dateString];
-    
     httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@",acc, hash,dateString];
-    
-    
-    
+
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     
     NSString *loginApi = [NSString stringWithFormat:@"%@/API/getAopLog.html",INK_Url_1];
@@ -706,9 +654,9 @@ long long SystemLog_expectedLength;        //檔案大小
 
 - (void)connection: (NSURLConnection *)connection didReceiveResponse: (NSURLResponse *)aResponse
 {  //連線建立成功
-    
+
     NSLog(@"didReceiveResponse");
-    
+
     //取得狀態
     if(connection == Update_Connect)
     {
@@ -786,8 +734,6 @@ long long SystemLog_expectedLength;        //檔案大小
     
     if( [status isEqualToString:str1]  )
     {
-        //        UIViewController *ViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"navi"];
-        //        [self presentModalViewController:ViewController animated:YES];
         [self loadUserDic:[usersOne objectForKey:@"list"]];
         
     }else

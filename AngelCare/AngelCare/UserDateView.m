@@ -523,7 +523,7 @@
             numberToolbar.barStyle = UIBarStyleBlackTranslucent;
             numberToolbar.items = [NSArray arrayWithObjects:
                                    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                                   [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(doneSOSTxt)],
+                                   [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneSOSTxt)],
                                    nil];
             [numberToolbar sizeToFit];
             
@@ -641,7 +641,7 @@
             numberToolbar.barStyle = UIBarStyleBlackTranslucent;
             numberToolbar.items = [NSArray arrayWithObjects:
                                    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                                   [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(doneFamilyTxt)],
+                                   [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneFamilyTxt)],
                                    nil];
             [numberToolbar sizeToFit];
             
@@ -756,7 +756,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -897,7 +897,7 @@
                               NSLocalizedStringFromTable(@"Personal_MyAccount_Error3",INFOPLIST,nil)
                               delegate
                                                                : self cancelButtonTitle:
-                              NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE",INFOPLIST,nil)
+                              kLoadString(@"ALERT_MESSAGE_CLOSE")
                                               otherButtonTitles: nil];
         
         [alert show];

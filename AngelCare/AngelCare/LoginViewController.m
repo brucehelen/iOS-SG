@@ -88,6 +88,11 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 #pragma mark - 读取URL
 - (void)initURLAddress
 {
@@ -218,9 +223,8 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
                                                         message:NSLocalizedStringFromTable(@"Login_EMPTY", INFOPLIST, nil)
                                                        delegate:self
-                                              cancelButtonTitle:
-                              NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE", INFOPLIST, nil)
-                                              otherButtonTitles: nil];
+                                              cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CLOSE")
+                                              otherButtonTitles:nil];
         
         [alert show];
     }
@@ -566,7 +570,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     if( [status isEqualToString:str1]  )
     {
         //重寄驗證信成功
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"Login_AuthResend", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"Login_AuthResend", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_OK") otherButtonTitles: nil];
         
         [alertView show];
         
@@ -807,7 +811,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     [HUD hide:YES];
 
     if([status isEqualToString:str1]) {
-        self.alert = [MLTableAlert tableAlertWithTitle:@"圖片列表" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil)
+        self.alert = [MLTableAlert tableAlertWithTitle:@"圖片列表" cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL")
                                           numberOfRows:^NSInteger (NSInteger section)
                       {
                           return [[usersOne objectForKey:@"list"] count];
@@ -1016,12 +1020,6 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         [fileManager removeItemAtPath:filePath_bar error:NULL];
     }
     [self LoadAndChangeLogo];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 // 20140321 update

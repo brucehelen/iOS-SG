@@ -142,7 +142,7 @@ long long Del_expectedLength;        //檔案大小
     UIAlertView *addalertView = [[UIAlertView alloc] initWithTitle: NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
                                                            message:@"是否要刪除使用者"
                                                           delegate:self
-                                                 cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil)
+                                                 cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL")
                                                  otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
     
     
@@ -159,7 +159,7 @@ long long Del_expectedLength;        //檔案大小
     UIAlertView *addalertView = [[UIAlertView alloc] initWithTitle: NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
                                                            message:nil
                                                           delegate:self
-                                                 cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil)
+                                                 cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL")
                                                  otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
     
     addalertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;

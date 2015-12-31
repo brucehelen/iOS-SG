@@ -27,43 +27,9 @@ BMKMapManager *_mapManager;
 @synthesize login;
 
 #pragma mark - Reveal
-// 界面调试用
-- (void)loadReveal
-{
-    if (NSClassFromString(@"IBARevealLoader") == nil)
-    {
-        NSString *revealLibName = @"libReveal";
-        NSString *revealLibExtension = @"dylib";
-        NSString *error;
-        NSString *dyLibPath = [[NSBundle mainBundle] pathForResource:revealLibName ofType:revealLibExtension];
-        
-        if (dyLibPath != nil)
-        {
-            NSLog(@"Loading dynamic library: %@", dyLibPath);
-            void *revealLib = dlopen([dyLibPath cStringUsingEncoding:NSUTF8StringEncoding], RTLD_NOW);
-            
-            if (revealLib == NULL)
-            {
-                error = [NSString stringWithUTF8String:dlerror()];
-            }
-        }
-        else
-        {
-            error = @"File not found.";
-        }
-        
-        if (error != nil)
-        {
-            NSString *message = [NSString stringWithFormat:@"%@.%@ failed to load with error: %@", revealLibName, revealLibExtension, error];
-            NSLog(@"message = %@", message);
-        }
-    }
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[self loadReveal];
-    
     NSString *wifiName = [KMCommonClass getWifiName];
     NSLog(@"wifiName = %@, %@", wifiName, [KMCommonClass getWifiMac]);
 
@@ -102,6 +68,26 @@ BMKMapManager *_mapManager;
     _isoGetter = [GetISOCountryCode new];
 
     [self registerNotification];
+
+    // 检查用户是否通过通知进入程序
+    // 先删除之前可能存储的消息
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:nil forKey:@"remotePushMsg"];
+    if (launchOptions) {
+        NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (pushNotificationKey) {
+            // 保存信息，等APP进入APP时再启动界面？
+            NSDictionary *savedDict = @{@"savedDate": [NSDate date],
+                                        @"pushMsgDict": pushNotificationKey};
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:[NSKeyedArchiver archivedDataWithRootObject:savedDict] forKey:@"remotePushMsg"];
+
+            // 读取 - 测试用
+            NSData *data = [userDefault valueForKey:@"remotePushMsg"];
+            NSDictionary *myDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            NSLog(@"myDict %@", myDict);
+        };
+    }
 
     return YES;
 }
@@ -210,20 +196,23 @@ BMKMapManager *_mapManager;
 
 - (void)loginRemind
 {
-    //m  h  d 96hr
-    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:86400 * 4];
-//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:5];
-    //本地提醒推播
-    UILocalNotification *notification;
-    if (!notification) {
-        notification = [[UILocalNotification alloc] init];
-    }
-    notification.userInfo = @{@"uid": @"LoginRemind"};
-    notification.fireDate = alertTime;
-    notification.alertBody = NSLocalizedStringFromTable(@"ReLogin", INFOPLIST, nil);
-    notification.repeatInterval = NSDayCalendarUnit;
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    // 不需要本地推送
+    return;
+
+//    //m  h  d 96hr
+//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:86400 * 4];
+////    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:5];
+//    //本地提醒推播
+//    UILocalNotification *notification;
+//    if (!notification) {
+//        notification = [[UILocalNotification alloc] init];
+//    }
+//    notification.userInfo = @{@"uid": @"LoginRemind"};
+//    notification.fireDate = alertTime;
+//    notification.alertBody = NSLocalizedStringFromTable(@"ReLogin", INFOPLIST, nil);
+//    notification.repeatInterval = NSDayCalendarUnit;
+//    notification.soundName = UILocalNotificationDefaultSoundName;
+//    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 - (void)registerNotification

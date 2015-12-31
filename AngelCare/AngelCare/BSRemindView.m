@@ -96,7 +96,7 @@
         numberToolbar.barStyle = UIBarStyleBlackTranslucent;
         numberToolbar.items = [NSArray arrayWithObjects:
                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                               [[UIBarButtonItem alloc]initWithTitle:@"Return" style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
+                               [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
                                nil];
         [numberToolbar sizeToFit];
 
@@ -409,10 +409,6 @@
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"touch up %i",buttonIndex);
-    //0為確定  1為取消
-    NSLog(@"touch up %i",buttonIndex);
-    //0為確定  1為取消
     if (actionSheet.tag == 1099) {
         NSLog(@"換單位");
         NSString *unit = @"";
@@ -432,17 +428,15 @@
         if ([unit length] != 0) {
             lblUnit1.text = unit;
             lblUnit2.text = unit;
-            [self writeUnitToFile:[NSString stringWithFormat:@"%d",buttonIndex]];
+            [self writeUnitToFile:[NSString stringWithFormat:@"%d", (int)buttonIndex]];
         }
-        
-    }
-    else{
+    } else {
         if (buttonIndex == 0) {
             NSDate *selectDate = picker.date;
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"HH:mm"];
             NSString *selectStr = [formatter stringFromDate:selectDate];
-            
+
             switch ([(UIView*)selectBtn tag]) {
                 case 101:
                     bfStartStr = selectStr;
@@ -458,22 +452,18 @@
                 case 104:
                     lunchEndStr = selectStr;
                     break;
-                    
                 case 105:
                     dinnerStartStr = selectStr;
                     break;
-                    
                 case 106:
                     dinnerEndStr = selectStr;
                     break;
-                    
                 default:
                     break;
             }
             [(UIButton *)selectBtn setTitle:selectStr forState:UIControlStateNormal];
         }
     }
-    
 }
 
 - (void)SaveBS
@@ -518,7 +508,11 @@
 
         [(MainClass *)MainObj Send_BSdata:dic];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE message:ALERT_REMIND_NULL delegate:self cancelButtonTitle:ALERT_REMIND_OK otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:ALERT_REMIND_TITLE
+                                                            message:ALERT_REMIND_NULL
+                                                           delegate:self
+                                                  cancelButtonTitle:ALERT_REMIND_OK
+                                                  otherButtonTitles: nil];
         [alertView show];
     }
 }

@@ -744,6 +744,8 @@
 "FreqQuestionTitle" = "常见问题";
 "FreqQuestionDetailTitle" = "问题详情";
 
+"BUG_report_Return" = "返回";
+
 // 免责声明
 "DisclaimerTitle" = "免责声明";
 "DisclaimerContent" = "康美健康云智能腕表APP使用条款及隐私保护声明\n\

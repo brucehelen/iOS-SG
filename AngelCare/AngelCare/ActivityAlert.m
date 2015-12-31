@@ -51,7 +51,7 @@
 
 - (IBAction)ibaOpen:(id)sender {
     NSArray *tmpA = @[@"Off",@"On"];
-    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
+    self.alert = [MLTableAlert tableAlertWithTitle:@"" cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") numberOfRows:^NSInteger (NSInteger section)
                   {
                       /*
                        if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
@@ -182,7 +182,7 @@
 
 }
 - (void)useActionSheet:(id)sender{
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
     sheet.tag = [(UIView*)sender tag];
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
     //    datePicker.datePickerMode = UIDatePickerModeCountDownTimer;

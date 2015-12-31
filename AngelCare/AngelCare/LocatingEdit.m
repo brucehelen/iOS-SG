@@ -174,7 +174,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Position_TIP_title", INFOPLIST, nil)
                                                         message:NSLocalizedStringFromTable(@"Position_Get_WiFi_result", INFOPLIST, nil)
                                                        delegate:self
-                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Position_TIP_CANCEL", INFOPLIST, nil)
+                                              cancelButtonTitle:kLoadString(@"Position_TIP_CANCEL")
                                               otherButtonTitles: nil];
         [alert show];
         return;
@@ -194,7 +194,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Position_TIP_title", INFOPLIST, nil)
                                                     message:NSLocalizedStringFromTable(@"Position_TIP_message", INFOPLIST, nil)
                                                    delegate:self
-                                          cancelButtonTitle:NSLocalizedStringFromTable(@"Position_TIP_CANCEL", INFOPLIST, nil)
+                                          cancelButtonTitle:kLoadString(@"Position_TIP_CANCEL")
                                           otherButtonTitles:NSLocalizedStringFromTable(@"Position_TIP_OK", INFOPLIST, nil), nil];
     alert.tag = 1001;
     [alert show];

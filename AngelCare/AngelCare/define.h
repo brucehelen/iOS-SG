@@ -269,23 +269,23 @@
 
 #define  ALERT_MESSAGE_ERRORSET  @"Alert_Message_9"
 
-#define ALERT_REMIND_TITLE  NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
+#define ALERT_REMIND_TITLE  kLoadString(@"ALERT_MESSAGE_TITLE")
 
-#define ALERT_REMIND_NULL  NSLocalizedStringFromTable(@"ALERT_MESSAGE_REMINDNULL", INFOPLIST, nil)
+#define ALERT_REMIND_NULL  kLoadString(@"ALERT_MESSAGE_REMINDNULL")
 
-#define ALERT_REMIND_OK  NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil)
+#define ALERT_REMIND_OK  kLoadString(@"ALERT_MESSAGE_OK")
 
-#define ALERT_BP_Error1  NSLocalizedStringFromTable(@"ALERT_BPREMIND_Error1", INFOPLIST, nil)
+#define ALERT_BP_Error1  kLoadString(@"ALERT_BPREMIND_Error1")
 
-#define ALERT_BP_Error2  NSLocalizedStringFromTable(@"ALERT_BPREMIND_Error2", INFOPLIST, nil)
+#define ALERT_BP_Error2  kLoadString(@"ALERT_BPREMIND_Error2")
 
-#define ALERT_BS_Error1  NSLocalizedStringFromTable(@"ALERT_BSREMIND_Error1", INFOPLIST, nil)
+#define ALERT_BS_Error1  kLoadString(@"ALERT_BSREMIND_Error1")
 
-#define ALERT_BS_Error2  NSLocalizedStringFromTable(@"ALERT_BSREMIND_Error2", INFOPLIST, nil)
+#define ALERT_BS_Error2  kLoadString(@"ALERT_BSREMIND_Error2")
 
-#define ALERT_BS_Error3  NSLocalizedStringFromTable(@"ALERT_BSREMIND_Error3", INFOPLIST, nil)
+#define ALERT_BS_Error3  kLoadString(@"ALERT_BSREMIND_Error3")
 
-#define ALERT_BO_Error1  NSLocalizedStringFromTable(@"ALERT_BOREMIND_Error1", INFOPLIST, nil)
+#define ALERT_BO_Error1  kLoadString(@"ALERT_BOREMIND_Error1")
 
 
 //==============

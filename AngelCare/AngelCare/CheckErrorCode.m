@@ -15,8 +15,11 @@
 //Error Code字串判斷
 +(void)Check_Error:(NSString *)ErrorData
 {
+    // 20151224不要弹这些乱七八糟的东西
+    return;
+
     int ErrorValue;
-    
+
     ErrorValue = [ErrorData intValue];
     
     
@@ -106,6 +109,8 @@
 //Error Code字串判斷
 +(void)Check_Error:(NSString *)ErrorData WithSender:(id)sender
 {
+    return;
+
     int ErrorValue;
     
     ErrorValue = [ErrorData intValue];

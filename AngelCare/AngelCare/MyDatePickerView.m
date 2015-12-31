@@ -62,50 +62,27 @@
         
         //只採用最新筆資料前6天
         tmpSub = [MyPick.date timeIntervalSince1970] - [ [NSDate date] timeIntervalSince1970]; 
-        
-        
+
         UIAlertView *alert;
-        
-        if(tmpSub <0)
-        {
-            
-            
-            
-            
-            
-            alert = [[UIAlertView alloc] initWithTitle:
-                     [(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_TITLE]
-                                               message:
-                     [(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_ERRORSET]
-                     delegate
-                                                      : self cancelButtonTitle:
-                     [(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_CLOSE]
+
+        if (tmpSub < 0) {
+            alert = [[UIAlertView alloc] initWithTitle:[(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_TITLE]
+                                               message: [(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_ERRORSET]
+                                              delegate: self
+                                     cancelButtonTitle:[(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_CLOSE]
                                      otherButtonTitles: nil];
-            
             [alert show];
-            
-            
-            
             return;
         }
-        
-        
-        
+
         NSArray *arr = [dateString componentsSeparatedByString:@" "];
         
-         NSArray *arr2 = [ [arr objectAtIndex:1] componentsSeparatedByString:@":"];
-        
-        
-        
-         //時間提醒 以免設定 晚上9～早上6會吵到人
-        if(  ( [[arr2 objectAtIndex:0] intValue]<6 ) || ( [[arr2 objectAtIndex:0] intValue]>21 ))
-        {
-            
-            
-            SaveMessage = [NSString stringWithFormat:@"%@",dateString];
+        NSArray *arr2 = [ [arr objectAtIndex:1] componentsSeparatedByString:@":"];
 
-            
-            
+         //時間提醒 以免設定 晚上9～早上6會吵到人
+        if(  ( [[arr2 objectAtIndex:0] intValue] < 6 ) || ( [[arr2 objectAtIndex:0] intValue] > 21 ))
+        {
+            SaveMessage = [NSString stringWithFormat:@"%@",dateString];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
                                   [(MainClass *) MainObj Get_DefineString:ALERT_MESSAGE_TITLE]
                                                             message:

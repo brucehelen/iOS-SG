@@ -329,7 +329,7 @@
 -(void)addActionSheetInView:(id)sender
 {
     //update by Bill 增加\r\n讓action sheet 時間不會被蓋掉
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Safezone time\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Safezone time\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r" delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
     sheet.tag = [(UIView*)sender tag];
     
     NSLog(@"start %@",[[(UIButton*)sender titleLabel] text]);

@@ -1134,6 +1134,10 @@ NSTimer *MyTimer = nil;
 -(void)Check_Error:(NSString *)ErrorData
 {
     [HUD hide:YES];
+
+    NSLog(@"Main class Check_Error: %@", ErrorData);
+    return;
+
     int ErrorValue;
     ErrorValue = [ErrorData intValue];
 
@@ -1144,19 +1148,13 @@ NSTimer *MyTimer = nil;
     switch (ErrorValue)
     {
         case 1:
-            alert = [[UIAlertView alloc] initWithTitle:
-                     NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
-                                               message:
-                     NSLocalizedStringFromTable(@"ErrorCode_01",INFOPLIST,nil)
-                     delegate
-                                                      : self cancelButtonTitle:
-                     NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE",INFOPLIST,nil)
+            alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
+                                               message:NSLocalizedStringFromTable(@"ErrorCode_01",INFOPLIST,nil)
+                                              delegate: self
+                                     cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CLOSE")
                                      otherButtonTitles: nil];
-            
             [alert show];
-            
             break;
-            
         case 2:
             alert = [[UIAlertView alloc] initWithTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
@@ -1365,6 +1363,20 @@ NSTimer *MyTimer = nil;
     [alert show];
 }
 
+- (void)handleRemoteMsgWithType:(NSInteger)type
+{
+    switch (type) {
+        case 1:
+            [self Send_LocMap:userAccount andHash:userHash];
+            break;
+        case 2:
+            [self Change_State:IF_SHOWLSEL];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - 首页按钮点击事件
 - (IBAction)Main_MouseDown:(id)sender
 {
@@ -1438,7 +1450,7 @@ NSTimer *MyTimer = nil;
         }
         else
         {
-            self.alert = [MLTableAlert tableAlertWithTitle:NSLocalizedStringFromTable(@"SelectNumber", INFOPLIST, nil) cancelButtonTitle:NSLocalizedStringFromTable(@"SelectNumberCancel", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
+            self.alert = [MLTableAlert tableAlertWithTitle:NSLocalizedStringFromTable(@"SelectNumber", INFOPLIST, nil) cancelButtonTitle:kLoadString(@"SelectNumberCancel") numberOfRows:^NSInteger (NSInteger section)
                           {
                               return [[defaults objectForKey:@"totalcount"] integerValue];
                           }
@@ -2094,7 +2106,6 @@ BOOL    Is_Get1_Sw = false;
     [HUD show:YES];
 }
 
-
 #pragma mark - 活动区域展示定时器
 - (void)procTime:(NSTimer*)timer
 {
@@ -2472,7 +2483,7 @@ BOOL    Is_Get1_Sw = false;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -2488,7 +2499,7 @@ BOOL    Is_Get1_Sw = false;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -2503,7 +2514,7 @@ BOOL    Is_Get1_Sw = false;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -2519,7 +2530,7 @@ BOOL    Is_Get1_Sw = false;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -2539,7 +2550,7 @@ BOOL    Is_Get1_Sw = false;
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil)
                                                        message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil)
                                                       delegate:self
-                                             cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil)
+                                             cancelButtonTitle:kLoadString(@"OK")
                                              otherButtonTitles: nil];
         [alert show];
         return;
@@ -2556,7 +2567,7 @@ BOOL    Is_Get1_Sw = false;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -2586,7 +2597,7 @@ BOOL    Is_Get1_Sw = false;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@",[defaults objectForKey:@"userAccount"]);
     if ([[defaults objectForKey:@"userAccount"] isEqualToString:@"test"]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"IsTestAcc", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -2667,34 +2678,16 @@ BOOL    Is_Get1_Sw = false;
 //推播點擊後 跳流程判斷
 - (void)Go_State:(int)NewState
 {
-    NSLog(@"nowuser = %i",NowUserNum);
+    NSLog(@"nowuser = %i", NowUserNum);
 
     switch (NewState)
     {
         case 1:
             [self Send_UserSet:userAccount AndHash:userHash];
             break;
-            
-        case 3:
-            if([checkNetwork check] == false)
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:
-                                      [self Get_DefineString:ALERT_MESSAGE_TITLE]
-                                                                message:
-                                      [self Get_DefineString:NONET]
-                                      delegate
-                                                                       : self cancelButtonTitle:
-                                      [self Get_DefineString:ALERT_MESSAGE_CLOSE]
-                                                      otherButtonTitles: nil];
-                
-                [alert show];
-            }
-            else
-            {
-                [self GcareGetSOSTrackingWithAcc:[AccData objectAtIndex:NowUserNum]];
-            }
+        case 3:     // SOS
+            [self GcareGetSOSTrackingWithAcc:[AccData objectAtIndex:NowUserNum]];
             break;
-            
         case 205://無動作
             [self Set_NewGetNum:5];
             break;
@@ -2704,7 +2697,6 @@ BOOL    Is_Get1_Sw = false;
         case 207://無動作
             [self Set_NewGetNum:7];
             break;
-            
         case 4:
             ShowNum = 1;
 //            [self MyTest:[AccData objectAtIndex:NowUserNum] :[HashData objectAtIndex:NowUserNum]StartTime:@"2013/06/17 00:00:00" andEndTime:@"2013/06/24 23:59:59"];
@@ -2720,7 +2712,6 @@ BOOL    Is_Get1_Sw = false;
             [self Other_MouseDown:ShowNum];
             break;
     }
-    
 }
 
 //判斷目前語系
@@ -2848,40 +2839,34 @@ BOOL    Is_Get1_Sw = false;
 -(void)getUserAndUpdateAcc:(NSString *)acc andPwd:(NSString *)hash andToken:(NSString *)token
 {
     NSLog(@"log = account = %@",AccData);
-    
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     request.timeoutInterval = TimeOutLimit;
-    
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
     //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
     //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
+
     NSLog(@"dataIn: %@", dataIn);
-    
+
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    
+
     NSLog(@"Hash : %@", hash);
     NSString *httpBodyString;
-    
+
     if(token.length <10)
     {
         httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@&token=012345&device=0&appid=%i",acc, hash,dateString,APPID];
@@ -2889,19 +2874,17 @@ BOOL    Is_Get1_Sw = false;
     else
     {
         httpBodyString = [NSString stringWithFormat:@"userAccount=%@&data=%@&timeStamp=%@&device=iOS&token=%@&appid=%i",acc, hash,dateString,token,APPID];
-        
     }
-    
-    
+
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     NSString *loginApi = [NSString stringWithFormat:@"%@/AppLogin.html",INK_Url_1];
-    
+
     [request setURL:[NSURL URLWithString:loginApi]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:httpBody];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-    
+
     Update_tempData = [NSMutableData alloc];
     Update_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -3023,7 +3006,6 @@ BOOL    Is_Get1_Sw = false;
     //檢查是否有輸入設備電話 end
 }
 
-
 //更新使用者
 -(void)reloadAcc
 {
@@ -3031,41 +3013,35 @@ BOOL    Is_Get1_Sw = false;
     [PhoneData removeAllObjects];
     [AccData removeAllObjects];
     [HashData removeAllObjects];
-    
-    
+
     int Value1 =1;
     NSUserDefaults* defaults;
     defaults = [NSUserDefaults standardUserDefaults];
     Value1 = [defaults integerForKey:@"totalcount"];
-    
+
     userAccount = [defaults stringForKey:@"userAccount"];
     userHash = [defaults stringForKey:@"userHash"];
-    
-    
+
     for(int i=0;i<Value1;i++)
     {
         NSString *str1 = [NSString stringWithFormat:@"Name%d", i+1];
         NSString *savedValue = [defaults   stringForKey:str1];
         [UserData addObject:savedValue];
-        
+
         if(i==NowUserNum)
         {
             [ShowName setText:savedValue];
         }
-        
-        
+
         NSString *str2 = [NSString stringWithFormat:@"Phone%d", i+1];
         NSString *savedValue2 = [defaults   stringForKey:str2];
         [PhoneData addObject:savedValue2];
-        
-        
+
         NSString *str3 = [NSString stringWithFormat:@"Acc%d", i+1];
         NSString *savedValue3 = [defaults   stringForKey:str3];
         [AccData addObject:savedValue3];
     }
 }
-
-
 
 //設定設定頁的勾選使用者
 -(void) Set_Go:(int)NowSetNum
@@ -3078,40 +3054,31 @@ BOOL    Is_Get1_Sw = false;
     [self Check_Down_Bu];
 }
 
-
 //儲存佩帶者資料於本機
 -(void)SaveNewData2:(NSString*)Name :(NSString*)Phone :(NSString*)Acc :(NSString*)Hash
 {
     int Value1 =1;
     NSUserDefaults* defaults;
     defaults = [NSUserDefaults standardUserDefaults];
-    
+
     Value1 = [defaults integerForKey:@"totalcount"];
-    
-    
-    
+
     Value1++;
-    
+
     NSString *str1 = [NSString stringWithFormat:@"Name%d", Value1];
     [defaults setObject:Name forKey:str1];
-    
+
     NSString *str2 = [NSString stringWithFormat:@"Phone%d", Value1];
     [defaults setObject:Phone forKey:str2];
     [defaults setInteger:Value1 forKey:@"totalcount"];
-    
-    
+
     NSString *str3 = [NSString stringWithFormat:@"Acc%d", Value1];
     [defaults setObject:Acc forKey:str3];
-    
-    
+
     NSString *str4 = [NSString stringWithFormat:@"Hash%d", Value1];
     [defaults setObject:Hash forKey:str4];
-    
-    
-    
-    
+
     [defaults synchronize];
-    
 }
 
 //儲存佩帶者資料於本機(檢查是否存在)
@@ -3124,48 +3091,35 @@ BOOL    Is_Get1_Sw = false;
     Value1 = [defaults integerForKey:@"totalcount"];
     
     int Szlen = [UserData count];
-    
+
     for(int j =0;j<Szlen;j++)
     {
-        
         NSString *tmpstr = [UserData objectAtIndex:j];
         
         if( [tmpstr isEqualToString:Name]  )
         {
             NSLog(@"Have data");
-            
-            
             return;
         }
-        
     }
-    
+
     Value1++;
-    
+
     NSString *str1 = [NSString stringWithFormat:@"Name%d", Value1];
     [defaults setObject:Name forKey:str1];
-    
+
     NSString *str2 = [NSString stringWithFormat:@"Phone%d", Value1];
     [defaults setObject:Phone forKey:str2];
     [defaults setInteger:Value1 forKey:@"totalcount"];
-    
-    
+
     NSString *str3 = [NSString stringWithFormat:@"Acc%d", Value1];
     [defaults setObject:Acc forKey:str3];
-    
-    
+
     NSString *str4 = [NSString stringWithFormat:@"Hash%d", Value1];
     [defaults setObject:Hash forKey:str4];
-    
-    
-    
-    
+
     [defaults synchronize];
-    
 }
-
-
-
 
 #pragma mark - 移除state
 - (void) Remove_State:(int)NewState
@@ -3344,10 +3298,12 @@ BOOL    Is_Get1_Sw = false;
 //取得plist設定字串
 - (NSString *)Get_DefineString:(NSString *)SetStr
 {
-    NSLog(@"%@",[  Array_show objectForKey : SetStr  ]);
-    return [  Array_show objectForKey : SetStr  ];
+    NSString *string = [Array_show objectForKey:SetStr];
+    if (string.length == 0) {
+        string = @"OK";
+    }
 
-    return @"";
+    return string;
 }
 
 //變更設定頁佩帶者顯示
@@ -3410,7 +3366,7 @@ BOOL    Is_Get1_Sw = false;
                 [self insertSubview:healthStepsView belowSubview:insertView];
                 [(HealthSteps *)healthStepsView Do_init:NowUserNum];
                 break;
-            case IF_USERDATE://配戴者資訊
+            case IF_USERDATE:       // 配戴者資訊
                 TitleName.text = NSLocalizedStringFromTable(@"Bu1_Str", INFOPLIST, nil);
 
                 [self insertSubview:UserDateView
@@ -3419,24 +3375,22 @@ BOOL    Is_Get1_Sw = false;
                 //設備電話判斷
                 if ([strT isEqualToString:@"YES"]) {
                     UIAlertView *alert;
-                    alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"SetDevicePhoneNumber", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles: nil];
+                    alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"SetDevicePhoneNumber", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles: nil];
                     [alert show];
                     [defaults removeObjectForKey:@"NeedPhoneRemind"];
                 }
                 //設備電話判斷 end
                 break;
 
-            case IF_USERSET://設備狀態
+            case IF_USERSET:        // 設備狀態
                 TitleName.text = NSLocalizedStringFromTable(@"Bu2_Str", INFOPLIST, nil);
                 [self insertSubview:UserSetView belowSubview:insertView];
                 break;
-                
             case IF_HIS:            // 歷史記錄
                 TitleName.text = NSLocalizedStringFromTable(@"Bu6_Str", INFOPLIST, nil);
                 [self insertSubview:MyHisView
                        belowSubview:insertView];
                 break;
-
             case IF_AutoLocating:   // 歷史記錄
                 TitleName.text = NSLocalizedStringFromTable(@"HS_Position", INFOPLIST, nil);
                 [LocatingEditView stopTimer];
@@ -3465,29 +3419,24 @@ BOOL    Is_Get1_Sw = false;
                 [self insertSubview:MyEatPickView
                        belowSubview:insertView];
                 break;
-                
             case IF_EATSHOW:
                 [TitleName setText:NSLocalizedStringFromTable(@"Bu8_Str", INFOPLIST, nil)];
                 [self insertSubview:MyEatShowView
                        belowSubview:insertView];
                 break;
-                
             case IF_DATESHOW:
                 [TitleName setText:NSLocalizedStringFromTable(@"Bu9_Str", INFOPLIST, nil)];
                 [self insertSubview:MyDateShowView belowSubview:insertView];
                 break;
-
             case IF_DATESEL:
                 [self insertSubview:MyDatePickerView
                        belowSubview:insertView];
                 break;
-
             case IF_SHOWLSEL:
                 [TitleName setText:NSLocalizedStringFromTable(@"Bu3_Str", INFOPLIST, nil)];
                 [(MySelView *)MySelView Do_Init:self];
                 [self insertSubview:MySelView belowSubview:insertView];
                 break;
-
             case IF_SHOWLIST:
                 switch (ShowNum)
                 {
@@ -10616,7 +10565,7 @@ BOOL    Is_Get1_Sw = false;
 
             if (tmpb1.count == 0) {
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"ALERT_ACT_Error1", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"ALERT_ACT_Error1", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_OK") otherButtonTitles: nil];
                 [alertView show];
             }
             else
@@ -10911,7 +10860,7 @@ BOOL    Is_Get1_Sw = false;
             [(MyMapView *)MyMapView Do_Init:self];
             [self Change_State:IF_MAP ];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"ALERT_MAP_Error1", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"ALERT_MAP_Error1", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_OK") otherButtonTitles: nil];
             [alertView show];
         }
 
@@ -11214,7 +11163,7 @@ BOOL    Is_Get1_Sw = false;
 {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7)
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange", INFOPLIST, nil) message:@"\n\n\n\n" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange", INFOPLIST, nil) message:@"\n\n\n\n" delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil), nil];
         [alertView setTag:101];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -11393,7 +11342,7 @@ BOOL    Is_Get1_Sw = false;
 }
 
 - (void)useActionSheet:(id)sender{
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CANCEL", INFOPLIST, nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"SelectRange\n", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CANCEL") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) , nil];
     sheet.tag = [(UIView*)sender tag];
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
     datePicker.datePickerMode = UIDatePickerModeDate;
@@ -12268,7 +12217,7 @@ BOOL    Is_Get1_Sw = false;
         [HUD hide:YES];
         int joinStatus = [[usersOne objectForKey:@"JoinStatus"] intValue];
         NSLog(@"joinStatus = %@",@(joinStatus));
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:@"" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"OK", INFOPLIST, nil) otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Remind", INFOPLIST, nil) message:@"" delegate:self cancelButtonTitle:kLoadString(@"OK") otherButtonTitles:nil];
 
         switch (joinStatus) {
             case 0:
@@ -12942,7 +12891,7 @@ BOOL    Is_Get1_Sw = false;
         userHash = newPw;
         NSLog(@"userHash = %@",userHash);
         [HUD hide:YES];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"Personal_PWChange_Sucess", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"Personal_PWChange_Sucess", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CLOSE") otherButtonTitles: nil];
         [alertView show];
     }else
     {
@@ -12976,7 +12925,7 @@ BOOL    Is_Get1_Sw = false;
 //        [defaults setObject:newPw forKey:@"userHash"];
 //        userHash = newPw;
         [HUD hide:YES];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"Personal_MyAccount_Sucess", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE", INFOPLIST, nil) otherButtonTitles: nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"Personal_MyAccount_Sucess", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_CLOSE") otherButtonTitles: nil];
         [alertView show];
         [self Send_MyUserAccount:userAccount andHash:userHash];
     }else
@@ -13229,17 +13178,14 @@ BOOL    Is_Get1_Sw = false;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:GCareGetSOSTracking_tempData];
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
-    
-    NSDictionary *usersOne = [jsonArr  objectAtIndex:0] ;
-    
-    NSLog(@"users one = %@",usersOne);
+
+    NSDictionary *usersOne = [jsonArr objectAtIndex:0];
+
+    NSLog(@"Http_GcareGetSOSTracking = %@", usersOne);
     NSString *status = [usersOne objectForKey:@"status"];
-    NSString *str1 = [NSString stringWithFormat:@"%d",0];
-    
-    if( [status isEqualToString:str1]  )
-    {
+
+    if ([status isEqualToString:@"0"]) {
         [(MyMapView *)MyMapView Do_Init:self];
-            
         NSString *longitude = [self returnStringByKeyWithDIct:usersOne andKey:@"location_lng"];
         NSString *latitude = [self returnStringByKeyWithDIct:usersOne andKey:@"location_lat"];
         NSString *radius = [self returnStringByKeyWithDIct:usersOne andKey:@"radius"];
@@ -13257,19 +13203,16 @@ BOOL    Is_Get1_Sw = false;
         else{
             [(MyMapView *)MyMapView setGpsLocation:NO];
         }
-        
+
         int isGPSGSMWIFI = [location_type intValue];
         NSLog(@"isGPSGSMWIFI %d",isGPSGSMWIFI);
         [(MyMapView *)MyMapView setGPS_GSM_WIFI:isGPSGSMWIFI];
-        
-        [self Change_State:IF_MAP ];
-        
-        
+
+        [self Change_State:IF_MAP];
+
         // nsstring 為空
         if ( (!longitude.length && !latitude.length) ) {
-            NSString *strNoData = @"NODATA";
-//            [(MyMapView *)MyMapView Set_Text:strNoData:event:name:server_time:watch_time];
-            
+            NSLog(@"*** 经纬度为空");
         }
         else{
 //            [(MyMapView *)MyMapView Set_Text:location:event:name:server_time:watch_time];
@@ -13280,15 +13223,9 @@ BOOL    Is_Get1_Sw = false;
                 [(MyMapView *)MyMapView Set_Circle :longitude:latitude:radius];
             }
         }
-        
-        
-        
-        
-        
-        [HUD hide:YES];
 
-    } else
-    {
+        [HUD hide:YES];
+    } else {
         NSString *str1 =[usersOne objectForKey:@"msg"];
         NSString *msg = [self returnStringByKeyWithDIct:usersOne andKey:@"msg"];
         NSString *msgErr = [msg substringFromIndex:MAX((int)[msg length]-2, 0)]; //in case string is less than 2 characters long.
@@ -13298,7 +13235,7 @@ BOOL    Is_Get1_Sw = false;
 //            [(MyMapView *)MyMapView  stopTimer];
             [self Change_State:IF_MAP ];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"NODATA", INFOPLIST, nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil) message:NSLocalizedStringFromTable(@"NODATA", INFOPLIST, nil) delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_OK") otherButtonTitles: nil];
             [alertView show];
             
         }
@@ -13308,11 +13245,7 @@ BOOL    Is_Get1_Sw = false;
         else{
             [self Check_Error:str1];
         }
-        
-        
-        
     }
-    
 }
 
 //儲存所有佩戴者帳號
@@ -13367,6 +13300,7 @@ BOOL    Is_Get1_Sw = false;
     
     NSLog(@"default = %@",[defaults objectForKey:@"Name1"]);
 }
+
 //更新下方顯示名字
 -(void)UpdateNameLbl
 {
@@ -13564,7 +13498,7 @@ BOOL    Is_Get1_Sw = false;
 //    NSArray *levelArr = [[NSArray alloc] initWithObjects:NSLocalizedStringFromTable(@"HS_Fall_level0", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level1", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level2", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level3", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level4", INFOPLIST, nil), nil];
     NSArray *levelArr = [[NSArray alloc] initWithObjects:NSLocalizedStringFromTable(@"HS_Fall_level0", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level1", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level2", INFOPLIST, nil),NSLocalizedStringFromTable(@"HS_Fall_level3", INFOPLIST, nil), nil];
     
-    self.alert = [MLTableAlert tableAlertWithTitle:NSLocalizedStringFromTable(@"HS_Fall_SelecSence", INFOPLIST, nil) cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel", INFOPLIST, nil) numberOfRows:^NSInteger (NSInteger section)
+    self.alert = [MLTableAlert tableAlertWithTitle:NSLocalizedStringFromTable(@"HS_Fall_SelecSence", INFOPLIST, nil) cancelButtonTitle:kLoadString(@"Cancel") numberOfRows:^NSInteger (NSInteger section)
                   {
                       /*
                        if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
@@ -13688,7 +13622,7 @@ BOOL    Is_Get1_Sw = false;
 //提醒儲存後回傳成功訊息
 -(void)AlertTitleShow:(NSString *)alertTitle andMessage:(NSString *)message
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"ALERT_MESSAGE_OK", INFOPLIST, nil) otherButtonTitles: nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:message delegate:self cancelButtonTitle:kLoadString(@"ALERT_MESSAGE_OK") otherButtonTitles: nil];
     [alertView show];
 }
 
@@ -13840,8 +13774,6 @@ BOOL    Is_Get1_Sw = false;
             }
         }
     }
-    
-    
 }
 
 //
@@ -13863,11 +13795,11 @@ BOOL    Is_Get1_Sw = false;
     NSLog(@"get GcareGetSOSTracking = %@?%@",getUserApi,httpBodyString);
 
     [request setURL:[NSURL URLWithString:getUserApi]];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     GCareGetSOSTracking_tempData = [[NSMutableData alloc] init];
     GCareGetSOSTracking_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
