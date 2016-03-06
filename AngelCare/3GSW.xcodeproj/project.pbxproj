@@ -139,7 +139,6 @@
 		472BBCBA17795C4A0042D094 /* CheckErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 472BBCB917795C4A0042D094 /* CheckErrorCode.m */; };
 		472BBCBD17796C990042D094 /* CreateNewAccViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 472BBCBC17796C990042D094 /* CreateNewAccViewController.m */; };
 		472BBCC117797D330042D094 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 472BBCC017797D330042D094 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		472F710E17D426C300532F56 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 472F710D17D426C300532F56 /* MainStoryboard_iPad.storyboard */; };
 		4732E274178EBD2D00E3E54C /* Medicine-Pill_120_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4732E270178EBD2D00E3E54C /* Medicine-Pill_120_black.png */; };
 		4732E275178EBD2D00E3E54C /* Medicine-Pill_120_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 4732E271178EBD2D00E3E54C /* Medicine-Pill_120_green.png */; };
 		4732E276178EBD2D00E3E54C /* nurse_120_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4732E272178EBD2D00E3E54C /* nurse_120_black.png */; };
@@ -816,7 +815,6 @@
 		472BBCBC17796C990042D094 /* CreateNewAccViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewAccViewController.m; sourceTree = "<group>"; };
 		472BBCBF17797D330042D094 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		472BBCC017797D330042D094 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
-		472F710D17D426C300532F56 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4732E270178EBD2D00E3E54C /* Medicine-Pill_120_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Medicine-Pill_120_black.png"; sourceTree = "<group>"; };
 		4732E271178EBD2D00E3E54C /* Medicine-Pill_120_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Medicine-Pill_120_green.png"; sourceTree = "<group>"; };
 		4732E272178EBD2D00E3E54C /* nurse_120_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nurse_120_black.png; sourceTree = "<group>"; };
@@ -2073,7 +2071,6 @@
 				4701D27517AB65A20066D8D3 /* LeaveAnno.m */,
 				CE7C8CB3161E907600B84E35 /* CheckNetWork.h */,
 				CE7C8CB4161E907600B84E35 /* CheckNetWork.m */,
-				472F710D17D426C300532F56 /* MainStoryboard_iPad.storyboard */,
 				47F04D85178B9AE70089E82C /* MainStoryboard_iPhone.storyboard */,
 				6F95121017BD249600713F3F /* MainStoryboard_iPhone4.storyboard */,
 				47F6533218375E9A00A189C3 /* QrcodeLoginViewController.h */,
@@ -3330,7 +3327,6 @@
 				47EB5E3D17CF2B2D005D5E40 /* f7-568h@2x.png in Resources */,
 				47EB5E3E17CF2B2D005D5E40 /* f8-568h@2x.png in Resources */,
 				47EB5E3F17CF2B2D005D5E40 /* f9-568h@2x.png in Resources */,
-				472F710E17D426C300532F56 /* MainStoryboard_iPad.storyboard in Resources */,
 				475A83CB17D47CAC000E7524 /* Format1Cell_iPad.xib in Resources */,
 				DBD523241934912D00874266 /* b7.png in Resources */,
 				DBDA675C195C24A9005A4407 /* geoinfo1.png in Resources */,
@@ -3684,7 +3680,7 @@
 					"./zxing/iphone/ZXingWidget/Classes/**",
 				);
 				INFOPLIST_FILE = "AngelCare/3GSW-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib",
 					"$(PROJECT_DIR)",
@@ -3838,7 +3834,7 @@
 					"./zxing/iphone/ZXingWidget/Classes/**",
 				);
 				INFOPLIST_FILE = "AngelCare/3GSW-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib",
 					"$(PROJECT_DIR)",
@@ -3886,7 +3882,7 @@
 					"./zxing/iphone/ZXingWidget/Classes/**",
 				);
 				INFOPLIST_FILE = "AngelCare/3GSW-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib",
 					"$(PROJECT_DIR)",

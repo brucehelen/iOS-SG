@@ -1383,7 +1383,7 @@
                                     <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFt-Jz-l50" id="FhX-Gd-xN4">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LeC-xF-sy1">
@@ -1917,29 +1917,6 @@
                                         <action selector="selectDate:" destination="lfK-Zk-Otx" eventType="touchUpInside" id="620-gJ-BUl"/>
                                     </connections>
                                 </button>
-                                <view hidden="YES" contentMode="scaleToFill" id="azW-tf-IbA">
-                                    <rect key="frame" x="9" y="380" width="304" height="170"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="糖尿病的血糖臨界值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="StZ-Zc-cna">
-                                            <rect key="frame" x="12" y="6" width="272" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0GV-2T-hhr">
-                                            <rect key="frame" x="12" y="28" width="280" height="142"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <string key="text">目前世界衛生組織訂定的健康及診斷糖尿病的血糖臨界值，分別為110及126mg/
-dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人應該在110mg/dL以下。如果超過126mg/dL，就是診斷為糖尿病的條件之一。
-以上引用來源：世界衛生組織
-</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mmol/L" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Dn-aI-V3I" userLabel="lbl - 飯後up">
                                     <rect key="frame" x="153" y="137" width="65" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1952,10 +1929,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="afterMeal" destination="iKQ-oB-3Wc" id="pKc-p1-lIx"/>
-                        <outlet property="afterMealDownTxt" destination="3XX-Vw-qAL" id="MkC-Bb-tg8"/>
                         <outlet property="afterMealUpTxt" destination="TJ5-vf-lDb" id="tke-VD-19m"/>
-                        <outlet property="bedTimeDownTxt" destination="t33-TL-YL5" id="lil-mQ-cK9"/>
-                        <outlet property="bedTimeUpTxt" destination="0Ec-j8-jwV" id="gfD-Wl-5Nf"/>
                         <outlet property="beforeMeal" destination="p4G-a7-Pke" id="Kq1-AW-G6f"/>
                         <outlet property="beforeMealUpTxt" destination="0Rw-mP-lGE" id="KKt-1a-oqO"/>
                         <outlet property="bfEndBtn" destination="nen-w0-nN6" id="HwH-bo-Slg"/>
@@ -1970,13 +1944,14 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="lblCh2" destination="FXx-dA-Oa5" id="yXQ-8E-j2E"/>
                         <outlet property="lblEn1" destination="wyZ-Q1-GZc" id="JHU-jJ-ugl"/>
                         <outlet property="lblEn2" destination="lON-R1-s6H" id="bOp-xx-A5p"/>
+                        <outlet property="lblUnit1" destination="BUc-u5-MhO" id="wfT-W3-Mvh"/>
+                        <outlet property="lblUnit2" destination="8Dn-aI-V3I" id="G9t-Fo-VH6"/>
                         <outlet property="lunchEndBtn" destination="k6l-KC-Rop" id="Lp5-6z-WyZ"/>
                         <outlet property="lunchStartBtn" destination="H3X-cW-IEO" id="Fh0-Z0-eiO"/>
                         <outlet property="lutime" destination="V4k-sg-kss" id="Vok-up-mTp"/>
                         <outlet property="scrollView" destination="y4a-ab-Z5L" id="IGF-W4-Ycn"/>
                         <outlet property="titleLbl1" destination="ftV-zN-NxK" id="4rl-SH-Log"/>
                         <outlet property="titleLbl2" destination="Ykg-SU-JwL" id="uo7-1c-KZq"/>
-                        <outlet property="viewRemind" destination="azW-tf-IbA" id="a5C-8P-V8f"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" id="3eK-vk-fx7" userLabel="HeartSet-貼心設定" customClass="MyDateShowView">
@@ -4207,7 +4182,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <rect key="frame" x="0.0" y="22" width="280" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nYU-3e-Q4f" id="lXK-PM-Oez">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="119"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="119.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Bf-Pe-7wX">
@@ -5423,10 +5398,10 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ComposeCell" id="ILu-9z-R80">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILu-9z-R80" id="qJc-2e-U7d">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

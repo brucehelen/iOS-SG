@@ -2240,7 +2240,7 @@
                                     <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xuf-qQ-1bT" id="U0C-Qh-vw0">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n6O-3Q-QmK">
@@ -3318,31 +3318,6 @@
                                         <action selector="selectDate:" destination="lfK-Zk-Otx" eventType="touchUpInside" id="620-gJ-BUl"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" id="VjE-ux-Ik3">
-                                    <rect key="frame" x="9" y="380" width="304" height="170"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="糖尿病的血糖临界值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="agc-NS-TrY">
-                                            <rect key="frame" x="12" y="6" width="272" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fiv-Ng-21h">
-                                            <rect key="frame" x="12" y="28" width="280" height="142"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <string key="text">目前世界卫生组织制定的健康及诊断糖尿病的血糖临界值，分別为110及126mg/
-dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人應該在110mg/dL以下。如果超過126mg/dL，就是診斷為糖尿病的條件之一。
-以上引用來源：世界衛生組織
-</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高於                        將發出警示" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W4F-Su-hUg">
                                     <rect key="frame" x="37" y="73" width="277" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3362,18 +3337,13 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="afterMeal" destination="auH-s0-3D8" id="DJV-vH-Qx0"/>
-                        <outlet property="afterMealDownTxt" destination="3XX-Vw-qAL" id="MkC-Bb-tg8"/>
                         <outlet property="afterMealUpTxt" destination="TJ5-vf-lDb" id="tke-VD-19m"/>
-                        <outlet property="bedTimeDownTxt" destination="t33-TL-YL5" id="lil-mQ-cK9"/>
-                        <outlet property="bedTimeUpTxt" destination="0Ec-j8-jwV" id="gfD-Wl-5Nf"/>
                         <outlet property="beforeMeal" destination="iKQ-oB-3Wc" id="Bib-MR-4Gm"/>
                         <outlet property="beforeMealUpTxt" destination="0Rw-mP-lGE" id="KKt-1a-oqO"/>
                         <outlet property="beforeSlp" destination="p4G-a7-Pke" id="9yX-8T-bpZ"/>
                         <outlet property="bfEndBtn" destination="nen-w0-nN6" id="HwH-bo-Slg"/>
                         <outlet property="bfStartBtn" destination="Pt1-gP-DO4" id="xyn-Qb-xg2"/>
                         <outlet property="bftime" destination="HGK-FE-hnF" id="sYQ-TP-OVm"/>
-                        <outlet property="bgBloodMaxInfo" destination="Fiv-Ng-21h" id="cXB-cc-BmU"/>
-                        <outlet property="bgBloodMaxValue" destination="agc-NS-TrY" id="YH9-cu-byh"/>
                         <outlet property="bgLbl" destination="5ol-br-Ak3" id="O2t-HO-wM1"/>
                         <outlet property="bgLbl2" destination="LD6-51-o6q" id="SIr-CH-MKv"/>
                         <outlet property="dinnerEndBtn" destination="eKZ-Xg-YBK" id="Lyd-bO-acC"/>
@@ -3391,7 +3361,6 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                         <outlet property="scrollView" destination="y4a-ab-Z5L" id="IGF-W4-Ycn"/>
                         <outlet property="titleLbl1" destination="ftV-zN-NxK" id="4rl-SH-Log"/>
                         <outlet property="titleLbl2" destination="Ykg-SU-JwL" id="uo7-1c-KZq"/>
-                        <outlet property="viewRemind" destination="VjE-ux-Ik3" id="7Xh-k4-XDD"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" id="Vje-Z5-ENc" userLabel="SelView - 量測記錄" customClass="MySelView">
@@ -5317,7 +5286,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
                                     <rect key="frame" x="0.0" y="22" width="280" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tsb-jR-sd6" id="2C9-L0-hGk">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="119"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="119.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="V9d-a2-7kI">
