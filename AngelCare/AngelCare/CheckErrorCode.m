@@ -10,24 +10,14 @@
 
 @implementation CheckErrorCode
 
-
-
 //Error Code字串判斷
-+(void)Check_Error:(NSString *)ErrorData
++ (void)Check_Error:(NSString *)ErrorData
 {
-    // 20151224不要弹这些乱七八糟的东西
-    return;
-
     int ErrorValue;
-
     ErrorValue = [ErrorData intValue];
-    
-    
     ErrorValue =  ErrorValue%100;
-    
-    
     UIAlertView *alert;
-    
+
     switch (ErrorValue)
     {
         case 1:

@@ -328,6 +328,20 @@
 		7A3722F51BEB08BB002CAD54 /* KMFreqQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3722F41BEB08BB002CAD54 /* KMFreqQuestionView.m */; };
 		7A3722F81BEB32A5002CAD54 /* KMFreqQuestionDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3722F71BEB32A5002CAD54 /* KMFreqQuestionDetailView.m */; };
 		7A4A428C1B26C40C00277B10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4A428B1B26C40C00277B10 /* Images.xcassets */; };
+		7A550A741C4E113A00DE6235 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A521C4E113A00DE6235 /* IQNSArray+Sort.m */; };
+		7A550A751C4E113A00DE6235 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A541C4E113A00DE6235 /* IQUITextFieldView+Additions.m */; };
+		7A550A761C4E113A00DE6235 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A561C4E113A00DE6235 /* IQUIView+Hierarchy.m */; };
+		7A550A771C4E113A00DE6235 /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A581C4E113A00DE6235 /* IQUIViewController+Additions.m */; };
+		7A550A781C4E113A00DE6235 /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A5A1C4E113A00DE6235 /* IQUIWindow+Hierarchy.m */; };
+		7A550A791C4E113A00DE6235 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A5F1C4E113A00DE6235 /* IQKeyboardManager.m */; };
+		7A550A7A1C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A611C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.m */; };
+		7A550A7B1C4E113A00DE6235 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A641C4E113A00DE6235 /* IQSegmentedNextPrevious.m */; };
+		7A550A7C1C4E113A00DE6235 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A671C4E113A00DE6235 /* IQTextView.m */; };
+		7A550A7D1C4E113A00DE6235 /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A6A1C4E113A00DE6235 /* IQBarButtonItem.m */; };
+		7A550A7E1C4E113A00DE6235 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A6C1C4E113A00DE6235 /* IQTitleBarButtonItem.m */; };
+		7A550A7F1C4E113A00DE6235 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A6E1C4E113A00DE6235 /* IQToolbar.m */; };
+		7A550A801C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550A701C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.m */; };
+		7A550A811C4E113A00DE6235 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A550A731C4E113A00DE6235 /* IQKeyboardManager.bundle */; };
 		7A656C7C1BABAA2B006F2577 /* login_700_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7B1BABAA2B006F2577 /* login_700_02.png */; };
 		7A656C7E1BABAEEB006F2577 /* 登录按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A656C7D1BABAEEB006F2577 /* 登录按钮.png */; };
 		7A72D70D1BBA3491001A8777 /* MyActSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A72D70C1BBA3490001A8777 /* MyActSearchView.m */; };
@@ -348,6 +362,16 @@
 		7A79FCDF1C32556C00413900 /* icon_week_wed.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A79FCD11C32556C00413900 /* icon_week_wed.png */; };
 		7A7F6DDD1B82D497004ECA87 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47484374184D86AD001351AF /* libz.dylib */; };
 		7A7F6DDF1B82D4A4004ECA87 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */; };
+		7AB229C11C62FE9F00F984D7 /* icon_week_f.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229B71C62FE9F00F984D7 /* icon_week_f.png */; };
+		7AB229C21C62FE9F00F984D7 /* icon_week_f1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229B81C62FE9F00F984D7 /* icon_week_f1.png */; };
+		7AB229C31C62FE9F00F984D7 /* icon_week_mm.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229B91C62FE9F00F984D7 /* icon_week_mm.png */; };
+		7AB229C41C62FE9F00F984D7 /* icon_week_m1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229BA1C62FE9F00F984D7 /* icon_week_m1.png */; };
+		7AB229C51C62FE9F00F984D7 /* icon_week_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229BB1C62FE9F00F984D7 /* icon_week_s.png */; };
+		7AB229C61C62FE9F00F984D7 /* icon_week_s1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229BC1C62FE9F00F984D7 /* icon_week_s1.png */; };
+		7AB229C71C62FE9F00F984D7 /* icon_week_t.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229BD1C62FE9F00F984D7 /* icon_week_t.png */; };
+		7AB229C81C62FE9F00F984D7 /* icon_week_t1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229BE1C62FE9F00F984D7 /* icon_week_t1.png */; };
+		7AB229C91C62FE9F00F984D7 /* icon_week_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229BF1C62FE9F00F984D7 /* icon_week_w.png */; };
+		7AB229CA1C62FE9F00F984D7 /* icon_week_w1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB229C01C62FE9F00F984D7 /* icon_week_w1.png */; };
 		7AB4E5141BB14DCE00DA84E6 /* head_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5131BB14DCE00DA84E6 /* head_pic.png */; };
 		7AB4E5161BB25A9E00DA84E6 /* icon_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB4E5151BB25A9E00DA84E6 /* icon_new.png */; };
 		7AC768BA1BFAF87500345FFD /* History.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AC768B91BFAF87500345FFD /* History.txt */; };
@@ -626,16 +650,6 @@
 		DBEC6ACC1A2F0CBE00C2D082 /* HealthSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEC6ACB1A2F0CBE00C2D082 /* HealthSteps.m */; };
 		DBEC6AD21A2F0E1D00C2D082 /* NQBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEC6ACF1A2F0E1D00C2D082 /* NQBarGraph.m */; };
 		DBEC6AD31A2F0E1D00C2D082 /* NQData.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEC6AD11A2F0E1D00C2D082 /* NQData.m */; };
-		DBF69F9119385CB900A692C1 /* icon_week_F.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8719385CB900A692C1 /* icon_week_F.png */; };
-		DBF69F9219385CB900A692C1 /* icon_week_F1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8819385CB900A692C1 /* icon_week_F1.png */; };
-		DBF69F9319385CB900A692C1 /* icon_week_M.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8919385CB900A692C1 /* icon_week_M.png */; };
-		DBF69F9419385CB900A692C1 /* icon_week_M1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8A19385CB900A692C1 /* icon_week_M1.png */; };
-		DBF69F9519385CB900A692C1 /* icon_week_S.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8B19385CB900A692C1 /* icon_week_S.png */; };
-		DBF69F9619385CB900A692C1 /* icon_week_S1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8C19385CB900A692C1 /* icon_week_S1.png */; };
-		DBF69F9719385CB900A692C1 /* icon_week_T.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8D19385CB900A692C1 /* icon_week_T.png */; };
-		DBF69F9819385CB900A692C1 /* icon_week_T1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8E19385CB900A692C1 /* icon_week_T1.png */; };
-		DBF69F9919385CB900A692C1 /* icon_week_W.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F8F19385CB900A692C1 /* icon_week_W.png */; };
-		DBF69F9A19385CB900A692C1 /* icon_week_W1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF69F9019385CB900A692C1 /* icon_week_W1.png */; };
 		DBFF708F192C4D8C005EFC15 /* icon_record_down_day.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF708B192C4D8C005EFC15 /* icon_record_down_day.png */; };
 		DBFF7090192C4D8C005EFC15 /* icon_record_down_interval.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF708C192C4D8C005EFC15 /* icon_record_down_interval.png */; };
 		DBFF7091192C4D8C005EFC15 /* icon_record_down_month.png in Resources */ = {isa = PBXBuildFile; fileRef = DBFF708D192C4D8C005EFC15 /* icon_record_down_month.png */; };
@@ -1050,6 +1064,36 @@
 		7A3722F61BEB32A5002CAD54 /* KMFreqQuestionDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMFreqQuestionDetailView.h; sourceTree = "<group>"; };
 		7A3722F71BEB32A5002CAD54 /* KMFreqQuestionDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMFreqQuestionDetailView.m; sourceTree = "<group>"; };
 		7A4A428B1B26C40C00277B10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 3GSW/Images.xcassets; sourceTree = "<group>"; };
+		7A550A511C4E113A00DE6235 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		7A550A521C4E113A00DE6235 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		7A550A531C4E113A00DE6235 /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		7A550A541C4E113A00DE6235 /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		7A550A551C4E113A00DE6235 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		7A550A561C4E113A00DE6235 /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
+		7A550A571C4E113A00DE6235 /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		7A550A581C4E113A00DE6235 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		7A550A591C4E113A00DE6235 /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		7A550A5A1C4E113A00DE6235 /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		7A550A5C1C4E113A00DE6235 /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		7A550A5D1C4E113A00DE6235 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		7A550A5E1C4E113A00DE6235 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		7A550A5F1C4E113A00DE6235 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		7A550A601C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		7A550A611C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		7A550A631C4E113A00DE6235 /* IQSegmentedNextPrevious.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSegmentedNextPrevious.h; sourceTree = "<group>"; };
+		7A550A641C4E113A00DE6235 /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
+		7A550A661C4E113A00DE6235 /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		7A550A671C4E113A00DE6235 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		7A550A691C4E113A00DE6235 /* IQBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		7A550A6A1C4E113A00DE6235 /* IQBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
+		7A550A6B1C4E113A00DE6235 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		7A550A6C1C4E113A00DE6235 /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		7A550A6D1C4E113A00DE6235 /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		7A550A6E1C4E113A00DE6235 /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		7A550A6F1C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		7A550A701C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		7A550A711C4E113A00DE6235 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		7A550A731C4E113A00DE6235 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		7A656C7B1BABAA2B006F2577 /* login_700_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_700_02.png; sourceTree = "<group>"; };
 		7A656C7D1BABAEEB006F2577 /* 登录按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录按钮.png"; sourceTree = "<group>"; };
 		7A72D70B1BBA3490001A8777 /* MyActSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActSearchView.h; sourceTree = "<group>"; };
@@ -1072,6 +1116,16 @@
 		7A7F6DDE1B82D4A4004ECA87 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7A85A68C1B26F26C000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		7A85A68E1B26F2A7000F5A7E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = "AngelCare/BaiduMap_IOSSDK_v2.5.0_Lib/Release-iphonesimulator/libbaidumapapi.a"; sourceTree = "<group>"; };
+		7AB229B71C62FE9F00F984D7 /* icon_week_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_f.png; sourceTree = "<group>"; };
+		7AB229B81C62FE9F00F984D7 /* icon_week_f1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_f1.png; sourceTree = "<group>"; };
+		7AB229B91C62FE9F00F984D7 /* icon_week_mm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_mm.png; sourceTree = "<group>"; };
+		7AB229BA1C62FE9F00F984D7 /* icon_week_m1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_m1.png; sourceTree = "<group>"; };
+		7AB229BB1C62FE9F00F984D7 /* icon_week_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_s.png; sourceTree = "<group>"; };
+		7AB229BC1C62FE9F00F984D7 /* icon_week_s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_s1.png; sourceTree = "<group>"; };
+		7AB229BD1C62FE9F00F984D7 /* icon_week_t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_t.png; sourceTree = "<group>"; };
+		7AB229BE1C62FE9F00F984D7 /* icon_week_t1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_t1.png; sourceTree = "<group>"; };
+		7AB229BF1C62FE9F00F984D7 /* icon_week_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_w.png; sourceTree = "<group>"; };
+		7AB229C01C62FE9F00F984D7 /* icon_week_w1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_w1.png; sourceTree = "<group>"; };
 		7AB4E5131BB14DCE00DA84E6 /* head_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_pic.png; sourceTree = "<group>"; };
 		7AB4E5151BB25A9E00DA84E6 /* icon_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_new.png; sourceTree = "<group>"; };
 		7AC768B91BFAF87500345FFD /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
@@ -1493,16 +1547,6 @@
 		DBEC6ACF1A2F0E1D00C2D082 /* NQBarGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NQBarGraph.m; sourceTree = "<group>"; };
 		DBEC6AD01A2F0E1D00C2D082 /* NQData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NQData.h; sourceTree = "<group>"; };
 		DBEC6AD11A2F0E1D00C2D082 /* NQData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NQData.m; sourceTree = "<group>"; };
-		DBF69F8719385CB900A692C1 /* icon_week_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_F.png; sourceTree = "<group>"; };
-		DBF69F8819385CB900A692C1 /* icon_week_F1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_F1.png; sourceTree = "<group>"; };
-		DBF69F8919385CB900A692C1 /* icon_week_M.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_M.png; sourceTree = "<group>"; };
-		DBF69F8A19385CB900A692C1 /* icon_week_M1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_M1.png; sourceTree = "<group>"; };
-		DBF69F8B19385CB900A692C1 /* icon_week_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_S.png; sourceTree = "<group>"; };
-		DBF69F8C19385CB900A692C1 /* icon_week_S1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_S1.png; sourceTree = "<group>"; };
-		DBF69F8D19385CB900A692C1 /* icon_week_T.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_T.png; sourceTree = "<group>"; };
-		DBF69F8E19385CB900A692C1 /* icon_week_T1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_T1.png; sourceTree = "<group>"; };
-		DBF69F8F19385CB900A692C1 /* icon_week_W.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_W.png; sourceTree = "<group>"; };
-		DBF69F9019385CB900A692C1 /* icon_week_W1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_week_W1.png; sourceTree = "<group>"; };
 		DBFF708B192C4D8C005EFC15 /* icon_record_down_day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_down_day.png; sourceTree = "<group>"; };
 		DBFF708C192C4D8C005EFC15 /* icon_record_down_interval.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_down_interval.png; sourceTree = "<group>"; };
 		DBFF708D192C4D8C005EFC15 /* icon_record_down_month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_record_down_month.png; sourceTree = "<group>"; };
@@ -1729,6 +1773,99 @@
 			name = KMView;
 			sourceTree = "<group>";
 		};
+		7A550A4E1C4E112B00DE6235 /* 3rdFramework */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A4F1C4E113A00DE6235 /* IQKeyBoardManager */,
+			);
+			path = 3rdFramework;
+			sourceTree = "<group>";
+		};
+		7A550A4F1C4E113A00DE6235 /* IQKeyBoardManager */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A501C4E113A00DE6235 /* Categories */,
+				7A550A5B1C4E113A00DE6235 /* Constants */,
+				7A550A5E1C4E113A00DE6235 /* IQKeyboardManager.h */,
+				7A550A5F1C4E113A00DE6235 /* IQKeyboardManager.m */,
+				7A550A601C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.h */,
+				7A550A611C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.m */,
+				7A550A621C4E113A00DE6235 /* IQSegmentedNextPrevious */,
+				7A550A651C4E113A00DE6235 /* IQTextView */,
+				7A550A681C4E113A00DE6235 /* IQToolbar */,
+				7A550A711C4E113A00DE6235 /* KeyboardManager.h */,
+				7A550A721C4E113A00DE6235 /* Resources */,
+			);
+			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		7A550A501C4E113A00DE6235 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A511C4E113A00DE6235 /* IQNSArray+Sort.h */,
+				7A550A521C4E113A00DE6235 /* IQNSArray+Sort.m */,
+				7A550A531C4E113A00DE6235 /* IQUITextFieldView+Additions.h */,
+				7A550A541C4E113A00DE6235 /* IQUITextFieldView+Additions.m */,
+				7A550A551C4E113A00DE6235 /* IQUIView+Hierarchy.h */,
+				7A550A561C4E113A00DE6235 /* IQUIView+Hierarchy.m */,
+				7A550A571C4E113A00DE6235 /* IQUIViewController+Additions.h */,
+				7A550A581C4E113A00DE6235 /* IQUIViewController+Additions.m */,
+				7A550A591C4E113A00DE6235 /* IQUIWindow+Hierarchy.h */,
+				7A550A5A1C4E113A00DE6235 /* IQUIWindow+Hierarchy.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		7A550A5B1C4E113A00DE6235 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A5C1C4E113A00DE6235 /* IQKeyboardManagerConstants.h */,
+				7A550A5D1C4E113A00DE6235 /* IQKeyboardManagerConstantsInternal.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		7A550A621C4E113A00DE6235 /* IQSegmentedNextPrevious */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A631C4E113A00DE6235 /* IQSegmentedNextPrevious.h */,
+				7A550A641C4E113A00DE6235 /* IQSegmentedNextPrevious.m */,
+			);
+			path = IQSegmentedNextPrevious;
+			sourceTree = "<group>";
+		};
+		7A550A651C4E113A00DE6235 /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A661C4E113A00DE6235 /* IQTextView.h */,
+				7A550A671C4E113A00DE6235 /* IQTextView.m */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		7A550A681C4E113A00DE6235 /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A691C4E113A00DE6235 /* IQBarButtonItem.h */,
+				7A550A6A1C4E113A00DE6235 /* IQBarButtonItem.m */,
+				7A550A6B1C4E113A00DE6235 /* IQTitleBarButtonItem.h */,
+				7A550A6C1C4E113A00DE6235 /* IQTitleBarButtonItem.m */,
+				7A550A6D1C4E113A00DE6235 /* IQToolbar.h */,
+				7A550A6E1C4E113A00DE6235 /* IQToolbar.m */,
+				7A550A6F1C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.h */,
+				7A550A701C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.m */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		7A550A721C4E113A00DE6235 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7A550A731C4E113A00DE6235 /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7A85A68B1B26F26C000F5A7E /* Release-iphonesimulator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1836,6 +1973,7 @@
 				DBBE354518A3685100F723F0 /* bgLoading.png */,
 				DBBE354918A3688F00F723F0 /* bgLoading568.png */,
 				DBBE354618A3685100F723F0 /* bgLoading@2x.png */,
+				7A550A4E1C4E112B00DE6235 /* 3rdFramework */,
 				CEF698D416003D8900874E59 /* AngelCare */,
 				CEF698CD16003D8900874E59 /* Frameworks */,
 				CEF698CB16003D8900874E59 /* Products */,
@@ -2196,6 +2334,16 @@
 				DB89EB8A1949A4E000E3843C /* icon_geo.png */,
 				DB46A77F1937251B00F5BEC4 /* check_ok.png */,
 				DB46A7801937251B00F5BEC4 /* check_ok_mark.png */,
+				7AB229B71C62FE9F00F984D7 /* icon_week_f.png */,
+				7AB229B81C62FE9F00F984D7 /* icon_week_f1.png */,
+				7AB229B91C62FE9F00F984D7 /* icon_week_mm.png */,
+				7AB229BA1C62FE9F00F984D7 /* icon_week_m1.png */,
+				7AB229BB1C62FE9F00F984D7 /* icon_week_s.png */,
+				7AB229BC1C62FE9F00F984D7 /* icon_week_s1.png */,
+				7AB229BD1C62FE9F00F984D7 /* icon_week_t.png */,
+				7AB229BE1C62FE9F00F984D7 /* icon_week_t1.png */,
+				7AB229BF1C62FE9F00F984D7 /* icon_week_w.png */,
+				7AB229C01C62FE9F00F984D7 /* icon_week_w1.png */,
 				7A79FCC41C32556C00413900 /* icon_week_fri_01.png */,
 				7A79FCC51C32556C00413900 /* icon_week_fri.png */,
 				7A79FCC61C32556C00413900 /* icon_week_mon_01.png */,
@@ -2210,16 +2358,6 @@
 				7A79FCCF1C32556C00413900 /* icon_week_tue.png */,
 				7A79FCD01C32556C00413900 /* icon_week_wed_01.png */,
 				7A79FCD11C32556C00413900 /* icon_week_wed.png */,
-				DBF69F8719385CB900A692C1 /* icon_week_F.png */,
-				DBF69F8819385CB900A692C1 /* icon_week_F1.png */,
-				DBF69F8919385CB900A692C1 /* icon_week_M.png */,
-				DBF69F8A19385CB900A692C1 /* icon_week_M1.png */,
-				DBF69F8B19385CB900A692C1 /* icon_week_S.png */,
-				DBF69F8C19385CB900A692C1 /* icon_week_S1.png */,
-				DBF69F8D19385CB900A692C1 /* icon_week_T.png */,
-				DBF69F8E19385CB900A692C1 /* icon_week_T1.png */,
-				DBF69F8F19385CB900A692C1 /* icon_week_W.png */,
-				DBF69F9019385CB900A692C1 /* icon_week_W1.png */,
 				DB4712D119403DDB00DA4B0C /* delete.png */,
 				DB4712D219403DDB00DA4B0C /* edit.png */,
 				DB1339AC18F2AE3C00E6D183 /* icon_add.png */,
@@ -2739,6 +2877,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					CEF698C916003D8900874E59 = {
+						DevelopmentTeam = ZV2299XXGK;
+					};
+				};
 			};
 			buildConfigurationList = CEF698C416003D8900874E59 /* Build configuration list for PBXProject "3GSW" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2791,17 +2934,16 @@
 				1885EA5A1612F9EB0028DA80 /* show_big_1.png in Resources */,
 				1885EA5B1612F9EB0028DA80 /* show_big_2.png in Resources */,
 				DBD5235E1934914700874266 /* g-20.png in Resources */,
-				DBF69F9319385CB900A692C1 /* icon_week_M.png in Resources */,
 				DBD5231F1934912D00874266 /* b2.png in Resources */,
 				1885EA641612F9EB0028DA80 /* show_small_1.png in Resources */,
 				1895C9341AF365F100CD93D9 /* bxlogo.png in Resources */,
-				DBF69F9819385CB900A692C1 /* icon_week_T1.png in Resources */,
 				DB77C67B18AE1224003B9AFB /* BP.png in Resources */,
 				1885EA651612F9EB0028DA80 /* show_small_2.png in Resources */,
 				18C3DBBE1AF0CA47005838D0 /* icon_15.png in Resources */,
 				DB0C8AD018A2465E001E611D /* nttServiceLog.png in Resources */,
 				DBD5232C1934912D00874266 /* b15.png in Resources */,
 				1885EA801612FA1A0028DA80 /* index_bu_1_1.png in Resources */,
+				7AB229C81C62FE9F00F984D7 /* icon_week_t1.png in Resources */,
 				DB46A7821937251B00F5BEC4 /* check_ok_mark.png in Resources */,
 				7A79FCDB1C32556C00413900 /* icon_week_thu.png in Resources */,
 				1885EA811612FA1A0028DA80 /* index_bu_1_2.png in Resources */,
@@ -2862,6 +3004,7 @@
 				CEC930DA1615ADB100821547 /* mapp15.png in Resources */,
 				CEC930DB1615ADB100821547 /* mapp16.png in Resources */,
 				CEC930DC1615ADB100821547 /* mapp17.png in Resources */,
+				7AB229C71C62FE9F00F984D7 /* icon_week_t.png in Resources */,
 				CEC930DD1615ADB100821547 /* mapp18.png in Resources */,
 				DB0C8ACE18A2465E001E611D /* nttLogo.png in Resources */,
 				CEC930DE1615ADB100821547 /* mapp19.png in Resources */,
@@ -2922,6 +3065,7 @@
 				18775A80167B2FC400ED099C /* my_bu_1.png in Resources */,
 				7A79FCDE1C32556C00413900 /* icon_week_wed_01.png in Resources */,
 				DBD523291934912D00874266 /* b12.png in Resources */,
+				7A550A811C4E113A00DE6235 /* IQKeyboardManager.bundle in Resources */,
 				7A79FCD21C32556C00413900 /* icon_week_fri_01.png in Resources */,
 				1895C9471AF74F1C00CD93D9 /* mhlogo.png in Resources */,
 				DB77C68118AE1224003B9AFB /* EventRemind.png in Resources */,
@@ -2932,7 +3076,6 @@
 				47141C2E17058C2D00B03697 /* mappurple.png in Resources */,
 				7AFDCB211B9009B60013DAA5 /* icon_a.png in Resources */,
 				DB77C67C18AE1224003B9AFB /* BS.png in Resources */,
-				DBF69F9419385CB900A692C1 /* icon_week_M1.png in Resources */,
 				476DD5CB1862F33200467F45 /* sms1.png in Resources */,
 				18C3DBB21AF0CA47005838D0 /* icon_03.png in Resources */,
 				4767C17A170AB88A003713F7 /* icon_refresh.png in Resources */,
@@ -2955,11 +3098,13 @@
 				DBBE354A18A3688F00F723F0 /* bgLoading568.png in Resources */,
 				47A4BD4B177AEDAD008AFDD7 /* DateRemindCell.xib in Resources */,
 				47A4BD53177AEDE5008AFDD7 /* EatRemindCell.xib in Resources */,
+				7AB229C91C62FE9F00F984D7 /* icon_week_w.png in Resources */,
 				32A683991B9D716800484958 /* hypertension.html in Resources */,
 				DB77C67918AE1224003B9AFB /* ActiveArea.png in Resources */,
 				18C3DB931AF0CA24005838D0 /* app_logo_top.png in Resources */,
 				47A4BD56177AEF00008AFDD7 /* clock-disabled-icon.png in Resources */,
 				DBFF7090192C4D8C005EFC15 /* icon_record_down_interval.png in Resources */,
+				7AB229C41C62FE9F00F984D7 /* icon_week_m1.png in Resources */,
 				DB77C67A18AE1224003B9AFB /* BO.png in Resources */,
 				47A4BD57177AEF00008AFDD7 /* clock-icon.png in Resources */,
 				47AE8C1F177BE9C300D1A110 /* icon_check_0.png in Resources */,
@@ -2988,6 +3133,7 @@
 				DB0C8AC718A2465E001E611D /* nttEventRemind.png in Resources */,
 				DB1339AD18F2AE3C00E6D183 /* icon_add.png in Resources */,
 				18C3DBBF1AF0CA47005838D0 /* icon_16.png in Resources */,
+				7AB229C51C62FE9F00F984D7 /* icon_week_s.png in Resources */,
 				470F69A91785548A006CC746 /* camera.png in Resources */,
 				7A010EB51C1819BB00AFC4DD /* hypoglycemia_cn.html in Resources */,
 				470F69AB17855706006CC746 /* icon_edit.png in Resources */,
@@ -2997,15 +3143,16 @@
 				47F36D1C17865E8E00B4CD36 /* MLTableAlertButton.png in Resources */,
 				DB13399118F24AB600E6D183 /* icon_service_sos_01.png in Resources */,
 				47F36D1D17865E8E00B4CD36 /* MLTableAlertButton@2x.png in Resources */,
+				7AB229C31C62FE9F00F984D7 /* icon_week_mm.png in Resources */,
 				DBD5234F1934914700874266 /* g-5.png in Resources */,
 				DBD523541934914700874266 /* g-10.png in Resources */,
+				7AB229CA1C62FE9F00F984D7 /* icon_week_w1.png in Resources */,
 				18C3DBC11AF0CA47005838D0 /* icon_18.png in Resources */,
 				47F36D1E17865E8E00B4CD36 /* MLTableAlertButtonPressed.png in Resources */,
 				47F36D1F17865E8E00B4CD36 /* MLTableAlertButtonPressed@2x.png in Resources */,
 				47F36D2017865E8E00B4CD36 /* MLTableAlertShadowMask.png in Resources */,
 				18C3DB971AF0CA3D005838D0 /* nttBg4.png in Resources */,
 				479D4AD9187E577300FD95F6 /* H_6.png in Resources */,
-				DBF69F9619385CB900A692C1 /* icon_week_S1.png in Resources */,
 				47F36D2117865E8E00B4CD36 /* MLTableAlertShadowMask@2x.png in Resources */,
 				DBD523511934914700874266 /* g-7.png in Resources */,
 				47F36D271786716900B4CD36 /* correct.png in Resources */,
@@ -3037,6 +3184,7 @@
 				4703F54D17992A4500D31B8D /* btn_check_off_selected.png in Resources */,
 				4703F54E17992A4500D31B8D /* btn_check_off.png in Resources */,
 				4703F54F17992A4500D31B8D /* btn_check_on_pressed.png in Resources */,
+				7AB229C11C62FE9F00F984D7 /* icon_week_f.png in Resources */,
 				4703F55017992A4500D31B8D /* btn_check_on.png in Resources */,
 				4703F5521799364D00D31B8D /* timezone.plist in Resources */,
 				470190A2179E2475002F9513 /* history_icon_bg@2x.png in Resources */,
@@ -3056,7 +3204,6 @@
 				4701D27817AB66100066D8D3 /* pin_orange.png in Resources */,
 				4714007317B3330500C4C2FE /* MyAccountCell.xib in Resources */,
 				DB0C8AC818A2465E001E611D /* nttFallSetting.png in Resources */,
-				DBF69F9219385CB900A692C1 /* icon_week_F1.png in Resources */,
 				4714007817B3333B00C4C2FE /* EditMyAccountCell.xib in Resources */,
 				1895C9131AF206B700CD93D9 /* ybg2.png in Resources */,
 				4770BADD1842FB9C00D5072B /* Format2Cell_iPad.xib in Resources */,
@@ -3076,7 +3223,6 @@
 				DBD523311934912D00874266 /* b20.png in Resources */,
 				470994F617BB756700AD4783 /* main_06.png in Resources */,
 				DB0C8AD318A2465E001E611D /* nttUser.png in Resources */,
-				DBF69F9119385CB900A692C1 /* icon_week_F.png in Resources */,
 				470994F717BB756700AD4783 /* main_07.png in Resources */,
 				DBE7827B1A08C17900D6EB15 /* icon_week_u.png in Resources */,
 				18C3DBBB1AF0CA47005838D0 /* icon_12.png in Resources */,
@@ -3090,6 +3236,7 @@
 				DB01EFC619388E5A0014B8DB /* CGeoCell.xib in Resources */,
 				DB0C8AC218A2465E001E611D /* nttBWSetting.png in Resources */,
 				470C621617BC6CEF00F6C711 /* personCell.xib in Resources */,
+				7AB229C21C62FE9F00F984D7 /* icon_week_f1.png in Resources */,
 				470C621817BC7CAD00F6C711 /* bpremind1.png in Resources */,
 				470C621A17BC7D1800F6C711 /* bpremind2.png in Resources */,
 				470C621C17BC7DC100F6C711 /* bpreimd3.png in Resources */,
@@ -3114,10 +3261,10 @@
 				6F9C14AB17CCFE5600AE5C1E /* H_2.png in Resources */,
 				182A82261AEA636D0032B613 /* Default-568h@2x.png in Resources */,
 				7A79FCD91C32556C00413900 /* icon_week_sun.png in Resources */,
-				DBF69F9719385CB900A692C1 /* icon_week_T.png in Resources */,
 				6F9C14AC17CCFE5600AE5C1E /* H_3.png in Resources */,
 				6F9C14AD17CCFE5600AE5C1E /* H_4.png in Resources */,
 				7A010EAF1C1815EA00AFC4DD /* hypertension_cn.html in Resources */,
+				7AB229C61C62FE9F00F984D7 /* icon_week_s1.png in Resources */,
 				6F9C14AE17CCFE5600AE5C1E /* H_5.png in Resources */,
 				DBDA675D195C24A9005A4407 /* geoinfo2.png in Resources */,
 				47AF493717CDB71400A0665F /* type01.png in Resources */,
@@ -3136,7 +3283,6 @@
 				47AF493A17CDB71400A0665F /* type00.png in Resources */,
 				47AF493B17CDB71400A0665F /* type02.png in Resources */,
 				DBD523271934912D00874266 /* b10.png in Resources */,
-				DBF69F9A19385CB900A692C1 /* icon_week_W1.png in Resources */,
 				47EB5E1817CF1B60005D5E40 /* f1.png in Resources */,
 				47EB5E1917CF1B60005D5E40 /* f2.png in Resources */,
 				47EB5E1A17CF1B60005D5E40 /* f3.png in Resources */,
@@ -3185,7 +3331,6 @@
 				47EB5E3E17CF2B2D005D5E40 /* f8-568h@2x.png in Resources */,
 				47EB5E3F17CF2B2D005D5E40 /* f9-568h@2x.png in Resources */,
 				472F710E17D426C300532F56 /* MainStoryboard_iPad.storyboard in Resources */,
-				DBF69F9919385CB900A692C1 /* icon_week_W.png in Resources */,
 				475A83CB17D47CAC000E7524 /* Format1Cell_iPad.xib in Resources */,
 				DBD523241934912D00874266 /* b7.png in Resources */,
 				DBDA675C195C24A9005A4407 /* geoinfo1.png in Resources */,
@@ -3218,7 +3363,6 @@
 				18C3DBC31AF0CA47005838D0 /* icon_20.png in Resources */,
 				475A83E717D49577000E7524 /* DateRemindCell_iPad.xib in Resources */,
 				475A83E917D495EB000E7524 /* SetCell_iPad.xib in Resources */,
-				DBF69F9519385CB900A692C1 /* icon_week_S.png in Resources */,
 				1895C9411AF71C9B00CD93D9 /* smicon.png in Resources */,
 				475A83EB17D49C0F000E7524 /* RouteList_iPad.xib in Resources */,
 				DB0C8AC018A2465E001E611D /* nttBPRecord.png in Resources */,
@@ -3259,7 +3403,9 @@
 				DB8B7B651AC92DEA00C4E3E6 /* AutoLocatingCell.m in Sources */,
 				CEA700E81606E0070001A7DD /* SBJsonParser.m in Sources */,
 				CEA700E91606E0070001A7DD /* SBJsonStreamParser.m in Sources */,
+				7A550A751C4E113A00DE6235 /* IQUITextFieldView+Additions.m in Sources */,
 				CEA700EA1606E0070001A7DD /* SBJsonStreamParserAccumulator.m in Sources */,
+				7A550A791C4E113A00DE6235 /* IQKeyboardManager.m in Sources */,
 				CEA700EB1606E0070001A7DD /* SBJsonStreamParserAdapter.m in Sources */,
 				47A901001770024F0069B9AA /* FPPopoverController.m in Sources */,
 				47FF297A1777F0820023253A /* Measure5Cell.m in Sources */,
@@ -3271,7 +3417,9 @@
 				476C6E41186C1455005691DC /* ShowImageCell.m in Sources */,
 				47A9011A17705DAE0069B9AA /* MeasureNoCell.m in Sources */,
 				CEA700ED1606E0070001A7DD /* SBJsonStreamWriter.m in Sources */,
+				7A550A7B1C4E113A00DE6235 /* IQSegmentedNextPrevious.m in Sources */,
 				DB72CDFE192A11D3005106D7 /* WECell.m in Sources */,
+				7A550A801C4E113A00DE6235 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				CEA700EE1606E0070001A7DD /* SBJsonStreamWriterAccumulator.m in Sources */,
 				CEA700EF1606E0070001A7DD /* SBJsonStreamWriterState.m in Sources */,
 				DBDA6762195C263B005A4407 /* vcGeoInfo.m in Sources */,
@@ -3286,6 +3434,7 @@
 				7A181B501BE317DE0032FFF2 /* KMCommonClass.m in Sources */,
 				CE8FD8321609B44800AAB919 /* MySetView.m in Sources */,
 				47A900D9176FFAFA0069B9AA /* ECSlidingViewController.m in Sources */,
+				7A550A771C4E113A00DE6235 /* IQUIViewController+Additions.m in Sources */,
 				47A901021770024F0069B9AA /* FPTouchView.m in Sources */,
 				DBEC6ACC1A2F0CBE00C2D082 /* HealthSteps.m in Sources */,
 				47A900ED176FFDFE0069B9AA /* SetCell.m in Sources */,
@@ -3294,20 +3443,24 @@
 				47A9010A17700B2E0069B9AA /* UserSetCell.m in Sources */,
 				47A20C5017719F6A00FD121D /* UIView+ZXQuartz.m in Sources */,
 				CE88EFBD160AF543008F1C2F /* MySelView.m in Sources */,
+				7A550A7F1C4E113A00DE6235 /* IQToolbar.m in Sources */,
 				CE8BAF69160C65C200F1F7E3 /* MyDatePickerView.m in Sources */,
 				CE8FCB1F160FFEEB004AEB86 /* MyDateShowView.m in Sources */,
+				7A550A7A1C4E113A00DE6235 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				CE8FCB2616100B75004AEB86 /* MyEatShowView.m in Sources */,
 				CEDB14EC16100F200073DE68 /* MyEatPickView.m in Sources */,
 				CEE45905161D38CF001AEE84 /* MyActView.m in Sources */,
 				CE7C8CB5161E907600B84E35 /* CheckNetWork.m in Sources */,
 				47A901011770024F0069B9AA /* FPPopoverView.m in Sources */,
 				CE695BDE1627FB910071ED9C /* MyHisView.m in Sources */,
+				7A550A781C4E113A00DE6235 /* IQUIWindow+Hierarchy.m in Sources */,
 				DBE5CB83192B060F008D2BC4 /* SportCell.m in Sources */,
 				CE8CD5911636790700090C68 /* UserSetView.m in Sources */,
 				CEA84EF11636AAE500CD65BD /* UserDateView.m in Sources */,
 				DB72CDF9192A03AB005106D7 /* BOCell.m in Sources */,
 				CE2A74E71648F86E0048159C /* MyLawTextView.m in Sources */,
 				CE2A74FF1648FCAF0048159C /* NMCustomLabel.m in Sources */,
+				7A550A7C1C4E113A00DE6235 /* IQTextView.m in Sources */,
 				CE2A75001648FCAF0048159C /* NMCustomLabelStyle.m in Sources */,
 				CE4DC78C16490DE400E6B7B2 /* MyLawView2.m in Sources */,
 				47A900F7177002140069B9AA /* SafeViewController.m in Sources */,
@@ -3320,6 +3473,7 @@
 				472BBCBD17796C990042D094 /* CreateNewAccViewController.m in Sources */,
 				DB8B7B5F1AC92DA200C4E3E6 /* AutoLocating.m in Sources */,
 				472BBCC117797D330042D094 /* RegexKitLite.m in Sources */,
+				7A550A7E1C4E113A00DE6235 /* IQTitleBarButtonItem.m in Sources */,
 				DB33CCF219357EE900CBD534 /* trackingWithInterval.m in Sources */,
 				7ADE5AAD1BF47FDC002CBF52 /* KMFAQModel.m in Sources */,
 				DBEC6AC71A2F0BA200C2D082 /* NSString+UrlEncode.m in Sources */,
@@ -3332,6 +3486,7 @@
 				47AE8C28177C2E9C00D1A110 /* GroupMemberViewController.m in Sources */,
 				47AE8C2D177C319200D1A110 /* GroupMemberCell.m in Sources */,
 				470F699D17841E51006CC746 /* PersonInfoCell.m in Sources */,
+				7A550A7D1C4E113A00DE6235 /* IQBarButtonItem.m in Sources */,
 				470F69A217841EE5006CC746 /* Format1Cell.m in Sources */,
 				470F69A717851C21006CC746 /* AlbumViewController.m in Sources */,
 				DB48455F193DA3180037FB57 /* chkPointInPoly.m in Sources */,
@@ -3349,6 +3504,7 @@
 				4732E280178EC53400E3E54C /* DeviceSet.m in Sources */,
 				4732E283178EC54E00E3E54C /* FallSet.m in Sources */,
 				473B9BD2178FA37200E7991D /* BPRemindView.m in Sources */,
+				7A550A741C4E113A00DE6235 /* IQNSArray+Sort.m in Sources */,
 				473B9BD5178FB51200E7991D /* BSRemindView.m in Sources */,
 				473B9BD8178FB54D00E7991D /* BORemindView.m in Sources */,
 				473B9BDE178FB5BD00E7991D /* WeightRemindView.m in Sources */,
@@ -3368,6 +3524,7 @@
 				47F468B617AA2E9C00B095E1 /* NewsView.m in Sources */,
 				47F468B917AA426E00B095E1 /* NewsCell.m in Sources */,
 				DB484565193DAA600037FB57 /* vcGeoFenceEdit.m in Sources */,
+				7A550A761C4E113A00DE6235 /* IQUIView+Hierarchy.m in Sources */,
 				47F468BE17AA506100B095E1 /* NewsContentView.m in Sources */,
 				4701D27617AB65A20066D8D3 /* LeaveAnno.m in Sources */,
 				4714006E17B3287F00C4C2FE /* MyAccountView.m in Sources */,
@@ -3469,8 +3626,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rachel tee (6M52XXE6N8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3491,7 +3648,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3537,7 +3694,7 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch123";
 				PRODUCT_NAME = 3GSW;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -3567,8 +3724,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rachel tee (6M52XXE6N8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3596,7 +3753,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3623,8 +3780,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rachel tee (6M52XXE6N8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rachel tee (6M52XXE6N8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3645,7 +3802,7 @@
 					"-framework",
 					Reveal,
 				);
-				PROVISIONING_PROFILE = "f9ee27ba-44ad-4195-911e-191664487d9d";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3691,7 +3848,7 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch123";
 				PRODUCT_NAME = 3GSW;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -3739,7 +3896,7 @@
 					"-licucore",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.km.new-watch123";
 				PRODUCT_NAME = 3GSW;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

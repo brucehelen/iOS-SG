@@ -146,7 +146,7 @@
                     [dataDic objectForKey:@"place"]];
     infoTxt.textColor = [UIColor blackColor];
     
-    //[self findAddressUseLat:[latitudeStr doubleValue] andLon:[longitudeStr doubleValue]];
+    [self findAddressUseLat:[latitudeStr doubleValue] andLon:[longitudeStr doubleValue]];
 }
 
 
@@ -422,7 +422,11 @@
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
+#ifdef PROGRAM_VER_ML
+#else
     return;
+#endif
+
     __weak SosMapView *weakSelf = self;
 
     KMLocationManager *locationManager = [KMLocationManager locationManager];

@@ -812,9 +812,10 @@ BOOL keyboarshow;
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
-    // bruce@20151126
+#ifdef PROGRAM_VER_ML
+#else
     return;
-
+#endif
     __weak MyMapView *weakSelf = self;
 
     self.lat = lat;

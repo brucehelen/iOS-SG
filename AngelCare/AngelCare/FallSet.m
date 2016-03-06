@@ -101,9 +101,9 @@
                                 nil];
         [numberToolbar3 sizeToFit];
         
-        phone1.inputAccessoryView = numberToolbar;
-        phone2.inputAccessoryView = numberToolbar2;
-        phone3.inputAccessoryView = numberToolbar3;
+//        phone1.inputAccessoryView = numberToolbar;
+//        phone2.inputAccessoryView = numberToolbar2;
+//        phone3.inputAccessoryView = numberToolbar3;
 
     }
     

@@ -172,6 +172,7 @@ int isGPS_GSM_WIFI;
         if (tmp) {
             currentAnn = tmp;
         }
+
 //        [self findAddressUseLat:[[Array_latitudeDate objectAtIndex:MyNum]doubleValue]
 //                         andLon:[[Array_longitudeDate objectAtIndex:MyNum]doubleValue]
 //                         andAnn:tmp];

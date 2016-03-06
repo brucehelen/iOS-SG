@@ -30,7 +30,7 @@
     IBOutlet UILabel *bs3;
     
     IBOutlet UITextField *beforeMealUpTxt;//飯前血糖上限
-    IBOutlet UITextField *beforeMealDownTxt;//飯前血糖上限
+//    IBOutlet UITextField *beforeMealDownTxt;//飯前血糖上限
     
     IBOutlet UITextField *afterMealUpTxt;//飯後血糖上限
     IBOutlet UITextField *afterMealDownTxt;//飯後血糖下限

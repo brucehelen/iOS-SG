@@ -9,6 +9,7 @@
 #import "trackingWithInterval.h"
 #import "define.h"
 #import "MainClass.h"
+#import "KMCommonClass.h"
 
 @implementation trackingWithInterval
 {
@@ -270,73 +271,146 @@
            withWeek:(NSString*)idxW
 {
     int w = [idxW intValue];
-    switch (w) {
-        case 1:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mon_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mon"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        case 2:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_tue_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_tue"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        case 3:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_wed_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_wed"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        case 4:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_thu_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_thu"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        case 5:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_fri_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_fri"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        case 6:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sat_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sat"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        case 7:
-            if ([status isEqualToString:@"YES"]) {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sun_01"]
-                               forState:UIControlStateNormal];
-            } else {
-                [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sun"]
-                               forState:UIControlStateNormal];
-            }
-            break;
-        default:
-            break;
+
+    if ([KMCommonClass currentLanguageCN]) {
+        switch (w) {
+            case 1:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mon_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mon"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 2:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_tue_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_tue"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 3:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_wed_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_wed"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 4:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_thu_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_thu"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 5:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_fri_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_fri"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 6:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sat_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sat"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 7:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sun_01"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_sun"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            default:
+                break;
+        }
+    } else {
+        switch (w) {
+            case 1:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mm"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_m1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 2:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_t"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_t1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 3:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_w"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_w1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 4:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_t"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_t1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 5:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_f"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_f1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 6:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_s"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_s1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            case 7:
+                if ([status isEqualToString:@"YES"]) {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_s"]
+                                   forState:UIControlStateNormal];
+                } else {
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_s1"]
+                                   forState:UIControlStateNormal];
+                }
+                break;
+            default:
+                break;
+        }
+
     }
+    
 }
 
 - (IBAction)ibaSyncAndGpsf:(id)sender {

@@ -14,6 +14,8 @@
 "EMERGENCY_GPS_SUCCESS" =  "[%@]：GPS position acquired";
 "FALLDOWN_ACTIVATE" =  "[%@]：Possible fall detected, please help!";
 "FALLDOWN_GPS_SUCCESS" =  "[%@]：Fall detection message received.";
+"VITAL_HIGH_WT" = "%@：body weight too high !";
+"VITAL_HIGH_BG" = "%@：Blood sugar too high !";
 "VITAL_HIGH_BP" =  "[%@]：Blood pressure too high !";
 "SMS_GPS_SUCCESS" = "[%@]：Location acquired.";
 "SYSTEM_MESSAGE" = "[%@]：Settings have been modified.";
@@ -23,3 +25,4 @@
 "EXPIRED_TOKEN" = "It’s been 5 days you haven’t logged in, you have been disconnected. Please login again";
 "AMBER_ALARM" = "[%@]：Timer alert activated";
 "loading" ="Loading...";
+

@@ -9,6 +9,7 @@
 #import "MyHisMapView.h"
 #import "MainClass.h"
 #import "KMLocationManager.h"
+#import "KMCommonClass.h"
 
 @implementation MyHisMapView
 {
@@ -138,7 +139,9 @@
                         Lat:[mapDic objectForKey:@"latitude"]
                      Radius:@"1096"];
 
-        NSString *textStr = [NSString stringWithFormat:@"%@:%@\r\n%@:%@",@"时间",[mapDic objectForKey:@"datatime"],@"地点",[mapDic objectForKey:@"place"]];
+        NSString *time = [KMCommonClass currentLanguageCN] ? @"时间" : @"Time reported";
+        NSString *loc = [KMCommonClass currentLanguageCN] ? @"地点" : @"Nearest location";
+        NSString *textStr = [NSString stringWithFormat:@"%@: %@\r\n%@: %@",time,[mapDic objectForKey:@"datatime"], loc, [mapDic objectForKey:@"place"]];
 
         [self Set_textView:textStr];
         double lat = [[mapDic objectForKey:@"latitude"] doubleValue];
@@ -477,8 +480,11 @@
 
 - (void)findAddressUseLat:(double)lat andLon:(double)lon
 {
-    // bruce@20151127
+#ifdef PROGRAM_VER_ML
+    
+#else   // 中国版本的地址都由服务器提供
     return;
+#endif
 
     __weak MyHisMapView *weakSelf = self;
 
@@ -498,7 +504,7 @@
 {
     NSString *dealedAddress = address ? address : @"";
 
-    NSString *textStr = [NSString stringWithFormat:@"%@:%@\r\n%@:%@",
+    NSString *textStr = [NSString stringWithFormat:@"%@: %@\r\n%@: %@",
                          NSLocalizedStringFromTable(@"His_TIME", INFOPLIST, nil),
                          [mapDic objectForKey:@"datatime"],
                          NSLocalizedStringFromTable(@"His_ADDR", INFOPLIST, nil),

@@ -188,8 +188,8 @@
 "His_LeaveTitle" = "        %@              %@";
 "His_CallTitle" = "    %@          %@          %@";
 
-"His_TIME" = "上传时间";
-"His_ADDR" = "大约地址";
+"His_TIME" = "时间";
+"His_ADDR" = "地址";
 "His_STARTTIME" = "开始时间";
 "His_ENDTIME" = "结束时间";
 "His_TELLENGTH" = "长度";
@@ -470,11 +470,11 @@
 //量测纪录
 
 //收缩压
-"DIASTOLIC" = "收缩压";
+"DIASTOLIC" = "舒张压";        //收缩压
 //心跳
 "HEARTBEAT" = "心跳";
 //舒张压
-"SYSTOLIC" = "舒张压";
+"SYSTOLIC" = "收缩压";         //舒张压
 
 //步数
 "STEP" = "步数";
@@ -745,6 +745,8 @@
 "FreqQuestionDetailTitle" = "问题详情";
 
 "BUG_report_Return" = "返回";
+
+"BS_Unit_text" = "请选择单位";
 
 // 免责声明
 "DisclaimerTitle" = "免责声明";

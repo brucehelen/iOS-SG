@@ -35,9 +35,9 @@
                                nil];
         [numberToolbar sizeToFit];
         
-        stepCountTxt.inputAccessoryView = numberToolbar;
-        stepRangeTxt.inputAccessoryView = numberToolbar;
-        distanceTxt.inputAccessoryView = numberToolbar;
+//        stepCountTxt.inputAccessoryView = numberToolbar;
+//        stepRangeTxt.inputAccessoryView = numberToolbar;
+//        distanceTxt.inputAccessoryView = numberToolbar;
     }
 }
 

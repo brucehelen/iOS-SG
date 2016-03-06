@@ -38,7 +38,14 @@
 // 中国服务器
 #define CN_SERVER_URL       @"http://watch.medquotient.com:8080/angelcare"
 // 测试服务器
-#define TEST_SERVER_URL     @"http://watch.medquotient.com:8080/angelcare" // @"http://120.25.225.5:8080/angelcare"
+#define TEST_SERVER_URL     @"http://120.25.225.5:8080/angelcare"
+
+////120.25.225.5
+//#define ML_SERVER_URL       @"http://120.25.225.5:8080/angelcare/"
+//// 中国服务器
+//#define CN_SERVER_URL       @"http://120.25.225.5:8080/angelcare"
+//// 测试服务器
+//#define TEST_SERVER_URL     @"http://120.25.225.5:8080/angelcare" // @"http://120.25.225.5:8080/angelcare"
 
 extern NSString *INK_Url_1;
 

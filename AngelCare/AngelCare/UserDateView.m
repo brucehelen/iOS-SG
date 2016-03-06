@@ -527,7 +527,7 @@
                                    nil];
             [numberToolbar sizeToFit];
             
-            cell.phoneTxt.inputAccessoryView = numberToolbar;
+//            cell.phoneTxt.inputAccessoryView = numberToolbar;
             
             return cell;
             
@@ -645,7 +645,7 @@
                                    nil];
             [numberToolbar sizeToFit];
             
-            cell.phoneTxt.inputAccessoryView = numberToolbar;
+//            cell.phoneTxt.inputAccessoryView = numberToolbar;
             
             [cell.nameTxt setTag:[[NSString stringWithFormat:@"3%i1",indexPath.row+1] integerValue]];
             [cell.phoneTxt setTag:[[NSString stringWithFormat:@"3%i2",indexPath.row+1] integerValue]];

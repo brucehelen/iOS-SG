@@ -115,8 +115,8 @@
         [numberToolbar2 sizeToFit];
         
         
-        phoneLimitTxt.inputAccessoryView = numberToolbar;
-        callLimitTxt.inputAccessoryView = numberToolbar2;
+//        phoneLimitTxt.inputAccessoryView = numberToolbar;
+//        callLimitTxt.inputAccessoryView = numberToolbar2;
     }
 }
 

@@ -103,7 +103,7 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
         INK_Url_1 = [value copy];
         NSLog(@"get saved INK_Url_1: %@", INK_Url_1);
     } else {
-#if PROGRAM_VER_ML
+#ifdef PROGRAM_VER_ML
         [defaults setObject:ML_SERVER_URL forKey:@"server_base_url"];
         INK_Url_1 = [ML_SERVER_URL copy];
 #else

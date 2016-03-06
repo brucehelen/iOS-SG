@@ -11,12 +11,23 @@
 
 @implementation BSRemindView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        NSLog(@"---> BSRemindView");
     }
+
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"---> BSRemindView init");
+    }
+    
     return self;
 }
 
@@ -83,7 +94,7 @@
         
         int beforeMealValue = [NSString stringWithFormat:@"%@",[dic objectForKey:@"beforeMealUp"]].intValue;
         beforeMealUpTxt.text = [NSString stringWithFormat:@"%.1f", beforeMealValue/10.0/18.0];
-        beforeMealDownTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"beforeMealDown"]];
+        //beforeMealDownTxt.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"beforeMealDown"]];
         
         beforeMealValue = [NSString stringWithFormat:@"%@", [dic objectForKey:@"afterMealUp"]].intValue;
         afterMealUpTxt.text = [NSString stringWithFormat:@"%.1f", beforeMealValue/10.0/18.0];
@@ -100,12 +111,12 @@
                                nil];
         [numberToolbar sizeToFit];
 
-        beforeMealUpTxt.inputAccessoryView = numberToolbar;
-        beforeMealDownTxt.inputAccessoryView = numberToolbar;
-        afterMealUpTxt.inputAccessoryView = numberToolbar;
-        afterMealDownTxt.inputAccessoryView = numberToolbar;
-        bedTimeDownTxt.inputAccessoryView = numberToolbar;
-        bedTimeUpTxt.inputAccessoryView = numberToolbar;
+//        beforeMealUpTxt.inputAccessoryView = numberToolbar;
+//        beforeMealDownTxt.inputAccessoryView = numberToolbar;
+//        afterMealUpTxt.inputAccessoryView = numberToolbar;
+//        afterMealDownTxt.inputAccessoryView = numberToolbar;
+//        bedTimeDownTxt.inputAccessoryView = numberToolbar;
+//        bedTimeUpTxt.inputAccessoryView = numberToolbar;
 
         bfStartStr = [dic objectForKey:@"breakfastStart"];
         bfEndStr = [dic objectForKey:@"breakfastEnd"];
@@ -139,7 +150,6 @@
     [UIView commitAnimations];
     
     [beforeMealUpTxt resignFirstResponder];
-    [beforeMealDownTxt resignFirstResponder];
     [afterMealUpTxt resignFirstResponder];
     [afterMealDownTxt resignFirstResponder];
     [bedTimeDownTxt resignFirstResponder];
@@ -182,7 +192,7 @@
 - (void)Do_Init:(id)sender
 {
     MainObj = sender;
-    beforeMealDownTxt.delegate = self;
+    //beforeMealDownTxt.delegate = self;
     beforeMealUpTxt.delegate = self;
     afterMealDownTxt.delegate = self;
     afterMealUpTxt.delegate = self;
@@ -344,16 +354,19 @@
     [tmp presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)useActionSheet:(id)sender{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"HS_BS_SELECTTIME", INFOPLIST, nil) delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"確定", nil];
+- (void)useActionSheet:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"HS_BS_SELECTTIME", INFOPLIST, nil)
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"確定", nil];
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
     picker.minuteInterval = 1;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
-    
-    NSLog(@"select btn = %i",[(UIView*)selectBtn tag]);
     
     switch ([(UIView*)selectBtn tag]) {
         case 101:
@@ -402,15 +415,14 @@
             
             break;
     }
-    
-    
+
     [actionSheet addSubview:picker];
     [actionSheet showInView:self];
 }
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet.tag == 1099) {
-        NSLog(@"換單位");
+    if (actionSheet.tag == 1099) {      // 换单位
         NSString *unit = @"";
         if (buttonIndex == 0) {
             unit = @"mmol/L";
@@ -470,19 +482,18 @@
 {
     // 判斷是否為空直
     [beforeMealUpTxt resignFirstResponder];
-    [beforeMealDownTxt resignFirstResponder];
+    //[beforeMealDownTxt resignFirstResponder];
     [afterMealUpTxt resignFirstResponder];
     [afterMealDownTxt resignFirstResponder];
     [bedTimeDownTxt resignFirstResponder];
     [bedTimeUpTxt resignFirstResponder];
 
-    beforeMealDownTxt.text = @"0";
+    //beforeMealDownTxt.text = @"0";
     afterMealDownTxt.text = @"0";
     bedTimeUpTxt.text = @"0";
     bedTimeDownTxt.text = @"0";
 
-    if (![beforeMealDownTxt.text isEqualToString:@""] &&
-        ![beforeMealUpTxt.text isEqualToString:@""] &&
+    if (![beforeMealUpTxt.text isEqualToString:@""] &&
         ![afterMealDownTxt.text isEqualToString:@""] &&
         ![afterMealUpTxt.text isEqualToString:@""] &&
         ![bedTimeUpTxt.text isEqualToString:@""] &&
@@ -493,7 +504,7 @@
         value1 = afterMealUpTxt.text.floatValue*18*10;
         NSString *string2 = [NSString stringWithFormat:@"%d", value1];
         NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             beforeMealDownTxt.text,@"beforeMealDown",
+                             @"0",@"beforeMealDown",
                              string1, @"beforeMealUp",
                              afterMealDownTxt.text, @"afterMealDown",
                              string2, @"afterMealUp",
@@ -546,28 +557,29 @@
 
 - (void)showUnit
 {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"請選擇單位:" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:
-                            @"mmol/L",
-                            @"mg/dl",
-                            @"mg/L",
-                            nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:kLoadString(@"BS_Unit_text")
+                                                       delegate:self
+                                              cancelButtonTitle:kLoadString(@"HS_Fall_Cancel")
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles: @"mmol/L", @"mg/dl", @"mg/L", nil];
     popup.tag = 1099;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)writeUnitToFile:(NSString*)unit
 {
-    NSLog(@"%@,writeUnitToFile",self);
+    NSLog(@"writeUnitToFile");
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents directory
     
     NSError *error;
     BOOL succeed = [unit writeToFile:[documentsDirectory stringByAppendingPathComponent:@"unit.txt"]
-                          atomically:YES encoding:NSUTF8StringEncoding error:&error];
+                          atomically:YES
+                            encoding:NSUTF8StringEncoding
+                               error:&error];
     if (!succeed){
 
     }
 }
-
 
 @end

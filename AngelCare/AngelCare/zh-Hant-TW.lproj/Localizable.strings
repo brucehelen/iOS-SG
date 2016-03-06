@@ -6,31 +6,17 @@
   Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 */
 
-"TITLE" =  "%@ and %@ in EN";
+"TITLE" =  "%@ and %@ in TW";
 
-"TURNOFF_BY_SELF" =  "[%@]：Turned off manually.";
-"TURNOFF_BY_LOW_BATTERY" =  "[%@]：Low battery shutdown, please recharge.";
-"EMERGENCY_SOS" =  "[%@]：SOS alert triggered";
-"EMERGENCY_GPS_SUCCESS" =  "[%@]：GPS position acquired";
-"FALLDOWN_ACTIVATE" =  "[%@]：Possible fall detected, please help!";
-"FALLDOWN_GPS_SUCCESS" =  "[%@]：Fall detection message received.";
-"VITAL_HIGH_BP" =  "[%@]：Blood pressure too high !";
-"SMS_GPS_SUCCESS" = "[%@]：Location acquired.";
-"SYSTEM_MESSAGE" = "[%@]：Settings have been modified.";
-"DEVICE_LOWPOWER" = "[%@]：low power, recharge please";
-"NONMOVENT" = "[%@]：Alert - wearer has no movement detected for specific time period";
-"GEOFENCE_OUT" = "[%@]：Alert - Geo-fence triggered, wearer has moved outside safe area";
-"EXPIRED_TOKEN" = "It’s been 5 days you haven’t logged in, you have been disconnected. Please login again";
-"AMBER_ALARM" = "[%@]：Timer alert activated";
+"TURNOFF_BY_SELF" =  "%@：自行關閉手錶電源";
+"TURNOFF_BY_LOW_BATTERY" =  "%@：電量過低已關機，請立即充電!";
+"EMERGENCY_SOS" =  "%@：緊急求救，請立即關心及處理!";
+"EMERGENCY_GPS_SUCCESS" =  "%@：緊急求救，定位成功!!";
+"FALLDOWN_ACTIVATE" =  "%@：可能跌倒發生!!請立即關心!!";
+"FALLDOWN_GPS_SUCCESS" =  "%@：可能跌倒，定位成功!!";
+"VITAL_HIGH_BG" = "%@：量測者血糖過高，請注意!";
+"VITAL_HIGH_BP" =  "%@：量測者血壓過高，請注意!!";
+"SMS_GPS_SUCCESS" = "%@：簡訊啟動定位成功!!";
+"SYSTEM_MESSAGE" = "%@：收到系統設定更改通知!";
 
-//"TITLE" =  "%@ and %@ in TW";
-//
-//"TURNOFF_BY_SELF" =  "%@：自行關閉手錶電源";
-//"TURNOFF_BY_LOW_BATTERY" =  "%@：電量過低已關機，請立即充電!";
-//"EMERGENCY_SOS" =  "%@：緊急求救，請立即關心及處理!";
-//"EMERGENCY_GPS_SUCCESS" =  "%@：緊急求救，定位成功!!";
-//"FALLDOWN_ACTIVATE" =  "%@：可能跌倒發生!!請立即關心!!";
-//"FALLDOWN_GPS_SUCCESS" =  "%@：可能跌倒，定位成功!!";
-//"VITAL_HIGH_BP" =  "%@：量測者血壓過高，請注意!!";
-//"SMS_GPS_SUCCESS" = "%@：簡訊啟動定位成功!!";
-//"SYSTEM_MESSAGE" = "%@：收到系統設定更改通知!";
+

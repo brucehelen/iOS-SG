@@ -75,17 +75,17 @@
     lblRemind3Sup.text = NSLocalizedStringFromTable(@"lblRemind3Sup", INFOPLIST, nil);
     lblRemind3Title.text = NSLocalizedStringFromTable(@"lblRemind3Title", INFOPLIST, nil);
     
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
-                           nil];
-    [numberToolbar sizeToFit];
-    bpdDownlimit.inputAccessoryView = numberToolbar;
-    bpdUplimit.inputAccessoryView = numberToolbar;
-    bpsDownlimit.inputAccessoryView = numberToolbar;
-    bpsUplimit.inputAccessoryView = numberToolbar;
+//    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+//    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+//    numberToolbar.items = [NSArray arrayWithObjects:
+//                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+//                           [[UIBarButtonItem alloc]initWithTitle:NSLocalizedStringFromTable(@"BUG_report_Return", INFOPLIST, nil) style:UIBarButtonItemStyleDone target:self action:@selector(donwWithTxt:)],
+//                           nil];
+//    [numberToolbar sizeToFit];
+//    bpdDownlimit.inputAccessoryView = numberToolbar;
+//    bpdUplimit.inputAccessoryView = numberToolbar;
+//    bpsDownlimit.inputAccessoryView = numberToolbar;
+//    bpsUplimit.inputAccessoryView = numberToolbar;
 }
 
 

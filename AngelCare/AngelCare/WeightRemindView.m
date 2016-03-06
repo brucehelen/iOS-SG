@@ -48,12 +48,12 @@
                                nil];
         [numberToolbar sizeToFit];
 
-        yearTxt.inputAccessoryView = numberToolbar;
-        weightTxt.inputAccessoryView = numberToolbar;
-        tallTxt.inputAccessoryView = numberToolbar;
-        fatTxt.inputAccessoryView = numberToolbar;
-        idealWeightTxt.inputAccessoryView = numberToolbar;
-        idealfatTxt.inputAccessoryView = numberToolbar;
+//        yearTxt.inputAccessoryView = numberToolbar;
+//        weightTxt.inputAccessoryView = numberToolbar;
+//        tallTxt.inputAccessoryView = numberToolbar;
+//        fatTxt.inputAccessoryView = numberToolbar;
+//        idealWeightTxt.inputAccessoryView = numberToolbar;
+//        idealfatTxt.inputAccessoryView = numberToolbar;
     }
 }
 

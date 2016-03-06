@@ -68,5 +68,17 @@
     return wifiMac;
 }
 
++ (BOOL)currentLanguageCN
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray* arrayLanguages = [userDefaults objectForKey:@"AppleLanguages"];
+    NSString* currentLanguage = [arrayLanguages objectAtIndex:0];
+    
+    if ([currentLanguage hasPrefix:@"zh-"]) {  // cn
+        return YES;
+    }
+    
+    return NO;
+}
 
 @end

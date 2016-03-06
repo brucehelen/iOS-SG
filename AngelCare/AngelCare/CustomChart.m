@@ -371,8 +371,8 @@
     NSInteger m_numberOfPage = 1;
 
     if((type == 1) || (type == 2)){
-#if PROGRAM_VER_ML
-        m_numberOfPage = 2;
+#ifdef PROGRAM_VER_ML
+        m_numberOfPage = 1;
 #else
         m_numberOfPage = 3;
 #endif
@@ -833,7 +833,11 @@
     }
 
     [viewG setBackgroundColor:[UIColor whiteColor]];
+    // fix bug: 马来版本不需要显示网页
+#ifdef PROGRAM_VER_ML
+#else
     [_scrollview addSubview:viewG];
+#endif
 }
 
 - (void)setY_VandStep:(SHLineGraphView*)graph

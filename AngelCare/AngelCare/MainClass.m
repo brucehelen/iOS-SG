@@ -1131,12 +1131,9 @@ NSTimer *MyTimer = nil;
 }
 
 //Error Code字串判斷
--(void)Check_Error:(NSString *)ErrorData
+- (void)Check_Error:(NSString *)ErrorData
 {
     [HUD hide:YES];
-
-    NSLog(@"Main class Check_Error: %@", ErrorData);
-    return;
 
     int ErrorValue;
     ErrorValue = [ErrorData intValue];
@@ -1144,7 +1141,7 @@ NSTimer *MyTimer = nil;
     ErrorValue =  ErrorValue%100;
 
     UIAlertView *alert;
-    
+
     switch (ErrorValue)
     {
         case 1:
@@ -1271,7 +1268,6 @@ NSTimer *MyTimer = nil;
             
             [alert show];
             break;
-            
         case 11:
             alert = [[UIAlertView alloc] initWithTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
@@ -1284,7 +1280,7 @@ NSTimer *MyTimer = nil;
             
             [alert show];
             break;
-            
+
         case 12:
             alert = [[UIAlertView alloc] initWithTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
@@ -1294,7 +1290,6 @@ NSTimer *MyTimer = nil;
                                                       : self cancelButtonTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE",INFOPLIST,nil)
                                      otherButtonTitles: nil];
-            
             [alert show];
             break;
             
@@ -1307,27 +1302,21 @@ NSTimer *MyTimer = nil;
                                                       : self cancelButtonTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE",INFOPLIST,nil)
                                      otherButtonTitles: nil];
-            
             [alert show];
             break;
-            
         case 99:
             alert = [[UIAlertView alloc] initWithTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
                                                message:
                      NSLocalizedStringFromTable(@"ErrorCode_99",INFOPLIST,nil)
-                     delegate
-                                                      : self cancelButtonTitle:
+                                              delegate:self
+                                     cancelButtonTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE",INFOPLIST,nil)
                                      otherButtonTitles: nil];
             
             [alert show];
             break;
-            
-            
-            
         default:
-            
             alert = [[UIAlertView alloc] initWithTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_TITLE", INFOPLIST, nil)
                                                message:
@@ -1336,15 +1325,9 @@ NSTimer *MyTimer = nil;
                                                       : self cancelButtonTitle:
                      NSLocalizedStringFromTable(@"ALERT_MESSAGE_CLOSE",INFOPLIST,nil)
                                      otherButtonTitles: nil];
-            
             [alert show];
-            
-            
             break;
     }
-    
-    
-    
 }
 
 //無使用者時導入設定頁的alert提示
@@ -4718,8 +4701,21 @@ BOOL    Is_Get1_Sw = false;
             
             break;
     }
-    
-    
+
+    // test
+    // DataHash=6308584AE29ED4CEEC75C53F24F60C603BA2E03A38C79B92904C77F65C568FA0&GKeyId=1&TimeStamp=1317510000&AppDataJson=%7B%0A%22account%22%3A%22799999999999999%22%2C%0A%22Start%22%3A%222013-04-13%2016%3A51%3A00%22%2C%0A%22End%22%3A%222015-04-16%2016%3A51%3A00%22%2C%0A%22RowDataKey%22%3A%22140415163344799999999999990%22%20%7D
+//    getUserApi = [NSString stringWithFormat:@"%@/API/GcareGetHeartrateData.html",INK_Url_1];
+//    
+//    NSString *AppDataJson = @"{\"account\":799999999999999,\"Start\":\"2013-04-13 16:51:00\",\"End\":\"2016-04-16 16:51:00\",\"HrDate\":\"140415163344799999999999990\"}";
+//    httpBodyString = [NSString stringWithFormat:@"GKeyId=1&userAccount=%@&account=%@&data=%@&timeStamp=%@&AppDataJson=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString, AppDataJson];
+//    httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
+    //{
+//    "account":799999999999999,
+//    "Start":"2013-04-13 16:51:00",
+//    "End":"2016-04-16 16:51:00",
+//    "HrDate":"140415163344799999999999990"
+//}
+
     NSLog(@"API = %@?%@",getUserApi,httpBodyString);
     
     [request setURL:[NSURL URLWithString:getUserApi]];
@@ -4732,10 +4728,7 @@ BOOL    Is_Get1_Sw = false;
     Remind_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     [self addloadingView];
-    
 }
-
-
 
 //量測紀錄查詢(傳輸)
 - (void)MyTest:(NSString *)acc AndHash:(NSString *)hash StartTime:(NSString *)start andEndTime:(NSString *)end
@@ -10366,6 +10359,8 @@ BOOL    Is_Get1_Sw = false;
 {
     NSError *error;
     NSInputStream *inStream = [[NSInputStream alloc] initWithData:Remind_tempData];
+//    NSString *jsonString = [[NSString alloc] initWithData:Remind_tempData encoding:NSUTF8StringEncoding];
+//    NSLog(@"jsonString %@", jsonString);
     [inStream open];
     NSArray *jsonArr = [NSJSONSerialization JSONObjectWithStream:inStream options:NSJSONReadingAllowFragments error:&error];
     [inStream close];

@@ -27,8 +27,8 @@
                                nil];
         [numberToolbar sizeToFit];
         
-        Up_limit.inputAccessoryView = numberToolbar;
-        Down_limit.inputAccessoryView = numberToolbar;
+//        Up_limit.inputAccessoryView = numberToolbar;
+//        Down_limit.inputAccessoryView = numberToolbar;
         remindLbl.text = NSLocalizedStringFromTable(@"HS_BORemindTxt", INFOPLIST, nil);
                 remindLbl.textColor = [UIColor blackColor];
         boconcentrationLbl.text = NSLocalizedStringFromTable(@"HS_BOCon", INFOPLIST, nil);

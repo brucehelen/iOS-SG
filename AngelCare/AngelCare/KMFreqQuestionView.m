@@ -27,6 +27,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self initEnData];
     [self initData];
 }
 
@@ -83,6 +84,47 @@
 {
     _enDataArray = [NSMutableArray array];
     
+    KMFAQModel *model = [[KMFAQModel alloc] init];
+    
+    model.question = @"When set up the 'emergency number' and 'family number' in the APP, why not sync to the smart watch immediately?";
+    model.answer = @"In order to save energy,the data will be uploaded to the server per hour, if you want to upload data immediately after the completion of the update, please shut down the smart watch for 5  minutes,pown on again,the number can be updated immediately.";
+    [_enDataArray addObject:model];
+    
+    // 问题2
+    model = [[KMFAQModel alloc] init];
+    model.question = @"Why press the 'emergency button', positioning information is not there in the map？";
+    model.answer = @"The information will be updated when the GPS, GSM positioning data delivery to server successed, according to the different positioning type, different accuracy showed.";
+    [_enDataArray addObject:model];
+    
+    // 问题3
+    model = [[KMFAQModel alloc] init];
+    model.question = @"Why enable 'fall detection' function, sometimes it still a warning when you not fall down？";
+    model.answer = @"Fall detection as an auxiliary function，This function is for reference only，Users can decide whether to enable。when Fall，you can press the red button for help.";
+    [_enDataArray addObject:model];
+    
+    // Q4
+    model = [[KMFAQModel alloc] init];
+    model.question = @"How much for Smart watch GPRS data transmission per month？";
+    model.answer = @"Normal standby, the maximum monthly Internet packet usage is about 2-3M, but is still based on the actual use and frequency.";
+    [_enDataArray addObject:model];
+    
+    // Q5
+    model = [[KMFAQModel alloc] init];
+    model.question = @"If the emergency number is set up more than one, it will be in what kind of state loop calls?";
+    model.answer = @"The first number dialed 30 seconds no answer, then the next set of number, until dial or hang up.";
+    [_enDataArray addObject:model];
+    
+    // Q6
+    model = [[KMFAQModel alloc] init];
+    model.question = @"What's the difference about  'emergency number' and 'family number' ?";
+    model.answer = @"Press the 'emergency number' will dial immediately, and do A-GPS positioning immediately ,press the 'family number', the number will be immediately dialed but does not support real-time  positioning function.";
+    [_enDataArray addObject:model];
+    
+    // Q7
+    model = [[KMFAQModel alloc] init];
+    model.question = @"How to set up the smart watch's Bluetooth measurement equipment ?";
+    model.answer = @"n the setup screen , 4 Wireless settings, click (1) Bluetooth, Power Bluetooth 3 my device, select the  measurement equipment to match,can automatically match.";
+    [_enDataArray addObject:model];
 }
 
 - (void)do_init:(id)sender

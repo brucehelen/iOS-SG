@@ -83,11 +83,9 @@ long long SystemLog_expectedLength;        //檔案大小
     NSLog(@"token = %@",[login returnToken]);
 }
 
-
 //設定ios推播token
--(void)Do_MySetValue:(NSString *)NewString
+- (void)Do_MySetValue:(NSString *)NewString
 {
-    
     //    [(MainClass *)self.view Set_DToekn:NewString];
     token = NewString;
     NSLog(@"tokenissssss = %@",token);
@@ -202,7 +200,7 @@ long long SystemLog_expectedLength;        //檔案大小
 //    NSString *check9 = [NSString stringWithFormat:@"VITAL_HIGH_BG"];
 //    NSString *check10 = [NSString stringWithFormat:@"VITAL_HIGH_WT"];
 //    NSString *check12 = [NSString stringWithFormat:@"SYSTEM_MESSAGE"];
-//    NSString *check13 = [NSString stringWithFormat:@"DEVICE_LOWPOWER"];.0
+//    NSString *check13 = [NSString stringWithFormat:@"DEVICE_LOWPOWER"];
 //    NSString *check14 = [NSString stringWithFormat:@"NONMOVENT"];
 //    NSString *check15 = [NSString stringWithFormat:@"GEOFENCE_OUT"];
 
@@ -223,6 +221,8 @@ long long SystemLog_expectedLength;        //檔案大小
     } else if ([loc_key isEqualToString:@"VITAL_HIGH_BG"]) {        // 高血糖
         [(MainClass *)self.view handleRemoteMsgWithType:2];
     } else if ([loc_key isEqualToString:@"VITAL_HIGH_WT"]) {
+        [(MainClass *)self.view handleRemoteMsgWithType:2];
+    } else if ([loc_key isEqualToString:@"AMBER_ALARM"]) {          // 血氧
         [(MainClass *)self.view handleRemoteMsgWithType:2];
     }
 }

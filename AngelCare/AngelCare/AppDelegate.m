@@ -13,6 +13,7 @@
 #import <dlfcn.h>
 #import "KMLocationManager.h"
 #import "KMCommonClass.h"
+#import "IQKeyboardManager.h"
 
 BMKMapManager *_mapManager;
 
@@ -30,6 +31,7 @@ BMKMapManager *_mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self configIQKeyBoardManager];
     NSString *wifiName = [KMCommonClass getWifiName];
     NSLog(@"wifiName = %@, %@", wifiName, [KMCommonClass getWifiMac]);
 
@@ -230,6 +232,18 @@ BMKMapManager *_mapManager;
                                                                                UIRemoteNotificationTypeSound |
                                                                                UIRemoteNotificationTypeBadge)];
     }
+}
+
+#pragma mark - 配置键盘样式
+- (void)configIQKeyBoardManager
+{
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = YES;
+    manager.shouldShowTextFieldPlaceholder = YES;
+    manager.toolbarManageBehaviour = IQAutoToolbarByPosition;
 }
 
 @end

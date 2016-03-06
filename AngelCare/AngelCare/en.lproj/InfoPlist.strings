@@ -180,8 +180,8 @@
 "His_LeaveTitle" = "        %@              %@";
 "His_CallTitle" = "    %@          %@          %@";
 
-"His_TIME" = "Time";
-"His_ADDR" = "Address";
+"His_TIME" = "Time reported";
+"His_ADDR" = "Nearest location";
 "His_STARTTIME" = "Start time";
 "His_ENDTIME" = "End time";
 "His_TELLENGTH" = "Length";
@@ -741,6 +741,8 @@
 "Setting_F&Q" = "FAQ";
 
 "BUG_report_Return" = "Return";
+
+"BS_Unit_text" = "unit";
 
 // 免责声明
 "DisclaimerTitle" = "Disclaimer";

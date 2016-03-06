@@ -12,16 +12,6 @@
 
 @implementation MyEatPickView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-
 //確定與取消mousedown觸發
 - (IBAction)Main_MouseDown:(id)sender
 {
@@ -33,13 +23,12 @@
     
 }
 
-
-
 //  初始化Ｖiew 上的設定
 -(void)Do_Init:(id)sender andType:(int)type
 {
     MainObj = sender;
     MyPick.minuteInterval = 5;
+    NSLog(@"---> MyPick.minuteInterval = %d", MyPick.minuteInterval);
     
     if (type==1) {
         MyPick.frame = CGRectMake(60, 110, 200, 216);
@@ -69,8 +58,8 @@
         NSLog(@"type =2");
         MyPick.frame = CGRectMake(0, 110, 320, 216);
         MyPick.datePickerMode = UIDatePickerModeDateAndTime;
-        MyPick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:DBL_MAX];//最大時間
-        MyPick.minimumDate = [NSDate date];
+//        MyPick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:DBL_MAX];//最大時間
+//        MyPick.minimumDate = [NSDate date];
         [self set_BtnHidden];
     }
 //    [UIView appearanceWhenContainedIn:[UITableView class], [UIDatePicker class], nil].backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
@@ -122,6 +111,9 @@
 //        UILabel *lbl = [tmp objectAtIndex:i];
 //        [lbl setTextColor:[UIColor whiteColor]];
 //    }
+    
+    MyPick.minuteInterval = 5;
+    NSLog(@"###> MyPick.minuteInterval = %d", MyPick.minuteInterval);
 }
 - (void)setLbl:(UILabel*)lbl{
     [lbl setTextColor:[UIColor whiteColor]];
@@ -455,13 +447,7 @@
             }
             break;
     }
-    
-    
 }
-
-
-
-
 
 //儲存吃藥提醒設定
 -(void)SaveMed
@@ -515,9 +501,9 @@
     }
     
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:hourStr,@"hour",minStr,@"min",isMonStr ,@"week1",isTueStr ,@"week2",isWedStr ,@"week3",isTheStr ,@"week4",isFriStr ,@"week5",isSatStr ,@"week6",isSunStr ,@"week7",s_team ,@"s_team",@"Y" ,@"on_off", nil];
-    
+
     NSLog(@"dic = %@",dic);
-    
+
     [(MainClass *)MainObj Send_MedRemindUpdateWith:dic];
 }
 
@@ -526,29 +512,25 @@
 -(void)SaveHos
 {
     NSDateFormatter *dateFotmatter = [[NSDateFormatter alloc] init];
-    
+
     [dateFotmatter setDateFormat:@"yyyy"];
     NSString *yearStr = [dateFotmatter stringFromDate:MyPick.date];
-    
+
     [dateFotmatter setDateFormat:@"MM"];
     NSString *monthStr = [dateFotmatter stringFromDate:MyPick.date];
     
     [dateFotmatter setDateFormat:@"dd"];
     NSString *dayStr = [dateFotmatter stringFromDate:MyPick.date];
-    
+
     [dateFotmatter setDateFormat:@"HH"];
     NSString *hourStr = [dateFotmatter stringFromDate:MyPick.date];
-    
+
     [dateFotmatter setDateFormat:@"mm"];
     NSString *minStr = [dateFotmatter stringFromDate:MyPick.date];
-    
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:yearStr,@"year",monthStr,@"mon",dayStr,@"day",hourStr,@"hour",minStr,@"min",@"0" ,@"week1",@"0" ,@"week2",@"0" ,@"week3",@"0" ,@"week4",@"0" ,@"week5",@"0" ,@"week6",@"0" ,@"week7",s_team ,@"s_team",@"Y" ,@"on_off", nil];
-    
-//    NSLog(@"send s_team = %@",s_team);
-    
-    [(MainClass *)MainObj Send_HosRemindUpdateWith:dic];
-    
-}
 
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:yearStr,@"year",monthStr,@"mon",dayStr,@"day",hourStr,@"hour",minStr,@"min",@"0" ,@"week1",@"0" ,@"week2",@"0" ,@"week3",@"0" ,@"week4",@"0" ,@"week5",@"0" ,@"week6",@"0" ,@"week7",s_team ,@"s_team",@"Y" ,@"on_off", nil];
+
+    [(MainClass *)MainObj Send_HosRemindUpdateWith:dic];
+}
 
 @end
