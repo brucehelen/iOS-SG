@@ -347,7 +347,7 @@
                     [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mm"]
                                    forState:UIControlStateNormal];
                 } else {
-                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_m1"]
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_mm1"]
                                    forState:UIControlStateNormal];
                 }
                 break;
@@ -362,10 +362,10 @@
                 break;
             case 3:
                 if ([status isEqualToString:@"YES"]) {
-                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_w"]
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_ww"]
                                    forState:UIControlStateNormal];
                 } else {
-                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_w1"]
+                    [btn setBackgroundImage:[UIImage imageNamed:@"icon_week_ww1"]
                                    forState:UIControlStateNormal];
                 }
                 break;

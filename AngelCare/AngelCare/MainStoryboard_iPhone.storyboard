@@ -1594,7 +1594,7 @@
                                                 <button opaque="NO" tag="701" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="riX-zp-Tbu" userLabel="1">
                                                     <rect key="frame" x="17" y="3" width="28" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" backgroundImage="icon_week_M1.png">
+                                                    <state key="normal" backgroundImage="icon_week_mm1.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -6785,6 +6785,7 @@ dL。也就是空腹八小時後在早上測定血漿的血糖時，健康的人
         <image name="icon_week_S1.png" width="72" height="72"/>
         <image name="icon_week_T1.png" width="72" height="72"/>
         <image name="icon_week_W1.png" width="72" height="72"/>
+        <image name="icon_week_mm1.png" width="32" height="32"/>
         <image name="index_bu_2_1.png" width="46" height="49"/>
         <image name="index_left_1.png" width="110" height="79"/>
         <image name="index_right_1.png" width="110" height="79"/>

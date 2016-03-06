@@ -284,7 +284,7 @@
         case 701:
             if ([gw1 isEqualToString:@"YES"]) {
                 gw1 = @"NO";
-                [_btnGW1 setBackgroundImage:[UIImage imageNamed:@"icon_week_M1"] forState:UIControlStateNormal];
+                [_btnGW1 setBackgroundImage:[UIImage imageNamed:@"icon_week_mm1"] forState:UIControlStateNormal];
             }
             else{
                 gw1 = @"YES";
@@ -304,11 +304,11 @@
         case 703:
             if ([gw3 isEqualToString:@"YES"]) {
                 gw3 = @"NO";
-                [_btnGW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_W1"] forState:UIControlStateNormal];
+                [_btnGW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_w1"] forState:UIControlStateNormal];
             }
             else{
                 gw3 = @"YES";
-                [_btnGW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_W"] forState:UIControlStateNormal];
+                [_btnGW3 setBackgroundImage:[UIImage imageNamed:@"icon_week_w"] forState:UIControlStateNormal];
             }
             break;
         case 704:
