@@ -5036,22 +5036,14 @@ BOOL    Is_Get1_Sw = false;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:DEFAULTDATE];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    
-    
+
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
-    
-//    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
+
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
-    
+
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    NSLog(@"dataIn: %@", dataIn);
     
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];
@@ -5059,31 +5051,21 @@ BOOL    Is_Get1_Sw = false;
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
     
-    NSLog(@"Hash : %@", hash);
-    
     NSString *httpBodyString = [NSString stringWithFormat:@"userAccount=%@&account=%@&data=%@&timeStamp=%@",acc,[AccData objectAtIndex:NowUserNum], hash,dateString];
     NSData *httpBody = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *getUserApi = [NSString stringWithFormat:@"%@/API/AppGetMember.html",INK_Url_1];
-    
-    NSLog(@"佩戴者Api = %@?%@",getUserApi,httpBodyString);
     
     [request setURL:[NSURL URLWithString:getUserApi]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
     [request setHTTPBody:httpBody];
-    
+
     Date_tempData = [NSMutableData alloc];
     Date_Connect = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
-    
+
     [self addloadingView];
-    
-    
 }
-
-
 
 //地圖取得佩帶者imei資料(傳輸)
 -(void) Send_MapUserImei
@@ -5103,17 +5085,11 @@ BOOL    Is_Get1_Sw = false;
     NSString *tmpstr;
     tmpstr =[NSString stringWithFormat:@"%@%@%@", acc, hash,dateString];
     
-    //    NSArray *arr = [dateString componentsSeparatedByString:@" "];
-    
-    
-    
     NSData *dataIn = [tmpstr dataUsingEncoding:NSASCIIStringEncoding];
-    //    NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
     CC_SHA256(dataIn.bytes, dataIn.length,  digest);
-    
-    NSLog(@"dataIn: %@", dataIn);
+
     
     NSData *out2=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
     hash=[out2 description];

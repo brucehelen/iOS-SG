@@ -12,149 +12,58 @@
 
 @implementation MyEatPickView
 
-//確定與取消mousedown觸發
 - (IBAction)Main_MouseDown:(id)sender
 {
     
 }
 
--(void)SetDate:(NSString *)DateStr
-{
-    
-}
 
-//  初始化Ｖiew 上的設定
--(void)Do_Init:(id)sender andType:(int)type
+// 初始化Ｖiew 上的設定
+- (void)Do_Init:(id)sender andType:(int)type
 {
     MainObj = sender;
-    MyPick.minuteInterval = 5;
-    NSLog(@"---> MyPick.minuteInterval = %d", MyPick.minuteInterval);
-    
-    if (type==1) {
+    MyPick.minuteInterval = 1;
+
+    if (type == 1) {
         MyPick.frame = CGRectMake(60, 110, 200, 216);
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
             MyPick.frame = CGRectMake(278, 383, 213, 216);
         }
-        
+
         //吃藥提醒
         MyPick.datePickerMode = UIDatePickerModeTime;
-        NSDate *nowdate = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *maxDayStr = [NSString stringWithFormat:@"%@ 21:00",[dateFormatter stringFromDate:nowdate]];
-        NSString *minDayStr = [NSString stringWithFormat:@"%@ 06:00",[dateFormatter stringFromDate:nowdate]];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        NSDate *maxDate = [dateFormatter dateFromString:maxDayStr];
-        NSDate *minDate = [dateFormatter dateFromString:minDayStr];
-        
-//        MyPick.maximumDate = maxDate;
-//        MyPick.minimumDate = minDate;
-        
+
         [self Btn_init];
-        
     }else
     {
-        NSLog(@"type =2");
         MyPick.frame = CGRectMake(0, 110, 320, 216);
         MyPick.datePickerMode = UIDatePickerModeDateAndTime;
-//        MyPick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:DBL_MAX];//最大時間
-//        MyPick.minimumDate = [NSDate date];
         [self set_BtnHidden];
     }
-//    [UIView appearanceWhenContainedIn:[UITableView class], [UIDatePicker class], nil].backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
-//    [UILabel appearanceWhenContainedIn:[UITableView class], [UIDatePicker class],[UIView class], nil].textColor = [UIColor whiteColor];
-    
-//    NSMutableArray *tmp = [NSMutableArray new];
-    for (UIView * subview in MyPick.subviews) {
 
-//        if ([subview isKindOfClass:NSClassFromString(@"_UISomePrivateLabelSubclass")])
-//        {
-//            [subview setColor:...
-             //do interesting stuff here
-        NSLog(@"subview %@",[subview class]);
-//         }
+    for (UIView * subview in MyPick.subviews) {
         [subview setBackgroundColor:[ColorHex colorWithHexString:@"b4b4b4"]];
         [subview.layer setCornerRadius:8];
         [subview.layer setMasksToBounds:YES];
-//        for (UIView * view in subview.subviews){
-//            NSLog(@"view %@",[view class]);
-//            for (UIView * view1 in view.subviews){
-//                NSLog(@"view111111 %@",[view1 class]);
-//                for (UIView * view2 in view1.subviews){
-//                    NSLog(@"view222222 %@",[view2 class]);
-//                    for (UIView * view3 in view2.subviews){
-//                        NSLog(@"view333333 %@",[view3 class]);
-//                        for (UIView * view4 in view3.subviews){
-//                            NSLog(@"view444444 %@",[view4 class]);
-//                            for (UIView * view5 in view4.subviews){
-//                                NSLog(@"view555555 %@",[view5 class]);
-//                                for (UIView * view6 in view5.subviews){
-//                                    NSLog(@"view666666 %@",[view6 class]);
-//                                    for (UIView * view7 in view6.subviews){
-//                                        NSLog(@"view777777 %@",[view7 class]);
-//                                        for (UIView * view8 in view7.subviews){
-//                                            NSLog(@"view888888 %@",[view8 class]);
-//
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-     }
-//    NSLog(@"tmp %@",tmp);
-//    for (int i = 0;  i < tmp.count; i++) {
-//        UILabel *lbl = [tmp objectAtIndex:i];
-//        [lbl setTextColor:[UIColor whiteColor]];
-//    }
-    
-    MyPick.minuteInterval = 5;
-    NSLog(@"###> MyPick.minuteInterval = %d", MyPick.minuteInterval);
+    }
+
+    MyPick.minuteInterval = 1;
 }
 - (void)setLbl:(UILabel*)lbl{
     [lbl setTextColor:[UIColor whiteColor]];
 }
-//-(void)viewDidLoad{
-//    
-////    [super viewDidLoad];
-//    
-//    [[self pickerViews].subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        NSLog(@"%@ --- > %i",obj, idx);
-//    }];
-//}
-//-(UIView *)pickerViews{
-//    
-//    return ([MyPick.subviews objectAtIndex:0]);
-//}
 
 -(void)awakeFromNib
 {
     backgroundColor = [ColorHex colorWithHexString:@"b4b4b4"];
-//    [UIColor colorWithRed:0.921f
-//                                      green:0.921f
-//                                       blue:0.921f
-//                                      alpha:1];
-    
-//    titleColor =   [UIColor colorWithRed:0.0f
-//                                   green:0.0f
-//                                    blue:0.0f
-//                                   alpha:1];
-
     titleColor =   [UIColor colorWithRed:0.0f
                                    green:0.0f
                                     blue:0.0f
                                    alpha:1];
-    
+
     selbackgroundColor = [UIColor colorWithRed:254/255.0 green:204/255.0 blue:70/255.0 alpha:1.0];
-//    [UIColor colorWithRed:0.443f
-//                                         green:0.443f
-//                                          blue:0.443f
-//                                         alpha:1];
-//    
+
     seltitleColor = [UIColor colorWithRed:0.0f
                                     green:0.0f
                                      blue:0.0f

@@ -132,6 +132,8 @@
     MainObj = sender;
     beforeMealUpTxt.delegate = self;
     afterMealUpTxt.delegate = self;
+    lblUnit1.backgroundColor = [UIColor lightGrayColor];
+    lblUnit2.backgroundColor = [UIColor lightGrayColor];
     bgLbl.layer.cornerRadius = 8.0f;
     [bgLbl setBackgroundColor:[ColorHex colorWithHexString:@"3c3c3c"]];
     
@@ -363,7 +365,6 @@
     NSString *beforeText = beforeMealUpTxt.text;
     NSString *afterText = afterMealUpTxt.text;
 
-    // TODO: 这里的算法需要重新核对
     switch (self.userUnitType) {
         case 0:             // mmol/L
         {
@@ -372,13 +373,8 @@
         } break;
         case 1:             // mg/dl
         {
-            self.beforeMealValue = [beforeText floatValue];
-            self.afterMealUpValue = [afterText floatValue];
-        } break;
-        case 2:             // mg/L
-        {
-            self.beforeMealValue = [beforeText floatValue] / 1000.0;
-            self.afterMealUpValue = [afterText floatValue] / 1000.0;
+            self.beforeMealValue = [beforeText floatValue] * 10;
+            self.afterMealUpValue = [afterText floatValue] * 10;
         } break;
         default:
             break;
@@ -390,7 +386,6 @@
  */
 - (void)updateNewunitValueWithType:(int)type
 {
-    // TODO: 这里的算法需要重新核对
     switch (type) {
         case 0:         // mmol/L
         {
@@ -403,19 +398,15 @@
         {
             lblUnit1.text = @"mg/dl";
             lblUnit2.text = @"mg/dl";
-            beforeMealUpTxt.text = [NSString stringWithFormat:@"%.1f", self.beforeMealValue];
-            afterMealUpTxt.text = [NSString stringWithFormat:@"%.1f", self.afterMealUpValue];
-        } break;
-        case 2:         // mg/L
-        {
-            lblUnit1.text = @"mg/L";
-            lblUnit2.text = @"mg/L";
-            beforeMealUpTxt.text = [NSString stringWithFormat:@"%.2f", self.beforeMealValue/1000.0];
-            afterMealUpTxt.text = [NSString stringWithFormat:@"%.2f", self.afterMealUpValue/1000.0];
+            beforeMealUpTxt.text = [NSString stringWithFormat:@"%.1f", self.beforeMealValue/10.0];
+            afterMealUpTxt.text = [NSString stringWithFormat:@"%.1f", self.afterMealUpValue/10.0];
         } break;
         default:
             break;
     }
+
+    [lblUnit1 sizeToFit];
+    [lblUnit2 sizeToFit];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -437,11 +428,9 @@
                 case 102:
                     bfEndStr = selectStr;
                     break;
-                    
                 case 103:
                     lunchStartStr = selectStr;
                     break;
-                    
                 case 104:
                     lunchEndStr = selectStr;
                     break;
@@ -454,6 +443,7 @@
                 default:
                     break;
             }
+
             [(UIButton *)selectBtn setTitle:selectStr forState:UIControlStateNormal];
         }
     }
@@ -510,11 +500,6 @@
             lblUnit1.text = @"mg/dl";
             lblUnit2.text = @"mg/dl";
         } break;
-        case 2:         // mg/L
-        {
-            lblUnit1.text = @"mg/L";
-            lblUnit2.text = @"mg/L";
-        } break;
         default:
             break;
     }
@@ -526,7 +511,7 @@
                                                        delegate:self
                                               cancelButtonTitle:kLoadString(@"HS_Fall_Cancel")
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles: @"mmol/L", @"mg/dl", @"mg/L", nil];
+                                              otherButtonTitles: @"mmol/L", @"mg/dl", nil];
     popup.tag = 1099;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -537,7 +522,6 @@
  *  @param userUnitType 单位类型:0,1,2
  *                      0 -> mmol/L
  *                      1 -> mg/dl
- *                      2 -> mg/L
  */
 - (void)setUserUnitType:(int)userUnitType
 {

@@ -20,6 +20,12 @@
 #import "HttpHelper.h"
 #import "define.h"
 
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) do {} while (0)
+#endif
+
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
 // 如果是马来的版本就用这个定义

@@ -183,35 +183,35 @@ long long ChangeImgUrl_expectedLength;        //檔案大小
     }
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    CGRect frames = textField.frame;
-    int offset = frames.origin.y + 32 - (self.view.frame.size.height - 300.0);//键盘高度216
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    float width = self.view.frame.size.width;
-    float height = self.view.frame.size.height;
-    if(offset > 0)
-    {
-        CGRect rect = CGRectMake(0.0f, -offset,width,height);
-        self.view.frame = rect;
-    }
-    [UIView commitAnimations];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSLog(@"return");
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
-    self.view.frame = rect;
-    [UIView commitAnimations];
-    [textField resignFirstResponder];
-    return YES;
-}
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    CGRect frames = textField.frame;
+//    int offset = frames.origin.y + 32 - (self.view.frame.size.height - 300.0);//键盘高度216
+//    NSTimeInterval animationDuration = 0.30f;
+//    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+//    [UIView setAnimationDuration:animationDuration];
+//    float width = self.view.frame.size.width;
+//    float height = self.view.frame.size.height;
+//    if(offset > 0)
+//    {
+//        CGRect rect = CGRectMake(0.0f, -offset,width,height);
+//        self.view.frame = rect;
+//    }
+//    [UIView commitAnimations];
+//}
+//
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    NSLog(@"return");
+//    NSTimeInterval animationDuration = 0.30f;
+//    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+//    [UIView setAnimationDuration:animationDuration];
+//    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);
+//    self.view.frame = rect;
+//    [UIView commitAnimations];
+//    [textField resignFirstResponder];
+//    return YES;
+//}
 
 // 登入按鈕
 - (IBAction)loginBtnClick:(id)sender

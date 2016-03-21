@@ -31,7 +31,39 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11092"
             endingLineNumber = "11092"
-            landmarkName = "-btnInitImage"
+            landmarkName = "-changeSearch:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AngelCare/MainClass.m"
+            timestampString = "479703525.080419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5443"
+            endingLineNumber = "5443"
+            landmarkName = "-Send_Sportdata:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AngelCare/MainClass.m"
+            timestampString = "479703826.004343"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5603"
+            endingLineNumber = "5603"
+            landmarkName = "-Send_UserBSData:andHash:andDic:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
